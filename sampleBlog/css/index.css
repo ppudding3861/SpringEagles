@@ -325,3 +325,85 @@ footer {
   background-color: #f1f3f5;
   color: #868e96;
 }
+
+/* 미디어 쿼리 추가 */
+@media screen and (max-width: 980px) {
+  .header {
+    padding: 15px;
+  }
+  .header-user {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .user-notification,
+  .user-search,
+  .user-login {
+    margin-left: 10px;
+  }
+  .header-logo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .logo-text {
+    font-size: 1.5em;
+  }
+  .logo-image > img {
+    width: 25px;
+    height: 25px;
+  }
+  .main-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .sidebar {
+    width: 100%; /* 전체 너비로 변경 */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .content {
+    margin-right: 0;
+  }
+  .profile-upper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-image > img {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-info .user-name {
+    font-size: 1.5em;
+  }
+  .profile-info .user-description {
+    font-size: 1em;
+  }
+  .sns-icons .icon > img {
+    width: 25px;
+    height: 25px;
+  }
+  .follow-info {
+    align-items: center;
+  }
+  .nav-items {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-items > div {
+    margin-bottom: 10px;
+  }
+  .post-image img {
+    max-width: 100%
+    height: auto;
+  }
+  .post-title {
+    font-size: 1.2em;
+  }
+  .post-description {
+    font-size: 1em;
+  }
+  .post-meta .post-date,
+  .post-meta .post-comments,
+  .post-meta .post-likes {
+    font-size: 0.7em;
+  }
+}
