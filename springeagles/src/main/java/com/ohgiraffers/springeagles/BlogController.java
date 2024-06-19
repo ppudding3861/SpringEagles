@@ -14,10 +14,12 @@ public class BlogController {
         List<Post> posts = new ArrayList<>();
 
         // Sample data
-        posts.add(new Post("PD들의 브랜드 디깅법", "워디즈 PD의 브랜드 디깅법", "/images/sample01.jpeg", "#"));
-        posts.add(new Post("프로젝트 디자인", "서울 경험을 설계하는 프로젝트디자인", "/images/sample02.png", "#"));
-        posts.add(new Post("와디즈란?", "필요한건 여기서 다 만든다", "/images/sample03.png", "#"));
-        posts.add(new Post("여름이닷!!", "마지막 이미지다", "/images/sample04.png", "#"));
+        posts.add(new Post("주순태", "프로그램 천재", "/images/sample01.jpeg", "#"));
+        posts.add(new Post("김기호", "그만 아프길...", "/images/sample02.png", "#"));
+        posts.add(new Post("서은진", "잘빠진 기획안 내놔라!!!", "/images/sample03.png", "#"));
+        posts.add(new Post("강형석", "팀장이다", "/images/sample04.png", "#"));
+        posts.add(new Post("황정한", "잘생겼따!황정한", "/images/sample04.png", "#"));
+        posts.add(new Post("이서현", "이글스는 이제 그만...", "/images/sample04.png", "#"));
         // Add more posts as needed
 
         model.addAttribute("posts", posts);
@@ -28,5 +30,10 @@ public class BlogController {
     public String blogPost(Model model) {
         model.addAttribute("blogPost", model);
         return "sampleBlogPage/blogPost";
+    }
+    @GetMapping("/blogPost4")
+    public String blogPost4(Model model) {
+        model.addAttribute("blogPost4", model);
+        return "sampleBlogPage4/blogPost4";
     }
 }

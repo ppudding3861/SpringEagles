@@ -13,6 +13,9 @@ public class Post {
         this.link = link;
     }
 
+    public Post() {
+    }
+
     public String getTitle() {
         return title;
     }
