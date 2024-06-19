@@ -23,4 +23,10 @@ public class BlogController {
         model.addAttribute("posts", posts);
         return "index";
     }
+
+    @GetMapping("/blogPost")
+    public String blogPost(Model model) {
+        model.addAttribute("blogPost", model);
+        return "blogPost";
+    }
 }
