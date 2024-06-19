@@ -9,7 +9,7 @@
       <div class="post-list">
         <div class="post-item" th:each="box : ${boxes}">
           <div class="post-image" th:onclick="">
-            <img src="imgs/sample_post_img.png" alt="x" />
+            <img th:src="@{images/sample_post_img.png}" alt="x" />
           </div>
           <div class="post-title" th:onclick="">
             제목

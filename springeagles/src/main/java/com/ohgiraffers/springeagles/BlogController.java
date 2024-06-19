@@ -27,6 +27,6 @@ public class BlogController {
     @GetMapping("/blogPost")
     public String blogPost(Model model) {
         model.addAttribute("blogPost", model);
-        return "blogPost";
+        return "sampleBlogPage/blogPost";
     }
 }
