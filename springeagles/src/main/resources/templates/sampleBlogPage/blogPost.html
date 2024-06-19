@@ -13,7 +13,7 @@
         <div class="header">
             <div class="header-logo" th:onclick="">
                 <div class="logo-image">
-                    <img src=th:src="@{/images/logo.png}" alt="X"/>
+                    <img th:src="@{/images/logo.jpg}" alt="X"/>
                 </div>
                 <div class="logo-text" >블로그 이름</div>
             </div>
@@ -36,9 +36,9 @@
 </header>
 <main>
     <div class="main-container">
-        <aside th:replace="fragments/sampleBlogPage/fragments/blogPost_sidebar :: sidebar"></aside>
+        <aside th:replace="~{/sampleBlogPage/fragments/blogPost_sidebar :: sidebar}"></aside>
         <div class="content">
-            <div th:replace="fragments/sampleBlogPage/fragments/blogPost_user-profile :: userProfile"></div>
+            <div th:replace="~{/sampleBlogPage/fragments/blogPost_user-profile :: userProfile}"></div>
             <nav class="navigation">
                 <div class="nav-items">
                     <div th:onclick="">글</div>
@@ -46,7 +46,7 @@
                     <div th:onclick="">소개</div>
                 </div>
             </nav>
-            <section th:replace="fragments/sampleBlogPage/fragments/blogPost_posts.htmls :: posts"></section>
+            <section th:replace="~{/sampleBlogPage/fragments/blogPost_posts.html :: posts}"></section>
         </div>
     </div>
 </main>
