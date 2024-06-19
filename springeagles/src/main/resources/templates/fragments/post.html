@@ -7,7 +7,7 @@
     <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '여름이닷!!'}">
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.description}"></p>
-    <a th:href="@{${post.link}}">더 보기</a>
+    <a th:href="blogPost">더 보기</a>
 </div>
 
 </html>
