@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
   <head>
-    <link rel="stylesheet" th:href="@{/index_st.css}"/>
+    <link rel="stylesheet" th:href="@{/index1.css}"/>
     <link rel="stylesheet" th:href="@{/reset.css}"/>
   </head>
   <body>
@@ -9,7 +9,7 @@
       <div class="sidebar-content">
         <div class="sidebar-title">태그목록</div>
         <ul class="tag-list">
-          <li th:each="tag : ${tags}" th:onclick="">
+          <li th:each="sideTag : ${allTags}" th:text="'◾ ' + ${sideTag}" th:onclick="">
             전체보기
           </li>
         </ul>

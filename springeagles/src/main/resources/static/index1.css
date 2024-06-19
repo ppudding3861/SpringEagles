@@ -22,6 +22,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'KCC-Ahnchangho';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/KCC-Ahnchangho.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   font-family: "Noto Sans KR", sans-serif;
   margin: 0;
@@ -32,7 +39,7 @@ body {
 
 .header-container {
   width: 100%;
-  background-color: #ff6f0f;
+  background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   color: #ffffff;
 }
@@ -53,7 +60,8 @@ body {
 }
 
 .logo-text {
-  font-family: "yg-jalnan";
+  font-family: 'KCC-Ahnchangho';
+  font-size: 1.5em;
 }
 
 .logo-image {
@@ -67,15 +75,7 @@ body {
 
 .header-user {
   display: flex;
-  align-items: center;
-}
-
-.user-notification,
-.user-search,
-.user-login {
-  margin-left: 20px;
-  font-family: "NPSfontBold";
-  cursor: pointer;
+  justify-content: center;
 }
 
 .main-container {
@@ -173,7 +173,7 @@ body {
   margin-left: 10px;
 }
 
-.sns-icons .icon > img {
+.sns-icons .icon > a > img {
   width: 30px;
   height: 30px;
   cursor: pointer;
@@ -200,7 +200,7 @@ body {
 
 .follow-button {
   padding: 5px 10px;
-  background-color: #343a40;
+  background-color: #ff6f0f;
   color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
@@ -290,18 +290,20 @@ body {
 .post-tags {
   color: #868e96;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .post-tags > div {
-  width: 50px;
+  width: auto;
   padding: 5px 10px;
-  background-color: #343a40;
+  background-color: #ff6f0f;
   color: #ffffff;
   cursor: pointer;
+  margin-left: 10px;
   border-radius: 5px;
   font-family: "Dovemayo_gothic";
   text-align: center;
-  cursor: pointer;
 }
 
 .post-meta {
@@ -407,3 +409,90 @@ footer {
     font-size: 0.7em;
   }
 }
+
+.custom-btn {
+  width: 80px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  border: none;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.btn-3 {
+  padding: 0;
+}
+
+.btn-3:hover {
+  background: rgba(255, 255, 255, 0.1); /* hover 시 투명한 흰색 배경 추가 */
+}
+
+.btn-3 div {
+  font-family: "Dovemayo_gothic";
+  font-size: 1.2em; /* 텍스트 크기 조정 */
+  position: relative;
+  display: block; /* block 요소로 설정하여 text-align 적용 */
+  width: 100%;
+  height: 100%;
+  text-align: center; /* 텍스트 가로 중앙 정렬 */
+}
+
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+
+.btn-3:hover:before {
+  height: 100%;
+}
+
+.btn-3:hover:after {
+  width: 100%;
+}
+
+.btn-3 div:before,
+.btn-3 div:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  transition: all 0.3s ease;
+}
+
+.btn-3 div:before {
+  width: 2px;
+  height: 0%;
+}
+
+.btn-3 div:after {
+  width: 0%;
+  height: 2px;
+}
+
+.btn-3 div:hover:before {
+  height: 100%;
+}
+
+.btn-3 div:hover:after {
+  width: 100%;
+}
+

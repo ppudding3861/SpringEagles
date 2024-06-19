@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Joo's Blog</title>
-    <link rel="stylesheet" th:href="@{/index_st.css}"/>
+    <title>stjoo.log</title>
+    <link rel="stylesheet" th:href="@{/index1.css}"/>
     <link rel="stylesheet" th:href="@{/reset.css}"/>
 </head>
 <body>
@@ -13,19 +13,19 @@
         <div class="header">
             <div class="header-logo" th:onclick="">
                 <div class="logo-image">
-                    <img th:src="@{/images/logo.jpg}" alt="X"/>
+                    <img th:src="@{/images/logo.png}" alt="X"/>
                 </div>
-                <div class="logo-text" >stjoo.log</div>
+                <div class="logo-text" >Stjoo.log</div>
             </div>
             <div class="header-user">
-                <div class="user-notification" th:onclick="|window.location.href='@{/}'|">
-                    첫화면
+                <div class="custom-btn btn-3" th:onclick="|window.location.href='@{/}'|">
+                    <div>첫화면</div>
                 </div>
-                <div class="user-search" th:onclick="">
-                    검색
+                <div class="custom-btn btn-3" th:onclick="">
+                    <div>검색</div>
                 </div>
-                <div class="user-login" th:onclick="">
-                    글쓰기
+                <div class="custom-btn btn-3" th:onclick="">
+                    <div>글쓰기</div>
                 </div>
             </div>
         </div>

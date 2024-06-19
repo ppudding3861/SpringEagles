@@ -1,10 +1,15 @@
 package com.ohgiraffers.springeagles;
 
+import com.ohgiraffers.springeagles.common.BlogDTO;
+import com.ohgiraffers.springeagles.common.BlogStDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -26,11 +31,25 @@ public class BlogController {
         return "index";
     }
 
+    @Autowired
+    private BlogStDAO blogStDAO;
+
     @GetMapping("/blogPost")
     public String blogPost(Model model) {
         model.addAttribute("blogPost", model);
         return "sampleBlogPage/blogPost";
     }
+
+    @GetMapping("/blogPost1")
+    public ModelAndView blogPost1() {
+        List<BlogDTO> boxes = blogStDAO.getAllBlogs();
+        List<String> allTags = blogStDAO.getAllTags();
+        ModelAndView mv = new ModelAndView("sampleBlogPage_st/blogPost");
+        mv.addObject("boxes", boxes);
+        mv.addObject("allTags", allTags);
+        return mv;
+    }
+
     @GetMapping("/blogPost4")
     public String blogPost4(Model model) {
         model.addAttribute("blogPost4", model);
