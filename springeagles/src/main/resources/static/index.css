@@ -393,7 +393,7 @@ footer {
   }
   .post-image img {
     max-width: 100%;
-    height: auto;
+    height: 100%;
   }
   .post-title {
     font-size: 1.2em;
