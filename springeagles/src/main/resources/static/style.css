@@ -160,13 +160,35 @@ nav ul li a {
     cursor: pointer;
 }
 
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    /*background: #fff;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 10px;
+    /*box-shadow: 0 4px 8px rgba(0,0,0,0.1);*/
+    margin: 10px;
+    padding: 20px;
+}
+
 .main-post {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #f8f9fa;
     padding: 40px 20px;
+    position: relative;
+    width: 100%;
+    height: 500px; /* 원하는 높이로 설정하세요 */
+    overflow: hidden;
 }
+
 
 .main-post-content {
     display: flex;
@@ -217,12 +239,21 @@ nav ul li a {
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
+.post-inner{
+    margin-top: 0px;
+    width: 280px;
+    height: 164px;
+    overflow: hidden;
+
+}
 
 .post img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto 10px auto;
+    width: AUTO;
+    HEIGHT: 100%;
 }
 
 .post h3 {
@@ -250,4 +281,16 @@ nav ul li a {
     max-width: 1350px;
     margin: 0 auto;
     padding-top: 20px;
+}
+
+
+.main-post-text a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.main-post-text a:hover {
+    text-decoration: underline;
 }
