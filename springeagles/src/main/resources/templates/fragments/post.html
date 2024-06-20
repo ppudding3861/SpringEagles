@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="postFragment">
+<head>
+    <link rel="stylesheet" href="../../static/style.css">
+</head>
+<body>
 <div class="post">
-    <img th:src="@{/images/sample01.jpeg}" alt="Post Image" th:if="${post.title == '주순태'}">
-    <img th:src="@{/images/sample02.png}" alt="Post Image" th:if="${post.title == '서은진'}">
-    <img th:src="@{/images/sample03.png}" alt="Post Image" th:if="${post.title == '김기호'}">
-    <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '강형석'}">
-    <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '이서현'}">
-    <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '황정한'}">
+    <div class="post-inner">
+        <img th:src="@{/images/sample01.jpeg}" alt="Post Image" th:if="${post.title == '주순태'}">
+        <img th:src="@{/images/sample02.png}" alt="Post Image" th:if="${post.title == '서은진'}">
+        <img th:src="@{/images/sample03.png}" alt="Post Image" th:if="${post.title == '김기호'}">
+        <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '강형석'}">
+        <img th:src="@{/images/sample04.png}" alt="Post Image" th:if="${post.title == '이서현'}">
+        <img th:src="@{/images/12345.jpg}" alt="Post Image" th:if="${post.title == '황정한'}">
+    </div>
     <h3 th:text="${post.title}"></h3>
     <p th:text="${post.description}"></p>
-    <a th:href="@{/blogPost1}" th:if="${post.title == '주순태'}">주순태</a>
+    <a th:href="@{/blogPost}" th:if="${post.title == '주순태'}">주순태</a>
     <a th:href="@{/blogPost2}" th:if="${post.title == '서은진'}">서은진</a>
     <a th:href="@{/blogPost3}" th:if="${post.title == '김기호'}">김기호</a>
     <a th:href="@{/blogPost4}" th:if="${post.title == '강형석'}">강형석</a>
     <a th:href="@{/blogPost5}" th:if="${post.title == '이서현'}">이서현</a>
     <a th:href="@{/blogPost6}" th:if="${post.title == '황정한'}">황정한</a>
-
 </div>
-
+</body>
 </html>

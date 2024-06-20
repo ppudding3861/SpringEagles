@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Wadiz Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
@@ -18,19 +19,24 @@
         </div>
     </div>
 </header>
+
 <section class="main-post">
-    <div class="main-post-content">
-        <img src="/images/sample01.jpeg" alt="Main Post Image">
-        <div class="main-post-text">
-            <h2>러너들의 색다른 도전</h2>
-            <p>도전에는 언제나 응원이 따르는 법이지</p>
-            <span>SOCIAL IMPACT | 가치 더하기</span>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" th:each="post : ${posts}">
+                <div th:insert="fragments/main :: mainFragment"></div>
+            </div>
         </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
     </div>
 </section>
+
 <section>
     <div class="inner">
-    <h2>새로 올라온 이야기</h2>
+        <h2>새로 올라온 이야기</h2>
     </div>
     <div class="posts">
         <div th:each="post : ${posts}">
@@ -38,5 +44,20 @@
         </div>
     </div>
 </section>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper(".swiper-container", {
+        cssMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
+    });
+</script>
 </body>
-</html>s
+</html>
