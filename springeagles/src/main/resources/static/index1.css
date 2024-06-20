@@ -30,11 +30,29 @@
 }
 
 body {
-  font-family: "Noto Sans KR", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #ACB1D6;
-  color: #343a40;
+}
+
+body::-webkit-scrollbar {
+  width: 0.6em; /* 스크롤바 너비 */
+}
+
+/* 스크롤바의 track(슬라이더 배경) 스타일 */
+body::-webkit-scrollbar-track {
+  background: #DBDFEA; /* 스크롤바 배경색 */
+}
+
+/* 스크롤바의 thumb(슬라이더 자체) 스타일 */
+body::-webkit-scrollbar-thumb {
+  background-color: #4F50AD; /* 슬라이더 색상 */
+  border-radius: 5px; /* 슬라이더 모서리 둥글게 */
+}
+
+/* 스크롤바 hover 상태일 때 스타일 */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #8989B8; /* hover 시 슬라이더 색상 변경 */
 }
 
 .header-container {
@@ -52,17 +70,6 @@ body {
   align-content: center;
   align-items: center;
   padding: 20px;
-}
-
-.user-button {
-  font-family: "NPSfontBold";
-  font-size: 1.2em;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.user-button:hover {
-  color: #007bff;
 }
 
 .header-logo {
@@ -104,16 +111,17 @@ body {
 .sidebar-content {
   background-color: #DBDFEA;
   padding: 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
 }
 
 .sidebar-title {
   font-weight: bold;
   margin-bottom: 10px;
   font-family: "NPSfontBold";
+  color: #4F50AD;
   padding-bottom: 15px;
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #4F50AD;
 }
 
 .tag-list {
@@ -124,7 +132,12 @@ body {
 .tag-list li {
   margin-bottom: 20px;
   font-family: "NPSfontBold";
+  color: #4F50AD;
   cursor: pointer;
+}
+
+.tag-list li:hover {
+  color: #8989B8;
 }
 
 .content {
@@ -137,6 +150,7 @@ body {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
 }
 
 .profile-upper {
@@ -144,7 +158,7 @@ body {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #8294C4;
+  border-bottom: 2px solid #8294C4;
 }
 
 .profile-image {
@@ -155,7 +169,7 @@ body {
 .profile-image > img {
   width: 150px;
   height: 150px;
-  border: 3px solid #8294C4;
+  border: 3px solid #4F50AD;
   background-color: #fff;
   border-radius: 50%;
 }
@@ -163,12 +177,12 @@ body {
 .profile-info .user-name {
   font-weight: bold;
   font-size: 2em;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   font-family: "NPSfontBold";
 }
 
 .profile-info .user-description {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-family: "NPSfontBold";
 }
 
@@ -209,6 +223,7 @@ body {
 .follow-stats .follower-count {
   margin-right: 10px;
   font-family: "NPSfontBold";
+  font-size: 0.8em;
   cursor: pointer;
 }
 
@@ -219,12 +234,19 @@ body {
   cursor: pointer;
   border-radius: 5px;
   font-family: "NPSfontBold";
+  font-size: 0.8em;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
 }
 
+.follow-button:active {
+  transform: translateY(1px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
 .navigation {
   background-color: #DBDFEA;
   padding: 10px 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
   border-radius: 10px;
   margin-bottom: 20px;
 }
@@ -240,11 +262,11 @@ body {
   cursor: pointer;
 }
 .nav-items div.active {
-  color: #00a05b;
+  color: #4F50AD;
 }
 
 .nav-items div:hover {
-  color: #00a05b;
+  color: #4F50AD;
 }
 
 .posts {
@@ -262,27 +284,36 @@ body {
   padding: 20px;
   border-radius: 10px;
   background-color: #DBDFEA;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
 }
 
-.post-image {
-  display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
-  height: 400px; /* 이미지의 높이를 고정 */
-  cursor: pointer;
-  margin-bottom: 15px;
+.hover01 figure {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
 }
 
-.post-image img {
-  width: 800px; /* 이미지의 너비를 300px로 고정 */
+.hover01 figure img {
+  width: 100%; /* 이미지의 너비를 300px로 고정 */
   height: 400px; /* 이미지의 높이를 300px로 고정 */
   object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
 }
+
+.hover01 figure:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
 
 .post-title {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1em;
   margin: 10px 0;
   font-family: "NPSfontBold";
   cursor: pointer;
@@ -291,7 +322,7 @@ body {
 
 .post-description {
   margin-bottom: 10px;
-  font-size: 1.1em;
+  font-size: 0.8em;
   font-family: "NPSfontBold";
   margin-bottom: 20px;
 }
@@ -309,10 +340,10 @@ body {
   background-color: #8294C4;
   color: #ffffff;
   cursor: pointer;
-  margin-left: 10px;
+  margin-right: 10px;
   border-radius: 5px;
   font-family: "NPSfontBold";
-  font-size: 1em;
+  font-size: .8em;
   text-align: center;
 }
 
@@ -418,4 +449,60 @@ footer {
   }
 }
 
+/*-----*/
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
+a:hover, a:focus {
+  outline: none;
+}
+
+.header-user ul {
+  list-style: none; /* 불릿 포인트 제거 */
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  display: flex; /* 플렉스박스 사용 */
+  flex-direction: row; /* 가로(row) 정렬 */
+}
+
+.SMN_effect-6 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.SMN_effect-6 li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.SMN_effect-6 a {
+  position: relative;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-family: "NPSfontBold";
+  font-size: 1.2em;
+}
+
+.SMN_effect-6 a:before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4F50AD;
+  transition: width 0.3s ease-out;
+}
+
+.SMN_effect-6 a:hover:before,
+.SMN_effect-6 a:focus:before {
+  width: 100%;
+}
+
+.SMN_effect-6 a:hover {
+  color: #4F50AD;
+}

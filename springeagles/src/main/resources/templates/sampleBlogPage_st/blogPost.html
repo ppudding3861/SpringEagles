@@ -6,6 +6,23 @@
     <title>stjoo.log</title>
     <link rel="stylesheet" th:href="@{/index1.css}"/>
     <link rel="stylesheet" th:href="@{/reset.css}"/>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.SMN_effect-6 a');
+
+            links.forEach(link => {
+                const hoverColor = link.getAttribute('data-hover-color');
+                link.addEventListener('mouseenter', function() {
+                    link.style.color = hoverColor;
+                    link.style.borderColor = hoverColor; // 밑줄의 색상을 링크 색상과 동일하게 설정
+                });
+                link.addEventListener('mouseleave', function() {
+                    link.style.color = 'rgba(255, 255, 255, 0.8)';
+                    link.style.borderColor = '#DBDFEA'; // 마우스 떠날 때 기본 밑줄 색상으로 복원
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 <header>
@@ -15,18 +32,14 @@
                 <div class="logo-image">
                     <img th:src="@{/images/logo.png}" alt="X"/>
                 </div>
-                <div class="logo-text" >Stjoo.log</div>
+                <div class="logo-text">Stjoo.log</div>
             </div>
             <div class="header-user">
-                <div class="user-button" th:onclick="|window.location.href='@{/}'|">
-                    첫화면
-                </div>
-                <div class="user-button" th:onclick="">
-                    검색
-                </div>
-                <div class="user-button" th:onclick="">
-                    글쓰기
-                </div>
+                <ul class="SMN_effect-6">
+                    <li><a th:href="@{/}" data-hover="첫화면">첫화면</a></li>
+                    <li><a href="" data-hover="검색">검색</a></li>
+                    <li><a href="" data-hover="글쓰기">글쓰기</a></li>
+                </ul>
             </div>
         </div>
     </div>
