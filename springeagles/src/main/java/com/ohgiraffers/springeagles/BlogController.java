@@ -52,6 +52,18 @@ public class BlogController {
         return mv;
     }
 
+    @GetMapping("/blogPost2")
+    public ModelAndView blogPost2() {
+        List<BlogDTO> boxes = blogStDAO.getAllBlogs();
+        List<String> allTags = blogStDAO.getAllTags();
+        ModelAndView mv = new ModelAndView("sampleBlogPage2/blogPost2");
+        mv.addObject("boxes", boxes);
+        mv.addObject("allTags", allTags);
+
+        return mv;
+    }
+
+
     @GetMapping("/blogPost4")
     public String blogPost4(Model model) {
         model.addAttribute("blogPost4", model);
