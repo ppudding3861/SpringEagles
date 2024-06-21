@@ -1,9 +1,6 @@
 package com.ohgiraffers.springeagles;
 
-import com.ohgiraffers.springeagles.common.Blog5DAO;
-import com.ohgiraffers.springeagles.common.BlogDTO;
-import com.ohgiraffers.springeagles.common.Blog6JHDAO;
-import com.ohgiraffers.springeagles.common.BlogStDAO;
+import com.ohgiraffers.springeagles.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,16 +49,21 @@ public class BlogController {
         return mv;
     }
 
+
+    @Autowired
+    private Blog2DAO blog2DAO;
+
     @GetMapping("/blogPost2")
     public ModelAndView blogPost2() {
-        List<BlogDTO> boxes = blogStDAO.getAllBlogs();
-        List<String> allTags = blogStDAO.getAllTags();
+        List<BlogDTO> boxes = blog2DAO.getAllBlogs();
+        List<String> allTags = blog2DAO.getAllTags();
         ModelAndView mv = new ModelAndView("sampleBlogPage2/blogPost2");
         mv.addObject("boxes", boxes);
         mv.addObject("allTags", allTags);
 
         return mv;
     }
+
 
 
     @GetMapping("/blogPost4")
