@@ -370,10 +370,7 @@ header {
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f1f3f5;
-  color: #868e96;
+
 }
 
 /* 미디어 쿼리 추가 */
@@ -516,20 +513,118 @@ a:hover, a:focus {
   color: #4F50AD;
 }
 
-/* toast ui*/
 
+/* Toast UI Editor 스타일 */
 .toastui-editor-defaultUI {
   background-color: #ffffff; /* 에디터 전체 배경 */
 }
-
 .toastui-editor-contents {
   background-color: #ffffff; /* 에디터 내용 배경 */
 }
-
 .toastui-editor .ProseMirror {
   background-color: #ffffff; /* 에디터 텍스트 배경 */
 }
-
 .toastui-editor .tui-editor-contents {
   background-color: #ffffff; /* 미리보기 영역 배경 */
+}
+
+.editor-con {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 90%;
+  height: auto;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff; /* 배경색 */
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+}
+#editor {
+  margin-bottom: 20px; /* 하단 여백 추가 */
+}
+.editor-input {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.editor-input > input {
+  font-size: 15px;
+  color: #222222;
+  width: 100%;
+  border: none;
+  border-bottom: solid #4F50AD 1px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  background: none;
+  z-index: 5;
+  outline: none; /* 포커스시 외곽선 제거 */
+}
+.editor-input > input::placeholder {
+  color: #4F50AD;
+}
+.editor-input > span {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  background-color: #4F50AD;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+.editor-input > label {
+  position: absolute;
+  color: #4F50AD;
+  left: 10px;
+  font-size: 18px;
+  bottom: 8px;
+  transition: all .2s;
+  font-family: "NPSfontBold";
+}
+.editor-input > input:focus ~ label,
+.editor-input > input:valid ~ label {
+  font-size: 16px;
+  bottom: 40px;
+  font-weight: bold;
+}
+.editor-input > input:focus ~ span,
+.editor-input > input:valid ~ span {
+  width: 100%;
+}
+.editor-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: #4F50AD;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+  text-decoration: none; /* 링크 스타일 제거 */
+}
+.editor-button:hover {
+  background-color: #8989B8;
+}
+.editor-button:active {
+  transform: translateY(3px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+.editor-button > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px; /* 버튼 내 텍스트 가운데 정렬 */
 }

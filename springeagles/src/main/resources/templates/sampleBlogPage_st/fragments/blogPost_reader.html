@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="reader">
+<head>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+</head>
+<body>
+<div th:each="post : ${postList}">
+    <div class="blog-item">
+        <h2 th:text="${post.title}"></h2>
+        <p th:text="${post.description}"></p>
+        <img th:src="${post.imageUrl}" alt="Blog Image">
+        <p th:text="${post.content}"></p>
+    </div>
+</div>
+</body>
+</html>

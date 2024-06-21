@@ -31,26 +31,6 @@ public class BlogController {
     }
 
     @Autowired
-    private BlogStDAO blogStDAO;
-
-    @GetMapping("/blogPost")
-    public String blogPost(Model model) {
-        model.addAttribute("blogPost", model);
-        return "sampleBlogPage/blogPost";
-    }
-
-    @GetMapping("/blogPost1")
-    public ModelAndView blogPost1() {
-        List<BlogDTO> boxes = blogStDAO.getAllBlogs();
-        List<String> allTags = blogStDAO.getAllTags();
-        ModelAndView mv = new ModelAndView("sampleBlogPage_st/blogPost");
-        mv.addObject("boxes", boxes);
-        mv.addObject("allTags", allTags);
-        return mv;
-    }
-
-
-    @Autowired
     private Blog2DAO blog2DAO;
 
     @GetMapping("/blogPost2")
