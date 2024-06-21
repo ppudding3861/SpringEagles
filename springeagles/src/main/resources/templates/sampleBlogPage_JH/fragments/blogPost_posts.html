@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="posts">
   <head>
-    <link rel="stylesheet" th:href="@{/index1.css}"/>
+    <link rel="stylesheet" th:href="@{/index6.css}"/>
     <link rel="stylesheet" th:href="@{/reset.css}"/>
   </head>
   <body>
     <section class="posts">
       <div class="post-list">
         <div class="post-item" th:each="box : ${boxes}">
-          <div class="hover01 column" th:onclick="">
-            <div>
-              <figure><img th:src="@{images/sample_post_img.png}" alt="x" /></figure>
-            </div>
+          <div class="post-image" th:onclick="">
+            <img th:src="@{images/sample_post_img.png}" alt="x" />
           </div>
           <div class="post-title" th:text="${box.title}" th:onclick="">
             제목

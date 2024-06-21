@@ -1,8 +1,6 @@
 package com.ohgiraffers.springeagles;
 
-import com.ohgiraffers.springeagles.common.Blog5DAO;
-import com.ohgiraffers.springeagles.common.BlogDTO;
-import com.ohgiraffers.springeagles.common.BlogStDAO;
+import com.ohgiraffers.springeagles.common.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -52,6 +49,23 @@ public class BlogController {
         return mv;
     }
 
+
+    @Autowired
+    private Blog2DAO blog2DAO;
+
+    @GetMapping("/blogPost2")
+    public ModelAndView blogPost2() {
+        List<BlogDTO> boxes = blog2DAO.getAllBlogs();
+        List<String> allTags = blog2DAO.getAllTags();
+        ModelAndView mv = new ModelAndView("sampleBlogPage2/blogPost2");
+        mv.addObject("boxes", boxes);
+        mv.addObject("allTags", allTags);
+
+        return mv;
+    }
+
+
+
     @GetMapping("/blogPost4")
     public String blogPost4(Model model) {
         model.addAttribute("blogPost4", model);
@@ -67,6 +81,19 @@ public class BlogController {
         List<String> allTags = blog5DAO.getAllTags();
         mv = new ModelAndView("sampleBlogPageSH/blogPost5");
         mv.addObject("boxex", boxex);
+        mv.addObject("allTags", allTags);
+        return mv;
+    }
+
+    @Autowired
+    private Blog5DAO Blog6JHDAO;
+
+    @GetMapping("/blogPost6")
+    public ModelAndView blogPost6() {
+        List<BlogDTO> boxes = Blog6JHDAO.getAllBlogs();
+        List<String> allTags = Blog6JHDAO.getAllTags();
+        ModelAndView mv = new ModelAndView("sampleBlogPage_JH/blogPost6");
+        mv.addObject("boxes", boxes);
         mv.addObject("allTags", allTags);
         return mv;
     }
