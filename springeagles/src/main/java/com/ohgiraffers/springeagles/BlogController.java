@@ -23,7 +23,7 @@ public class BlogController {
         posts.add(new Post("서은진", "잘빠진 기획안 내놔라!!!", "/images/sample03.png", "#"));
         posts.add(new Post("강형석", "팀장이다", "/images/sample04.png", "#"));
         posts.add(new Post("황정한", "잘생겼따!황정한", "/images/sample04.png", "#"));
-        posts.add(new Post("이서현", "이글스 찐팬", "/images/soori.png", "#"));
+        posts.add(new Post("이서현", "Hanwhaeagles_Soori", "/images/soori.png", "#"));
         // Add more posts as needed
 
         model.addAttribute("posts", posts);

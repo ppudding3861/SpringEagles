@@ -254,6 +254,10 @@ nav ul li a {
     width: AUTO;
     HEIGHT: 100%;
 }
+#sh {
+    width: AUTO;
+    HEIGHT: 100%;
+}
 
 .post h3 {
     font-size: 1.2em;
