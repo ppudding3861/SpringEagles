@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="editor">
+<head>
+    <link rel="stylesheet" th:href="@{/index1.css}"/>
+    <link rel="stylesheet" th:href="@{/reset.css}"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+</head>
+<body>
+<div id="editor"></div>
+
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+        console.log("DOMContentLoaded event fired");
+        const editor = new toastui.Editor({
+            el: document.querySelector('#editor'),
+            height: '500px',
+            initialEditType: 'markdown',
+            previewStyle: 'vertical'
+        });
+        document.getElementById('save-content').addEventListener('click', function () {
+            const content = editor.getMarkdown(); // Markdown 형식으로 콘텐츠를 가져옵니다.
+
+            // Ajax를 이용해 Spring MVC 컨트롤러로 전송
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '/save-document', true); // Spring MVC 컨트롤러의 엔드포인트 URL로 변경
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log('Document saved successfully');
+                } else {
+                    console.error('Failed to save document');
+                }
+            };
+            xhr.send(JSON.stringify({ content: content }));
+        });
+    });
+</script>
+</body>
+</html>
