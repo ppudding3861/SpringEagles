@@ -23,6 +23,14 @@
             });
         });
     </script>
+    <script th:inline="javascript">
+        function toggleEdit() {
+            // edit 변수를 토글하는 JavaScript 코드
+            edit = !edit;
+            console.log('edit 변수 상태 변경:', edit); // 변경된 상태를 콘솔에 출력 (선택사항)
+            // 추가적으로 필요한 작업을 수행할 수 있습니다.
+        }
+    </script>
 </head>
 <body>
 <header>
@@ -38,7 +46,9 @@
                 <ul class="SMN_effect-6">
                     <li><a th:href="@{/}" data-hover="첫화면">첫화면</a></li>
                     <li><a href="" data-hover="검색">검색</a></li>
-                    <li><a href="" data-hover="글쓰기">글쓰기</a></li>
+                    <li>
+                        <a th:href="@{/toggleEdit}" data-hover="글쓰기" th:onclick="${edit == false} ? 'javascript:toggleEdit()' : null">글쓰기</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -46,17 +56,12 @@
 </header>
 <main>
     <div class="main-container">
-        <aside th:replace="~{/sampleBlogPage_st/fragments/blogPost_sidebar :: sidebar}"></aside>
+        <aside th:replace="~{/sampleBlogPage_st/fragments/blogPost_sidebar :: sidebar}" th:if="${edit == false}"></aside>
         <div class="content">
-            <div th:replace="~{/sampleBlogPage_st/fragments/blogPost_user-profile :: userProfile}"></div>
-            <nav class="navigation">
-                <div class="nav-items">
-                    <div th:onclick="">글</div>
-                    <div th:onclick="">시리즈</div>
-                    <div th:onclick="">소개</div>
-                </div>
-            </nav>
-            <section th:replace="~{/sampleBlogPage_st/fragments/blogPost_posts :: posts}"></section>
+            <div th:replace="~{/sampleBlogPage_st/fragments/blogPost_user-profile :: userProfile}"th:if="${edit == false}"></div>
+            <div th:replace="~{/sampleBlogPage_st/fragments/blogPost_nav :: nav}"th:if="${edit == false}"></div>
+            <div th:replace="~{/sampleBlogPage_st/fragments/blogPost_posts :: posts}"th:if="${edit == false}"></div>
+            <div th:replace="~{/sampleBlogPage_st/fragments/blogPost_editor :: editor}"th:if="${edit == true}"></div>
         </div>
     </div>
 </main>
