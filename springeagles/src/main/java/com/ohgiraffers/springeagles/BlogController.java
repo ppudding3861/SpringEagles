@@ -19,7 +19,7 @@ public class BlogController {
 
         // Sample data
         posts.add(new Post("주순태", "프로그램 천재", "/images/sample01.jpeg", "#"));
-        posts.add(new Post("김기호", "그만 아프길...", "/images/sample02.png", "#"));
+        posts.add(new Post("김기호", "Long learner", "/images/sample02.png", "#"));
         posts.add(new Post("서은진", "잘빠진 기획안 내놔라!!!", "/images/sample03.png", "#"));
         posts.add(new Post("강형석", "팀장이다", "/images/sample04.png", "#"));
         posts.add(new Post("황정한", "잘생겼따!황정한", "/images/sample04.png", "#"));
@@ -64,6 +64,12 @@ public class BlogController {
         return mv;
     }
 
+
+    @GetMapping("/blogPost3")
+    public String blogPost3(Model model) {
+        model.addAttribute("blogPost3", model);
+        return "sampleBlogPage3/blogPost3";
+    }
 
 
     @GetMapping("/blogPost4")
