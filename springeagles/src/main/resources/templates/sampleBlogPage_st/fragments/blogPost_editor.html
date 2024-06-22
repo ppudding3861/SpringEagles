@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
     <link rel="stylesheet" th:href="@{/index1.css}"/>
+    <link rel="stylesheet" th:href="@{/reset.css}"/>
     <style>
         body, html {
             height: 100dvh;
@@ -10,26 +11,31 @@
             padding: 0;
         }
     </style>
-    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 </head>
 <body>
 <div class="editor-con">
 
     <div class="editor-input">
         <input type="text" id="title" required>
-        <label>글 제목</label>
+        <label>제목</label>
         <span></span>
     </div>
 
     <div class="editor-input">
         <input type="text" id="description" required>
-        <label>글 설명</label>
+        <label>설명</label>
         <span></span>
     </div>
 
     <div class="editor-input">
         <input type="text" id="imageUrl" required>
-        <label>이미지 주소</label>
+        <label>이미지</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="tag" required>
+        <label>태그</label>
         <span></span>
     </div>
 
@@ -37,14 +43,14 @@
 
     <div class="editor-button" onclick="handleClick()"><a>작성완료</a></div>
 </div>
-
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 <script th:inline="javascript">
     let editor; // 전역 변수로 editor 선언
 
     document.addEventListener('DOMContentLoaded', function () {
         editor = new toastui.Editor({
             el: document.querySelector('#editor'),
-            height: '500px',
+            height: '400px',
             initialEditType: 'markdown',
             placeholder: '내용을 입력해 주세요.',
             previewStyle: 'vertical',
@@ -81,17 +87,33 @@
     });
 
     function handleClick() {
-        if (confirm("작성을 완료하시겠습니까?")) {
-            const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const imageUrl = document.getElementById('imageUrl').value;
-            const markdown = editor.getMarkdown();
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const imageUrl = document.getElementById('imageUrl').value;
+        const markdown = editor.getMarkdown();
+        const tag = document.getElementById('tag').value;
+        const tagArray = tag.split(' ');
 
+        if (!title) {
+            alert('제목을 입력해주세요')
+            return;
+        }
+        if (!description) {
+            alert('설명 입력해주세요')
+            return;
+        }
+        if (!markdown) {
+            alert('본문을 입력해주세요')
+            return;
+        }
+
+        if (confirm("작성을 완료하시겠습니까?")) {
             const blogData = {
                 title: title,
                 description: description,
                 imageUrl: imageUrl,
-                content: markdown
+                content: markdown,
+                tagArray: tagArray
             };
 
             console.log("Sending Blog Data: ", blogData);
