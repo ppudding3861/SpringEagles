@@ -1,26 +1,11 @@
 @font-face {
-  font-family: "yg-jalnan";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
-  format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "NPSfontBold";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
   format("woff2");
   font-weight: 700;
   font-style: normal;
 }
-
-@font-face {
-  font-family: "Dovemayo_gothic";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
-  format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
+/*기본 폰트*/
 
 @font-face {
   font-family: 'KCC-Ahnchangho';
@@ -28,6 +13,15 @@
   font-weight: normal;
   font-style: normal;
 }
+/*로고 폰트*/
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/*본문용 폰트*/
 
 body {
   margin: 0;
@@ -533,7 +527,7 @@ a:hover, a:focus {
   flex-direction: column;
   align-items: stretch;
   justify-content: flex-start;
-  width: 90%;
+  width: 70%;
   height: auto;
   margin: 20px auto;
   padding: 20px;
@@ -627,4 +621,133 @@ a:hover, a:focus {
   text-align: center;
   text-decoration: none;
   line-height: 40px; /* 버튼 내 텍스트 가운데 정렬 */
+}
+
+.read-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.read-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: auto;
+  margin: 20px;
+  background-color: #ffffff; /* 배경색 */
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.read-title {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.5em;
+  font-weight: bold;
+  word-wrap: break-word;
+}
+
+.read-sub{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  font-weight: lighter;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.read-option{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.read-date{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  margin-left: 10px;
+} .read-date > div {
+    font-family: 'GmarketSansMedium';
+    font-size: 0.75em;
+    color: #999;
+  }
+
+.read-modify-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  background-color: #4F50AD;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+  padding: 3px;
+  margin-right: 10px;
+} .read-modify-button > div {
+    font-family: 'GmarketSansMedium';
+    font-size: 0.75em;
+    color: #fff;
+    text-align: center;
+  }
+.read-modify-button:hover {
+  background-color: #8989B8;
+}
+.read-modify-button:active {
+  transform: translateY(3px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+
+.read-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.read-imgs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+} .read-imgs > img {
+    width: 80%;
+    height: 40%;
+    object-fit: cover;
+  }
+
+.read-content{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.13em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
