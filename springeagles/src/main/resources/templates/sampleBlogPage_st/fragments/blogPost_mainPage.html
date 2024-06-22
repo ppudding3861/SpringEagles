@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="mainPage">
+<head>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-title">태그목록</div>
+            <ul class="tag-list">
+                <li th:each="sideTag : ${allTags}" th:text="${sideTag}" th:onclick="">
+                    전체보기
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="content">
+        <div class="user-profile">
+            <div class="profile-upper">
+                <div class="profile-image">
+                    <img th:src="@{/images/st_profile.png}" alt="X" />
+                </div>
+                <div class="profile-info">
+                    <div class="user-name" >주순태</div>
+                    <div class="user-description" >
+                        최선의 방법을 찾아내는 개발자가 되도록 노력하겠습니다.
+                    </div>
+                </div>
+            </div>
+            <div class="profile-lower">
+                <div class="sns-icons">
+                    <div class="icon">
+                        <a th:href="@{https://github.com/Stjoo0925}">
+                            <img th:src="@{/images/github.svg}" alt="GitHub Profile"/>
+                        </a>
+                    </div>
+                    <div class="icon">
+                        <a th:href="@{https://discord.gg/cFuDJDx7rA}">
+                            <img th:src="@{/images/logo-discord.svg}" alt="Discord Profile"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="follow-info">
+                    <div class="follow-stats">
+                        <div class="follow-count" th:onclick="">
+                            팔로우 0
+                        </div>
+                        <div
+                                class="follower-count"
+                                th:onclick=""
+                        >
+                            팔로워 0
+                        </div>
+                    </div>
+                    <div class="follow-button" th:onclick="">팔로우</div>
+                </div>
+            </div>
+        </div>
+        <nav class="navigation">
+            <div class="nav-items">
+                <div th:onclick="">글목록</div>
+                <div th:onclick="">소개</div>
+            </div>
+        </nav>
+        <section class="posts">
+            <div class="post-list">
+                <div class="post-item" th:each="box : ${boxes}">
+                    <div class="hover01 column" th:onclick="">
+                        <div>
+                            <figure><img th:src="@{images/sample_post_img.png}" alt="x" /></figure>
+                        </div>
+                    </div>
+                    <div class="post-title" th:text="${box.title}" th:onclick="">
+                        제목
+                    </div>
+                    <div class="post-description" th:text="${box.description}" >설명</div>
+                    <div class="post-tags">
+                        <div th:each="tag : ${box.tags}" th:text="${tag}" th:onclick="">
+                            태그
+                        </div>
+                    </div>
+                    <div class="post-meta">
+                        <div class="post-date" th:text="${box.date}" >작성날짜</div>
+                        <div
+                                class="post-comments"
+                                th:text="${box.commentsCount} + '개의 댓글'"
+                        >
+                            0개의 댓글
+                        </div>
+                        <div
+                                class="post-likes"
+                                th:text="'하트 ' + ${box.likesCount} + '개'"
+                        >
+                            하트 0개
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>

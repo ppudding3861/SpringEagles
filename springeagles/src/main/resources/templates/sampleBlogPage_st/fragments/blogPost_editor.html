@@ -1,40 +1,122 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="editor">
 <head>
-    <link rel="stylesheet" th:href="@{/index1.css}"/>
-    <link rel="stylesheet" th:href="@{/reset.css}"/>
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <link rel="stylesheet" th:href="@{/index1.css}"/>
+    <style>
+        body, html {
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 </head>
 <body>
-<div id="editor"></div>
+<div class="editor-con">
 
-<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <div class="editor-input">
+        <input type="text" id="title" required>
+        <label>글 제목</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="description" required>
+        <label>글 설명</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="imageUrl" required>
+        <label>이미지 주소</label>
+        <span></span>
+    </div>
+
+    <div id="editor"></div>
+
+    <div class="editor-button" onclick="handleClick()"><a>작성완료</a></div>
+</div>
+
 <script th:inline="javascript">
+    let editor; // 전역 변수로 editor 선언
+
     document.addEventListener('DOMContentLoaded', function () {
-        console.log("DOMContentLoaded event fired");
-        const editor = new toastui.Editor({
+        editor = new toastui.Editor({
             el: document.querySelector('#editor'),
             height: '500px',
             initialEditType: 'markdown',
-            previewStyle: 'vertical'
-        });
-        document.getElementById('save-content').addEventListener('click', function () {
-            const content = editor.getMarkdown(); // Markdown 형식으로 콘텐츠를 가져옵니다.
+            placeholder: '내용을 입력해 주세요.',
+            previewStyle: 'vertical',
+            overflow: 'auto',
+            heightResizable: false,
+            hooks: {
+                addImageBlobHook: (blob, callback) => {
+                    const formData = new FormData();
+                    formData.append('file', blob);
 
-            // Ajax를 이용해 Spring MVC 컨트롤러로 전송
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/save-document', true); // Spring MVC 컨트롤러의 엔드포인트 URL로 변경
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    console.log('Document saved successfully');
-                } else {
-                    console.error('Failed to save document');
+                    let url = '/files/';
+                    $.ajax({
+                        type: 'POST',
+                        enctype: 'multipart/form-data',
+                        url: '/files/upload',
+                        data: formData,
+                        dataType: 'json',
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 600000,
+                        success: function (data) {
+                            url += data.fileName;
+                            fileIds += data.id + ",";
+                            callback(url, '사진 대체 텍스트 입력');
+                        },
+                        error: function (e) {
+                            callback('image_load_fail', '사진 대체 텍스트 입력');
+                        }
+                    });
                 }
-            };
-            xhr.send(JSON.stringify({ content: content }));
+            }
         });
     });
+
+    function handleClick() {
+        if (confirm("작성을 완료하시겠습니까?")) {
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const imageUrl = document.getElementById('imageUrl').value;
+            const markdown = editor.getMarkdown();
+
+            const blogData = {
+                title: title,
+                description: description,
+                imageUrl: imageUrl,
+                content: markdown
+            };
+
+            console.log("Sending Blog Data: ", blogData);
+
+            fetch('/saveMarkdown', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(blogData),
+            })
+                .then(response => response.text())
+                .then(data => {
+                    console.log('Success:', data);
+                    alert('작성이 완료되었습니다.');
+                    window.location.href = '/blogPost1'; // 페이지 재로딩
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('작성을 완료하는 중 오류가 발생했습니다.');
+                });
+        } else {
+            console.log("User canceled the submission.");
+        }
+    }
 </script>
 </body>
 </html>
