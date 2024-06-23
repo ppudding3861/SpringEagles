@@ -20,7 +20,17 @@
             <div class="header-user">
                 <ul class="SMN_effect-6">
                     <li><a th:href="@{/}" data-hover="첫화면">첫화면</a></li>
-                    <li><a href="" data-hover="검색">검색</a></li>
+                    <li>
+                        <form id="searchForm" action="search" method="get">
+                            <div class="search-box">
+                                <button type="submit" class="btn-search" id="searchButton">
+                                    <img id="searchImg" src="/images/search.svg" alt="검색"/>
+                                </button>
+                                <input type="text" name="q" class="input-search" placeholder="찾으실 검색어를 입력해 주세요..."
+                                       id="searchInput" autocomplete="off">
+                            </div>
+                        </form>
+                    </li>
                     <li>
                         <a th:href="@{/blogPost1/editPage}" th:if="${currentPage != 'editPage'}">글쓰기</a>
                         <a th:href="@{/blogPost1}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
@@ -44,14 +54,6 @@
 <footer>
     <!-- Footer content here -->
 </footer>
-<script th:inline="javascript">
-    function navigateToBlogPost() {
-        window.location.href = '/blogPost1';
-    }
-
-    function confirmExit() {
-        return confirm('변경 사항이 저장되지 않을 수 있습니다. 그래도 나가시겠습니까?');
-    }
-</script>
+<script th:src="@{/sampleBlogPage_st.js}"></script>
 </body>
 </html>
