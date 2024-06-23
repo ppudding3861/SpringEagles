@@ -1,0 +1,272 @@
+/* Custom Fonts */
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dovemayo_gothic";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 기본 스타일 */
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #343a40;
+}
+
+/* Header 스타일 */
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 40px;
+}
+
+.search input {
+  width: 300px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f0f2f5;
+}
+
+.nav-icons a img {
+  height: 24px;
+  margin: 0 10px;
+}
+
+/* Profile 스타일 */
+.cover-photo {
+  background-color: #dfe3ee;
+  width: 100%;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 부모 요소에 맞게 크기를 조정합니다 */
+  object-position: center; /* 이미지를 가운데 정렬합니다 */
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: -40px;
+}
+
+.profile-pic {
+  position: relative;
+}
+
+.profile-pic img {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+
+.profile-details {
+  margin-left: 20px;
+  flex-grow: 1;
+}
+
+.profile-details h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+/* Main 컨테이너 스타일 */
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.sidebar {
+  width: 250px;
+  margin-right: 20px;
+}
+
+.sidebar .logo h1 {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav ul li {
+  margin: 20px 0;
+}
+
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+}
+
+/* Navigation 스타일 */
+.navigation {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-items > div {
+  font-size: 1.2em;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+
+.nav-items div.active {
+  color: #00a05b;
+}
+
+.nav-items div:hover {
+  color: #00a05b;
+}
+
+/* Posts 스타일 */
+.posts {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.post {
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+}
+
+.post-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-time {
+  color: #888;
+}
+
+.post-image {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 400px; /* 이미지의 높이를 고정 */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.post-image img {
+  width: 800px; /* 이미지의 너비를 300px로 고정 */
+  height: 400px; /* 이미지의 높이를 300px로 고정 */
+  object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+}
+
+.post-caption {
+  margin-top: 10px;
+  color: #ccc;
+}
+
+/* 미디어 쿼리 */
+@media screen and (max-width: 980px) {
+  .header {
+    padding: 15px;
+  }
+
+  .main-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+
+  .sidebar {
+    width: 100%; /* 전체 너비로 변경 */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .content {
+    margin-right: 0;
+  }
+
+  .post-image img {
+    max-width: 100%;
+    height: 100%;
+  }
+
+  .post-title {
+    font-size: 1.2em;
+  }
+
+  .post-description {
+    font-size: 1em;
+  }
+}
