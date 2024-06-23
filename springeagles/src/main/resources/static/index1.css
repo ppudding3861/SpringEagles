@@ -319,6 +319,7 @@ header {
   font-family: "NPSfontBold";
   cursor: pointer;
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .post-description {
@@ -326,6 +327,7 @@ header {
   font-size: 0.8em;
   font-family: "NPSfontBold";
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .post-tags {
