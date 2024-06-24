@@ -19,6 +19,8 @@ public class BlogStDAO {
         BlogDTO blog2 = new BlogDTO("자바 스크립트 시작하기", "자바스크립트 공부1", List.of("javascript"), "2023-06-02", 20, 15, List.of("javascript"));
         BlogDTO blog3 = new BlogDTO("스프링 너무 어려움", "스프링 공부1", List.of("spring"), "2023-06-03", 5, 10, List.of("spring"));
         blogMap.put(1, blog1);
+        blogMap.put(2, blog2);
+        blogMap.put(3, blog3);
     }
 
     public List<BlogDTO> getAllBlogs() {

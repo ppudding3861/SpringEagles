@@ -17,7 +17,32 @@
       </div>
     </aside>
 
-
+      <!--=====달력==========-->
+  <div class="total2">
+    <div class="calendar">
+      <div class="header">
+        <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+        <button class="year-month" onclick="goToday()"></button>
+        <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+      </div>
+      <div class="main">
+        <div class="days">
+          <div class="day">Sun</div>
+          <div class="day">Mon</div>
+          <div class="day">Tue</div>
+          <div class="day">Wed</div>
+          <div class="day">Thu</div>
+          <div class="day">Fri</div>
+          <div class="day">Sat</div>
+        </div>
+        <div class="dates"></div>
+      </div>
+    </div>
+  </div>
+    <script th:src="@{/calender.js}"></script>
+    <script src="index.js"></script>
+    <script src="todo.js"></script>
+    <script src="select.js"></script>
 
 
   </body>

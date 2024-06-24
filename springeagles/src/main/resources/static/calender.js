@@ -2,12 +2,12 @@
 
 let date = new Date();
 
+
 const renderCalendar = () => {
 
     const viewYear = date.getFullYear(); // 해당 년 받아오기
     const viewMonth = date.getMonth(); // 해당 월 받아오기
 
-    //**이거 수정?
     var monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ]; // 달 이름을 영어로 출력하기 위한 배열
