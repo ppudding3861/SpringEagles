@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Seohyun's Blog</title>
     <link rel="stylesheet" th:href="@{/reset.css}"/>
-    <link rel="stylesheet" th:href="@{/seohyun.css}"/>
+    <link rel="stylesheet" th:href="@{/index5.css}"/>
 </head>
 <body>
 <header>
     <div class="header-container">
         <div class="header">
-            <div class="header-logo_5" th:onclick="@{/blogPost5}">
+            <div class="header-logo" th:onclick="">
                 <div class="logo-image_5">
                     <img th:src="@{/images/soori.png}" alt=""/>
                 </div>
-                <div class="logo-text_5" >Eagles_Soori</div>
+                <div class="logo-text" >서현's blog</div>
             </div>
             <div class="header-user">
                 <div
@@ -39,7 +39,7 @@
         <aside th:replace="~{/sampleBlogPageSH/fragments/blogPost_sidebar5 :: sidebar}"></aside>
         <div class="content">
             <div th:replace="~{/sampleBlogPageSH/fragments/blogPost_user-profile5 :: userProfile}"></div>
-            <nav class="navigation_5">
+            <nav class="navigation">
                 <div class="nav-items">
                     <div th:onclick="">글</div>
                     <div th:onclick="">시리즈</div>
