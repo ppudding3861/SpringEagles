@@ -46,7 +46,13 @@ body {
 }
 
 body2{
-  margin-left:800px
+  margin-left:800px;
+  margin-bottom: 50px;
+}
+
+.header-top{
+  display: flex;
+  flex-direction: row;
 }
 
 .header-container1 {
@@ -60,6 +66,14 @@ body2{
   z-index: 1000;
 
 }
+
+.header_layout{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
 
 .header-container2 {
   display: flex;
@@ -84,18 +98,18 @@ body2{
   align-items: center;
   padding: 20px;
 
-
 }
 
 .header-logo {
   display: flex;
   align-items: center;
   cursor: pointer;
-
 }
 
 .logo-text {
   font-family: "yg-jalnan";
+  font-size: 1.4em;
+  font-weight: bold;
 }
 
 .logo-image {
@@ -1158,7 +1172,7 @@ footer {
 
 .today {
   position: relative;
-  color: #909FA6;
+  color: #4382E0;
   font-weight: bold;
 }
 
@@ -1170,8 +1184,11 @@ footer {
   display: block;
   width: 30px;
   height: 30px;
-  background-color: #EFBAD6;
+  background-color: rgba(239, 186, 214, 0.3); /* 투명도를 추가한 배경 색상 */
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  content: '';
+  content: ''; /* content 속성 추가 */
 }
+
+
+
