@@ -45,6 +45,10 @@ body {
 
 }
 
+body2{
+  margin-left:800px
+}
+
 .header-container1 {
   width: 100%;
   background-color: #6ECEDA; /*수정하고 싶음*/
@@ -66,7 +70,7 @@ body {
   color: #ffffff;
   magin-top:100px;
   /*margin-left: 20px;*/
-  /*justify-content: right;*/
+  justify-content: center;
   height: 600px; /* 높이를 자동으로 설정 */
   width: 100%;
   /*flex-direction: column; !* 세로 방향으로 정렬 *!*/
