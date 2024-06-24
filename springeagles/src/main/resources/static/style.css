@@ -212,6 +212,11 @@ nav ul li a {
     color: #666;
 }
 
+#hs {
+    width: auto;
+    HEIGHT: 400px;
+}
+
 .main-post-text span {
     display: inline-block;
     margin-top: 10px;
@@ -251,6 +256,10 @@ nav ul li a {
     margin: 0 auto 10px auto;
 }
 #jh {
+    width: AUTO;
+    HEIGHT: 100%;
+}
+#sh {
     width: AUTO;
     HEIGHT: 100%;
 }

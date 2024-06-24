@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="posts">
-  <head>
-    <link rel="stylesheet" th:href="@{/index.css}"/>
-    <link rel="stylesheet" th:href="@{/reset.css}"/>
-  </head>
-  <body>
-    <section class="posts">
-      <div class="post-list">
-        <div class="post-item" th:each="box : ${boxes}">
-          <div class="post-image" th:onclick="">
-            <img th:src="@{images/sample_post_img.png}" alt="x" />
-          </div>
-          <div class="post-title" th:onclick="">
-            제목
-          </div>
-          <div class="post-description" >설명</div>
-          <div class="post-tags">
-            <div th:each="tag : ${box.tags}" th:onclick="">
-              태그
-            </div>
-          </div>
-          <div class="post-meta">
-            <div class="post-date" >작성날짜</div>
-            <div
-              class="post-comments"
-              th:text="${box.commentsCount} + '개의 댓글'"
-            >
-              0개의 댓글
-            </div>
-            <div
-              class="post-likes"
-              th:text="'하트 ' + ${box.likesCount} + '개'"
-            >
-              하트 0개
-            </div>
-          </div>
+<head>
+  <link rel="stylesheet" th:href="@{/index4.css}"/>
+</head>
+<body>
+<section class="posts">
+  <main class="content">
+    <div class="post-title">
+      <h2>포스트 제목</h2>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <div class="post-user">
+          <img src="user.jpg" alt="User">
+          <span>jayden_kim86</span>
         </div>
+        <div class="post-time">9시간</div>
       </div>
-    </section>
-  </body>
+      <div class="post-image">
+        <img src="post.jpg" alt="Post Image">
+      </div>
+      <div class="post-caption">
+        <span>alissia • Original audio • @alissia</span>
+      </div>
+    </div>
+  </main>
+</section>
+</body>
 </html>
