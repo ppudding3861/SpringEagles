@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="introduce">
+<head>
+</head>
+<body>
+    <div class="introduce-con">
+        <div class="introduce-content" id="introduceContent" th:text="${intro}">
+            자기소개
+        </div>
+        <textarea class="introduce-textarea" id="introduceTextarea"></textarea>
+        <div class="intro-modify-btn" id="modifyButton">수정</div>
+    </div>
+</body>
