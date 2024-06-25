@@ -54,37 +54,16 @@
         </div>
         <nav class="navigation">
             <div class="nav-items">
-                <div th:onclick="">글목록</div>
-                <div th:onclick="">소개</div>
+                <div id="postListButton">글목록</div>
+                <div id="introduceButton">소개</div>
             </div>
         </nav>
         <section class="posts">
-            <div class="post-list">
-                <div class="post-item" th:each="post : ${postList}">
-                    <div class="hover01 column" th:onclick="">
-                        <div>
-                            <figure><img th:src="@{${post.imageUrl}}"/></figure>
-                        </div>
-                    </div>
-                    <div class="post-title" th:text="${post.title}" th:onclick="">
-                        제목
-                    </div>
-                    <div class="post-description" th:text="${post.description}">설명</div>
-                    <div class="post-tags">
-                        <div th:each="tag : ${post.tagArray}" th:text="${tag}" th:onclick="">
-                            태그
-                        </div>
-                    </div>
-                    <div class="post-meta">
-                        <div class="post-date" th:text="${#dates.format(post.createdAt, 'yyyy-MM-dd')}">작성날짜</div>
-                        <div class="post-comments" th:text="${post.commentsCount} + '개의 댓글'">
-                            0개의 댓글
-                        </div>
-                        <div class="post-likes" th:text="'하트 ' + ${post.likesCount} + '개'">
-                            하트 0개
-                        </div>
-                    </div>
-                </div>
+            <div class="post-list" id="postList">
+                <div th:replace="~{/sampleBlogPage_st/fragments/mainPage_postList :: postList}"></div>
+            </div>
+            <div class="post-introduce" id="introduce">
+                <div th:replace="~{/sampleBlogPage_st/fragments/mainPage_introduce :: introduce}"></div>
             </div>
         </section>
     </div>

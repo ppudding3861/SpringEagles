@@ -32,6 +32,10 @@ public class PageController {
         model.addAttribute("postList", postList);
         model.addAttribute("currentPage", "mainPage");
 
+        String intro = "안녕하세요 주순태입니다.";
+
+        model.addAttribute("intro", intro);
+
         return "sampleBlogPage_st/blogPost";
     }
 

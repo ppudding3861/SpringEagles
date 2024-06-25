@@ -1,9 +1,3 @@
-const searchInput = document.getElementById('searchInput');
-const searchForm = document.getElementById('searchForm');
-const searchImg = document.getElementById('searchImg');
-const defaultImage = {value : '/images/search.svg'};
-const clickImage = {value : '/images/search-go.svg'};
-
 // 로고 이미지 클릭시 새로고침하는 스크립트
 function navigateToBlogPost() {
     window.location.href = '/blogPost1';
@@ -14,49 +8,49 @@ function confirmExit() {
     return confirm('변경 사항이 저장되지 않을 수 있습니다. 그래도 나가시겠습니까?');
 }
 
-// 버튼 관련 스크립트
+// 네비버튼을 누르면 보이는 페이지를 조정하는 스크립트
 document.addEventListener('DOMContentLoaded', function() {
+    const postListButton = document.getElementById('postListButton');
+    const introduceButton = document.getElementById('introduceButton');
+    const postList = document.getElementById('postList');
+    const introduce = document.getElementById('introduce');
 
-    // input에 값을 입력하고 버튼을 누를시 폼 액션이 발생하는 스크립트
-    searchForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // 기본 동작 방지
-        const query = searchInput.value.trim();
-        if (query !== '') {
-            console.log('검색어:', query);
-            window.location.href = 'search?q=' + encodeURIComponent(query);
-        }
+    postList.classList.add('active');
+    postListButton.classList.add('active');
+
+    postListButton.addEventListener('click', function() {
+        postList.classList.add('active');
+        introduce.classList.remove('active');
+        postListButton.classList.add('active');
+        introduceButton.classList.remove('active');
     });
 
-    // input에 값을 입력하고 엔터를 입력시 값이 폼 액션이 발생하는 스크립트
-    searchInput.addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            const query = searchInput.value.trim();
-            if (query !== '') {
-                console.log('검색어:', query);
-                window.location.href = 'search' + encodeURIComponent(query);
-            }
-        }
+    introduceButton.addEventListener('click', function() {
+        introduce.classList.add('active');
+        postList.classList.remove('active');
+        introduceButton.classList.add('active');
+        postListButton.classList.remove('active');
     });
+});
 
-    // input의 트랜지션이 변경될때 값을 비우는 스크립트
-    searchInput.addEventListener('transitionend', function(event) {
-        if (event.propertyName === 'width' && window.getComputedStyle(searchInput).width === '50px') {
-            searchInput.value = '';
-        }
-    });
+// 소개 페이지 수정관련 스크립트
+document.addEventListener('DOMContentLoaded', function() {
+    const modifyButton = document.getElementById('modifyButton');
+    const introduceContent = document.getElementById('introduceContent');
+    const introduceTextarea = document.getElementById('introduceTextarea');
 
-    // 페이지를 되돌아 가거나 새로고침시 기존 input의 값을 바꾸는 스크립트
-    window.addEventListener('pageshow', function(event) {
-        const inputField = document.getElementById('searchInput');
-        inputField.value = '';
-    });
-
-    // 아이콘을 바꾸는 스크립트
-    searchInput.addEventListener('transitionend', function(event) {
-        if (event.propertyName === 'width' && window.getComputedStyle(searchInput).width === '50px') {
-            searchImg.src = defaultImage.value;
-        } else {
-            searchImg.src = clickImage.value;
+    modifyButton.addEventListener('click', function() {
+        if (modifyButton.innerText === '수정') {
+            introduceTextarea.value = introduceContent.innerText.trim();
+            introduceTextarea.style.display = 'block';
+            introduceContent.style.display = 'none';
+            modifyButton.innerText = '완료';
+        } else if (modifyButton.innerText === '완료') {
+            introduceContent.innerText = introduceTextarea.value.trim();
+            introduceContent.style.display = 'block';
+            introduceTextarea.style.display = 'none';
+            modifyButton.innerText = '수정';
+            alert('저장되었습니다.');
         }
     });
 });

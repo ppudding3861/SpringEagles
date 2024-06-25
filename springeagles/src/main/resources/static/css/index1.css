@@ -26,7 +26,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #D5D8EA;
+  background-color: #A69B8D;
 }
 
 body::-webkit-scrollbar {
@@ -35,18 +35,18 @@ body::-webkit-scrollbar {
 
 /* 스크롤바의 track(슬라이더 배경) 스타일 */
 body::-webkit-scrollbar-track {
-  background: #DBDFEA; /* 스크롤바 배경색 */
+  background: #D9CBBA; /* 스크롤바 배경색 */
 }
 
 /* 스크롤바의 thumb(슬라이더 자체) 스타일 */
 body::-webkit-scrollbar-thumb {
-  background-color: #4F50AD; /* 슬라이더 색상 */
+  background-color: #40362E; /* 슬라이더 색상 */
   border-radius: 5px; /* 슬라이더 모서리 둥글게 */
 }
 
 /* 스크롤바 hover 상태일 때 스타일 */
 body::-webkit-scrollbar-thumb:hover {
-  background-color: #8989B8; /* hover 시 슬라이더 색상 변경 */
+  background-color: #A69B8D; /* hover 시 슬라이더 색상 변경 */
 }
 
 header {
@@ -57,9 +57,9 @@ header {
 
 .header-container {
   width: 100%;
-  background-color: #8294C4;
+  background-color: #D9CBBA;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  color: #ffffff;
+  color: #00010D;
 }
 
 .header {
@@ -113,7 +113,7 @@ header {
 }
 
 .sidebar-content {
-  background-color: #DBDFEA;
+  background-color: #8C8072;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
@@ -123,9 +123,9 @@ header {
   font-weight: bold;
   margin-bottom: 10px;
   font-family: "NPSfontBold";
-  color: #4F50AD;
+  color: #00010D;
   padding-bottom: 15px;
-  border-bottom: 1px solid #4F50AD;
+  border-bottom: 1px solid #D9CBBA;
 }
 
 .tag-list {
@@ -136,12 +136,12 @@ header {
 .tag-list li {
   margin-bottom: 20px;
   font-family: "NPSfontBold";
-  color: #4F50AD;
+  color: #00010D;
   cursor: pointer;
 }
 
 .tag-list li:hover {
-  color: #8989B8;
+  color: #D9CBBA;
 }
 
 .content {
@@ -149,9 +149,8 @@ header {
 }
 
 .user-profile {
-  background-color: #DBDFEA;
+  background-color: #8C8072;
   padding: 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin-bottom: 20px;
   box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
@@ -162,7 +161,7 @@ header {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 30px;
-  border-bottom: 2px solid #8294C4;
+  border-bottom: 2px solid #D9CBBA;
 }
 
 .profile-image {
@@ -173,7 +172,7 @@ header {
 .profile-image > img {
   width: 150px;
   height: 150px;
-  border: 3px solid #4F50AD;
+  border: 3px solid #D9CBBA;
   background-color: #fff;
   border-radius: 50%;
 }
@@ -233,8 +232,8 @@ header {
 
 .follow-button {
   padding: 5px 10px;
-  background-color: #8294C4;
-  color: #ffffff;
+  background-color: #40362E;
+  color: #D9CBBA;
   cursor: pointer;
   border-radius: 5px;
   font-family: "NPSfontBold";
@@ -244,11 +243,11 @@ header {
 }
 
 .follow-button:active {
-  transform: translateY(1px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  transform: translate(1px, 1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
 }
 .navigation {
-  background-color: #DBDFEA;
+  background-color: #8C8072;
   padding: 10px 20px;
   box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
   border-radius: 10px;
@@ -264,21 +263,88 @@ header {
   font-size: 1.2em;
   font-family: "NPSfontBold";
   cursor: pointer;
+  color: #00010D;
 }
 .nav-items div.active {
-  color: #4F50AD;
+  color: #D9CBBA;
 }
 
 .nav-items div:hover {
-  color: #4F50AD;
+  color: #D9CBBA;
+}
+.nav-items div.active {
+  color: #D9CBBA; /* 예시: 활성화된 버튼의 색상 변경 */
 }
 
 .posts {
 }
 
 .post-list {
+  display: none;
+}
+.post-list.active {
   display: flex;
   flex-direction: column;
+  color: #D9CBBA;
+}
+
+.post-introduce{
+  display: none;
+}
+.post-introduce.active {
+  display: flex;
+  flex-direction: column;
+  color: #D9CBBA;
+}
+
+.introduce-con {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #8C8072;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.introduce-content {
+  height: 100%;
+  margin: 10px;
+  padding: 20px;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  color: #00010D;
+  background-color: #D9CBBA;
+  border-radius: 10px;
+}
+.intro-modify-btn {
+  display: block;
+  width: 60px;
+  height: 30px;
+  margin: 10px;
+  background-color: #40362E;
+  color: #D9CBBA;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  text-align: center;
+  line-height: 30px;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+}
+.intro-modify-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+.introduce-textarea {
+  display: none;
+  height: 100%;
+  margin: 10px;
+  padding: 20px;
+  resize: none;
+  border-radius: 10px;
 }
 
 .post-item {
@@ -287,7 +353,7 @@ header {
   margin-bottom: 30px;
   padding: 20px;
   border-radius: 10px;
-  background-color: #DBDFEA;
+  background-color: #8C8072;
   box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
 }
 
@@ -322,6 +388,7 @@ header {
   font-family: "NPSfontBold";
   cursor: pointer;
   margin-bottom: 20px;
+  color :#00010D;
   word-wrap: break-word;
 }
 
@@ -330,11 +397,11 @@ header {
   font-size: 0.8em;
   font-family: "NPSfontBold";
   margin-bottom: 20px;
+  color :#00010D;
   word-wrap: break-word;
 }
 
 .post-tags {
-  color: #868e96;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
@@ -343,8 +410,8 @@ header {
 .post-tags > div {
   width: auto;
   padding: 5px 10px;
-  background-color: #8294C4;
-  color: #ffffff;
+  background-color: #40362E;
+  color: #D9CBBA;
   cursor: pointer;
   margin-right: 10px;
   border-radius: 5px;
@@ -356,7 +423,7 @@ header {
 .post-meta {
   display: flex;
   justify-content: left;
-  color: #868e96;
+  color: #00010D;
 }
 
 .post-meta .post-date,
@@ -364,7 +431,7 @@ header {
 .post-meta .post-likes {
   margin-right: 10px;
   font-size: 0.8em;
-  color: #999;
+  color: #00010D;
   font-family: "NPSfontBold";
 }
 
@@ -485,7 +552,7 @@ a:hover, a:focus {
 
 .SMN_effect-6 a {
   position: relative;
-  color: rgb(255, 255, 255);
+  color: #00010D;
   text-decoration: none;
   font-family: "NPSfontBold";
   font-size: 1.2em;
@@ -500,7 +567,7 @@ a:hover, a:focus {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #4F50AD;
+  background-color: #8C8072;
   transition: width 0.3s ease-out;
 }
 
@@ -510,7 +577,7 @@ a:hover, a:focus {
 }
 
 .SMN_effect-6 a:hover {
-  color: #4F50AD;
+  color: #8C8072;
 }
 
 
@@ -535,9 +602,9 @@ a:hover, a:focus {
   justify-content: flex-start;
   width: 70%;
   height: auto;
-  margin: 20px auto;
+  margin: 30px auto;
   padding: 20px;
-  background-color: #ffffff; /* 배경색 */
+  background-color: #8C8072; /* 배경색 */
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
   border-radius: 10px;
 }
@@ -556,7 +623,7 @@ a:hover, a:focus {
   color: #222222;
   width: 100%;
   border: none;
-  border-bottom: solid #4F50AD 1px;
+  border-bottom: solid #00010D 1px;
   padding-bottom: 10px;
   padding-left: 10px;
   background: none;
@@ -564,13 +631,13 @@ a:hover, a:focus {
   outline: none; /* 포커스시 외곽선 제거 */
 }
 .editor-input > input::placeholder {
-  color: #4F50AD;
+  color:#00010D;
 }
 .editor-input > span {
   position: absolute;
   bottom: 0;
   left: 0%;
-  background-color: #4F50AD;
+  background-color: #40362E;
   width: 0;
   height: 2px;
   border-radius: 2px;
@@ -578,7 +645,7 @@ a:hover, a:focus {
 }
 .editor-input > label {
   position: absolute;
-  color: #4F50AD;
+  color: #00010D;
   left: 10px;
   font-size: 18px;
   bottom: 8px;
@@ -602,19 +669,16 @@ a:hover, a:focus {
   width: 120px;
   height: 40px;
   border-radius: 5px;
-  color: #ffffff;
-  background-color: #4F50AD;
+  color: #D9CBBA;
+  background-color: #40362E;
   margin-top: 20px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
   box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
   text-decoration: none; /* 링크 스타일 제거 */
 }
-.editor-button:hover {
-  background-color: #8989B8;
-}
 .editor-button:active {
-  transform: translateY(3px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  transform: translate(1px, 1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
 }
 .editor-button > a {
@@ -623,7 +687,7 @@ a:hover, a:focus {
   height: 100%;
   font-family: "NPSfontBold";
   font-size: 1em;
-  color: #ffffff;
+  color: #D9CBBA;
   text-align: center;
   text-decoration: none;
   line-height: 40px; /* 버튼 내 텍스트 가운데 정렬 */
@@ -646,7 +710,7 @@ a:hover, a:focus {
   width: 70%;
   height: auto;
   margin: 20px;
-  background-color: #ffffff; /* 배경색 */
+  background-color: #8C8072;
   box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
   border-radius: 10px;
   padding: 20px;
@@ -661,6 +725,7 @@ a:hover, a:focus {
   font-family: 'GmarketSansMedium';
   font-size: 1.5em;
   font-weight: bold;
+  color: #00010D;
   word-wrap: break-word;
 }
 
@@ -671,6 +736,7 @@ a:hover, a:focus {
   font-family: 'GmarketSansMedium';
   font-size: 0.75em;
   font-weight: lighter;
+  color: #00010D;
   margin-top: 10px;
   margin-bottom: 20px;
   word-wrap: break-word;
@@ -697,7 +763,7 @@ a:hover, a:focus {
 } .read-date > div {
     font-family: 'GmarketSansMedium';
     font-size: 0.75em;
-    color: #999;
+    color: #00010D;
   }
 
 .read-modify-button{
@@ -706,7 +772,7 @@ a:hover, a:focus {
   align-items: center;
   width: 60px;
   height: 30px;
-  background-color: #4F50AD;
+  background-color: #40362E;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
@@ -716,14 +782,11 @@ a:hover, a:focus {
 } .read-modify-button > div {
     font-family: 'GmarketSansMedium';
     font-size: 0.75em;
-    color: #fff;
+    color: #D9CBBA;
     text-align: center;
   }
-.read-modify-button:hover {
-  background-color: #8989B8;
-}
 .read-modify-button:active {
-  transform: translateY(3px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  transform: translate(1px, 1px); /* 클릭 시 버튼을 아래로 약간 이동 */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
 }
 
@@ -756,68 +819,4 @@ a:hover, a:focus {
   word-wrap: break-word;
   margin-top: 10px;
   margin-bottom: 20px;
-}
-
-/* 검색 버튼 css */
-.search-box{
-  width: fit-content;
-  height: fit-content;
-  position: relative;
-}
-.input-search{
-  height: 50px;
-  width: 50px;
-  border-style: none;
-  padding: 10px;
-  font-size: 14px;
-  letter-spacing: 2px;
-  outline: none;
-  border-radius: 25px;
-  transition: all .5s ease-in-out;
-  background-color: #8294C4;
-  padding-right: 40px;
-  color:#fff;
-  font-family: "NPSfontBold";
-}
-.input-search::placeholder{
-  color:rgba(255,255,255,.5);
-  font-size: 14px;
-  letter-spacing: 2px;
-  font-weight: 100;
-  font-family: "NPSfontBold";
-}
-.btn-search{
-  width: 50px;
-  height: 50px;
-  border-style: none;
-  font-size: 10px;
-  font-weight: bold;
-  outline: none;
-  cursor: pointer;
-  border-radius: 50%;
-  position: absolute;
-  right: 0px;
-  color:#ffffff ;
-  background-color:inherit;
-  pointer-events: painted;
-}
-.btn-search img {
-  width: 30px;
-  height: 30px;
-  filter: invert(100%);
-}
-
-.btn-search:focus ~ .input-search{
-  width: 300px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-}
-.input-search:focus{
-  width: 300px;
-  border-radius: 0px;
-  background-color: transparent;
-  border-bottom:1px solid rgba(255,255,255,.5);
-  transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
