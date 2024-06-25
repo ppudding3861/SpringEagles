@@ -31,26 +31,27 @@
     </div>
 </header>
 <section>
-    <div class="swiper-post">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" th:each="post : ${posts}">
-                    <div th:insert="fragments/main :: mainFragment"></div>
+    <div class="post-align">
+        <div class="swiper-post">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" th:each="post : ${posts}">
+                        <div th:insert="fragments/main :: mainFragment"></div>
+                    </div>
                 </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
         </div>
-        </div>
-    </div>
-    <div class="main-post">
-        <div class="inner">
-            <div>🎉 팀원들의 블로그 🎉</div>
-        </div>
-        <div class="posts">
-            <div th:each="post : ${posts}">
-                <div th:insert="fragments/post :: postFragment"></div>
+        <div class="main-post">
+            <div class="inner">
+                <div>🎉 팀원들의 블로그 🎉</div>
+            </div>
+            <div class="posts">
+                <div th:each="post : ${posts}">
+                    <div th:insert="fragments/post :: postFragment"></div>
+                </div>
             </div>
         </div>
     </div>
