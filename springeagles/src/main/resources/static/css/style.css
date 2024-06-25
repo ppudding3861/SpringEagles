@@ -15,15 +15,15 @@
 /*https://animate.style/ 에서 효과 찾을수 있음*/
 
 :root {
-    --swiper-theme-color: #973131 !important;
+    --swiper-theme-color: #F26659 !important;
 }
 
 body {
-    background-color: #FFFAF4;
+    background-color: #F0EFF4;
 }
 
 header {
-    background-color: #973131;
+    background-color: #F26659;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     padding: 20px 0;
 }
@@ -44,7 +44,7 @@ section {
 .logo h1 {
     font-size: 1.5em;
     font-family: 'PyeongChangPeace-Bold';
-    color: #fff;
+    color: #F0EFF4;
     cursor: pointer;
     margin-left: 20px;
 }
@@ -62,7 +62,7 @@ section {
       margin: 0;
       font-size: 1.5em;
       font-family: 'PyeongChangPeace-Bold';
-      color: #fff;
+      color: #F0EFF4;
       margin-left: 20px;
       cursor: pointer;
   }
@@ -98,8 +98,8 @@ nav ul li a {
 }
 
 .search-recruit button {
-    background-color: #973131;
-    color: #F5E7B2;
+    background-color: #F26659;
+    color: #F0EFF4;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
@@ -148,13 +148,13 @@ nav ul li a {
 
 
 .main-post-content {
-    border: 5px solid #E0A75E;
+    border: 5px solid #EBC999;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #FAF1E6;
+    background-color: #F0EFF4;
     width: 900px;
     height: 400px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
@@ -179,12 +179,12 @@ nav ul li a {
     font-size: 2em;
     font-family: 'TTLaundryGothicB';
     margin-bottom: 10px;
-    color: #973131;
+    color: #1A2C65;
 }
 
 .main-post-text p {
     font-size: 1.2em;
-    color: #666;
+    color: #1A2C65;
     font-family: 'TTLaundryGothicB';
     margin-bottom: 10px;
 }
@@ -197,7 +197,7 @@ nav ul li a {
 .main-post-text span {
     display: inline-block;
     margin-top: 10px;
-    background-color: #973131;
+    background-color: #F26659;
     color: #F5E7B2;
     padding: 5px 10px;
     font-size: 0.9em;
@@ -219,7 +219,7 @@ nav ul li a {
     position: relative;
     width: 300px;
     height: 200px;
-    border: 5px solid #E0A75E;
+    border: 5px solid #EBC999;
     cursor: pointer;
     overflow: hidden;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
@@ -242,7 +242,7 @@ nav ul li a {
 }
 .box:before {
     content: '';
-    background: #973131;
+    background: #1A2C65;
     width: 0px;
     height: 4px;
     position: absolute; right: 20px; top: 20px;
@@ -250,7 +250,7 @@ nav ul li a {
 }
 .box:after {
     content: '';
-    background: #973131;
+    background: #1A2C65;
     width: 4px;
     height: 0px;
     position: absolute; right: 20px; top: 20px;
@@ -259,7 +259,7 @@ nav ul li a {
 
 .box .info {
     position: absolute; left: 0; bottom: 0;
-    color: #fff;
+    color: #1A2C65;
     width: 100%;
     padding: 15px;
     box-sizing: border-box;
@@ -274,7 +274,7 @@ nav ul li a {
     white-space: nowrap;
     text-overflow: ellipsis;
     padding-bottom: 3px;
-    color: #973131;
+    color: #1A2C65;
 }
 .box .info p {
     font-family: 'TTLaundryGothicB';
@@ -282,7 +282,7 @@ nav ul li a {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    color: #973131;
+    color: #1A2C65;
 }
 .box:hover .info {
     opacity: 1;
@@ -324,9 +324,9 @@ nav ul li a {
 }
 .inner > div {
     font-family: 'TTLaundryGothicB';
-    background-color: #973131;
+    background-color: #F26659;
     font-size: 18px;
-    color: #fff;
+    color: #F0EFF4;
     text-align: center;
     width: 220px;
     height: 40px;
@@ -336,7 +336,7 @@ nav ul li a {
 }
 
 .main-post-text a {
-    color: #E0A75E;
+    color: #EBC999;
     text-decoration: none;
     font-weight: bold;
     padding-top: 30px;
@@ -362,13 +362,13 @@ nav ul li a {
     outline: none;
     border-radius: 25px;
     transition: all .5s ease-in-out;
-    background-color: #973131;
+    background-color: #F26659;
     padding-right: 40px;
-    color:#fff;
+    color:#F0EFF4;
     font-family: 'PyeongChangPeace-Bold';
 }
 .input-search::placeholder{
-    color:#ffffff;
+    color:#F0EFF4;
     font-size: 14px;
     letter-spacing: 2px;
     font-weight: 100;
@@ -385,7 +385,7 @@ nav ul li a {
     border-radius: 50%;
     position: absolute;
     right: 0px;
-    color:#ffffff ;
+    color:#F0EFF4 ;
     background-color:inherit;
     pointer-events: painted;
 }
@@ -399,13 +399,13 @@ nav ul li a {
     width: 300px;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom:1px solid #ffffff;
+    border-bottom:1px solid #F0EFF4;
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
 .input-search:focus{
     width: 300px;
     border-radius: 0px;
     background-color: transparent;
-    border-bottom:1px solid #ffffff;
+    border-bottom:1px solid #F0EFF4;
     transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
 }
