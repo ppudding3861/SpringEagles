@@ -83,6 +83,9 @@ header {
   letter-spacing: 5px;
   font-size: 1.5em;
 }
+.logo-text:hover {
+  animation: jello 1s;
+}
 
 .logo-image {
   margin-right: 10px;
