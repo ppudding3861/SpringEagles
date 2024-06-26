@@ -1,5 +1,6 @@
-package com.ohgiraffers.springeagles.common;
+package com.ohgiraffers.springeagles;
 
+import com.ohgiraffers.springeagles.common.PostSaveDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

@@ -1,24 +1,51 @@
-package com.ohgiraffers.springeagles.common;
+package com.ohgiraffers.springeagles.domain.posts;
 
-import java.util.Date;
+import com.ohgiraffers.springeagles.domain.comment.CommentEntity;
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
-public class PostSaveDTO {
+@Entity
+@Table(name = "posts")
+public class PostsEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "title", nullable = false)
     private String title;
+
+    @Column(name = "description", nullable = false)
     private String description;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "content", nullable = false)
     private String content;
-    private Date createdAt;
-    private List<String> tagArray;
-    private int commentsCount;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "tag_array")
+    private String tagArray;
+
+
+    @Column(name = "likes_count")
     private int likesCount;
 
-    public PostSaveDTO() {
-        this.createdAt = new Date();
-    }
+    // 일대다 관계: 하나의 포스트에 여러 댓글이 있을 수 있음
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postsEntity")
+    private List<CommentEntity> comments = new ArrayList<>();
 
-    public PostSaveDTO(Long id, String title, String description, String imageUrl, String content, Date createdAt, List<String> tagArray, int commentsCount, int likesCount) {
+    public PostsEntity() {}
+
+    public PostsEntity(Long id, String title, String description, String imageUrl, String content,
+                       LocalDateTime createdAt, String tagArray, int likesCount,
+                       List<CommentEntity> comments) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -26,8 +53,8 @@ public class PostSaveDTO {
         this.content = content;
         this.createdAt = createdAt;
         this.tagArray = tagArray;
-        this.commentsCount = commentsCount;
         this.likesCount = likesCount;
+        this.comments = comments;
     }
 
     public Long getId() {
@@ -70,28 +97,20 @@ public class PostSaveDTO {
         this.content = content;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public List<String> getTagArray() {
+    public String getTagArray() {
         return tagArray;
     }
 
-    public void setTagArray(List<String> tagArray) {
+    public void setTagArray(String tagArray) {
         this.tagArray = tagArray;
-    }
-
-    public int getCommentsCount() {
-        return commentsCount;
-    }
-
-    public void setCommentsCount(int commentsCount) {
-        this.commentsCount = commentsCount;
     }
 
     public int getLikesCount() {
@@ -102,18 +121,31 @@ public class PostSaveDTO {
         this.likesCount = likesCount;
     }
 
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    @Transient // 데이터베이스에 매핑하지 않음
+    public int getCommentsCount() {
+        return this.comments.size(); // comments 리스트의 사이즈를 반환
+    }
+
     @Override
     public String toString() {
-        return "PostSaveDTO{" +
+        return "PostsEntity{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", content='" + content + '\'' +
                 ", createdAt=" + createdAt +
-                ", tagArray=" + tagArray +
-                ", commentsCount=" + commentsCount +
+                ", tagArray='" + tagArray + '\'' +
                 ", likesCount=" + likesCount +
+                ", comments=" + comments +
                 '}';
     }
 }
