@@ -45,9 +45,15 @@ body {
 
 }
 
-body2{
-  margin-left:800px;
-  margin-bottom: 50px;
+.my_header2{
+ display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_img2{
+
 }
 
 .header-top{
@@ -469,18 +475,18 @@ footer {
 
 /* ==========달력==============*/
 .total2 {
-  margin: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
   width: 400px;
   height: 300px;
+
 }
 
 
 .calendar {
   background: rgba(255, 255, 255, 0.5);
-  padding: 20px;
+  padding: 10px;
   border-radius: 15px;
   box-shadow: 0px 20px 20px -20px rgba(0, 0, 0, 0.3);
   display: flex;
@@ -490,8 +496,8 @@ footer {
   max-width: 400px; /* 최대 너비 설정 */
   max-height: 500px;
   margin: 0 auto; /* 수평 중앙 정렬 */
-  margin-bottom: 30px;
 }
+
 @media screen and (max-width: 768px) {
   .calendar {
     max-width: 300px; /* 화면이 작을 때 더 작은 너비로 설정 */
