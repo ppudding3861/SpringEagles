@@ -1,11 +1,14 @@
 package com.ohgiraffers.springeagles.domain.posts;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Set;
@@ -21,9 +24,10 @@ public class PostsController {
     }
 
     @PostMapping("/saveMarkdown")
-    public String saveMarkdown(@RequestBody PostsDTO postsDTO) {
+    @ResponseBody
+    public ResponseEntity<String> saveMarkdown(@RequestBody PostsDTO postsDTO) {
         postsService.savePost(postsDTO);
-        return "Post saved successfully";
+        return new ResponseEntity<>("Post saved successfully", HttpStatus.OK);
     }
 
     @GetMapping("/blogPost1")

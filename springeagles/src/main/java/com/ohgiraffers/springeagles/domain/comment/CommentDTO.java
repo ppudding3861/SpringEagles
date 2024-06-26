@@ -34,14 +34,15 @@ public class CommentDTO {
         );
     }
 
+    // DTO to Entity conversion method
     public CommentEntity toEntity() {
-        return new CommentEntity(
-                this.commentID,
-                this.commentContent,
-                this.commentDate,
-                this.commentModifyTime,
-                this.commentAuthor
-        );
+        CommentEntity entity = new CommentEntity();
+        entity.setCommentID(this.commentID);
+        entity.setCommentContent(this.commentContent);
+        entity.setCreatedDate(this.commentDate);
+        entity.setModifiedDate(this.commentModifyTime);
+        entity.setCommentAuthor(this.commentAuthor);
+        return entity;
     }
 
     // Getter 및 Setter 메서드

@@ -118,6 +118,7 @@
 
             console.log("Sending Blog Data: ", blogData);
 
+            // 서버로 데이터를 전송하는 fetch 요청
             fetch('/saveMarkdown', {
                 method: 'POST',
                 headers: {
@@ -125,20 +126,22 @@
                 },
                 body: JSON.stringify(blogData),
             })
-                .then(response => response.text())
-                .then(data => {
-                    console.log('Success:', data);
-                    alert('작성이 완료되었습니다.');
-                    window.location.href = '/blogPost1'; // 페이지 재로딩
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('서버 오류 발생');
+                    }
+                    return response.text();
                 })
-                .catch((error) => {
+                .then(data => {
+                    alert(data); // 서버에서 반환한 메시지를 알림으로 표시
+                    // 성공적으로 처리되었으면 원하는 동작 수행
+                    // 예: 페이지 리로드, 다른 페이지로 이동 등
+                })
+                .catch(error => {
                     console.error('Error:', error);
-                    alert('작성을 완료하는 중 오류가 발생했습니다.');
+                    alert('작성을 완료하는 도중 오류가 발생했습니다');
                 });
-        } else {
-            console.log("User canceled the submission.");
-        }
-    }
+        }}
 </script>
 </body>
 </html>

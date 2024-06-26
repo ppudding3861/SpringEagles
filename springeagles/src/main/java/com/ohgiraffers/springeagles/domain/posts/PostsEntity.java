@@ -1,11 +1,15 @@
 package com.ohgiraffers.springeagles.domain.posts;
 
+import com.ohgiraffers.springeagles.domain.comment.CommentDTO;
 import com.ohgiraffers.springeagles.domain.comment.CommentEntity;
 import jakarta.persistence.*;
 
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "posts")
@@ -22,16 +26,18 @@ public class PostsEntity {
     private String description;
 
     @Column(name = "image_url")
+    @Size(max = 255)
     private String imageUrl;
 
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     @Column(name = "tag_array")
-    private String tagArray;
+    private String tagArrayAsString; // 문자열로 변환된 tagArray
+
 
     @Column(name = "likes_count")
     private int likesCount;
@@ -40,10 +46,16 @@ public class PostsEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "postsEntity")
     private List<CommentEntity> comments = new ArrayList<>();
 
-    public PostsEntity() {}
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+    }
+
+    public PostsEntity() {
+    }
 
     public PostsEntity(Long id, String title, String description, String imageUrl, String content,
-                       LocalDateTime createdAt, String tagArray, int likesCount,
+                       LocalDateTime createdAt, String tagArrayAsString, int likesCount,
                        List<CommentEntity> comments) {
         this.id = id;
         this.title = title;
@@ -51,7 +63,7 @@ public class PostsEntity {
         this.imageUrl = imageUrl;
         this.content = content;
         this.createdAt = createdAt;
-        this.tagArray = tagArray;
+        this.tagArrayAsString = tagArrayAsString;
         this.likesCount = likesCount;
         this.comments = comments;
     }
@@ -64,9 +76,16 @@ public class PostsEntity {
         this.imageUrl = dto.getImageUrl();
         this.content = dto.getContent();
         this.createdAt = dto.getCreatedAt();
-        this.tagArray = dto.getTagArray();
+        this.tagArrayAsString = Arrays.toString(dto.getTagArray());
         this.likesCount = dto.getLikesCount();
-        this.comments = dto.getComments();
+
+        if (dto.getComments() != null) {
+            this.comments = dto.getComments().stream()
+                    .map(CommentDTO::toEntity)
+                    .collect(Collectors.toList());
+        } else {
+            this.comments = new ArrayList<>();
+        }
     }
 
     // Getters and Setters
@@ -119,12 +138,12 @@ public class PostsEntity {
         this.createdAt = createdAt;
     }
 
-    public String getTagArray() {
-        return tagArray;
+    public String[] getTagArray() {
+        return tagArrayAsString != null ? tagArrayAsString.split(",") : new String[0];
     }
 
-    public void setTagArray(String tagArray) {
-        this.tagArray = tagArray;
+    public void setTagArray(String[] tagArray) {
+        this.tagArrayAsString = tagArray != null ? String.join(",", tagArray) : "";
     }
 
     public int getLikesCount() {
@@ -157,7 +176,7 @@ public class PostsEntity {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", content='" + content + '\'' +
                 ", createdAt=" + createdAt +
-                ", tagArray='" + tagArray + '\'' +
+                ", tagArrayAsString='" + tagArrayAsString + '\'' +
                 ", likesCount=" + likesCount +
                 ", comments=" + comments +
                 '}';
