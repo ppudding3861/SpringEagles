@@ -33,7 +33,6 @@ public class PostsEntity {
     @Column(name = "tag_array")
     private String tagArray;
 
-
     @Column(name = "likes_count")
     private int likesCount;
 
@@ -56,6 +55,21 @@ public class PostsEntity {
         this.likesCount = likesCount;
         this.comments = comments;
     }
+
+    // Constructor to convert DTO to Entity
+    public PostsEntity(PostsDTO dto) {
+        this.id = dto.getId();
+        this.title = dto.getTitle();
+        this.description = dto.getDescription();
+        this.imageUrl = dto.getImageUrl();
+        this.content = dto.getContent();
+        this.createdAt = dto.getCreatedAt();
+        this.tagArray = dto.getTagArray();
+        this.likesCount = dto.getLikesCount();
+        this.comments = dto.getComments();
+    }
+
+    // Getters and Setters
 
     public Long getId() {
         return id;

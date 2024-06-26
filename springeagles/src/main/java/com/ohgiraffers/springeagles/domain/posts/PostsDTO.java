@@ -1,7 +1,8 @@
 package com.ohgiraffers.springeagles.domain.posts;
 
+import com.ohgiraffers.springeagles.domain.comment.CommentEntity;
+
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class PostsDTO {
@@ -14,13 +15,11 @@ public class PostsDTO {
     private LocalDateTime createdAt;
     private String tagArray;
     private int likesCount;
-    private int commentsCount; // 이 필드는 계산을 통해 설정될 예정
+    private List<CommentEntity> comments;
 
-    public PostsDTO() {
-    }
+    public PostsDTO() {}
 
-    public PostsDTO(Long id, String title, String description, String imageUrl, String content,
-                    LocalDateTime createdAt, String tagArray, int likesCount, int commentsCount) {
+    public PostsDTO(Long id, String title, String description, String imageUrl, String content, LocalDateTime createdAt, String tagArray, int likesCount, List<CommentEntity> comments) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -29,53 +28,93 @@ public class PostsDTO {
         this.createdAt = createdAt;
         this.tagArray = tagArray;
         this.likesCount = likesCount;
-        this.commentsCount = commentsCount;
+        this.comments = comments;
     }
 
-    // PostsEntity를 기반으로 PostsDTO를 생성하는 정적 메소드
-    public static PostsDTO fromEntity(PostsEntity entity) {
-        return new PostsDTO(
-                entity.getId(),
-                entity.getTitle(),
-                entity.getDescription(),
-                entity.getImageUrl(),
-                entity.getContent(),
-                entity.getCreatedAt(),
-                entity.getTagArray(),
-                entity.getLikesCount(),
-                entity.getComments().size() // 댓글 수는 comments 리스트의 사이즈로 설정
-        );
+    // Getters and Setters
+
+    public Long getId() {
+        return id;
     }
 
-    // PostsDTO를 기반으로 PostsEntity를 생성하는 메소드
-    public PostsEntity toEntity() {
-        return new PostsEntity(
-                this.id,
-                this.title,
-                this.description,
-                this.imageUrl,
-                this.content,
-                this.createdAt,
-                this.tagArray,
-                this.likesCount,
-                null // comments는 null로 설정
-        );
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    // Getter 및 Setter는 생략 (필요시 추가)
+    public String getTitle() {
+        return title;
+    }
 
-    @Override
-    public String toString() {
-        return "PostsDTO{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
-                ", content='" + content + '\'' +
-                ", createdAt=" + createdAt +
-                ", tagArray='" + tagArray + '\'' +
-                ", likesCount=" + likesCount +
-                ", commentsCount=" + commentsCount +
-                '}';
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public String getTagArray() {
+        return tagArray;
+    }
+
+    public void setTagArray(String tagArray) {
+        this.tagArray = tagArray;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
+
+    // Entity to DTO constructor
+    public PostsDTO(PostsEntity entity) {
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.description = entity.getDescription();
+        this.imageUrl = entity.getImageUrl();
+        this.content = entity.getContent();
+        this.createdAt = entity.getCreatedAt();
+        this.tagArray = entity.getTagArray();
+        this.likesCount = entity.getLikesCount();
+        this.comments = entity.getComments();
     }
 }

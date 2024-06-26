@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostsRepository extends JpaRepository<PostsEntity, Long> {
-    // 추가적으로 필요한 메서드가 있다면 여기에 추가할 수 있습니다.
+    // 추가적인 메서드가 필요하다면 여기에 작성할 수 있습니다.
 }
