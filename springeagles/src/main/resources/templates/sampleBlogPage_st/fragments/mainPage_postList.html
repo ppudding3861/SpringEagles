@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="post-meta">
-            <div class="post-date" th:text="${#dates.format(post.createdAt, 'yyyy-MM-dd')}">작성날짜</div>
+            <div class="post-date" th:text="${post.createdAt}">작성날짜</div>
             <div class="post-comments" th:text="${post.commentsCount} + '개의 댓글'">
                 0개의 댓글
             </div>

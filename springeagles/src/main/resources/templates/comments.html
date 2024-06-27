@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comments for Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        form div {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Comments for Post ID: ${postId}</h1>
+<div>
+    <form action="#" th:action="@{/api/comments}" th:object="${comment}" method="post">
+        <input type="hidden" th:field="*{commentID}" />
+        <input type="hidden" th:field="*{postId}" th:value="${postId}" />
+        <div>
+            <label for="commentContent">Content:</label>
+            <textarea id="commentContent" th:field="*{commentContent}"></textarea>
+        </div>
+        <div>
+            <label for="commentAuthor">Author:</label>
+            <input type="text" id="commentAuthor" th:field="*{commentAuthor}" />
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+<div>
+    <h2>All Comments</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Content</th>
+            <th>Author</th>
+            <th>Created Date</th>
+            <th>Modified Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="comment : ${comments}">
+            <td th:text="${comment.commentID}"></td>
+            <td th:text="${comment.commentContent}"></td>
+            <td th:text="${comment.commentAuthor}"></td>
+            <td th:text="${comment.createdDate}"></td>
+            <td th:text="${comment.modifiedDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
