@@ -148,4 +148,10 @@ public class PostsDTO {
         return tagArrayAsString.split(",");
     }
 
+    // DTO를 Entity로 변환
+    public PostsEntity toEntity() {
+        return new PostsEntity(this);
+    }
+
+
 }
