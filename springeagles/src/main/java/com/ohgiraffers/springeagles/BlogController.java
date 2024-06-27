@@ -51,13 +51,6 @@ public class BlogController {
         return "sampleBlogPage3/blogPost3";
     }
 
-
-    @GetMapping("/blogPost4")
-    public String blogPost4(Model model) {
-        model.addAttribute("blogPost4", model);
-        return "sampleBlogPage4/blogPost4";
-    }
-
     @Autowired
     private Blog5DAO blog5DAO;
 

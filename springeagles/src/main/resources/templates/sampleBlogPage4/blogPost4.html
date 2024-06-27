@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Joo's Blog</title>
-    <link rel="stylesheet" th:href="@{/css/index4.css}"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/hs-header.css}" />
+    <link rel="stylesheet" th:href="@{/css/hs-sidebar.css}" />
+    <link rel="stylesheet" th:href="@{/css/hs-main.css}" />
+    <link rel="stylesheet" th:href="@{/css/hs-editpage.css}" />
 </head>
 <body>
-<header>
-    <div th:replace="~{/sampleBlogPage4/fragments/blogPost_user-profile :: userProfile}"></div>
-</header>
-<main>
-    <div class="main-container">
-        <aside th:replace="~{/sampleBlogPage4/fragments/blogPost_sidebar :: sidebar}"></aside>
-        <div class="content">
-            <nav class="navigation">
-                <div class="nav-items">
-                    <div th:onclick="">글</div>
-                    <div th:onclick="">목록</div>
-                    <div th:onclick="">소개</div>
+<div class="totalcontainer">
+    <header>
+        <div th:replace="~{sampleBlogPage4/fragments/header :: header}"></div>
+    </header>
+    <div class="index">
+        <sidebar>
+            <div th:replace="~{sampleBlogPage4/fragments/sidebar :: sidebar}"></div>
+        </sidebar>
+        <div class="index2">
+            <navbar>
+                <div th:replace="~{sampleBlogPage4/fragments/navbar :: navbar}"></div>
+            </navbar>
+            <main class="totalmaincontainer">
+                <div th:if="${currentPage == 'editpagehs'}">
+                    <div th:replace="~{sampleBlogPage4/fragments/editpagehs :: editpagehs}"></div>
                 </div>
-            </nav>
-            <section th:replace="~{/sampleBlogPage4/fragments/blogPost_posts.html :: posts}"></section>
+                <div th:if="${currentPage == 'main'}">
+                    <div th:replace="~{sampleBlogPage4/fragments/main :: main}"></div>
+                </div>
+            </main>
         </div>
     </div>
-</main>
-<footer>
-    <!-- Footer content here -->
-</footer>
+</div>
 </body>
 </html>
