@@ -63,16 +63,16 @@ public class BlogController {
 
     @GetMapping("/blogPost5")
     public ModelAndView blogPost5(ModelAndView mv) {
-        List<BlogDTO> boxex = blog5DAO.getAllBlogs();
+        List<BlogDTO> boxes = blog5DAO.getAllBlogs();
         List<String> allTags = blog5DAO.getAllTags();
         mv = new ModelAndView("sampleBlogPageSH/blogPost5");
-        mv.addObject("boxex", boxex);
+        mv.addObject("boxes", boxes);
         mv.addObject("allTags", allTags);
         return mv;
     }
 
     @Autowired
-    private Blog5DAO Blog6JHDAO;
+    private Blog6JHDAO Blog6JHDAO;
 
     @GetMapping("/blogPost6")
     public ModelAndView blogPost6() {
