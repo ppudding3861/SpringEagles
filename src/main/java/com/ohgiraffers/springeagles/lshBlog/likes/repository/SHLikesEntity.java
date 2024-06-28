@@ -1,8 +1,9 @@
 package com.ohgiraffers.springeagles.lshBlog.likes.repository;
 
 import com.ohgiraffers.springeagles.lshBlog.posts.repository.SHPostsEntity;
-import com.ohgiraffers.springeagles.lshBlog.user.UserEntity;
+import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
 import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "likes")
