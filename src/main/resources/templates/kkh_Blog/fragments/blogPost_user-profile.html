@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="userProfile">
+  <head>
+    <link rel="stylesheet" th:href="@{/css/kkh_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+  </head>
+  <body>
+    <div class="user-profile">
+      <div class="profile-upper">
+        <div class="profile-image">
+          <img th:src="@{/images/public_sampleUser2_img.png}" alt="X" />
+        </div>
+        <div class="profile-info">
+          <div class="user-name" >김 기호</div>
+          <div class="user-description" >
+            스프링 이글스..?
+          </div>
+        </div>
+      </div>
+      <div class="profile-lower">
+        <div class="sns-icons">
+          <div class="icon" th:onclick="">
+            <img th:src="@{/images/public_github_logo.svg}" alt="X" />
+          </div>
+          <div class="icon" th:onclick="">
+            <img th:src="@{/images/public_discord_logo.svg}" alt="X" />
+          </div>
+        </div>
+        <div class="follow-info">
+          <div class="follow-stats">
+            <div class="follow-count" th:onclick="">
+              팔로우 0
+            </div>
+            <div
+              class="follower-count"
+              th:onclick=""
+            >
+              팔로워 0
+            </div>
+          </div>
+          <div class="follow-button" th:onclick="">팔로우</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

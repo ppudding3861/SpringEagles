@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>stjoo.log</title>
+    <link rel="stylesheet" th:href="@{/css/hjh_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="header">
+            <div class="header-logo" th:onclick="">
+                <div class="logo-image">
+                    <img th:src="@{/images/public_springeagles_logo.png}" alt="X"/>
+                </div>
+                <div class="logo-text" >jeonghan.log</div>
+            </div>
+            <div class="header-user">
+                <div class="custom-btn" th:onclick="|window.location.href='@{/}'|">
+                    <div>첫화면</div>
+                </div>
+                <div class="custom-btn" th:onclick="">
+                    <div>검색</div>
+                </div>
+                <div class="custom-btn" th:onclick="">
+                    <div>글쓰기</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="main-container">
+        <aside th:replace="~{/hjh_Blog/fragments/blogPost_sidebar :: sidebar}"></aside>
+        <div class="content">
+            <div th:replace="~{/hjh_Blog/fragments/blogPost_user-profile :: userProfile}"></div>
+            <nav class="navigation">
+                <div class="nav-items">
+                    <div th:onclick="">글</div>
+                    <div th:onclick="">시리즈</div>
+                    <div th:onclick="">소개</div>
+                </div>
+            </nav>
+            <section th:replace="~{/hjh_Blog/fragments/blogPost_posts :: posts}"></section>
+        </div>
+    </div>
+</main>
+<footer>
+    <!-- Footer content here -->
+</footer>
+</body>
+</html>

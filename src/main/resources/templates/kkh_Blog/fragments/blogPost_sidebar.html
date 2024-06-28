@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
+  <head>
+    <link rel="stylesheet" th:href="@{/css/kkh_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-content">
+        <div class="sidebar-title">태그목록</div>
+        <ul class="tag-list"> <!--글머리가 없는 리스트를 만들겠다는 선언 ul -->
+          <li th:each="tag : ${tags}" th:onclick=""><!--글머리가 없는 객체를 만들겠다는 선언 ul -->
+            전체보기
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </body>
+</html>

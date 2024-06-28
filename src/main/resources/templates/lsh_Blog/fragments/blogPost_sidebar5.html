@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="sidebar">
+  <head>
+    <link rel="stylesheet" th:href="@{/css/public_index.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-content_5">
+        <div class="sidebar-title">태그목록</div>
+        <ul class="tag-list">
+          <li th:each="tag : ${tags}" th:onclick="">
+            전체보기
+          </li>
+        </ul>
+      </div>
+    </aside>
+  </body>
+</html>

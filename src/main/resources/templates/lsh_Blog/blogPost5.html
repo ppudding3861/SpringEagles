@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Seohyun's Blog</title>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/lsh_Blog.css}"/>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="header">
+            <div class="header-logo_5" th:onclick="@{/blogPost5}">
+                <div class="logo-image_5">
+                    <img th:src="@{/images/lsh_main_img.png}" alt=""/>
+                </div>
+                <div class="logo-text_5" >Eagles_Soori</div>
+            </div>
+            <div class="header-user">
+                <a th:href="@{/}">
+                    <div class="user-home">Home</div>
+                </a>
+                <div class="user-search" th:onclick="">
+                    검색
+                </div>
+                <div class="user-login" th:onclick="">
+                    로그인
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <div class="main-container">
+        <aside th:replace="~{/lsh_Blog/fragments/blogPost_sidebar5 :: sidebar}"></aside>
+        <div class="content">
+            <div th:replace="~{/lsh_Blog/fragments/blogPost_user-profile5 :: userProfile}"></div>
+            <nav class="navigation_5">
+                <div class="nav-items">
+                    <div th:onclick="">글</div>
+                    <div th:onclick="">시리즈</div>
+                    <div th:onclick="">소개</div>
+                </div>
+            </nav>
+            <section th:replace="~{/lsh_Blog/fragments/blogPost_posts5 :: posts}"></section>
+        </div>
+    </div>
+</main>
+<footer>
+    <!-- Footer content here -->
+</footer>
+</body>
+</html>

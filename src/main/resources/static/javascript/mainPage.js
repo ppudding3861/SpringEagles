@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const searchForm = document.getElementById('searchForm');
     const searchImg = document.getElementById('searchImg');
-    const defaultImage = { value: '/images/search.svg' };
-    const clickImage = { value: '/images/search-go.svg' };
+    const defaultImage = { value: '/images/public_buttonSearch_img.svg' };
+    const clickImage = { value: '/images/public_searchButton2_img.svg' };
 
     if (searchForm && searchInput && searchImg) {
         // input에 값을 입력하고 버튼을 누를 시 폼 액션이 발생하는 스크립트

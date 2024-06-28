@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="reader">
+<head>
+    <meta charset="UTF-8">
+    <title>Viewer Page</title>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <link rel="stylesheet" th:href="@{/css/stj_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor-viewer.min.css" />
+</head>
+<body>
+<div class="read-align">
+    <div class="read-container" th:each="post : ${postList}">
+        <div class="read-title" th:text="${post.title}">글의 제목</div>
+        <div class="read-sub" th:text="${post.description}">글의 설명</div>
+        <div class="read-option">
+            <div class="read-date"><div th:text="${#dates.format(post.createdAt, 'yyyy-MM-dd')}">작성 날짜</div></div>
+            <div class="read-modify-button"><div>수정</div></div>
+        </div>
+
+        <div class="read-section">
+            <div class="read-imgs">
+                <img th:src="@{${post.imageUrl}}"/>
+            </div>
+            <div class="read-content" th:text="${post.content}">작성글</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

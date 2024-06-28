@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="header1">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jinny's Blog</title>
+    <link rel="stylesheet" th:href="@{/css/sej_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+</head>
+
+<body>
+<div class="header">
+    <div class = "header_layout">
+        <div class="header-logo" th:onclick="">
+            <div class="logo-image">
+                <img th:src="@{/images/public_springeagles_logo.png}" alt="X"/>
+            </div>
+            <div class="logo-text" >이건 나의 블로그</div>
+        </div>
+        <div class="header-user">
+            <div
+                    class="user-notification"
+                    th:onclick=""
+            >
+                알림
+            </div>
+            <div class="user-search" th:onclick="">
+                검색
+            </div>
+            <div class="user-login" th:onclick="">
+                로그인
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
