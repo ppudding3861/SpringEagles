@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="header2">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Jinny's Blog</title>
+    <link rel="stylesheet" th:href="@{/css/sej_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+</head>
+
+<body2>
+
+    <div class="my_header2">
+        <div class = "main_img2">
+            <img th:src="@{/images/sej_header_img.png}" alt="Post img22">
+        </div>
+
+        <!--=====달력==========-->
+        <div class="total2">
+            <div class="calendar">
+                <div class="header_calender">
+                    <button class="nav-btn go-prev" onclick="prevMonth()">&lt;</button>
+                    <button class="year-month" onclick="goToday()"></button>
+                    <button class="nav-btn go-next" onclick="nextMonth()">&gt;</button>
+                </div>
+                <div class="main">
+                    <div class="days">
+                        <div class="day">Sun</div>
+                        <div class="day">Mon</div>
+                        <div class="day">Tue</div>
+                        <div class="day">Wed</div>
+                        <div class="day">Thu</div>
+                        <div class="day">Fri</div>
+                        <div class="day">Sat</div>
+                    </div>
+                    <div class="dates"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<script th:src="@{/javascript/calender.js}"></script>
+<script src="index.js"></script>
+<script src="todo.js"></script>
+<script src="select.js"></script>
+
+
+
+</body2>
+</html>

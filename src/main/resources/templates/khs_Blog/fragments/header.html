@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="header" class="header">
+    <div class="header-navbar">
+        <div class="header-logo">
+            <img th:src="@{/images/khs_main_img.png}"/>
+        </div>
+
+        <div class="navigation">
+            <ul>
+                <li><a th:href="@{/}" >홈</a></li>
+                <li>검색</li>
+                <li>로그인</li>
+            </ul>
+        </div>
+    </div>
+    <div class="header-title">
+        <h3>PPUDING'S BLOG</h3>
+    </div>
+
+</header>
+</body>
+</html>

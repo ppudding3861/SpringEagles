@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Wadiz Blog</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_index.css}">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script th:src="@{/javascript/mainPage.js}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -20,7 +20,7 @@
             <form id="searchForm" action="search" method="get">
                 <div class="search-box">
                     <button type="submit" class="btn-search" id="searchButton">
-                        <img id="searchImg" src="/images/search.svg" alt="검색"/>
+                        <img id="searchImg" src="/images/public_buttonSearch_img.svg" alt="검색"/>
                     </button>
                     <input type="text" name="q" class="input-search" placeholder="찾으실 검색어를 입력해 주세요..."
                            id="searchInput" autocomplete="off">

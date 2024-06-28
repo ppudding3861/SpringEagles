@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="mainPage">
+<head>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-title">태그목록</div>
+            <ul class="tag-list">
+                <li th:each="sideTags : ${sideTags}" th:text="${sideTags}" th:onclick="">
+                    전체보기
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div class="content">
+        <div class="user-profile">
+            <div class="profile-upper">
+                <div class="profile-image">
+                    <img th:src="@{/images/jst_user_img.png}" alt="X" />
+                </div>
+                <div class="profile-info">
+                    <div class="user-name" >주순태</div>
+                    <div class="user-description" >
+                        최선의 방법을 찾아내는 개발자가 되도록 노력하겠습니다.
+                    </div>
+                </div>
+            </div>
+            <div class="profile-lower">
+                <div class="sns-icons">
+                    <div class="icon">
+                        <a th:href="@{https://github.com/Stjoo0925}">
+                            <img th:src="@{/images/public_github_logo.svg}" alt="GitHub Profile"/>
+                        </a>
+                    </div>
+                    <div class="icon">
+                        <a th:href="@{https://discord.gg/cFuDJDx7rA}">
+                            <img th:src="@{/images/public_discord_logo.svg}" alt="Discord Profile"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="follow-info">
+                    <div class="follow-stats">
+                        <div class="follow-count" th:onclick="">
+                            팔로우 0
+                        </div>
+                        <div class="follower-count" th:onclick="">
+                            팔로워 0
+                        </div>
+                    </div>
+                    <div class="follow-button" th:onclick="">팔로우</div>
+                </div>
+            </div>
+        </div>
+        <nav class="navigation">
+            <div class="nav-items">
+                <div id="postListButton">글목록</div>
+                <div id="introduceButton">소개</div>
+            </div>
+        </nav>
+        <section class="posts">
+            <div class="post-list" id="postList">
+                <div th:replace="~{/jst_Blog/fragments/mainPage_postList :: postList}"></div>
+            </div>
+            <div class="post-introduce" id="introduce">
+                <div th:replace="~{/jst_Blog/fragments/mainPage_introduce :: introduce}"></div>
+            </div>
+        </section>
+    </div>
+</body>
