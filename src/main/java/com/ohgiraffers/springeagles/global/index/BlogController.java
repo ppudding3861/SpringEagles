@@ -30,28 +30,6 @@ public class BlogController {
     }
 
 
-    @GetMapping("/blogPost2")
-    public ModelAndView blogPost2() {
-
-        ModelAndView mv = new ModelAndView("sampleBlogPage2/blogPost2");
-
-        return mv;
-    }
-
-
-    @GetMapping("/blogPost3")
-    public String blogPost3(Model model) {
-        model.addAttribute("blogPost3", model);
-        return "sampleBlogPage3/blogPost3";
-    }
-
-
-    @GetMapping("/blogPost5")
-    public ModelAndView blogPost5(ModelAndView mv) {
-        mv = new ModelAndView("sampleBlogPageSH/blogPost5");
-        return mv;
-    }
-
     @GetMapping("/blogPost6")
     public ModelAndView blogPost6() {
         ModelAndView mv = new ModelAndView("sampleBlogPage_JH/blogPost6");
