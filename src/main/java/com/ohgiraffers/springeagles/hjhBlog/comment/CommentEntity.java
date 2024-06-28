@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.hjhBlog.comment;
 
-import com.ohgiraffers.springeagles.hjhBlog.posts.PostsEntity;
+import com.ohgiraffers.springeagles.hjhBlog.posts.model.PostsEntity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;

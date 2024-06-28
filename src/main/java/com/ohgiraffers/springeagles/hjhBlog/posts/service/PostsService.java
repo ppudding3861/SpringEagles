@@ -1,5 +1,8 @@
-package com.ohgiraffers.springeagles.hjhBlog.posts;
+package com.ohgiraffers.springeagles.hjhBlog.posts.service;
 
+import com.ohgiraffers.springeagles.hjhBlog.posts.model.PostsDTO;
+import com.ohgiraffers.springeagles.hjhBlog.posts.model.PostsEntity;
+import com.ohgiraffers.springeagles.hjhBlog.posts.repository.PostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

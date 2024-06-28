@@ -1,4 +1,4 @@
-package com.ohgiraffers.springeagles.hjhBlog.posts;
+package com.ohgiraffers.springeagles.hjhBlog.posts.model;
 
 import com.ohgiraffers.springeagles.hjhBlog.comment.CommentDTO;
 

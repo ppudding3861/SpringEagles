@@ -1,7 +1,7 @@
 package com.ohgiraffers.springeagles.hjhBlog.comment;
 
 import com.ohgiraffers.springeagles.global.error.ResourceNotFoundException;
-import com.ohgiraffers.springeagles.hjhBlog.posts.PostsService;
+import com.ohgiraffers.springeagles.hjhBlog.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;

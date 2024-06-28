@@ -1,5 +1,6 @@
-package com.ohgiraffers.springeagles.hjhBlog.posts;
+package com.ohgiraffers.springeagles.hjhBlog.posts.repository;
 
+import com.ohgiraffers.springeagles.hjhBlog.posts.model.PostsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

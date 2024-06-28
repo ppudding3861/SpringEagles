@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.hjhBlog.likes;
 
-import com.ohgiraffers.springeagles.hjhBlog.posts.PostsEntity;
+import com.ohgiraffers.springeagles.hjhBlog.posts.model.PostsEntity;
 import com.ohgiraffers.springeagles.hjhBlog.user.UserEntity;
 import jakarta.persistence.*;
 
