@@ -1,11 +1,11 @@
 package com.ohgiraffers.springeagles.khsBlog.comment.service;
 
+import com.ohgiraffers.springeagles.global.error.ResourceNotFoundException;
 import com.ohgiraffers.springeagles.khsBlog.comment.dto.HSCommentDTO;
 import com.ohgiraffers.springeagles.khsBlog.comment.repository.HSCommentEntity;
 import com.ohgiraffers.springeagles.khsBlog.comment.repository.HSCommentRepository;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsRepository;
-import com.ohgiraffers.springeagles.global.error.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;

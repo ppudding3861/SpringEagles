@@ -44,7 +44,7 @@ public class HSPostsEntity {
     private int likesCount;
 
     // 일대다 관계: 하나의 포스트에 여러 댓글이 있을 수 있음
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "postsEntity")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hsPostsEntity")
     private List<HSCommentEntity> comments = new ArrayList<>();
 
     @PrePersist

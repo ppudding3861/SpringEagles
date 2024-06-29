@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "hs-comments")
 public class HSCommentEntity {
 
     @Id
@@ -98,7 +98,7 @@ public class HSCommentEntity {
                 ", createdDate=" + createdDate +
                 ", modifiedDate=" + modifiedDate +
                 ", commentAuthor='" + commentAuthor + '\'' +
-                ", postsEntity=" + hsPostsEntity +
+                ", hsPostsEntity=" + hsPostsEntity +
                 '}';
     }
 }

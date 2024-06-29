@@ -1,11 +1,11 @@
 package com.ohgiraffers.springeagles.khsBlog.likes.repository;
 
+import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
-import com.ohgiraffers.springeagles.khsBlog.user.UserEntity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "likes")
+@Table(name = "hs-likes")
 public class HSLikesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
