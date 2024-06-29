@@ -1,104 +1,37 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.repository;
 
-import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "comments")
+@Table(name = "st_comments")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class STCommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long commentID;
+    @Column(name = "comment_id", nullable = false)
+    private Integer commentId;
 
     @Column(name = "commentContent", nullable = false)
     private String commentContent;
 
     @Column(name = "createdDate", nullable = false)
-    private LocalDateTime createdDate;
+    private LocalDate createdDate;
 
     @Column(name = "modifiedDate")
-    private LocalDateTime modifiedDate;
+    private LocalDate modifiedDate;
 
     @Column(name = "commentAuthor", nullable = false)
     private String commentAuthor;
 
-    // 다대일 관계: 여러 댓글은 하나의 포스트에 속함
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "post_id", nullable = false)
-    private STPostsEntity STPostsEntity;
+    @Column(name = "post_id", nullable = false)
+    private Integer postId;
 
-    // 기본 생성자
-    public STCommentEntity() {}
-
-    // 매개변수를 받는 생성자
-    public STCommentEntity(Long commentID, String commentContent, LocalDateTime createdDate, LocalDateTime modifiedDate, String commentAuthor) {
-        this.commentID = commentID;
-        this.commentContent = commentContent;
-        this.createdDate = createdDate;
-        this.modifiedDate = modifiedDate;
-        this.commentAuthor = commentAuthor;
-    }
-
-    public Long getCommentID() {
-        return commentID;
-    }
-
-    public void setCommentID(Long commentID) {
-        this.commentID = commentID;
-    }
-
-    public String getCommentContent() {
-        return commentContent;
-    }
-
-    public void setCommentContent(String commentContent) {
-        this.commentContent = commentContent;
-    }
-
-    public LocalDateTime getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public String getCommentAuthor() {
-        return commentAuthor;
-    }
-
-    public void setCommentAuthor(String commentAuthor) {
-        this.commentAuthor = commentAuthor;
-    }
-
-    public STPostsEntity getPostsEntity() {
-        return STPostsEntity;
-    }
-
-    public void setPostsEntity(STPostsEntity STPostsEntity) {
-        this.STPostsEntity = STPostsEntity;
-    }
-
-    @Override
-    public String toString() {
-        return "CommentEntity{" +
-                "commentID=" + commentID +
-                ", commentContent='" + commentContent + '\'' +
-                ", createdDate=" + createdDate +
-                ", modifiedDate=" + modifiedDate +
-                ", commentAuthor='" + commentAuthor + '\'' +
-                ", postsEntity=" + STPostsEntity +
-                '}';
-    }
 }

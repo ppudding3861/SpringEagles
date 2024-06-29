@@ -1,21 +1,14 @@
 package com.ohgiraffers.springeagles.jstBlog.likes.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class STLikesDTO {
-    private int likesId;
-
-    public STLikesDTO() {
-    }
-
-    public STLikesDTO(int likesId) {
-        this.likesId = likesId;
-    }
-
-    public int getLikesId() {
-        return likesId;
-    }
-
-    public void setLikesId(int likesId) {
-        this.likesId = likesId;
-    }
-
+    private Integer likesId;
+    private Integer userId;
+    private Integer postId;
 }
