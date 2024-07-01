@@ -39,9 +39,22 @@
     margin-top: 10px;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
 }
 
 .read-modify-button {
+    background-color: #FF7F50;
+    width: 30px;
+    text-align: center;
+    color: white;
+    border: none;
+    margin: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.read-delete-button{
     background-color: #FF7F50;
     width: 30px;
     text-align: center;

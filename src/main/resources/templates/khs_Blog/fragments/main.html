@@ -6,22 +6,22 @@
     <link rel="stylesheet" th:href="@{/css/main.css}" />
 </head>
 <body>
-    <main th:fragment="main" class="main-posts">
-        <div class="main-container">
-            <div class="post-item" th:each="post : ${postList}">
-                <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
+<main th:fragment="main" class="main-posts">
+    <div class="main-container">
+        <div class="post-item" th:each="post : ${postList}">
+            <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
                 <figure>
                     <img th:src="@{${post.imageUrl}}"/>
                     <div class="title-container">
-                <div class="post-title" th:text="${post.title}" th:onclick="">
-                    제목
-                </div>
-                <div class="post-description" th:text="${post.description}">설명</div>
-                </div>
+                        <div class="post-title" th:text="${post.title}" th:onclick="">
+                            제목
+                        </div>
+                        <div class="post-description" th:text="${post.description}">설명</div>
+                    </div>
                 </figure>
-                </a>
-            </div>
+            </a>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>

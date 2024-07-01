@@ -26,6 +26,9 @@
                 <div th:if="${currentPage == 'editpagehs'}">
                     <div th:replace="~{khs_Blog/fragments/editpagehs :: editpagehs}"></div>
                 </div>
+                <div th:if="${currentPage == 'modifypage'}">
+                    <div th:replace="~{khs_Blog/fragments/modifypage :: modifypage}"></div>
+                </div>
                 <div th:if="${currentPage == 'main'}">
                     <div th:replace="~{khs_Blog/fragments/main :: main}"></div>
                 </div>

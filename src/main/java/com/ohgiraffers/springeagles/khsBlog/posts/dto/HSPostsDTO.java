@@ -28,6 +28,18 @@ public class HSPostsDTO {
     public HSPostsEntity toEntity() {
 
         return new HSPostsEntity(post_id, title, description, content, imageUrl, category);
+
+    }
+
+    public HSPostsEntity toModify() {
+        HSPostsEntity entity = new HSPostsEntity();
+        entity.setPost_id(this.post_id);
+        entity.setTitle(this.title);
+        entity.setDescription(this.description);
+        entity.setContent(this.content);
+        entity.setImageUrl(this.imageUrl);
+        entity.setCategory(this.category);
+        return entity;
     }
 
     public Integer getPost_id() {

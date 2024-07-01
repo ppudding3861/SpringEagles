@@ -7,10 +7,7 @@ import com.ohgiraffers.springeagles.khsBlog.posts.service.HSPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -65,6 +62,28 @@ public class HSPostController {
         mv.addObject("currentPage", "postreader");
         mv.setViewName("khs_Blog/blogPost4");
         return mv;
+    }
+
+    @GetMapping("/postreader/delete")
+    public String deletePost(@RequestParam("id") Integer id) {
+        hsPostsService.deletePost(id);
+        return "redirect:/khs/blog";
+    }
+
+    @GetMapping("/postreader/modify{id}")
+    public ModelAndView modifyPage(@PathVariable("id") Integer id, ModelAndView mv) {
+        HSPostsEntity post = hsPostsService.getPostById(id).orElse(null);
+        mv.addObject("post", post);
+        mv.addObject("currentPage", "modifypage");
+        mv.setViewName("khs_Blog/blogPost4");
+        return mv;
+    }
+
+    @PostMapping("/postreader/modify{id}")
+    public String modifyPost(@PathVariable("id") Integer id, HSPostsDTO hsPostsDTO) {
+        HSPostsEntity updatedEntity = hsPostsDTO.toEntity();
+        hsPostsService.modifypost(id, updatedEntity);
+        return "redirect:/khs/blog/postreader/" + id;
     }
 
 }
