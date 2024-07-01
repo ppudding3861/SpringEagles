@@ -15,6 +15,6 @@ public class STCommentDTO {
     private String commentContent;
     private LocalDate commentDate;
     private LocalDate commentModifyTime;
-    private String commentAuthor;
     private Integer postId;
+    private String userName;
 }

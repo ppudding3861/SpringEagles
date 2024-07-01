@@ -1,5 +1,8 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.controller;
 
+import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
+import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
+import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
@@ -14,6 +17,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -23,11 +27,13 @@ public class STPostsController {
 
     private final STPostsService stPostsService;
     private final UserIntroService userIntroService;
+    private final STCommentService stCommentService;
 
     @Autowired
-    public STPostsController(STPostsService stPostsService, UserIntroService userIntroService) {
+    public STPostsController(STPostsService stPostsService, UserIntroService userIntroService, STCommentService stCommentService) {
         this.stPostsService = stPostsService;
         this.userIntroService = userIntroService;
+        this.stCommentService = stCommentService;
     }
 
     @GetMapping("/posts")
@@ -51,12 +57,19 @@ public class STPostsController {
     public String getPostById(@PathVariable("postId") Integer postId, Model model) {
         STPostsEntity post = stPostsService.getPostById(postId).orElse(null); // id에 해당하는 게시물을 조회
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
         if (post == null) {
             return "redirect:/stj/blog/posts"; // 게시물이 없으면 목록 페이지로 리다이렉트
         }
+
+        // 댓글 리스트를 조회하여 모델에 추가
+        List<STCommentEntity> comments = stCommentService.getCommentsByPost(postId);
+
         model.addAttribute("post", post); // 특정 게시물을 모델에 추가
         model.addAttribute("selectedId", postId); // 선택된 게시물 ID를 모델에 추가
+        model.addAttribute("comments", comments); // 댓글 리스트를 모델에 추가
         model.addAttribute("username", authentication.getName());
+        model.addAttribute("username", username);
         model.addAttribute("currentPage", "readPage");
         return "jst_blog/blogPost"; // 게시물 상세 페이지 뷰 이름
     }

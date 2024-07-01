@@ -25,13 +25,18 @@ public class STCommentEntity {
     @Column(name = "createdDate", nullable = false)
     private LocalDate createdDate;
 
+    @PrePersist
+    protected void onCreate() {
+        createdDate = LocalDate.now();
+    }
+
     @Column(name = "modifiedDate")
     private LocalDate modifiedDate;
 
-    @Column(name = "commentAuthor", nullable = false)
-    private String commentAuthor;
-
     @Column(name = "post_id", nullable = false)
     private Integer postId;
+
+    @Column(name = "user_Name", nullable = false)
+    private String userName;
 
 }
