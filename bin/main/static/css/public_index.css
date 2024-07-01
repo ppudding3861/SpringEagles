@@ -1,0 +1,411 @@
+@font-face {
+    font-family: 'PyeongChangPeace-Bold';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*https://animate.style/ 에서 효과 찾을수 있음*/
+
+:root {
+    --swiper-theme-color: #ff7f50 !important;
+}
+
+body {
+    background-color: #F0EFF4;
+}
+
+header {
+    background-color: #ff7f50;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    padding: 20px 0;
+}
+
+section {
+    padding: 20px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 2000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo h1 {
+    font-size: 1.5em;
+    font-family: 'PyeongChangPeace-Bold';
+    color: #F0EFF4;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.logo h1:hover {
+    animation: rubberBand 1s; /* bounce is an example animation from Animate.css */
+}
+
+.header-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-right: 20px;
+} .header-btn > div {
+      margin: 0;
+      font-size: 1.5em;
+      font-family: 'PyeongChangPeace-Bold';
+      color: #F0EFF4;
+      margin-left: 20px;
+      cursor: pointer;
+  }
+.header-btn > div:hover {
+    animation: rubberBand 1s; /* bounce is an example animation from Animate.css */
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.search-recruit {
+    display: flex;
+    align-items: center;
+}
+
+.search-recruit input {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.search-recruit button {
+    background-color: #ff7f50;
+    color: #F0EFF4;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.post-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    position: relative;
+    width: 100%;
+    height: 450px; /* 원하는 높이로 설정하세요 */
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.main-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.main-post-content {
+    border: 5px solid #ffbf00;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #F0EFF4;
+    width: 900px;
+    height: 400px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    border-radius: 10px;
+}
+
+.main-post-content img {
+    flex: 2;
+    max-width: 100%; /* 최대 너비는 부모 요소에 맞춤 */
+    max-height: 350px; /* 최대 높이 설정 */
+    height: auto; /* 높이를 자동으로 조정하여 비율 유지 */
+    object-fit: contain;
+}
+
+.main-post-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+.main-post-text h2 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'TTLaundryGothicB';
+    margin-bottom: 10px;
+    color: #1A2C65;
+}
+
+.main-post-text p {
+    font-size: 1.2em;
+    color: #1A2C65;
+    font-family: 'TTLaundryGothicB';
+    margin-bottom: 10px;
+}
+
+#hs {
+    width: auto;
+    HEIGHT: 400px;
+}
+
+.main-post-text span {
+    display: inline-block;
+    margin-top: 10px;
+    background-color: #ff7f50;
+    color: #ffbf00;
+    padding: 5px 10px;
+    font-size: 0.9em;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.post {
+    width: 100%;
+    height: auto;
+    /* 원하는 크기 설정 */
+}
+
+.box {
+    position: relative;
+    width: 280px;
+    height: 200px;
+    border: 5px solid #ffbf00;
+    cursor: pointer;
+    overflow: hidden;
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.img {
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    overflow: hidden;
+}
+.img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+.box:before {
+    content: '';
+    background: #1A2C65;
+    width: 0px;
+    height: 4px;
+    position: absolute; right: 20px; top: 20px;
+    transition: all 0.35s ease;
+}
+.box:after {
+    content: '';
+    background: #1A2C65;
+    width: 4px;
+    height: 0px;
+    position: absolute; right: 20px; top: 20px;
+    transition: all 0.35s ease;
+}
+
+.box .info {
+    position: absolute; left: 0; bottom: 0;
+    color: #1A2C65;
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+.box .info h3 {
+    font-family: 'TTLaundryGothicB';
+    font-size: 24px;
+    line-height: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-bottom: 3px;
+    color: #1A2C65;
+}
+.box .info p {
+    font-family: 'TTLaundryGothicB';
+    font-size: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #1A2C65;
+}
+.box:hover .info {
+    opacity: 1;
+}
+.box:hover img {
+    opacity: 0.2;
+}
+.box:hover:before {
+    width: 60px;
+}
+.box:hover:after {
+    height: 60px;
+}
+
+.post-inner{
+    margin-top: 0px;
+    width: 280px;
+    height: 164px;
+    overflow: hidden;
+}
+
+#jh {
+    width: AUTO;
+    HEIGHT: 100%;
+}
+#sh {
+    width: AUTO;
+    HEIGHT: 100%;
+}
+
+.inner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1350px;
+    height: 40px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.inner > div {
+    font-family: 'TTLaundryGothicB';
+    background-color: #ff7f50;
+    font-size: 18px;
+    color: #F0EFF4;
+    text-align: center;
+    width: 220px;
+    height: 40px;
+    border-radius: 15px;
+    line-height: 40px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.main-post-text a {
+    color: #ffbf00;
+    text-decoration: none;
+    font-weight: bold;
+    padding-top: 30px;
+}
+
+.main-post-text a:hover {
+    text-decoration: underline;
+}
+
+/* 검색 버튼 css */
+.search-box{
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+}
+.input-search{
+    height: 50px;
+    width: 50px;
+    border-style: none;
+    padding: 10px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    outline: none;
+    border-radius: 25px;
+    transition: all .5s ease-in-out;
+    background-color: #ff7f50;
+    padding-right: 40px;
+    color:#F0EFF4;
+    font-family: 'PyeongChangPeace-Bold';
+}
+.input-search::placeholder{
+    color:#F0EFF4;
+    font-size: 14px;
+    letter-spacing: 2px;
+    font-weight: lighter;
+    font-family: 'TTLaundryGothicB';
+}
+.btn-search{
+    width: 50px;
+    height: 50px;
+    border-style: none;
+    font-size: 10px;
+    font-weight: bold;
+    outline: none;
+    cursor: pointer;
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    color:#F0EFF4 ;
+    background-color:inherit;
+    pointer-events: painted;
+}
+.btn-search img {
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+}
+
+.btn-search:focus ~ .input-search{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid #F0EFF4;
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+.input-search:focus{
+    width: 300px;
+    border-radius: 0px;
+    background-color: transparent;
+    border-bottom:1px solid #F0EFF4;
+    transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}

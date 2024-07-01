@@ -1,10 +1,11 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.repository;
 
+import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "st_posts")
@@ -20,25 +21,32 @@ public class STPostsEntity {
     @Column(name = "post_id", nullable = false)
     private Integer postId;
 
-    @Column(name = "title", nullable = false)
+    @Column(name = "post_title", nullable = false)
     private String title;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "post_description", nullable = false)
     private String description;
 
-    @Column(name = "image_url")
-    @Size(max = 255)
+    @Column(name = "post_imageUrl", nullable = true, columnDefinition = "TINYTEXT")
     private String imageUrl;
 
-    @Column(name = "content", nullable = false)
+    @Column(name = "post_content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "post_createdAt", nullable = false, updatable = false)
     private LocalDate createdAt;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDate.now();
+    }
+
+    @Column(name = "post_updatedAt")
+    private LocalDate updatedAt;
+
+    @PreUpdate
+    private void onUpdate() {
+        updatedAt = LocalDate.now();
     }
 
     @Column(name = "user_id", nullable = false)
@@ -50,4 +58,22 @@ public class STPostsEntity {
     @Column(name = "likes_id")
     private Integer likesId;
 
+    @Column(name = "post_tags")
+    @ElementCollection
+    private List<String> tagArray;
+
+    // DTO -> Entity
+    public STPostsEntity(STPostsDTO dto) {
+        this.postId = dto.getPostId();
+        this.title = dto.getTitle();
+        this.description = dto.getDescription();
+        this.imageUrl = dto.getImageUrl();
+        this.content = dto.getContent();
+        this.createdAt = dto.getCreatedAt();
+        this.updatedAt = dto.getUpdatedAt();
+        this.userId = dto.getUserId();
+        this.commentId = dto.getCommentId();
+        this.likesId = dto.getLikesId();
+        this.tagArray = dto.getTagArray();
+    }
 }

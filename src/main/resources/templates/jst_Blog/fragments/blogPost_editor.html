@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="editor">
 <head>
     <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
-    <link rel="stylesheet" th:href="@{/css/stj_Blog.css}"/>
-    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
     <style>
         body, html {
             height: 100dvh;
@@ -12,7 +10,7 @@
         }
     </style>
 </head>
-<body>
+
 <div class="editor-con">
 
     <div class="editor-input">
@@ -56,33 +54,6 @@
             previewStyle: 'vertical',
             overflow: 'auto',
             heightResizable: false,
-            hooks: {
-                addImageBlobHook: (blob, callback) => {
-                    const formData = new FormData();
-                    formData.append('file', blob);
-
-                    let url = '/files/';
-                    $.ajax({
-                        type: 'POST',
-                        enctype: 'multipart/form-data',
-                        url: '/files/upload',
-                        data: formData,
-                        dataType: 'json',
-                        processData: false,
-                        contentType: false,
-                        cache: false,
-                        timeout: 600000,
-                        success: function (data) {
-                            url += data.fileName;
-                            fileIds += data.id + ",";
-                            callback(url, '사진 대체 텍스트 입력');
-                        },
-                        error: function (e) {
-                            callback('image_load_fail', '사진 대체 텍스트 입력');
-                        }
-                    });
-                }
-            }
         });
     });
 
@@ -119,7 +90,7 @@
             console.log("Sending Blog Data: ", blogData);
 
             // 서버로 데이터를 전송하는 fetch 요청
-            fetch('/saveMarkdown', {
+            fetch('/stj/blog/edit', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -132,16 +103,15 @@
                     }
                     return response.text();
                 })
-                .then(data => {
-                    alert(data); // 서버에서 반환한 메시지를 알림으로 표시
-                    // 성공적으로 처리되었으면 원하는 동작 수행
-                    // 예: 페이지 리로드, 다른 페이지로 이동 등
+                .then(() => {
+                    alert("작성이 완료되었습니다.")
+                    window.location.href = '/stj/blog/posts'; // 리다이렉트
                 })
                 .catch(error => {
                     console.error('Error:', error);
                     alert('작성을 완료하는 도중 오류가 발생했습니다');
                 });
-        }}
+        }
+    }
 </script>
-</body>
 </html>

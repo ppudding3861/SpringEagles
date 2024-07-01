@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<read-container class="read-container">
+<postreader th:fragment="postreader" class="postreader">
+<div th:if="${post.post_id == selectedId}" class="read-align">
+    <div class="read-container" th:each="post : ${post}">
+        <div class="read-title" th:text="${post.title}">글의 제목</div>
+        <div class="read-sub" th:text="${post.description}">글의 설명</div>
+        <div class="read-category" th:text="${post.category}"><div>카테고리</div></div>
+        <div class="read-option">
+            <div class="read-modify-button"><div>수정</div></div>
+            <div class="read-modify-button"><div>삭제</div></div>
+        </div>
+
+        <div class="read-section">
+            <div class="read-imgs">
+                <img th:src="@{${post.imageUrl}}"/>
+            </div>
+            <div class="read-content" th:text="${post.content}">작성글</div>
+        </div>
+    </div>
+</div>
+</read-container>
+</body>
+</html>

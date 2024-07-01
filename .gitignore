@@ -55,6 +55,7 @@ cmake-build-*/
 
 # IntelliJ
 out/
+.idea
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -295,6 +296,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode
 
 # yarn v2
 .yarn/cache

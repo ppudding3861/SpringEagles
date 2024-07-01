@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/hs-sidebar.css}" />
     <link rel="stylesheet" th:href="@{/css/hs-main.css}" />
     <link rel="stylesheet" th:href="@{/css/hs-editpage.css}" />
+    <link rel="stylesheet" th:href="@{/css/hs-reader.css}" />
 </head>
 <body>
 <div class="totalcontainer">
@@ -27,6 +28,9 @@
                 </div>
                 <div th:if="${currentPage == 'main'}">
                     <div th:replace="~{khs_Blog/fragments/main :: main}"></div>
+                </div>
+                <div th:if="${currentPage == 'postreader'}">
+                    <div th:replace="~{khs_Blog/fragments/postreader :: postreader}"></div>
                 </div>
             </main>
         </div>

@@ -1,61 +1,126 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.controller;
 
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
+import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
+import com.ohgiraffers.springeagles.jstBlog.userIntro.service.UserIntroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
-import java.util.Set;
+import java.util.Map;
+
 
 @Controller
-@RequestMapping("blog")
+@RequestMapping("/stj/blog")
 public class STPostsController {
 
-    private final STPostsService STPostsService;
+    private final STPostsService stPostsService;
+    private final UserIntroService userIntroService;
 
     @Autowired
-    public STPostsController(STPostsService STPostsService) {
-        this.STPostsService = STPostsService;
+    public STPostsController(STPostsService stPostsService, UserIntroService userIntroService) {
+        this.stPostsService = stPostsService;
+        this.userIntroService = userIntroService;
     }
 
-    @GetMapping("stjoo/mainPage")
+    @GetMapping("/posts")
     public String getAllPosts(Model model) {
-        List<STPostsDTO> postList = STPostsService.getAllPosts();
-        Set<String> sideTags = STPostsService.getSideTags(postList);
-        // 모델에 데이터 추가
-        model.addAttribute("postList", postList);
-        model.addAttribute("sideTags", sideTags);
-        model.addAttribute("currentPage", "mainPage"); // 현재 페이지 이름 추가
-        // 간단한 소개 추가
-        String intro = "안녕하세요 주순태입니다.";
-        model.addAttribute("intro", intro);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, Integer> tagCounts = stPostsService.calculateTagCounts();
+        String introContent = userIntroService.getIntroContent();
+        if (introContent == null) {
+            introContent = "자기소개를 입력해주세요.";
+        }
 
-        return "jst_Blog/blogPost";
+        model.addAttribute("posts", stPostsService.getAllPosts());
+        model.addAttribute("tagCounts", tagCounts);
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("introContent", introContent);
+        model.addAttribute("currentPage", "mainPage");
+        return "jst_blog/blogPost";
     }
 
-    @GetMapping("stjoo/editPage")
-    public String showEditPage(Model model) {
-        model.addAttribute("currentPage", "editPage");
-        return "jst_Blog/blogPost";
-    }
-
-    @GetMapping("stjoo/readPage")
-    public String showReadPage(Model model) {
-        List<STPostsDTO> postList = STPostsService.getAllPosts();
-        model.addAttribute("postList", postList);
+    @GetMapping("/post/{postId}")
+    public String getPostById(@PathVariable("postId") Integer postId, Model model) {
+        STPostsEntity post = stPostsService.getPostById(postId).orElse(null); // id에 해당하는 게시물을 조회
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (post == null) {
+            return "redirect:/stj/blog/posts"; // 게시물이 없으면 목록 페이지로 리다이렉트
+        }
+        model.addAttribute("post", post); // 특정 게시물을 모델에 추가
+        model.addAttribute("selectedId", postId); // 선택된 게시물 ID를 모델에 추가
+        model.addAttribute("username", authentication.getName());
         model.addAttribute("currentPage", "readPage");
-        return "jst_Blog/blogPost";
+        return "jst_blog/blogPost"; // 게시물 상세 페이지 뷰 이름
     }
 
-    @PostMapping("/saveMarkdown")
-    @ResponseBody
-    public ResponseEntity<String> saveMarkdown(@RequestBody STPostsDTO STPostsDTO) {
-        STPostsService.savePost(STPostsDTO);
-        return new ResponseEntity<>("Post saved successfully", HttpStatus.OK);
+    // 게시물 작성 페이지
+    @GetMapping("/edit")
+    public String showCreateForm(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        model.addAttribute("postDTO", new STPostsDTO()); // 빈 게시물 DTO를 모델에 추가
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("currentPage", "editPage");
+        return "jst_blog/blogPost"; // 게시물 작성 폼을 보여줄 뷰 이름
+    }
+
+    // 게시물 작성 처리
+    @PostMapping("/edit")
+    public ResponseEntity<String> responseEdit(@RequestBody STPostsDTO stPostsDTO) {
+        try {
+            stPostsService.createPost(stPostsDTO); // 게시물 생성 서비스 호출
+            return ResponseEntity.ok("게시물 작성이 완료되었습니다.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("게시물 작성 중 오류가 발생했습니다.");
+        }
+    }
+
+    // 게시물 수정 페이지 GET
+    @GetMapping("/update/{postId}")
+    public String showUpdateForm(@PathVariable("postId") Integer postId, Model model) {
+        STPostsEntity postEntity = stPostsService.getPostById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("게시물을 찾을 수 없습니다. ID: " + postId));
+        STPostsDTO postDTO = new STPostsDTO(postEntity); // 엔티티에서 DTO로 매핑
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        model.addAttribute("postDTO", postDTO); // 게시물 DTO를 모델에 추가
+        model.addAttribute("username", authentication.getName());
+        model.addAttribute("currentPage", "updatePage");
+        return "jst_blog/blogPost"; // 게시물 수정 폼을 보여줄 뷰 이름
+    }
+
+    // 게시물 수정 처리 POST
+    @PostMapping("/update/{postId}")
+    public RedirectView updatePost(@PathVariable("postId") Integer postId, @RequestBody STPostsDTO stPostsDTO) {
+        try {
+            stPostsDTO.setPostId(postId); // DTO에 PathVariable로 받은 postId 설정
+            stPostsService.updatePost(stPostsDTO); // 게시물 수정 서비스 호출
+            // 수정 완료 후 /posts/{postId}로 리다이렉트
+            return new RedirectView("/stj/blog/posts", true);
+        } catch (Exception e) {
+            // 수정 실패 시 오류 페이지로 리다이렉트
+            return new RedirectView("/error", true);
+        }
+    }
+
+
+    // 게시물 삭제 처리
+    @PostMapping("/delete/{postId}")
+    public RedirectView deletePost(@PathVariable("postId") Integer postId) {
+        try {
+            stPostsService.deletePost(postId); // 게시물 삭제 서비스 호출
+            // 삭제 완료 후 /posts로 리다이렉트
+            return new RedirectView("/stj/blog/posts", true);
+        } catch (Exception e) {
+            // 삭제 실패 시 오류 페이지로 리다이렉트
+            return new RedirectView("/error", true);
+        }
     }
 }

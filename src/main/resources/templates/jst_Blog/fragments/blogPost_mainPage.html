@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="mainPage">
-<head>
-</head>
 <body>
     <aside class="sidebar">
         <div class="sidebar-content">
             <div class="sidebar-title">태그목록</div>
             <ul class="tag-list">
-                <li th:each="sideTags : ${sideTags}" th:text="${sideTags}" th:onclick="">
-                    전체보기
+                <li th:each="entry : ${tagCounts.entrySet()}">
+                    <span th:text="${entry.key}"></span> <!-- 태그 이름 -->
+                    <span th:text="'(' + ${entry.value} + ')'"></span> <!-- 태그 카운트 -->
                 </li>
             </ul>
         </div>
@@ -68,3 +67,5 @@
         </section>
     </div>
 </body>
+
+</html>

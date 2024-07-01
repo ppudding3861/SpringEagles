@@ -1,11 +1,10 @@
 package com.ohgiraffers.springeagles.global.user.repository;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "globa_users")
+@Table(name = "global_users")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +25,4 @@ public class UserEntity {
 
     @Column(name = "user_email", nullable = false)
     private String userEmail;
-
 }

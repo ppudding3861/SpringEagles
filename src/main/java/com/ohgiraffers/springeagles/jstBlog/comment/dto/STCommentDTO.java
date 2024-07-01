@@ -1,6 +1,5 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.dto;
 
-import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
 import lombok.*;
 
 import java.time.LocalDate;

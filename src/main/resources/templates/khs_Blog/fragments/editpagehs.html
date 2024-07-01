@@ -9,7 +9,7 @@
 <editpage th:fragment="editpagehs" class="editpage">
     <div class="edit-container">
         <h1>글쓰기</h1>
-        <form th:action="@{/blogPost4/submit-post}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/khs/blog/post}" method="post" enctype="multipart/form-data">
             <div class="edit-form-group">
                 <label for="title">제목</label>
                 <input type="text" id="title" name="title" required/>
@@ -26,16 +26,16 @@
                 <label for="imageUrl">이미지 업로드</label>
                 <input type="text" id="imageUrl" name="imageUrl"/>
             </div>
-            <!--        <div class="edit-form-group">-->
-            <!--            <label for="category">카테고리</label>-->
-            <!--            <select id="category" name="category" required>-->
-            <!--                <option value="" disabled selected>카테고리를 선택하세요</option>-->
-            <!--                <option value="technology">스터디</option>-->
-            <!--                <option value="lifestyle">여행</option>-->
-            <!--                <option value="education">취미</option>-->
-            <!--                <option value="health">건강</option>-->
-            <!--            </select>-->
-            <!--        </div>-->
+                    <div class="edit-form-group">
+                        <label for="category">카테고리</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>카테고리를 선택하세요</option>
+                            <option value="study">스터디</option>
+                            <option value="travel">여행</option>
+                            <option value="Hobby">취미</option>
+                            <option value="health">건강</option>
+                        </select>
+                    </div>
             <button type="submit">등록</button>
         </form>
     </div>

@@ -1,0 +1,1200 @@
+@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+  format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
+  format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}@font-face {
+  font-family: "yg-jalnan";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
+  format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
+  format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Dovemayo_gothic";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
+  format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #000000;
+
+}
+
+.my_header2{
+ display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.main_img2{
+
+}
+
+.header-top{
+  display: flex;
+  flex-direction: row;
+}
+
+.header-container1 {
+  width: 100%;
+  background-color: #6ECEDA; /*수정하고 싶음*/
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+
+}
+
+.header_layout{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+
+.header-container2 {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #AEDDEF;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  magin-top:100px;
+  /*margin-left: 20px;*/
+  justify-content: center;
+  height: 600px; /* 높이를 자동으로 설정 */
+  width: 100%;
+  /*flex-direction: column; !* 세로 방향으로 정렬 *!*/
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-family: "yg-jalnan";
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.logo-image {
+  margin-right: 10px;
+}
+
+.logo-image > img {
+  width: 30px;
+  height: 30px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-notification,
+.user-search,
+.user-login {
+  margin-left: 20px;
+  font-family: "NPSfontBold";
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.sidebar {
+  width: 250px;
+  margin-right: 20px;
+}
+
+.sidebar-content {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Dovemayo_gothic";
+  padding-bottom: 15px;
+  border-bottom: 1px solid #999;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-list li {
+  margin-bottom: 10px;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+}
+
+.user-profile {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-upper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #999;
+}
+
+.profile-image {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.profile-image > img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-info .user-name {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 5px;
+  font-family: "Dovemayo_gothic";
+}
+
+.profile-info .user-description {
+  font-size: 1.5em;
+  font-family: "Dovemayo_gothic";
+}
+
+.profile-lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sns-icons {
+  display: flex;
+}
+
+.sns-icons .icon {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.sns-icons .icon > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.follow-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-stats {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.follow-stats .follow-count,
+.follow-stats .follower-count {
+  margin-right: 10px;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+
+.follow-button {
+  padding: 5px 10px;
+  background-color: #343a40;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Dovemayo_gothic";
+}
+
+.navigation {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-items > div {
+  font-size: 1.2em;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+.nav-items div.active {
+  color: #00a05b;
+}
+
+.nav-items div:hover {
+  color: #00a05b;
+}
+
+.posts {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dee2e6;
+  padding: 20px 0;
+}
+
+.post-item {
+  border-bottom: none;
+}
+
+.post-image {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 400px; /* 이미지의 높이를 고정 */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.post-image img {
+  width: 800px; /* 이미지의 너비를 300px로 고정 */
+  height: 400px; /* 이미지의 높이를 300px로 고정 */
+  object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+}
+
+.post-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 10px 0;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.post-description {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-family: "Dovemayo_gothic";
+  margin-bottom: 20px;
+}
+
+.post-tags {
+  color: #868e96;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-tags > div {
+  width: auto;
+  padding: 5px 10px;
+  background-color: #343a40;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Dovemayo_gothic";
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: left;
+  color: #868e96;
+}
+
+.post-meta .post-date,
+.post-meta .post-comments,
+.post-meta .post-likes {
+  margin-right: 10px;
+  font-size: 0.8em;
+  color: #999;
+  font-family: "Dovemayo_gothic";
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f3f5;
+  color: #868e96;
+}
+
+/* 미디어 쿼리 추가 */
+@media screen and (max-width: 980px) {
+  .header {
+    padding: 15px;
+  }
+  .header-user {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .user-notification,
+  .user-search,
+  .user-login {
+    margin-left: 10px;
+  }
+  .header-logo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .logo-text {
+    font-size: 1.5em;
+  }
+  .logo-image > img {
+    width: 25px;
+    height: 25px;
+  }
+  .main-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .sidebar {
+    width: 100%; /* 전체 너비로 변경 */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .content {
+    margin-right: 0;
+  }
+  .profile-upper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-image > img {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-info .user-name {
+    font-size: 1.5em;
+  }
+  .profile-info .user-description {
+    font-size: 1em;
+  }
+  .sns-icons .icon > img {
+    width: 25px;
+    height: 25px;
+  }
+  .follow-info {
+    align-items: center;
+  }
+  .nav-items {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-items > div {
+    margin-bottom: 10px;
+  }
+  .post-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .post-title {
+    font-size: 1.2em;
+  }
+  .post-description {
+    font-size: 1em;
+  }
+  .post-meta .post-date,
+  .post-meta .post-comments,
+  .post-meta .post-likes {
+    font-size: 0.7em;
+  }
+}
+
+/* ==========달력==============*/
+.total2 {
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  width: 400px;
+  height: 300px;
+
+}
+
+
+.calendar {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0px 20px 20px -20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 콘텐츠 중앙 정렬 */
+  width: 100%; /* 너비를 100%로 설정하여 부모 요소에 맞춤 */
+  max-width: 400px; /* 최대 너비 설정 */
+  max-height: 500px;
+  margin: 0 auto; /* 수평 중앙 정렬 */
+}
+
+@media screen and (max-width: 768px) {
+  .calendar {
+    max-width: 300px; /* 화면이 작을 때 더 작은 너비로 설정 */
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .calendar {
+    max-width: 250px; /* 아주 작은 화면에 대한 추가적인 최소 너비 설정 */
+    margin-left: 5px;
+  }
+}
+
+/*.header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
+
+/*연도+날짜*/
+.year-month {
+  color: #999;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* 양쪽 버튼*/
+.nav-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  line-height: 34px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color:#0a3d62;
+}
+
+.go-today {
+  width: 50px;
+}
+
+.days {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+.day {
+  width: 50px;
+  justify-content: center;
+  align-self:center;
+  text-align:center;
+}
+
+.dates {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex-flow: row wrap;
+  height: 300px;
+}
+
+.date {
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+  color: #e98181;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+  color: #7493d5;
+}
+
+.other {
+  opacity: .3;
+}
+
+.date:active {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(229, 229, 230, 0.766);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  content: '';
+}
+
+.today {
+  position: relative;
+  color: #909FA6;
+  font-weight: bold;
+}
+
+.today::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: #EFBAD6;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  content: '';
+}
+
+@font-face {
+  font-family: "Dovemayo_gothic";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
+  format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #000000;
+
+}
+
+.header-container1 {
+  width: 100%;
+  background-color: #6ECEDA; /*수정하고 싶음*/
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+
+}
+
+.header-container2 {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background-color: #AEDDEF;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  magin-top:100px;
+  /*margin-left: 20px;*/
+  /*justify-content: right;*/
+  height: 600px; /* 높이를 자동으로 설정 */
+  width: 100%;
+  /*flex-direction: column; !* 세로 방향으로 정렬 *!*/
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+}
+
+.logo-text {
+  font-family: "yg-jalnan";
+}
+
+.logo-image {
+  margin-right: 10px;
+}
+
+.logo-image > img {
+  width: 30px;
+  height: 30px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+.user-notification,
+.user-search,
+.user-login {
+  margin-left: 20px;
+  font-family: "NPSfontBold";
+  cursor: pointer;
+}
+
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.sidebar {
+  width: 250px;
+  margin-right: 20px;
+}
+
+.sidebar-content {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "Dovemayo_gothic";
+  padding-bottom: 15px;
+  border-bottom: 1px solid #999;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-list li {
+  margin-bottom: 10px;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+}
+
+.user-profile {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-upper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #999;
+}
+
+.profile-image {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.profile-image > img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
+.profile-info .user-name {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 5px;
+  font-family: "Dovemayo_gothic";
+}
+
+.profile-info .user-description {
+  font-size: 1.5em;
+  font-family: "Dovemayo_gothic";
+}
+
+.profile-lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sns-icons {
+  display: flex;
+}
+
+.sns-icons .icon {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.sns-icons .icon > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.follow-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-stats {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.follow-stats .follow-count,
+.follow-stats .follower-count {
+  margin-right: 10px;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+
+.follow-button {
+  padding: 5px 10px;
+  background-color: #343a40;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Dovemayo_gothic";
+}
+
+.navigation {
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-items > div {
+  font-size: 1.2em;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+}
+.nav-items div.active {
+  color: #00a05b;
+}
+
+.nav-items div:hover {
+  color: #00a05b;
+}
+
+.posts {
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #dee2e6;
+  padding: 20px 0;
+}
+
+.post-item {
+  border-bottom: none;
+}
+
+.post-image {
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  height: 400px; /* 이미지의 높이를 고정 */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.post-image img {
+  width: 800px; /* 이미지의 너비를 300px로 고정 */
+  height: 400px; /* 이미지의 높이를 300px로 고정 */
+  object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+}
+
+.post-title {
+  font-weight: bold;
+  font-size: 1.5em;
+  margin: 10px 0;
+  font-family: "Dovemayo_gothic";
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.post-description {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-family: "Dovemayo_gothic";
+  margin-bottom: 20px;
+}
+
+.post-tags {
+  color: #868e96;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-tags > div {
+  width: auto;
+  padding: 5px 10px;
+  background-color: #343a40;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Dovemayo_gothic";
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: left;
+  color: #868e96;
+}
+
+.post-meta .post-date,
+.post-meta .post-comments,
+.post-meta .post-likes {
+  margin-right: 10px;
+  font-size: 0.8em;
+  color: #999;
+  font-family: "Dovemayo_gothic";
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f1f3f5;
+  color: #868e96;
+}
+
+/* 미디어 쿼리 추가 */
+@media screen and (max-width: 980px) {
+  .header {
+    padding: 15px;
+  }
+  .header-user {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .user-notification,
+  .user-search,
+  .user-login {
+    margin-left: 10px;
+  }
+  .header-logo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .logo-text {
+    font-size: 1.5em;
+  }
+  .logo-image > img {
+    width: 25px;
+    height: 25px;
+  }
+  .main-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .sidebar {
+    width: 100%; /* 전체 너비로 변경 */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .content {
+    margin-right: 0;
+  }
+  .profile-upper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-image > img {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-info .user-name {
+    font-size: 1.5em;
+  }
+  .profile-info .user-description {
+    font-size: 1em;
+  }
+  .sns-icons .icon > img {
+    width: 25px;
+    height: 25px;
+  }
+  .follow-info {
+    align-items: center;
+  }
+  .nav-items {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-items > div {
+    margin-bottom: 10px;
+  }
+  .post-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  .post-title {
+    font-size: 1.2em;
+  }
+  .post-description {
+    font-size: 1em;
+  }
+  .post-meta .post-date,
+  .post-meta .post-comments,
+  .post-meta .post-likes {
+    font-size: 0.7em;
+  }
+}
+
+/* ==========달력==============*/
+.total2 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  width: 400px;
+  height: 300px;
+}
+
+
+.calendar {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 20px 20px -20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 내부 콘텐츠 중앙 정렬 */
+  width: 100%; /* 너비를 100%로 설정하여 부모 요소에 맞춤 */
+  max-width: 400px; /* 최대 너비 설정 */
+  max-height: 500px;
+  margin: 0 auto; /* 수평 중앙 정렬 */
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 768px) {
+  .calendar {
+    max-width: 300px; /* 화면이 작을 때 더 작은 너비로 설정 */
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .calendar {
+    max-width: 250px; /* 아주 작은 화면에 대한 추가적인 최소 너비 설정 */
+    margin-left: 5px;
+  }
+}
+
+/*.header {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center;*/
+/*}*/
+
+/*연도+날짜*/
+.year-month {
+  color: #999;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* 양쪽 버튼*/
+.nav-btn {
+  width: 50px;
+  height: 50px;
+  border: none;
+  font-size: 20px;
+  line-height: 34px;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: 20px;
+  color:#0a3d62;
+}
+
+.go-today {
+  width: 50px;
+}
+
+.days {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  color: #999;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+
+.day {
+  width: 50px;
+  justify-content: center;
+  align-self:center;
+  text-align:center;
+}
+
+.dates {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  flex-flow: row wrap;
+  height: 300px;
+}
+
+.date {
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.day:nth-child(7n + 1),
+.date:nth-child(7n + 1) {
+  color: #e98181;
+}
+
+.day:nth-child(7n),
+.date:nth-child(7n) {
+  color: #7493d5;
+}
+
+.other {
+  opacity: .3;
+}
+
+.date:active {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(229, 229, 230, 0.766);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  content: '';
+}
+
+.today {
+  position: relative;
+  color: #4382E0;
+  font-weight: bold;
+}
+
+.today::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(239, 186, 214, 0.3); /* 투명도를 추가한 배경 색상 */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  content: ''; /* content 속성 추가 */
+}
+
+
+

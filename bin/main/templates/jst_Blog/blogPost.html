@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>stjoo.log</title>
+    <link rel="stylesheet" th:href="@{/css/stj_Blog.css}"/>
+    <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div class="header">
+            <div class="header-logo" onclick="navigateToBlogPost()">
+                <div class="logo-text">Stjoo.log</div>
+            </div>
+            <div class="header-user">
+                <ul class="SMN_effect-6">
+                    <li><a th:href="@{/}" data-hover="첫화면">첫화면</a></li>
+                    <li>
+                        <a th:href="@{/blogPost1/editPage}" th:if="${currentPage != 'editPage'}">글쓰기</a>
+                        <a th:href="@{/blogPost1}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
+                    </li>
+                    <!--<li>-->
+                        <!-- 로그인 기능이 추가되면 추가해야함 -->
+                    <!--</li>-->
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<main id="mainContent">
+    <div class="main-container" th:if="${currentPage == 'mainPage'}">
+        <div th:replace="~{/jst_Blog/fragments/blogPost_mainPage :: mainPage}"></div>
+    </div>
+    <div class="main-editPage" th:if="${currentPage == 'editPage'}">
+        <div th:replace="~{/jst_Blog/fragments/blogPost_editor :: editor}"></div>
+    </div>
+    <div class="main-readPage" th:if="${currentPage == 'readPage'}">
+        <div th:replace="~{/jst_Blog/fragments/blogPost_reader :: reader}"></div>
+    </div>
+</main>
+<footer>
+    <!-- Footer content here -->
+</footer>
+<script th:src="@{/javascript/stj_blog.js}"></script>
+</body>
+</html>

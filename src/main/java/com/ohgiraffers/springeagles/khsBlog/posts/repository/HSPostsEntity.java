@@ -1,24 +1,13 @@
 package com.ohgiraffers.springeagles.khsBlog.posts.repository;
-
-import com.ohgiraffers.springeagles.khsBlog.comment.dto.HSCommentDTO;
-import com.ohgiraffers.springeagles.khsBlog.comment.repository.HSCommentEntity;
-import com.ohgiraffers.springeagles.khsBlog.posts.dto.HSPostsDTO;
 import jakarta.persistence.*;
 
-import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Entity
-@Table(name = "posts")
+@Table(name = "hs_posts")
 public class HSPostsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer post_id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -26,77 +15,33 @@ public class HSPostsEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "image_url")
-    @Size(max = 255)
-    private String imageUrl;
-
     @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
+    @Column(name = "image_url")
+    private String imageUrl;
 
-    @Column(name = "tag_array")
-    private String tagArrayAsString; // 문자열로 변환된 tagArray
+    @Column(name = "category")
+    private String category;
 
-
-    @Column(name = "likes_count")
-    private int likesCount;
-
-    // 일대다 관계: 하나의 포스트에 여러 댓글이 있을 수 있음
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hsPostsEntity")
-    private List<HSCommentEntity> comments = new ArrayList<>();
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
+    public HSPostsEntity(Integer post_id, String title, String description, String content, String imageUrl, String category) {
+        this.post_id = post_id;
+        this.title = title;
+        this.description = description;
+        this.content = content;
+        this.imageUrl = imageUrl;
+        this.category = category;
     }
 
     public HSPostsEntity() {
     }
 
-    public HSPostsEntity(Long id, String title, String description, String imageUrl, String content,
-                         LocalDateTime createdAt, String tagArrayAsString, int likesCount,
-                         List<HSCommentEntity> comments) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.imageUrl = imageUrl;
-        this.content = content;
-        this.createdAt = createdAt;
-        this.tagArrayAsString = tagArrayAsString;
-        this.likesCount = likesCount;
-        this.comments = comments;
+    public Integer getPost_id() {
+        return post_id;
     }
 
-    // Constructor to convert DTO to Entity
-    public HSPostsEntity(HSPostsDTO dto) {
-        this.id = dto.getId();
-        this.title = dto.getTitle();
-        this.description = dto.getDescription();
-        this.imageUrl = dto.getImageUrl();
-        this.content = dto.getContent();
-        this.createdAt = dto.getCreatedAt();
-        this.tagArrayAsString = Arrays.toString(dto.getTagArray());
-        this.likesCount = dto.getLikesCount();
-
-        if (dto.getComments() != null) {
-            this.comments = dto.getComments().stream()
-                    .map(HSCommentDTO::toEntity)
-                    .collect(Collectors.toList());
-        } else {
-            this.comments = new ArrayList<>();
-        }
-    }
-
-    // Getters and Setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setPost_id(Integer post_id) {
+        this.post_id = post_id;
     }
 
     public String getTitle() {
@@ -115,14 +60,6 @@ public class HSPostsEntity {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getContent() {
         return content;
     }
@@ -131,55 +68,31 @@ public class HSPostsEntity {
         this.content = content;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String[] getTagArray() {
-        return tagArrayAsString != null ? tagArrayAsString.split(",") : new String[0];
+    public String getCategory() {
+        return category;
     }
 
-    public void setTagArray(String[] tagArray) {
-        this.tagArrayAsString = tagArray != null ? String.join(",", tagArray) : "";
-    }
-
-    public int getLikesCount() {
-        return likesCount;
-    }
-
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
-    }
-
-    public List<HSCommentEntity> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<HSCommentEntity> comments) {
-        this.comments = comments;
-    }
-
-    @Transient // 데이터베이스에 매핑하지 않음
-    public int getCommentsCount() {
-        return this.comments.size(); // comments 리스트의 사이즈를 반환
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
     public String toString() {
-        return "PostsEntity{" +
-                "id=" + id +
+        return "HSPostsEntity{" +
+                "post_id=" + post_id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", imageUrl='" + imageUrl + '\'' +
                 ", content='" + content + '\'' +
-                ", createdAt=" + createdAt +
-                ", tagArrayAsString='" + tagArrayAsString + '\'' +
-                ", likesCount=" + likesCount +
-                ", comments=" + comments +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category='" + category + '\'' +
                 '}';
     }
 }

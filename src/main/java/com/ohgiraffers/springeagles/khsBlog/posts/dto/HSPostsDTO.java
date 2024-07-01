@@ -1,50 +1,41 @@
 package com.ohgiraffers.springeagles.khsBlog.posts.dto;
-
-import com.ohgiraffers.springeagles.khsBlog.comment.dto.HSCommentDTO;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class HSPostsDTO {
 
-    private Long id;
+    private Integer post_id;
     private String title;
     private String description;
-    private String imageUrl;
     private String content;
-    private LocalDateTime createdAt;
-    private String tagArrayAsString;
-    private int likesCount;
-    private List<HSCommentDTO> comments;
-    private int commentsCount;
+    private String imageUrl;
+    private String category;
 
-    public HSPostsDTO() {}
 
-    public HSPostsDTO(Long id, String title, String description, String imageUrl, String content,
-                      LocalDateTime createdAt, String tagArrayAsString, int likesCount, List<HSCommentDTO> comments) {
-        this.id = id;
+    public HSPostsDTO() {
+    }
+
+    public HSPostsDTO(Integer post_id, String title, String description, String content, String imageUrl, String category) {
+        this.post_id = post_id;
         this.title = title;
         this.description = description;
-        this.imageUrl = imageUrl;
         this.content = content;
-        this.createdAt = createdAt;
-        this.tagArrayAsString = tagArrayAsString;
-        this.likesCount = likesCount;
-        this.comments = comments;
-        this.commentsCount = comments != null ? comments.size() : 0; // 코멘트의 개수로 commentsCount를 설정
+        this.imageUrl = imageUrl;
+        this.category = category;
     }
 
-    // Getters and Setters
 
-    public Long getId() {
-        return id;
+    public HSPostsEntity toEntity() {
+
+        return new HSPostsEntity(post_id, title, description, content, imageUrl, category);
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Integer getPost_id() {
+        return post_id;
+    }
+
+    public void setPost_id(Integer post_id) {
+        this.post_id = post_id;
     }
 
     public String getTitle() {
@@ -63,14 +54,6 @@ public class HSPostsDTO {
         this.description = description;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public String getContent() {
         return content;
     }
@@ -79,79 +62,32 @@ public class HSPostsDTO {
         this.content = content;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String[] getTagArray() {
-        return tagArrayAsString != null ? tagArrayAsString.split(",") : new String[0];
+    public String getCategory() {
+        return category;
     }
 
-    public void setTagArray(String[] tagArray) {
-        this.tagArrayAsString = String.join(",", tagArray);
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-
-    public int getLikesCount() {
-        return likesCount;
+    @Override
+    public String toString() {
+        return "HSPostsDTO{" +
+                "post_id=" + post_id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", content='" + content + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
-
-    public void setLikesCount(int likesCount) {
-        this.likesCount = likesCount;
-    }
-
-    public List<HSCommentDTO> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<HSCommentDTO> comments) {
-        this.comments = comments;
-        this.commentsCount = comments != null ? comments.size() : 0; // 코멘트의 개수로 commentsCount를 업데이트
-    }
-
-    public int getCommentsCount() {
-        return commentsCount;
-    }
-
-    // Entity to DTO constructor
-    public HSPostsDTO(HSPostsEntity entity) {
-        this.id = entity.getId();
-        this.title = entity.getTitle();
-        this.description = entity.getDescription();
-        this.imageUrl = entity.getImageUrl();
-        this.content = entity.getContent();
-        this.createdAt = entity.getCreatedAt();
-        this.tagArrayAsString = Arrays.toString(entity.getTagArray());
-        this.likesCount = entity.getLikesCount();
-        this.comments = entity.getComments().stream()
-                .map(HSCommentDTO::fromEntity)
-                .collect(Collectors.toList());
-        this.commentsCount = this.comments.size(); // 코멘트의 개수로 commentsCount를 설정
-    }
-
-    private String convertTagArrayToString(String[] tagArray) {
-        if (tagArray == null || tagArray.length == 0) {
-            return "";
-        }
-        return String.join(",", tagArray);
-    }
-
-    // Helper method to convert tagArrayAsString to String array
-    private String[] convertStringToTagArray(String tagArrayAsString) {
-        if (tagArrayAsString == null || tagArrayAsString.isEmpty()) {
-            return new String[0];
-        }
-        return tagArrayAsString.split(",");
-    }
-
-    // DTO를 Entity로 변환
-    public HSPostsEntity toEntity() {
-        return new HSPostsEntity(this);
-    }
-
-
 }

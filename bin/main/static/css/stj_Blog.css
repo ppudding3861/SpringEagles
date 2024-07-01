@@ -1,0 +1,822 @@
+@font-face {
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
+  format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+/*기본 폰트*/
+
+@font-face {
+  font-family: 'KCC-Ahnchangho';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/KCC-Ahnchangho.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+/*로고 폰트*/
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/*본문용 폰트*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #A69B8D;
+}
+
+body::-webkit-scrollbar {
+  width: 0.6em; /* 스크롤바 너비 */
+}
+
+/* 스크롤바의 track(슬라이더 배경) 스타일 */
+body::-webkit-scrollbar-track {
+  background: #D9CBBA; /* 스크롤바 배경색 */
+}
+
+/* 스크롤바의 thumb(슬라이더 자체) 스타일 */
+body::-webkit-scrollbar-thumb {
+  background-color: #40362E; /* 슬라이더 색상 */
+  border-radius: 5px; /* 슬라이더 모서리 둥글게 */
+}
+
+/* 스크롤바 hover 상태일 때 스타일 */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #A69B8D; /* hover 시 슬라이더 색상 변경 */
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.header-container {
+  width: 100%;
+  background-color: #D9CBBA;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  color: #00010D;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-text {
+  font-family: 'KCC-Ahnchangho';
+  letter-spacing: 5px;
+  font-size: 1.5em;
+}
+.logo-text:hover {
+  animation: jello 1s;
+}
+
+.logo-image {
+  margin-right: 10px;
+}
+
+.logo-image > img {
+  width: 40px;
+  height: 40px;
+}
+
+.header-user {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+
+.sidebar {
+  width: 250px;
+  margin-right: 20px;
+}
+
+.sidebar-content {
+  background-color: #8C8072;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: "NPSfontBold";
+  color: #00010D;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #D9CBBA;
+}
+
+.tag-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tag-list li {
+  margin-bottom: 20px;
+  font-family: "NPSfontBold";
+  color: #00010D;
+  cursor: pointer;
+}
+
+.tag-list li:hover {
+  color: #D9CBBA;
+}
+
+.content {
+  flex: 1;
+}
+
+.user-profile {
+  background-color: #8C8072;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.profile-upper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid #D9CBBA;
+}
+
+.profile-image {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.profile-image > img {
+  width: 150px;
+  height: 150px;
+  border: 3px solid #D9CBBA;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.profile-info .user-name {
+  font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 10px;
+  font-family: "NPSfontBold";
+}
+
+.profile-info .user-description {
+  font-size: 1.2em;
+  font-family: "NPSfontBold";
+}
+
+.profile-lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sns-icons {
+  display: flex;
+}
+
+.sns-icons .icon {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.sns-icons .icon > a > img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.follow-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.follow-stats {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.follow-stats .follow-count,
+.follow-stats .follower-count {
+  margin-right: 10px;
+  font-family: "NPSfontBold";
+  font-size: 0.8em;
+  cursor: pointer;
+}
+
+.follow-button {
+  padding: 5px 10px;
+  background-color: #40362E;
+  color: #D9CBBA;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+}
+
+.follow-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+.navigation {
+  background-color: #8C8072;
+  padding: 10px 20px;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-items > div {
+  font-size: 1.2em;
+  font-family: "NPSfontBold";
+  cursor: pointer;
+  color: #00010D;
+}
+.nav-items div.active {
+  color: #D9CBBA;
+}
+
+.nav-items div:hover {
+  color: #D9CBBA;
+}
+.nav-items div.active {
+  color: #D9CBBA; /* 예시: 활성화된 버튼의 색상 변경 */
+}
+
+.posts {
+}
+
+.post-list {
+  display: none;
+}
+.post-list.active {
+  display: flex;
+  flex-direction: column;
+  color: #D9CBBA;
+}
+
+.post-introduce{
+  display: none;
+}
+.post-introduce.active {
+  display: flex;
+  flex-direction: column;
+  color: #D9CBBA;
+}
+
+.introduce-con {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #8C8072;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.introduce-content {
+  height: 100%;
+  margin: 10px;
+  padding: 20px;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  color: #00010D;
+  background-color: #D9CBBA;
+  border-radius: 10px;
+}
+.intro-modify-btn {
+  display: block;
+  width: 60px;
+  height: 30px;
+  margin: 10px;
+  background-color: #40362E;
+  color: #D9CBBA;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  text-align: center;
+  line-height: 30px;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+}
+.intro-modify-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+.introduce-textarea {
+  display: none;
+  height: 100%;
+  margin: 10px;
+  padding: 20px;
+  resize: none;
+  border-radius: 10px;
+}
+
+.post-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #8C8072;
+  box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.hover01 figure {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  margin: 0;
+}
+
+.hover01 figure img {
+  width: 100%; /* 이미지의 너비를 300px로 고정 */
+  height: 400px; /* 이미지의 높이를 300px로 고정 */
+  object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+  -webkit-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.hover01 figure:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+
+
+.post-title {
+  font-weight: bold;
+  font-size: 1em;
+  margin: 10px 0;
+  font-family: "NPSfontBold";
+  cursor: pointer;
+  margin-bottom: 20px;
+  color :#00010D;
+  word-wrap: break-word;
+}
+
+.post-description {
+  margin-bottom: 10px;
+  font-size: 0.8em;
+  font-family: "NPSfontBold";
+  margin-bottom: 20px;
+  color :#00010D;
+  word-wrap: break-word;
+}
+
+.post-tags {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-tags > div {
+  width: auto;
+  padding: 5px 10px;
+  background-color: #40362E;
+  color: #D9CBBA;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 5px;
+  font-family: "NPSfontBold";
+  font-size: .8em;
+  text-align: center;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: left;
+  color: #00010D;
+}
+
+.post-meta .post-date,
+.post-meta .post-comments,
+.post-meta .post-likes {
+  margin-right: 10px;
+  font-size: 0.8em;
+  color: #00010D;
+  font-family: "NPSfontBold";
+}
+
+footer {
+
+}
+
+/* 미디어 쿼리 추가 */
+@media screen and (max-width: 980px) {
+  .header {
+    padding: 15px;
+  }
+  .header-user {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  .user-button {
+
+  }
+  .header-logo {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .logo-text {
+    font-size: 1.5em;
+  }
+  .logo-image > img {
+    width: 25px;
+    height: 25px;
+  }
+  .main-container {
+    flex-direction: column;
+    margin: 10px;
+  }
+  .sidebar {
+    width: 100%; /* 전체 너비로 변경 */
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .content {
+    margin-right: 0;
+  }
+  .profile-upper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-image > img {
+    width: 120px;
+    height: 120px;
+  }
+  .profile-info .user-name {
+    font-size: 1.5em;
+  }
+  .profile-info .user-description {
+    font-size: 1em;
+  }
+  .sns-icons .icon > img {
+    width: 25px;
+    height: 25px;
+  }
+  .follow-info {
+    align-items: center;
+  }
+  .nav-items {
+    flex-direction: row;
+    align-items: center;
+  }
+  .nav-items > div {
+    margin-bottom: 10px;
+  }
+  .post-image > img {
+    max-width: 100%;
+    height: 100%;
+  }
+  .post-title {
+    font-size: 1.2em;
+  }
+  .post-description {
+    font-size: 1em;
+  }
+  .post-meta .post-date,
+  .post-meta .post-comments,
+  .post-meta .post-likes {
+    font-size: 0.7em;
+  }
+}
+
+/*-----*/
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+a:hover, a:focus {
+  outline: none;
+}
+
+.header-user ul {
+  list-style: none; /* 불릿 포인트 제거 */
+  margin: 0; /* 기본 마진 제거 */
+  padding: 0; /* 기본 패딩 제거 */
+  display: flex; /* 플렉스박스 사용 */
+  flex-direction: row; /* 가로(row) 정렬 */
+  align-items: center;
+}
+
+.SMN_effect-6 {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.SMN_effect-6 li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.SMN_effect-6 a {
+  position: relative;
+  color: #00010D;
+  text-decoration: none;
+  font-family: "NPSfontBold";
+  font-size: 1.2em;
+  letter-spacing:2px;
+  cursor: pointer;
+}
+
+.SMN_effect-6 a:before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #8C8072;
+  transition: width 0.3s ease-out;
+}
+
+.SMN_effect-6 a:hover:before,
+.SMN_effect-6 a:focus:before {
+  width: 100%;
+}
+
+.SMN_effect-6 a:hover {
+  color: #8C8072;
+}
+
+
+/* Toast UI Editor 스타일 */
+.toastui-editor-defaultUI {
+  background-color: #ffffff; /* 에디터 전체 배경 */
+}
+.toastui-editor-contents {
+  background-color: #ffffff; /* 에디터 내용 배경 */
+}
+.toastui-editor .ProseMirror {
+  background-color: #ffffff; /* 에디터 텍스트 배경 */
+}
+.toastui-editor .tui-editor-contents {
+  background-color: #ffffff; /* 미리보기 영역 배경 */
+}
+
+.editor-con {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 70%;
+  height: auto;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #8C8072; /* 배경색 */
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+}
+#editor {
+  margin-bottom: 20px; /* 하단 여백 추가 */
+}
+.editor-input {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.editor-input > input {
+  font-size: 15px;
+  color: #222222;
+  width: 100%;
+  border: none;
+  border-bottom: solid #00010D 1px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  background: none;
+  z-index: 5;
+  outline: none; /* 포커스시 외곽선 제거 */
+}
+.editor-input > input::placeholder {
+  color:#00010D;
+}
+.editor-input > span {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  background-color: #40362E;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  transition: 0.5s;
+}
+.editor-input > label {
+  position: absolute;
+  color: #00010D;
+  left: 10px;
+  font-size: 18px;
+  bottom: 8px;
+  transition: all .2s;
+  font-family: "NPSfontBold";
+}
+.editor-input > input:focus ~ label,
+.editor-input > input:valid ~ label {
+  font-size: 16px;
+  bottom: 40px;
+  font-weight: bold;
+}
+.editor-input > input:focus ~ span,
+.editor-input > input:valid ~ span {
+  width: 100%;
+}
+.editor-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  border-radius: 5px;
+  color: #D9CBBA;
+  background-color: #40362E;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+  text-decoration: none; /* 링크 스타일 제거 */
+}
+.editor-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+.editor-button > a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  font-family: "NPSfontBold";
+  font-size: 1em;
+  color: #D9CBBA;
+  text-align: center;
+  text-decoration: none;
+  line-height: 40px; /* 버튼 내 텍스트 가운데 정렬 */
+}
+
+.read-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}
+
+.read-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: auto;
+  margin: 20px;
+  background-color: #8C8072;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.30), 0 7px 6px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.read-title {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #00010D;
+  word-wrap: break-word;
+}
+
+.read-sub{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  font-weight: lighter;
+  color: #00010D;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.read-option{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.read-date{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: auto;
+  margin-left: 10px;
+} .read-date > div {
+    font-family: 'GmarketSansMedium';
+    font-size: 0.75em;
+    color: #00010D;
+  }
+
+.read-modify-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 30px;
+  background-color: #40362E;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s; /* 변화 효과 설정 */
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2); /* 그림자 효과 설정 */
+  padding: 3px;
+  margin-right: 10px;
+} .read-modify-button > div {
+    font-family: 'GmarketSansMedium';
+    font-size: 0.75em;
+    color: #D9CBBA;
+    text-align: center;
+  }
+.read-modify-button:active {
+  transform: translate(1px, 1px); /* 클릭 시 버튼을 아래로 약간 이동 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 클릭 시 그림자 크기 줄이기 */
+}
+
+.read-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.read-imgs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+} .read-imgs > img {
+    width: 80%;
+    height: 40%;
+    object-fit: cover;
+  }
+
+.read-content{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.13em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}

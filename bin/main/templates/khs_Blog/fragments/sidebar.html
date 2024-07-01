@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <sidebar th:fragment="sidebar" class="sidebar">
+        <div class="side-logo">
+            <h1>ppuding's</h1>
+        </div>
+<!--        <nav class="sidebar-nav">-->
+<!--            <ul>-->
+<!--                <li><a href="/">홈</a></li>-->
+<!--                <li><a href="#">검색</a></li>-->
+<!--                <li><a href="#">글쓰기</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+        <listbar class="sidebar-listbar">
+            <div class="sidebar-container">
+                <h2>최신 글 목록</h2>
+                <div id="postList"></div>
+            </div>
+        </listbar>
+    </sidebar>
+</body>
+</html>
