@@ -29,26 +29,30 @@
                     </div>
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
-                <h2>Comments</h2>
-                <form th:action="@{/stj/blog/savecomment}" method="post">
-                    <input type="hidden" name="userName" th:value="${username}"/>
-                    <input type="hidden" name="postId" th:value="${post.postId}"/>
-                    <label>
-                        <input type="text" name="comment" placeholder="댓글을 입력해주세요" required/>
-                    </label>
-                    <button type="submit">댓글 작성</button>
-                </form>
-                <ul>
-                    <li th:each="comment : ${comments}">
-                        <p th:text="${comment.commentContent}">Comment Content</p>
-                        <p>작성자: <span th:text="${comment.userName}">작성자</span></p>
-                        <form th:action="@{/stj/blog/deletecomment}" method="post">
-                            <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                            <input type="hidden" name="postId" th:value="${postId}"/> <!-- postId 추가 -->
-                            <button type="submit">삭제</button>
-                        </form>
-                    </li>
-                </ul>
+                <div class="post-comment-con">
+                    <h2>Comments</h2>
+                    <form th:action="@{/stj/blog/savecomment}" method="post" class="comment-form-align">
+                        <input type="hidden" name="userName" th:value="${username}" />
+                        <input type="hidden" name="postId" th:value="${post.postId}" />
+                        <label>
+                            <input type="text" class="post-comment-input" name="comment" placeholder="댓글을 입력해주세요" required />
+                        </label>
+                        <button type="submit" class="post-comment-button">작성</button>
+                    </form>
+                    <ul>
+                        <li th:each="comment : ${comments}">
+                            <div class="comment-content-con">
+                                <div class="comment-content" th:text="${comment.commentContent}">Comment Content</div>
+                                <div class="comment-user" th:text="${comment.userName}">작성자</div>
+                                <form th:action="@{/stj/blog/deletecomment}" method="post">
+                                    <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
+                                    <input type="hidden" name="postId" th:value="${postId}"/> <!-- postId 추가 -->
+                                    <button type="submit" class="post-comment-button2">삭제</button>
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

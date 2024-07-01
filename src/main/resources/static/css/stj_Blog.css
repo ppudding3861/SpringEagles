@@ -712,6 +712,7 @@ a:hover, a:focus {
   align-items: center;
   justify-content: center;
   width: 60%;
+  min-width: 600px;
   height: auto;
   margin: 20px;
   background-color: #8C8072;
@@ -836,19 +837,115 @@ a:hover, a:focus {
     object-fit: cover;
   }
 
-.read-content {
+.read-content,
+.post-comment-con {
   width: 100%;
   height: auto;
-  border: 3px solid #8C8072;
   border-radius: 10px;
   background-color: #D9CBBA;
   text-align: left;
   font-family: 'GmarketSansMedium';
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 150%;
   latter-spacing: normal;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 20px;
   word-wrap: break-word;
+}
+
+.post-comment-con > h2 {
+  margin-bottom: 20px;
+}
+
+.comment-form-align {
+  width: 100%;
+  display: flex;
+  align-items: center; /* Align items vertically centered */
+  margin-bottom: 20px;
+}
+
+.comment-form-align > label{
+  width: 95%;
+  height: 40px;
+}
+
+.post-comment-input {
+  font-family: 'TTLaundryGothicB';
+  font-size: 0.8em;
+  width: 95%;
+  height: 40px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  margin-right: 10px; /* Margin between input and button */
+}
+.post-comment-input::placeholder {
+  font-family: 'TTLaundryGothicB';
+  font-size: 0.8em;
+  color: #999;
+}
+
+.post-comment-button {
+  width: 60px;
+  height: 40px;
+  background-color: #40362E;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+  padding: 0 15px;
+  text-align: center;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  color: #D9CBBA;
+  border: none;
+}
+.post-comment-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.comment-content-con {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.comment-content {
+  flex: 8;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  margin-left: 10px;
+}
+.comment-user {
+  flex: 1;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.6em;
+  color: #6d14b8;
+  margin-right: 10px;
+}
+
+.post-comment-button2 {
+  flex: 1;
+  width: 60px;
+  height: 40px;
+  background-color: #40362E;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+  padding: 0 15px;
+  text-align: center;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  color: #D9CBBA;
+  border: none;
+}
+.post-comment-button2:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
