@@ -21,6 +21,11 @@ public class SHPostsService {
     }
 
    @Transactional
+   public List<SHPostsEntity> postsEntityList(){
+        List<SHPostsEntity> postlist = SHPostsRepository.findAll();
+        return postlist;
+   }
+
     public int post(SHPostsDTO SHPostsDTO) {
         List<SHPostsEntity> SHPostsEntities = SHPostsRepository.findAll();
         // 도메인 로직
@@ -43,5 +48,9 @@ public class SHPostsService {
         }
 
         return resultValue;
+    }
+
+    public List<SHPostsEntity> getAllPosts() {
+        return SHPostsRepository.findAll();
     }
 }
