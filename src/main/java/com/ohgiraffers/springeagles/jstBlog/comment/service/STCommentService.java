@@ -39,6 +39,7 @@ public class STCommentService {
         return STPostsRepository.findById(postId).orElse(null);
     }
 
+    // 댓글 저장
     public void saveComment(String userName, Integer postId, String commentContent) {
 
         STCommentEntity comment = new STCommentEntity();
@@ -50,10 +51,20 @@ public class STCommentService {
         STCommentRepository.save(comment);
     }
 
+    // 댓글 삭제
     public void deleteCommentById(Integer commentId) {
         STCommentEntity comment = STCommentRepository.findById(commentId).orElse(null);
         if (comment != null) {
             STCommentRepository.delete(comment);
+        }
+    }
+
+    // 댓글 수정
+    public void updateComment(Integer commentId, String commentContent) {
+        STCommentEntity comment = STCommentRepository.findById(commentId).orElse(null);
+        if (comment != null) {
+            comment.setCommentContent(commentContent);
+            STCommentRepository.save(comment);
         }
     }
 }

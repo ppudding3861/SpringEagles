@@ -33,6 +33,10 @@ public class STCommentEntity {
     @Column(name = "modifiedDate")
     private LocalDate modifiedDate;
 
+    protected void onUpdate() {
+        modifiedDate = LocalDate.now();
+    }
+
     @Column(name = "post_id", nullable = false)
     private Integer postId;
 

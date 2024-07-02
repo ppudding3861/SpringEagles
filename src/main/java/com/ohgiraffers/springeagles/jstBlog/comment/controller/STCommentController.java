@@ -21,6 +21,7 @@ public class STCommentController {
         this.sTPostsService = sTPostsService;
     }
 
+    // 저장관련 로직
     @PostMapping("/savecomment")
     public String saveComment(@RequestParam("userName") String userName,
                               @RequestParam("postId") Integer postId,
@@ -29,10 +30,20 @@ public class STCommentController {
         return "redirect:/stj/blog/post/" + postId;
     }
 
+    // 삭제관련 로직
     @PostMapping("/deletecomment")
     public String deleteComment(@RequestParam("commentId") Integer commentId,
                                 @RequestParam("postId") Integer postId) {
         sTCommentService.deleteCommentById(commentId);
+        return "redirect:/stj/blog/post/" + postId;
+    }
+
+    // 수정관련 로직
+    @PostMapping("/updatecomment")
+    public String updateComment(@RequestParam("commentId") Integer commentId,
+                                @RequestParam("postId") Integer postId,
+                                @RequestParam("comment") String commentContent) {
+        sTCommentService.updateComment(commentId, commentContent);
         return "redirect:/stj/blog/post/" + postId;
     }
 }
