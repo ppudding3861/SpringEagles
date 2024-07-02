@@ -1,13 +1,13 @@
 @font-face {
-    font-family: 'JGaegujaengyi-Medium-KO';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/JGaegujaengyi-Medium-KO.woff2') format('woff2');
-    font-weight: normal;
+    font-family: 'TTLaundryGothicB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2403-2@1.0/TTLaundryGothicB.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
 
 
 body {
-    font-family: "JGaegujaengyi-Medium-KO";
+    font-family: 'TTLaundryGothicB', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f8f9fa;
@@ -37,7 +37,6 @@ body {
 }
 
 .logo-text_5 {
-    font-family: 'JGaegujaengyi-Medium-KO' ;
     font-size: 2em;
 }
 
@@ -53,6 +52,16 @@ body {
 .header-user {
     display: flex;
     justify-content: center;
+}
+
+.user-home{
+    padding: 7px;
+}
+.user-addpost{
+    padding: 7px;
+}
+.user-login{
+    padding: 7px;
 }
 
 .main-container {
@@ -75,7 +84,6 @@ body {
 
 .sidebar-title {
     margin-bottom: 10px;
-    font-family: "JGaegujaengyi-Medium-KO";
     padding-bottom: 15px;
     border-bottom: 1px solid #999;
 }
@@ -87,7 +95,6 @@ body {
 
 .tag-list li {
     margin-bottom: 10px;
-    font-family: "JGaegujaengyi-Medium-KO";
     cursor: pointer;
 }
 
@@ -126,12 +133,10 @@ body {
     font-weight: bold;
     font-size: 2em;
     margin-bottom: 5px;
-    font-family: "JGaegujaengyi-Medium-KO";
 }
 
 .profile-info .user-description {
     font-size: 1.5em;
-    font-family: "JGaegujaengyi-Medium-KO";
 }
 
 .profile-lower {
@@ -170,7 +175,6 @@ body {
 .follow-stats .follow-count,
 .follow-stats .follower-count {
     margin-right: 10px;
-    font-family: "JGaegujaengyi-Medium-KO";
     cursor: pointer;
 }
 
@@ -180,7 +184,6 @@ body {
     color: #ffffff;
     cursor: pointer;
     border-radius: 5px;
-    font-family: "JGaegujaengyi-Medium-KO";
 }
 
 .navigation_5 {
@@ -198,7 +201,6 @@ body {
 
 .nav-items > div {
     font-size: 1.2em;
-    font-family: "JGaegujaengyi-Medium-KO";
     cursor: pointer;
 }
 .nav-items div.active {
@@ -251,7 +253,6 @@ body {
     font-weight: bold;
     font-size: 1.5em;
     margin: 10px 0;
-    font-family: "JGaegujaengyi-Medium-KO";
     cursor: pointer;
     margin-bottom: 20px;
 }
@@ -259,7 +260,6 @@ body {
 .post-description {
     margin-bottom: 10px;
     font-size: 1.2em;
-    font-family: "JGaegujaengyi-Medium-KO";
     margin-bottom: 20px;
 }
 
@@ -278,7 +278,6 @@ body {
     cursor: pointer;
     margin-left: 10px;
     border-radius: 5px;
-    font-family: "JGaegujaengyi-Medium-KO";
     text-align: center;
 }
 
@@ -294,7 +293,6 @@ body {
     margin-right: 10px;
     font-size: 0.8em;
     color: #999;
-    font-family: "JGaegujaengyi-Medium-KO";
 }
 
 footer {
@@ -401,7 +399,6 @@ footer {
 }
 
 .btn-3 div {
-    font-family: "JGaegujaengyi-Medium-KO";
     font-size: 1.2em; /* 텍스트 크기 조정 */
     position: relative;
     display: block; /* block 요소로 설정하여 text-align 적용 */
