@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+<form th:action="@{/lsh/blog/addpost}" method="post">
+    <div>
+        <label for="postTitle">포스트 제목 : </label>
+        <input type="text" id="postTitle" name="postTitle">
+    </div>
+    <div>
+        <label for="postContent">포스트 내용 ; </label>
+        <input type="text" id="postContent" name="postContent">
+    </div>
+
+    <button type="submit">포스트 등록</button>
+</form>
+</div>
+</body>
+</html>

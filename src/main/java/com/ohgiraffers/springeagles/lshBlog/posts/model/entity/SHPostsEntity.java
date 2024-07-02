@@ -4,7 +4,6 @@ import com.ohgiraffers.springeagles.lshBlog.comment.model.entity.SHCommentEntity
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity

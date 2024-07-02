@@ -1,14 +1,13 @@
 package com.ohgiraffers.springeagles.lshBlog.posts.controller;
 
 import com.ohgiraffers.springeagles.lshBlog.comment.service.SHCommentService;
+import com.ohgiraffers.springeagles.lshBlog.posts.model.dto.SHPostsDTO;
 import com.ohgiraffers.springeagles.lshBlog.posts.model.entity.SHPostsEntity;
 import com.ohgiraffers.springeagles.lshBlog.posts.service.SHPostsService;
-import com.ohgiraffers.springeagles.lshBlog.posts.model.dto.SHPostsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,4 +44,23 @@ public class SHPostsController {
 
         return mv;
     }
+
+    @GetMapping("/addpost")
+    public String addPost(Model model){
+        return "lsh_Blog/fragments/addPost";
+    }
+
+    @PostMapping("/addpost")
+    public ModelAndView postAdd(ModelAndView mv, SHPostsDTO SHPostsDTO){
+
+        // 등록시킬 데이터
+
+        mv.setViewName("이동할 페이지");
+
+        return mv;
+
+    }
+
+
+
 }

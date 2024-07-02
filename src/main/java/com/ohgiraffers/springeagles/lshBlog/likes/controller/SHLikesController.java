@@ -1,13 +1,10 @@
 package com.ohgiraffers.springeagles.lshBlog.likes.controller;
 
 import com.ohgiraffers.springeagles.lshBlog.likes.service.SHLikesService;
-import com.ohgiraffers.springeagles.lshBlog.likes.model.dto.SHLikesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/blogposts")
