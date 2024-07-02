@@ -55,6 +55,15 @@
                                 </div>
                             </div>
                         </a>
+                        <a th:href="@{/lsh_Blog/blogPost5.html}" th:if="${post.title == '이서현'}">
+                            <div class="main-post-content">
+                                <img th:src="@{/images/lsh_main_img.png}" id="sh" alt="Post Image">
+                                <div class="main-post-text">
+                                    <h2 th:text="${post.title}"></h2>
+                                    <p th:text="${post.description}"></p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -86,6 +95,19 @@
                             <div class="box">
                                 <div class="img">
                                     <img th:src="@{/images/khs_main_img.png}" alt="Post Image">
+                                </div>
+                                <div class="info">
+                                    <h3 th:text="${post.title}"></h3>
+                                    <p th:text="${post.description}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a th:href="@{/lsh/blog}">
+                        <div class="post" th:if="${post.title == '이서현'}">
+                            <div class="box">
+                                <div class="img">
+                                    <img th:src="@{/images/lsh_main_img.PNG}" alt="Post Image">
                                 </div>
                                 <div class="info">
                                     <h3 th:text="${post.title}"></h3>
