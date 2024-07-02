@@ -859,8 +859,8 @@ a:hover, a:focus {
 }
 
 .comment-form-align {
-  width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center; /* Align items vertically centered */
   margin-bottom: 20px;
 }
@@ -889,6 +889,26 @@ a:hover, a:focus {
   color: #999;
 }
 
+.comment-form-align2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.post-comment-input2 {
+  font-family: 'TTLaundryGothicB';
+  font-size: 0.8em;
+  height: 40px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  margin-right: 10px; /* Margin between input and button */
+}
+
 .post-comment-button {
   width: 60px;
   height: 40px;
@@ -909,11 +929,12 @@ a:hover, a:focus {
 }
 
 .comment-content-con {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .comment-content {
@@ -944,6 +965,7 @@ a:hover, a:focus {
   font-size: 0.75em;
   color: #D9CBBA;
   border: none;
+  margin-left: 10px;
 }
 .post-comment-button2:active {
   transform: translate(1px, 1px);

@@ -82,3 +82,30 @@ function confirmDelete() {
         return false; // 폼 제출을 막음
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const commentButtons = document.querySelectorAll('.post-comment-button');
+
+    commentButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const commentContentCon = this.closest('.comment-content-con');
+            const commentContent = commentContentCon.querySelector('.comment-content');
+            const commentUser = commentContentCon.querySelector('.comment-user');
+            const commentInput = commentContentCon.querySelector('.post-comment-input2');
+
+            if (this.innerText.trim() === '수정') {
+                commentContent.style.display = 'none';
+                commentUser.style.display = 'none';
+                commentInput.style.display = 'block';
+                commentInput.style.display = 'block';
+                this.innerText = '완료';
+            } else if (this.innerText.trim() === '완료') {
+                commentContent.style.display = 'block';
+                commentUser.style.display = 'block';
+                commentInput.style.display = 'none';
+                commentInput.style.display = 'none';
+                this.innerText = '수정';
+            }
+        });
+    });
+});
