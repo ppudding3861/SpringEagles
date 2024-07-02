@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.controller;
 
-import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
+//import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
@@ -13,8 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class STPostsController {
 
     @GetMapping("/posts")
     public String getAllPosts(@RequestParam(value = "postId", required = false) Integer postId, Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Integer> tagCounts = stPostsService.calculateTagCounts();
         String introContent = userIntroService.getIntroContent();
         if (introContent == null) {
@@ -57,7 +57,7 @@ public class STPostsController {
         model.addAttribute("posts", posts);
         model.addAttribute("commentCounts", commentCounts);
         model.addAttribute("tagCounts", tagCounts);
-        model.addAttribute("username", authentication.getName());
+//        model.addAttribute("username", authentication.getName());
         model.addAttribute("introContent", introContent);
         model.addAttribute("currentPage", "mainPage");
         return "jst_blog/blogPost";
@@ -66,8 +66,8 @@ public class STPostsController {
     @GetMapping("/post/{postId}")
     public String getPostById(@PathVariable("postId") Integer postId, Model model) {
         STPostsEntity post = stPostsService.getPostById(postId).orElse(null); // id에 해당하는 게시물을 조회
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String username = authentication.getName();
         if (post == null) {
             return "redirect:/stj/blog/posts"; // 게시물이 없으면 목록 페이지로 리다이렉트
         }
@@ -78,8 +78,8 @@ public class STPostsController {
         model.addAttribute("post", post); // 특정 게시물을 모델에 추가
         model.addAttribute("selectedId", postId); // 선택된 게시물 ID를 모델에 추가
         model.addAttribute("comments", comments); // 댓글 리스트를 모델에 추가
-        model.addAttribute("username", authentication.getName());
-        model.addAttribute("username", username);
+//        model.addAttribute("username", authentication.getName());
+//        model.addAttribute("username", username);
         model.addAttribute("currentPage", "readPage");
         return "jst_blog/blogPost"; // 게시물 상세 페이지 뷰 이름
     }
@@ -87,9 +87,9 @@ public class STPostsController {
     // 게시물 작성 페이지
     @GetMapping("/edit")
     public String showCreateForm(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("postDTO", new STPostsDTO()); // 빈 게시물 DTO를 모델에 추가
-        model.addAttribute("username", authentication.getName());
+//        model.addAttribute("username", authentication.getName());
         model.addAttribute("currentPage", "editPage");
         return "jst_blog/blogPost"; // 게시물 작성 폼을 보여줄 뷰 이름
     }
@@ -111,10 +111,10 @@ public class STPostsController {
         STPostsEntity postEntity = stPostsService.getPostById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("게시물을 찾을 수 없습니다. ID: " + postId));
         STPostsDTO postDTO = new STPostsDTO(postEntity); // 엔티티에서 DTO로 매핑
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         model.addAttribute("postDTO", postDTO); // 게시물 DTO를 모델에 추가
-        model.addAttribute("username", authentication.getName());
+//        model.addAttribute("username", authentication.getName());
         model.addAttribute("currentPage", "updatePage");
         return "jst_blog/blogPost"; // 게시물 수정 폼을 보여줄 뷰 이름
     }
