@@ -1,7 +1,7 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.service;
 
-import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
-import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
+//import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
+//import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentRepository;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
@@ -17,23 +17,23 @@ public class STCommentService {
 
     private final STCommentRepository STCommentRepository;
     private final STPostsRepository STPostsRepository;
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
     // CommentService 생성자
     @Autowired
-    public STCommentService(STCommentRepository STCommentRepository, STPostsRepository STPostsRepository, UserRepository userRepository) {
+    public STCommentService(STCommentRepository STCommentRepository, STPostsRepository STPostsRepository) {
         this.STCommentRepository = STCommentRepository;
         this.STPostsRepository = STPostsRepository;
-        this.userRepository = userRepository;
+//        this.userRepository = userRepository;
     }
 
     public List<STCommentEntity> getCommentsByPost(Integer postId) {
         return STCommentRepository.findByPostId(postId);
     }
 
-    public UserEntity getUserById(String userName) {
-        return userRepository.findByUserName(userName).orElse(null);
-    }
+//    public UserEntity getUserById(String userName) {
+//        return userRepository.findByUserName(userName).orElse(null);
+//    }
 
     public STPostsEntity getPostById(Integer postId) {
         return STPostsRepository.findById(postId).orElse(null);
