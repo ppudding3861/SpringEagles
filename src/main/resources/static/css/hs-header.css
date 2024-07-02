@@ -43,7 +43,7 @@ body {
 .navigation {
     display: flex;
     flex-direction: row;
-    margin-right: 100px;
+    margin-right: 10px;
     margin-left: auto; /* navigation을 오른쪽으로 이동 */
 }
 
@@ -51,6 +51,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    text-decoration: none;
 }
 
 .navigation li {
@@ -97,4 +98,27 @@ body {
     margin: 0;
     font-size: 5em;
     color: #2f3967;
+}
+
+/* 검색 버튼 css */
+.search-bar {
+    display: flex;
+    width: 400px;
+    flex-direction: row;
+}
+.search-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+.search-button {
+    padding: 5px;
+    font-size: 14px;
+    width: 100px;
+    height: 43px;
 }

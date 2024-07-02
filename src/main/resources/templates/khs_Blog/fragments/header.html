@@ -15,7 +15,12 @@
             <ul>
                 <li><a th:href="@{/}" >홈</a></li>
                 <li><a th:href="@{/khs/blog/editpagehs}">글쓰기</a></li>
-                <li>검색</li>
+                <li>
+                <form class="search-bar" th:action="@{/search}" method="get">
+                    <input type="text" name="keyword" placeholder="검색어를 입력하세요" class="search-input"/>
+                    <button type="submit" class="search-button">검색</button>
+                </form>
+            </li>
 
             </ul>
         </div>

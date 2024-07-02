@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -36,6 +37,7 @@ public class HSPostController {
 
         List<HSPostsEntity> postList = hsPostsService.postsEntityList();
 
+        Collections.reverse(postList);
         model.addAttribute("currentPage", "main");
 
         mv.addObject("postList", postList);
