@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/lsh/blog")
 public class SHPostsController {
@@ -26,26 +28,21 @@ public class SHPostsController {
         this.SHPostsService = SHPostsService;
     }
 
-//    @GetMapping("/posts/{id}")
-//    public String getPostById(@PathVariable("id") Integer postsId, Model model) {
-//        SHPostsEntity post = SHPostsService.
-//    }
-//
-//    @PostMapping
-//    public ModelAndView postBlog(SHPostsDTO SHPostsDTO, ModelAndView mv){
-//
-//        if(SHPostsDTO.getTitle() == null || SHPostsDTO.getTitle().equals("")){
-//            mv.setViewName("redirect:/");
-//        }
-//        if(SHPostsDTO.getContents() == null || SHPostsDTO.getContents().equals("")){
-//            mv.setViewName("redirect:/");
-//        }
-//        int result = SHPostsService.post(SHPostsDTO);
-//        if(result <= 0){
-//            mv.setViewName("error/page");
-//        }else{
-//            mv.setViewName("/lsh/blog");
-//        }
-//        return mv;
-//    }
+    @GetMapping("/posts")
+    public String getAllPosts(Model model) {
+        model.addAttribute("posts", SHPostsService.getAllPosts());
+        return "lsh_Blog/blogPost5";
+    }
+
+    @GetMapping
+    public ModelAndView showPage(Model model, ModelAndView mv){
+        List<SHPostsEntity> postList = SHPostsService.postsEntityList();
+
+        model.addAttribute("connectPage", "main");
+
+        mv.addObject("postList", postList);
+        mv.setViewName("lsh_Blog/blogPost5");
+
+        return mv;
+    }
 }
