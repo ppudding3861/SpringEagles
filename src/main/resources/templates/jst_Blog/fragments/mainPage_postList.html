@@ -22,8 +22,7 @@
             <div class="post-date" th:text="${post.createdAt}">
                 작성날짜
             </div>
-            <div class="post-comments">
-                <span>0개의 댓글</span>
+            <div class="post-comments" th:text="'댓글 ' + ${commentCounts[post.postId]} + '개'">
             </div>
             <div class="post-likes">
                 <span>하트 <span>0</span>개</span>

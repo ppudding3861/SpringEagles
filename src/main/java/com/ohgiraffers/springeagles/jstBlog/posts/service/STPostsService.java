@@ -1,6 +1,8 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.service;
 
 import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
+import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
+import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
@@ -23,11 +25,13 @@ public class STPostsService {
 
     private final STPostsRepository stPostsRepository;
     private final UserRepository userRepository;
+    private final STCommentService stCommentService;
 
     @Autowired
-    public STPostsService(STPostsRepository stPostsRepository, UserRepository userRepository) {
+    public STPostsService(STPostsRepository stPostsRepository, UserRepository userRepository, STCommentService stCommentService) {
         this.stPostsRepository = stPostsRepository;
         this.userRepository = userRepository;
+        this.stCommentService = stCommentService;
     }
 
     // Create
@@ -120,5 +124,10 @@ public class STPostsService {
         }
 
         return tagCounts;
+    }
+
+    public int getCommentCountByPostId(Integer postId) {
+        List<STCommentEntity> comments = stCommentService.getCommentsByPost(postId);
+        return comments.size();
     }
 }

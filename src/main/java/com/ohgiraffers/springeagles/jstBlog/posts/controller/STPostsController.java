@@ -17,6 +17,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -37,15 +39,23 @@ public class STPostsController {
     }
 
     @GetMapping("/posts")
-    public String getAllPosts(Model model) {
+    public String getAllPosts(@RequestParam(value = "postId", required = false) Integer postId, Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Map<String, Integer> tagCounts = stPostsService.calculateTagCounts();
         String introContent = userIntroService.getIntroContent();
         if (introContent == null) {
             introContent = "자기소개를 입력해주세요.";
         }
+        List<STPostsEntity> posts = stPostsService.getAllPosts();
+        Map<Integer, Integer> commentCounts = new HashMap<>();
 
-        model.addAttribute("posts", stPostsService.getAllPosts());
+        for (STPostsEntity post : posts) {
+            int commentCount = stPostsService.getCommentCountByPostId(post.getPostId());
+            commentCounts.put(post.getPostId(), commentCount);
+        }
+
+        model.addAttribute("posts", posts);
+        model.addAttribute("commentCounts", commentCounts);
         model.addAttribute("tagCounts", tagCounts);
         model.addAttribute("username", authentication.getName());
         model.addAttribute("introContent", introContent);
