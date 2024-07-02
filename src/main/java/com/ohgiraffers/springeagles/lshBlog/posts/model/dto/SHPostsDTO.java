@@ -1,6 +1,7 @@
 package com.ohgiraffers.springeagles.lshBlog.posts.model.dto;
 
 import com.ohgiraffers.springeagles.lshBlog.comment.model.dto.SHCommentDTO;
+import com.ohgiraffers.springeagles.lshBlog.posts.model.entity.SHPostsEntity;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -30,6 +31,9 @@ public class SHPostsDTO {
         this.comments = comments;
         this.commentsCount = commentsCount;
         this.createdAt = createdAt;
+    }
+    public SHPostsEntity toEntity(){
+        return new SHPostsEntity();
     }
 
     public int getId() {

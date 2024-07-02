@@ -1,8 +1,8 @@
 package com.ohgiraffers.springeagles.lshBlog.comment.service;
 
-import com.ohgiraffers.springeagles.lshBlog.comment.repository.SHCommentRepository;
 import com.ohgiraffers.springeagles.lshBlog.comment.model.dto.SHCommentDTO;
 import com.ohgiraffers.springeagles.lshBlog.comment.model.entity.SHCommentEntity;
+import com.ohgiraffers.springeagles.lshBlog.comment.repository.SHCommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
