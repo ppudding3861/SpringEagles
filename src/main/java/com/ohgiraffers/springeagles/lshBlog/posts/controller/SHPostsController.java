@@ -22,14 +22,14 @@ public class SHPostsController {
     private final SHCommentService SHCommentService;
 
     @Autowired
-    public SHPostsController(SHPostsService SHPostsService, SHCommentService SHCommentService) {
+    public SHPostsController(SHPostsService shPostsService, SHCommentService SHCommentService) {
         this.SHCommentService = SHCommentService;
-        this.SHPostsService = SHPostsService;
+        this.SHPostsService = shPostsService;
     }
 
     @GetMapping("/posts")
     public String getAllPosts(Model model) {
-        model.addAttribute("posts", SHPostsService.getAllPosts());
+        model.addAttribute("posts", SHPostsService.postsEntityList());
         return "lsh_Blog/blogPost5";
     }
 
@@ -37,7 +37,7 @@ public class SHPostsController {
     public ModelAndView showPage(Model model, ModelAndView mv){
         List<SHPostsEntity> postList = SHPostsService.postsEntityList();
 
-        model.addAttribute("connectPage", "main");
+//        model.addAttribute("connectPage", "main");
 
         mv.addObject("postList", postList);
         mv.setViewName("lsh_Blog/blogPost5");
@@ -50,7 +50,7 @@ public class SHPostsController {
         return "lsh_Blog/fragments/post5_add";
     }
 
-    @PostMapping("/addpost")
+    @PostMapping("/addpost") // 포스트 등록 누르면 데이터를 추가해주고 블로그메인으로 돌려줌
     public ModelAndView postAdd(ModelAndView mv, SHPostsDTO shPostsDTO){
 
         Integer postId = SHPostsService.save(shPostsDTO);
