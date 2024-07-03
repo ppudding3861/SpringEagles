@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,8 +34,22 @@ public class SHPostsService {
         SHPostsEntity savedEntity = SHPostsRepository.save(entity);
         return savedEntity.getId();
     }
+
+    @Transactional
     public List<SHPostsEntity> postsEntityList(){
         List<SHPostsEntity> postlist = SHPostsRepository.findAll();
+        List<SHPostsDTO> postDtoList = new ArrayList<>();
+
+        for (SHPostsEntity shPostsEntity : postlist) {
+            SHPostsDTO shPostsDto = SHPostsDTO.builder()
+                    .id(shPostsEntity.getId())
+                    .title(shPostsEntity.getTitle())
+                    .contents(shPostsEntity.getContents())
+                    .imageUrl(shPostsEntity.getImageUrl())
+                    .createdAt(shPostsEntity.getCreatedAt())
+                    .build();
+            postDtoList.add(shPostsDto);
+        }
         return postlist;
     }
 
