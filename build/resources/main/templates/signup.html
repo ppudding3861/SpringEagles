@@ -1,0 +1,89 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Sign Up</title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/public_reset.css}" />-->
+<!--    <link rel="stylesheet" th:href="@{/css/public_index.css}" />-->
+<!--    &lt;!&ndash; SweetAlert2 CSS &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="login-align">-->
+<!--    <div class="login-title"><h1>SpringEagles</h1></div>-->
+<!--    <div class="login-con">-->
+<!--        <div class="login-subtitle"><h1>Signup</h1></div>-->
+
+<!--        <form th:action="@{/signup}" th:object="${user}" method="post">-->
+<!--            <div class="login-form-align">-->
+<!--                <div class="login-form-input">-->
+<!--                    <div class="longin-input">-->
+<!--                        <input type="text" id="username" th:field="*{userName}" placeholder="유저 이름(최대10자리)" autocomplete="off" required autofocus-->
+<!--                               pattern="[A-Za-z0-9]*" title="영어와 숫자만 입력하세요 (특수문자는 사용할 수 없습니다)"  maxlength="10">-->
+<!--                    </div>-->
+<!--                    <div class="longin-input">-->
+<!--                        <input type="password" id="password" th:field="*{userPassword}" placeholder="유저 비밀번호(최대15자리)" autocomplete="off" required maxlength="15">-->
+<!--                    </div>-->
+<!--                    <div class="longin-input">-->
+<!--                        <input type="email" id="email" th:field="*{userEmail}" placeholder="유저 이메일" autocomplete="off" required>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <button type="submit" class="login-button">회원가입</button>-->
+<!--            </div>-->
+<!--        </form>-->
+<!--        <div class="login-signup">-->
+<!--            <div class="login-signup-title">이미 가입이 되어있으신가요?</div>-->
+<!--            <a class="login-signup-button" th:href="@{/login}">로그인</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>-->
+<!--<script th:inline="javascript">-->
+<!--    window.onload = function() {-->
+<!--        /* Error cases */-->
+<!--        const IdError = /*[[${IdError}]]*/ null;-->
+<!--        const EmailError = /*[[${EmailError}]]*/ null;-->
+
+<!--        if (IdError !== null && IdError !== '') {-->
+<!--            Swal.fire({-->
+<!--                toast: true,-->
+<!--                position: 'top-end',-->
+<!--                icon: 'error',-->
+<!--                title: '이미 존재하는 아이디입니다',-->
+<!--                showConfirmButton: false,-->
+<!--                timer: 3000,-->
+<!--                timerProgressBar: true,-->
+<!--                customClass: {-->
+<!--                    popup: 'custom-font'-->
+<!--                },-->
+<!--                didOpen: (toast) => {-->
+<!--                    toast.addEventListener('mouseenter', Swal.stopTimer);-->
+<!--                    toast.addEventListener('mouseleave', Swal.resumeTimer);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+
+<!--        if (EmailError !== null && EmailError !== '') {-->
+<!--            Swal.fire({-->
+<!--                toast: true,-->
+<!--                position: 'top-end',-->
+<!--                icon: 'error',-->
+<!--                title: '이미 존재하는 이메일입니다',-->
+<!--                showConfirmButton: false,-->
+<!--                timer: 3000,-->
+<!--                timerProgressBar: true,-->
+<!--                customClass: {-->
+<!--                    popup: 'custom-font'-->
+<!--                },-->
+<!--                didOpen: (toast) => {-->
+<!--                    toast.addEventListener('mouseenter', Swal.stopTimer);-->
+<!--                    toast.addEventListener('mouseleave', Swal.resumeTimer);-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->

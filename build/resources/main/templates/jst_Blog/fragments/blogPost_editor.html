@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="editor">
+<head>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+    <style>
+        body, html {
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<div class="editor-con">
+
+    <div class="editor-input">
+        <input type="text" id="title" required>
+        <label>제목</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="description" required>
+        <label>설명</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="imageUrl" required>
+        <label>이미지</label>
+        <span></span>
+    </div>
+
+    <div class="editor-input">
+        <input type="text" id="tag" required>
+        <label>태그</label>
+        <span></span>
+    </div>
+
+    <div id="editor"></div>
+
+    <div class="editor-button" onclick="handleClick()"><a>작성완료</a></div>
+</div>
+<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+<script th:inline="javascript">
+    let editor; // 전역 변수로 editor 선언
+
+    document.addEventListener('DOMContentLoaded', function () {
+        editor = new toastui.Editor({
+            el: document.querySelector('#editor'),
+            height: '400px',
+            initialEditType: 'markdown',
+            placeholder: '내용을 입력해 주세요.',
+            previewStyle: 'vertical',
+            overflow: 'auto',
+            heightResizable: false,
+        });
+    });
+
+    function handleClick() {
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const imageUrl = document.getElementById('imageUrl').value;
+        const markdown = editor.getMarkdown();
+        const tag = document.getElementById('tag').value;
+        const tagArray = tag.split(' ');
+
+        if (!title) {
+            alert('제목을 입력해주세요')
+            return;
+        }
+        if (!description) {
+            alert('설명 입력해주세요')
+            return;
+        }
+        if (!markdown) {
+            alert('본문을 입력해주세요')
+            return;
+        }
+
+        if (confirm("작성을 완료하시겠습니까?")) {
+            const blogData = {
+                title: title,
+                description: description,
+                imageUrl: imageUrl,
+                content: markdown,
+                tagArray: tagArray
+            };
+
+            console.log("Sending Blog Data: ", blogData);
+
+            // 서버로 데이터를 전송하는 fetch 요청
+            fetch('/stj/blog/edit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(blogData),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('서버 오류 발생');
+                    }
+                    return response.text();
+                })
+                .then(() => {
+                    alert("작성이 완료되었습니다.")
+                    window.location.href = '/stj/blog/posts'; // 리다이렉트
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('작성을 완료하는 도중 오류가 발생했습니다');
+                });
+        }
+    }
+</script>
+</html>
