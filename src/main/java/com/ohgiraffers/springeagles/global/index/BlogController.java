@@ -26,7 +26,6 @@ public class BlogController {
         // Add more posts as needed
 
         model.addAttribute("posts", posts);
-//        model.addAttribute("username", authentication.getName());
         return "index";
     }
 }
