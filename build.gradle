@@ -37,6 +37,9 @@ dependencies {
     //Lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    //부트스트랩
+    runtimeOnly 'org.webjars:bootstrap:4.5.0'
 }
 
 tasks.named('test') {

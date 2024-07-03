@@ -45,18 +45,17 @@ public class SHPostsController {
         return mv;
     }
 
-    @GetMapping("/addpost")
+    @GetMapping("/addpost") // 글쓰기 눌렀을 때 /addpost로 매핑해줌
     public String addPost(Model model){
-        return "lsh_Blog/fragments/addPost";
+        return "lsh_Blog/fragments/post5_add";
     }
 
     @PostMapping("/addpost")
-    public ModelAndView postAdd(ModelAndView mv, SHPostsDTO SHPostsDTO){
+    public ModelAndView postAdd(ModelAndView mv, SHPostsDTO shPostsDTO){
 
-        // 등록시킬 데이터
-
-        mv.setViewName("이동할 페이지");
-
+        Integer postId = SHPostsService.save(shPostsDTO);
+        mv.addObject("post", shPostsDTO);
+        mv.setViewName("/lsh_Blog/blogPost5");
         return mv;
 
     }

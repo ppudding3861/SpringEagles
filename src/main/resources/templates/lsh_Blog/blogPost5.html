@@ -7,28 +7,9 @@
     <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
     <link rel="stylesheet" th:href="@{/css/lsh_Blog.css}"/>
 </head>
+
 <body>
-<header>
-    <div class="header-container">
-        <div class="header">
-            <div class="header-logo_5" th:onclick="@{/lsh/blog}">
-                <div class="logo-image_5">
-                    <img th:src="@{/images/lsh_main_img.png}" alt=""/>
-                </div>
-                <div class="logo-text_5" >Eagles_Soori</div>
-            </div>
-            <div class="header-user">
-                <a th:href="@{/}">
-                    <div class="user-home">Home</div>
-                </a>
-                <a th:href="@{/lsh/blog/addpost}">
-                    <div class="user-addpost">글쓰기</div>
-                </a>
-                <div class="user-login" th:onclick="">로그인</div>
-            </div>
-        </div>
-    </div>
-</header>
+<header th:insert="lsh_Blog/fragments/blogPost5_header.html"></header>
 <main>
     <div class="main-container">
         <aside th:replace="~{/lsh_Blog/fragments/blogPost_sidebar5 :: sidebar}"></aside>
