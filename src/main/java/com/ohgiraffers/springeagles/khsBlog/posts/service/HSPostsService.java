@@ -1,10 +1,11 @@
 package com.ohgiraffers.springeagles.khsBlog.posts.service;
 
+import com.ohgiraffers.springeagles.khsBlog.posts.dto.HSPostsDTO;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +22,29 @@ public class HSPostsService {
         this.hsPostsRepository = hsPostsRepository;
     }
 
+    @Transactional
+    public int addPost(HSPostsDTO hsPostsDTO) {
+        List<HSPostsEntity> hsPostsEntityList = hsPostsRepository.findAll();
+
+        for (HSPostsEntity entity : hsPostsEntityList) {
+            if(entity.getTitle().equals(hsPostsDTO.getTitle())){
+                return 0;
+            }
+        }
+
+        HSPostsEntity savedEntity = new HSPostsEntity();
+        savedEntity.setTitle(hsPostsDTO.getTitle());
+        savedEntity.setDescription(hsPostsDTO.getDescription());
+        savedEntity.setContent(hsPostsDTO.getContent());
+        savedEntity.setImageUrl(hsPostsDTO.getImageUrl());
+        savedEntity.setCategory(hsPostsDTO.getCategory());
+
+        HSPostsEntity result = hsPostsRepository.save(savedEntity);
+
+        return result != null ? 1 : 0;
+
+    }
+
     // 모든 게시글 목록을 가져오는 메서드
     public List<HSPostsEntity> postsEntityList() {
         List<HSPostsEntity> postlist = hsPostsRepository.findAll(); // 모든 게시글을 데이터베이스에서 조회
@@ -33,23 +57,23 @@ public class HSPostsService {
     }
 
     // ID를 통해 특정 게시글을 삭제하는 메서드
-    @Transactional
     public void deletePost(Integer id) {
         hsPostsRepository.deleteById(id); // ID로 게시글을 데이터베이스에서 삭제
     }
 
     // ID를 통해 특정 게시글을 수정하는 메서드
     @Transactional
-    public void modifypost(Integer id, HSPostsEntity requestpost) {
+    public void modifypost(Integer id, HSPostsDTO hsPostsDTO) {
         // ID로 게시글을 조회하고, 없을 경우 예외를 발생시킴
-        HSPostsEntity hsPostsEntity1 = hsPostsRepository.findById(id).orElseThrow(() -> {
+        HSPostsEntity hsPostsEntity = hsPostsRepository.findById(id).orElseThrow(() -> {
             return new IllegalArgumentException("글 수정 실패: 아이디를 찾을 수 없습니다."); // 예외 메시지
         });
         // 요청된 게시글의 필드 값으로 기존 게시글의 필드 값을 업데이트
-        hsPostsEntity1.setTitle(requestpost.getTitle()); // 제목 수정
-        hsPostsEntity1.setDescription(requestpost.getDescription()); // 설명 수정
-        hsPostsEntity1.setContent(requestpost.getContent()); // 내용 수정
-        hsPostsEntity1.setImageUrl(requestpost.getImageUrl()); // 이미지 URL 수정
-        hsPostsEntity1.setCategory(requestpost.getCategory()); // 카테고리 수정
+        hsPostsEntity.setTitle(hsPostsDTO.getTitle()); // 제목 수정
+        hsPostsEntity.setDescription(hsPostsDTO.getDescription()); // 설명 수정
+        hsPostsEntity.setContent(hsPostsDTO.getContent()); // 내용 수정
+        hsPostsEntity.setImageUrl(hsPostsDTO.getImageUrl()); // 이미지 URL 수정
+        hsPostsEntity.setCategory(hsPostsDTO.getCategory()); // 카테고리 수정
+        hsPostsRepository.save(hsPostsEntity);
     }
 }

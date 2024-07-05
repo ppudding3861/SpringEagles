@@ -18,17 +18,18 @@ import java.util.stream.Collectors;
 @RequestMapping("/khs/blog")
 public class HSPostController {
 
-    private HSPostsService hsPostsService; // HSPostsService 클래스의 인스턴스를 주입받기 위한 필드
-    private HSPostsRepository hsPostsRepository; // HSPostsRepository 클래스의 인스턴스를 주입받기 위한 필드
+    private final HSPostsService hsPostsService; // HSPostsService 클래스의 인스턴스를 주입받기 위한 필드
+    private HSPostsDTO savedDTO;
 
     @Autowired
-    public HSPostController(HSPostsRepository hsPostsRepository, HSPostsService hsPostsService) {
-        this.hsPostsRepository = hsPostsRepository; // 생성자를 통해 HSPostsRepository 인스턴스를 주입받음
-        this.hsPostsService = hsPostsService; // 생성자를 통해 HSPostsService 인스턴스를 주입받음
+    public HSPostController(HSPostsService hsPostsService) {
+        this.hsPostsService = hsPostsService;
     }
 
+
+
     /**
-     * 수정 페이지를 보여주는 메서드
+     * 블로그 등록 페이지를 보여주는 메서드
      * @param model 모델 객체
      * @return 수정 페이지 뷰 이름
      */
@@ -79,11 +80,23 @@ public class HSPostController {
      * @return 리다이렉트 경로
      */
     @PostMapping("/post")
-    public String addPost(HSPostsDTO hsPostsDTO) {
-        HSPostsEntity hsPostsEntity = hsPostsDTO.toEntity(); // DTO를 엔티티로 변환
-        HSPostsEntity saved = hsPostsRepository.save(hsPostsEntity); // 엔티티를 저장
-        System.out.println(saved.toString()); // 저장된 엔티티 정보를 콘솔에 출력
-        return "redirect:/khs/blog"; // 블로그 메인 페이지로 리다이렉트
+    public ModelAndView addPost(HSPostsDTO hsPostsDTO, ModelAndView mv) {
+        if(hsPostsDTO.getTitle() == null || hsPostsDTO.getTitle().equals("")){
+            mv.setViewName("redirect:/khs/blog/editpagehs");
+            return mv;
+        }
+        if(hsPostsDTO.getContent() == null || hsPostsDTO.getContent().equals("")){
+            mv.setViewName("redirect:/khs/blog/editpagehs");
+        }
+
+        int result = hsPostsService.addPost(hsPostsDTO);
+        if(result <= 0) {
+            mv.setViewName("error/page");
+        }else {
+            savedDTO = hsPostsDTO;
+            mv.setViewName("redirect:/khs/blog");
+        }
+        return mv;
     }
 
     /**
@@ -110,8 +123,8 @@ public class HSPostController {
      * @param id 게시글 ID
      * @return 리다이렉트 경로
      */
-    @GetMapping("/postreader/delete")
-    public String deletePost(@RequestParam("id") Integer id) {
+    @GetMapping("/postreader/delete/{id}")
+    public String deletePost(@PathVariable("id") Integer id) {
         hsPostsService.deletePost(id); // ID로 게시글을 삭제
         return "redirect:/khs/blog"; // 블로그 메인 페이지로 리다이렉트
     }
@@ -122,7 +135,7 @@ public class HSPostController {
      * @param mv 모델앤뷰 객체
      * @return 모델앤뷰 객체 반환
      */
-    @GetMapping("/postreader/modify{id}")
+    @GetMapping("/postreader/modify/{id}")
     public ModelAndView modifyPage(@PathVariable("id") Integer id, ModelAndView mv) {
         HSPostsEntity post = hsPostsService.getPostById(id).orElse(null); // ID로 게시글을 찾음
         mv.addObject("post", post); // 선택된 게시글을 모델앤뷰에 추가
@@ -137,10 +150,9 @@ public class HSPostController {
      * @param hsPostsDTO 게시글 DTO
      * @return 리다이렉트 경로
      */
-    @PostMapping("/postreader/modify{id}")
+    @PostMapping("/postreader/modify/{id}")
     public String modifyPost(@PathVariable("id") Integer id, HSPostsDTO hsPostsDTO) {
-        HSPostsEntity updatedEntity = hsPostsDTO.toEntity(); // DTO를 엔티티로 변환
-        hsPostsService.modifypost(id, updatedEntity); // ID로 게시글을 수정
+        hsPostsService.modifypost(id, hsPostsDTO);
         return "redirect:/khs/blog/postreader/" + id; // 수정된 게시글 페이지로 리다이렉트
     }
 }

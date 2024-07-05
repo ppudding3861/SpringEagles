@@ -19,8 +19,8 @@
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
                 <div class="read-option">
-                    <a th:href="@{/khs/blog/postreader/modify{id}(id=${post.post_id})}" class="read-modify-button"><div>수정</div></a>
-                    <a th:href="@{/khs/blog/postreader/delete?(id=${post.post_id})}" class="read-delete-button"><div>삭제</div></a>
+                    <a th:href="@{/khs/blog/postreader/modify/{id}(id=${post.post_id})}" class="read-modify-button"><div>수정</div></a>
+                    <a th:href="@{/khs/blog/postreader/delete/{id}(id=${post.post_id})}" class="read-delete-button"><div>삭제</div></a>
                 </div>
             </div>
         </div>
