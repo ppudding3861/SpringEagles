@@ -1,11 +1,11 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.service;
 
-import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
-import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
-import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentDTO;
-import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
+import com.ohgiraffers.springeagles.global.auth.entity.UserEntity;
+import com.ohgiraffers.springeagles.global.auth.repository.UserRepository;
+import com.ohgiraffers.springeagles.jstBlog.comment.model.STCommentDTO;
+import com.ohgiraffers.springeagles.jstBlog.comment.entity.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentRepository;
-import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
+import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

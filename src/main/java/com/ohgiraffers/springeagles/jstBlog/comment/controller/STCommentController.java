@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.controller;
 
-import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentDTO;
+import com.ohgiraffers.springeagles.jstBlog.comment.model.STCommentDTO;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
 import org.springframework.beans.factory.annotation.Autowired;

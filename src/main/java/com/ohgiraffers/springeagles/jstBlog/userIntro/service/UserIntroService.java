@@ -1,7 +1,7 @@
 package com.ohgiraffers.springeagles.jstBlog.userIntro.service;
 
-import com.ohgiraffers.springeagles.jstBlog.userIntro.dto.UserIntroDTO;
-import com.ohgiraffers.springeagles.jstBlog.userIntro.repository.UserIntroEntity;
+import com.ohgiraffers.springeagles.jstBlog.userIntro.model.UserIntroDTO;
+import com.ohgiraffers.springeagles.jstBlog.userIntro.entity.UserIntroEntity;
 import com.ohgiraffers.springeagles.jstBlog.userIntro.repository.UserIntroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

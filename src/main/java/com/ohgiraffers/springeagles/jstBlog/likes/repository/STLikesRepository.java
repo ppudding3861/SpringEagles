@@ -1,5 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.likes.repository;
 
+import com.ohgiraffers.springeagles.jstBlog.likes.entity.STLikesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

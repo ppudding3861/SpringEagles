@@ -1,5 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.repository;
 
+import com.ohgiraffers.springeagles.jstBlog.comment.entity.STCommentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

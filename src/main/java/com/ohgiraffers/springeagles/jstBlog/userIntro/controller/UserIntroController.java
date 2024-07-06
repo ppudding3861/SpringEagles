@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.userIntro.controller;
 
-import com.ohgiraffers.springeagles.jstBlog.userIntro.dto.UserIntroDTO;
+import com.ohgiraffers.springeagles.jstBlog.userIntro.model.UserIntroDTO;
 import com.ohgiraffers.springeagles.jstBlog.userIntro.service.UserIntroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
