@@ -52,7 +52,13 @@ public class STPostsController {
 
         Integer userId = user.getUserId();
         Map<String, Integer> tagCounts = stPostsService.calculateTagCounts();
-        String introContent = "자기소개를 입력해주세요.";
+
+
+        String introContent = userIntroService.getIntroContent().orElse("");
+
+        if (introContent.isEmpty()) {
+            introContent = "소개글을 입력해주세요";
+        }
 
         List<STPostsEntity> posts = stPostsService.getAllPosts();
         Map<Integer, Integer> commentCounts = new HashMap<>();

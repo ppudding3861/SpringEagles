@@ -52,10 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
         handleNavButtonClick(introduceButton, postListButton, introduce, postList);
     });
 
-    // 게시물 수정 버튼 클릭 이벤트 설정
-    const modifyButton = document.getElementById('modifyButton');
+    // 소개글 수정 버튼 클릭 이벤트 설정
     const introduceContent = document.getElementById('introduceContent');
     const introduceTextarea = document.getElementById('introduceTextarea');
+    const modifyButton = document.getElementById('modifyButton');
 
     modifyButton.addEventListener('click', function () {
         if (modifyButton.innerText === '수정') {
@@ -74,12 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
             })
                 .then(response => {
                     if (response.ok) {
-                        return response.text();
+                        return response.json(); // JSON 응답으로 변경
                     }
                     throw new Error('게시물 작성 중 오류가 발생했습니다.');
                 })
                 .then(data => {
-                    alert(data);
+                    if (data.message) {
+                        alert(data.message); // 성공 메시지 표시
+                    }
                     introduceContent.innerText = introContent; // 화면에 수정된 내용 표시
                     introduceContent.style.display = 'block';
                     introduceTextarea.style.display = 'none';
@@ -113,6 +115,8 @@ function showEditForm(button) {
         }
     });
 }
+
+// 좋아요 관련 로직
 
 document.addEventListener('DOMContentLoaded', function() {
     const likeButton = document.getElementById('like-button');
