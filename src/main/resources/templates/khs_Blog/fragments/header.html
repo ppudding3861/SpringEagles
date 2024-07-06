@@ -5,30 +5,39 @@
     <title>Title</title>
 </head>
 <body>
+<!-- 타임리프 fragment로 사용될 헤더 정의 -->
 <header th:fragment="header" class="header">
+    <!-- 헤더의 네비게이션 바 -->
     <div class="header-navbar">
+        <!-- 로고를 포함하는 div -->
         <div class="header-logo">
+            <!-- 로고 이미지, 타임리프를 사용하여 경로 설정 -->
             <img th:src="@{/images/khs_main_img.png}"/>
         </div>
 
+        <!-- 네비게이션 메뉴를 포함하는 div -->
         <div class="navigation">
             <ul>
+                <!-- 홈 링크 -->
                 <li><a th:href="@{/}" >홈</a></li>
+                <!-- 글쓰기 페이지 링크 -->
                 <li><a th:href="@{/khs/blog/editpagehs}">글쓰기</a></li>
+                <!-- 검색 바 폼 -->
                 <li>
-                <form class="search-bar" th:action="@{/search}" method="get">
-                    <input type="text" name="keyword" placeholder="검색어를 입력하세요" class="search-input"/>
-                    <button type="submit" class="search-button">검색</button>
-                </form>
-            </li>
-
+                    <form class="search-bar" th:action="@{/khs/blog}" method="get">
+                        <!-- 검색 입력 필드 -->
+                        <input type="text" name="keyword" placeholder="검색어를 입력하세요" class="search-input"/>
+                        <!-- 검색 버튼 -->
+                        <button type="submit" class="search-button">검색</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>
+    <!-- 헤더의 제목 영역 -->
     <div class="header-title">
         <h3>PPUDING'S BLOG</h3>
     </div>
-
 </header>
 </body>
 </html>

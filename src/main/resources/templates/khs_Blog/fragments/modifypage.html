@@ -9,7 +9,7 @@
 <editpage th:fragment="modifypage" class="modifypage">
     <div class="edit-container">
         <h1>글쓰기</h1>
-        <form th:action="@{/khs/blog/postreader/modify{id}(id=${post.post_id})}" method="post" enctype="multipart/form-data">
+        <form th:action="@{/khs/blog/postreader/modify/{id}(id=${post.post_id})}" method="post" enctype="multipart/form-data">
             <div class="edit-form-group">
                 <label for="title">제목</label>
                 <input type="text" id="title" name="title" th:value="${post.title}" required/>
