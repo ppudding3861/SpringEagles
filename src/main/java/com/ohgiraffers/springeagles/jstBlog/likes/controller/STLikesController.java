@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.likes.controller;
 
-import com.ohgiraffers.springeagles.global.user.service.CustomUserDetailsService;
+import com.ohgiraffers.springeagles.global.auth.service.CustomUserDetailsService;
 import com.ohgiraffers.springeagles.jstBlog.likes.service.STLikesService;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
 import org.springframework.beans.factory.annotation.Autowired;

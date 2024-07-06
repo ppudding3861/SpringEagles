@@ -1,11 +1,11 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.service;
 
-import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
-import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
+import com.ohgiraffers.springeagles.global.auth.repository.UserRepository;
+import com.ohgiraffers.springeagles.jstBlog.comment.entity.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.likes.service.STLikesService;
-import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
-import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
+import com.ohgiraffers.springeagles.jstBlog.posts.model.STPostsDTO;
+import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

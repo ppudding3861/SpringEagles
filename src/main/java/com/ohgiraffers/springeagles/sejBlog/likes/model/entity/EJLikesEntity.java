@@ -1,6 +1,6 @@
 //package com.ohgiraffers.springeagles.sejBlog.likes.model.entity;
 //
-//import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
+//import com.ohgiraffers.springeagles.global.user.entity.UserEntity;
 //import com.ohgiraffers.springeagles.sejBlog.posts.model.entity.EJPostsEntity;
 //import jakarta.persistence.*;
 //
