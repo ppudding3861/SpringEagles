@@ -1,6 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.controller;
 
-import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentRequest;
+import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentDTO;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +27,13 @@ public class STCommentController {
 
     // 댓글 저장 관련 로직
     @PostMapping("/savecomment")
-    public ModelAndView saveComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
-        int result = stCommentService.saveComment(request);
+    public ModelAndView saveComment(@ModelAttribute STCommentDTO stCommentDTO, ModelAndView mv) {
+        int result = stCommentService.saveComment(stCommentDTO);
         if (result <= 0) {
             mv.addObject("errorMessage", "댓글 저장에 실패했습니다.");
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+            mv.setViewName("redirect:/stj/blog/post/" + stCommentDTO.getPostId());
         } else {
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+            mv.setViewName("redirect:/stj/blog/post/" + stCommentDTO.getPostId());
         }
         return mv;
     }
@@ -41,28 +41,25 @@ public class STCommentController {
     // 삭제 관련 로직
     @PostMapping("/deletecomment")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ModelAndView deleteComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
-        int result = stCommentService.deleteCommentById(request);
+    public ModelAndView deleteComment(@ModelAttribute STCommentDTO stCommentDTO, ModelAndView mv) {
+        int result = stCommentService.deleteCommentById(stCommentDTO);
         if (result <= 0) {
             mv.addObject("errorMessage", "댓글 삭제에 실패했습니다.");
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
-        } else {
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
         }
+        mv.setViewName("redirect:/stj/blog/post/" + stCommentDTO.getPostId());
         return mv;
     }
+
 
     // 수정 관련 로직
     @PostMapping("/updatecomment")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public ModelAndView updateComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
-        int result = stCommentService.updateComment(request);
+    public ModelAndView updateComment(@ModelAttribute STCommentDTO stCommentDTO, ModelAndView mv) {
+        int result = stCommentService.updateComment(stCommentDTO);
         if (result <= 0) {
             mv.addObject("errorMessage", "댓글 수정에 실패했습니다.");
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
-        } else {
-            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
         }
+        mv.setViewName("redirect:/stj/blog/post/" + stCommentDTO.getPostId());
         return mv;
     }
 }

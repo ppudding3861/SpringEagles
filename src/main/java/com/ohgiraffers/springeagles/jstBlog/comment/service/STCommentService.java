@@ -2,7 +2,7 @@ package com.ohgiraffers.springeagles.jstBlog.comment.service;
 
 import com.ohgiraffers.springeagles.global.user.repository.UserEntity;
 import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
-import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentRequest;
+import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentDTO;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentRepository;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
@@ -32,16 +32,16 @@ public class STCommentService {
 
     // 댓글 저장
     @Transactional
-    public Integer saveComment(STCommentRequest request) {
+    public Integer saveComment(STCommentDTO stCommentDTO) {
         // 요청 유효성 검증
-        if (request == null || request.getUserName() == null || request.getPostId() == null || request.getCommentContent() == null) {
+        if (stCommentDTO == null || stCommentDTO.getUserName() == null || stCommentDTO.getPostId() == null || stCommentDTO.getCommentContent() == null) {
             return 0; // 유효하지 않은 요청
         }
 
         STCommentEntity comment = new STCommentEntity();
-        comment.setUserName(request.getUserName());
-        comment.setPostId(request.getPostId());
-        comment.setCommentContent(request.getCommentContent());
+        comment.setUserName(stCommentDTO.getUserName());
+        comment.setPostId(stCommentDTO.getPostId());
+        comment.setCommentContent(stCommentDTO.getCommentContent());
 
         try {
             STCommentEntity result = stCommentRepository.save(comment);
@@ -54,21 +54,12 @@ public class STCommentService {
 
     // 댓글 삭제
     @Transactional
-    public Integer deleteCommentById(STCommentRequest request) {
+    public Integer deleteCommentById(STCommentDTO stCommentDTO) {
         // 요청 유효성 검증
-        if (request == null || request.getUserName() == null || request.getPostId() == null || request.getCommentId() == null) {
-            return 0; // 유효하지 않은 요청
-        }
-
-        STCommentEntity comment = stCommentRepository.findById(request.getCommentId()).orElse(null);
+        STCommentEntity comment = stCommentRepository.findById(stCommentDTO.getCommentId()).orElse(null);
         if (comment == null) {
             return 0; // 댓글이 존재하지 않음
         }
-
-        if (!comment.getUserName().equals(request.getUserName())) {
-            return 0; // 요청자가 댓글 소유자가 아님
-        }
-
         try {
             stCommentRepository.delete(comment);
             return 1;
@@ -80,26 +71,18 @@ public class STCommentService {
 
     // 댓글 수정
     @Transactional
-    public Integer updateComment(STCommentRequest request) {
+    public Integer updateComment(STCommentDTO stCommentDTO) {
         // 요청 유효성 검증
-        if (request == null || request.getUserName() == null || request.getPostId() == null || request.getCommentId() == null || request.getCommentContent() == null) {
+        if (stCommentDTO.getCommentId() == null || stCommentDTO.getPostId() == null || stCommentDTO.getCommentContent() == null) {
             return 0; // 유효하지 않은 요청
         }
-
-        STCommentEntity comment = stCommentRepository.findById(request.getCommentId())
+        STCommentEntity comment = stCommentRepository.findById(stCommentDTO.getCommentId())
                 .orElseThrow(() -> new IllegalArgumentException("댓글을 찾을 수 없습니다."));
-
-        if (!comment.getUserName().equals(request.getUserName())) {
-            return 0; // 요청자가 댓글 소유자가 아님
-        }
-
-        comment.setCommentContent(request.getCommentContent());
-
+        comment.setCommentContent(stCommentDTO.getCommentContent());
         try {
             stCommentRepository.save(comment);
             return 1;
         } catch (Exception e) {
-            // 예외 처리 로직 추가 (로그 등)
             return 0;
         }
     }
