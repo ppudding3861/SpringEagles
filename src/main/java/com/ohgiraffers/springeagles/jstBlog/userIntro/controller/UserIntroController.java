@@ -1,13 +1,14 @@
 package com.ohgiraffers.springeagles.jstBlog.userIntro.controller;
 
+import com.ohgiraffers.springeagles.jstBlog.userIntro.dto.UserIntroDTO;
 import com.ohgiraffers.springeagles.jstBlog.userIntro.service.UserIntroService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/stj/blog")
@@ -21,12 +22,22 @@ public class UserIntroController {
     }
 
     @PostMapping("/updateIntro")
-    public ResponseEntity<String> updateIntro(@RequestBody String userIntroContent) {
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @ResponseBody
+    public Map<String, String> updateIntro(@RequestBody UserIntroDTO userIntroDTO) {
+        Map<String, String> response = new HashMap<>();
         try {
-            userIntroService.saveOrUpdateIntroContent(userIntroContent); // 게시물 생성 서비스 호출
-            return ResponseEntity.ok("게시물 작성이 완료되었습니다.");
+            int result = userIntroService.saveOrUpdateIntroContent(userIntroDTO);
+            if (result == 1) {
+                response.put("message", "소개글 저장이 완료 되었습니다");
+            } else if (result == 2) {
+                response.put("message", "소개글 수정이 완료 되었습니다");
+            }
+        } catch (IllegalArgumentException e) {
+            response.put("message", "소개글 저장 혹은 수정에 실패하였습니다: " + e.getMessage());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("게시물 작성 중 오류가 발생했습니다.");
+            response.put("message", "알 수 없는 오류가 발생하였습니다: " + e.getMessage());
         }
+        return response;
     }
 }

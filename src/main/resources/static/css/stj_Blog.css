@@ -722,6 +722,11 @@ a:hover, a:focus {
   overflow: hidden;
 }
 
+.selected-post1,
+.selected-post2 {
+  width: 100%;
+}
+
 .read-title {
   width: 100%;
   height: auto;
@@ -831,11 +836,20 @@ a:hover, a:focus {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-} .read-imgs > img {
-    width: 80%;
-    height: 40%;
-    object-fit: cover;
-  }
+}
+.read-imgs > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.read-imgs > div > img {
+  width: 100%;
+  height: 40%;
+  object-fit: cover;
+  background-color: #fff;
+  border: 5px solid #D9CBBA;
+  border-radius: 10px;
+}
 
 .read-content,
 .post-comment-con {
@@ -858,22 +872,49 @@ a:hover, a:focus {
   margin-bottom: 20px;
 }
 
+.comment-upper-align{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.comment-img-button {
+  background-color: #8C8072;
+  border: none;
+}
+.comment-img-form,
+.comment-img{
+  height: 30px;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.comment-title {
+    font-family: 'GmarketSansMedium';
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #00010D;
+}
+
 .comment-form-align {
   display: flex;
   flex-direction: row;
   align-items: center; /* Align items vertically centered */
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .comment-form-align > label{
-  width: 95%;
-  height: 40px;
+  width: 100%;
 }
 
 .post-comment-input {
   font-family: 'TTLaundryGothicB';
   font-size: 0.8em;
-  width: 95%;
+  width: 98%;
   height: 40px;
   border: 0;
   border-radius: 15px;
@@ -892,14 +933,16 @@ a:hover, a:focus {
 .comment-form-align2 {
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .post-comment-input2 {
   font-family: 'TTLaundryGothicB';
   font-size: 0.8em;
-  height: 40px;
+  height: 28px;
+  width: 100%;
   border: 0;
   border-radius: 15px;
   outline: none;
@@ -930,43 +973,68 @@ a:hover, a:focus {
 
 .comment-content-con {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: baseline;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-bottom: 20px;
+  background-color: #8C8072;
+}
+
+.comment-upper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.comment-bottom {
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .comment-content {
-  flex: 8;
+  flex: 4;
   font-family: 'GmarketSansMedium';
   font-size: 0.75em;
   margin-left: 10px;
+  word-break: break-word;
 }
+
 .comment-user {
   flex: 1;
   font-family: 'GmarketSansMedium';
-  font-size: 0.6em;
+  font-size: 0.75em;
   color: #6d14b8;
   margin-right: 10px;
+  text-align: center;
 }
 
-.post-comment-button2 {
+.comment-buttons {
   flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px; /* 버튼 사이의 간격 조절 */
+}
+
+.post-comment-button,
+.post-comment-button2 {
   width: 60px;
-  height: 40px;
+  height: 30px;
   background-color: #40362E;
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
-  padding: 0 15px;
+  padding: 0 10px;
   text-align: center;
   font-family: 'GmarketSansMedium';
   font-size: 0.75em;
   color: #D9CBBA;
   border: none;
-  margin-left: 10px;
 }
+
+.post-comment-button:active,
 .post-comment-button2:active {
   transform: translate(1px, 1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);

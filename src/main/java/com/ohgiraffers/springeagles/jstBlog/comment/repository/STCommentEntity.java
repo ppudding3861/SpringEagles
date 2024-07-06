@@ -16,7 +16,7 @@ public class STCommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comment_id", nullable = false)
+    @Column(name = "comment_id", nullable = false, columnDefinition = "INTEGER")
     private Integer commentId;
 
     @Column(name = "commentContent", nullable = false)

@@ -1,10 +1,12 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.repository;
 
+import com.ohgiraffers.springeagles.jstBlog.likes.repository.STLikesEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -55,12 +57,24 @@ public class STPostsEntity {
     @Column(name = "comment_id")
     private Integer commentId;
 
-    @Column(name = "likes_id")
-    private Integer likesId;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<STLikesEntity> likes = new ArrayList<>();
 
     @Column(name = "post_tags")
     @ElementCollection
     private List<String> tagArray;
+
+    @Transient
+    private int likesCount;
+
+    public void addLike(STLikesEntity like) {
+        this.likes.add(like);
+        like.setPost(this);
+    }
+
+    public int getLikesCount() {
+        return likes.size();
+    }
 
     // DTO -> Entity
     public STPostsEntity(STPostsDTO dto) {
@@ -73,7 +87,10 @@ public class STPostsEntity {
         this.updatedAt = dto.getUpdatedAt();
         this.userId = dto.getUserId();
         this.commentId = dto.getCommentId();
-        this.likesId = dto.getLikesId();
         this.tagArray = dto.getTagArray();
+        if (dto.getLikes() != null) {
+            dto.getLikes().forEach(this::addLike);
+        }
+        this.likesCount = dto.getLikesCount();
     }
 }

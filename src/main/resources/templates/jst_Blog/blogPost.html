@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/stj_Blog.css}"/>
     <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
 <header>
@@ -17,7 +18,7 @@
             </div>
             <div class="header-user">
                 <ul class="SMN_effect-6">
-<!--                    <li class="header-authentication" th:text="${username} + ' 님 환영합니다'"></li>-->
+                    <li class="header-authentication" th:text="${username} + ' 님 환영합니다'"></li>
                     <li><a th:href="@{/}" data-hover="홈화면">홈화면</a></li>
                     <li>
                         <a th:href="@{/stj/blog/edit}" th:if="${currentPage != 'editPage'}">글쓰기</a>
@@ -46,5 +47,6 @@
     <!-- Footer content here -->
 </footer>
 <script th:src="@{/javascript/stj_blog.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </body>
 </html>
