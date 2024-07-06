@@ -1,17 +1,19 @@
 package com.ohgiraffers.springeagles.jstBlog.likes.controller;
 
 import com.ohgiraffers.springeagles.global.user.service.CustomUserDetailsService;
-import com.ohgiraffers.springeagles.jstBlog.likes.dto.STLikesDTO;
 import com.ohgiraffers.springeagles.jstBlog.likes.service.STLikesService;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/stj/blog")
@@ -22,8 +24,7 @@ public class STLikesController {
     private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public STLikesController(STLikesService stLikesService, STPostsService stPostsService,
-                             CustomUserDetailsService customUserDetailsService) {
+    public STLikesController(STLikesService stLikesService, STPostsService stPostsService, CustomUserDetailsService customUserDetailsService) {
         this.stLikesService = stLikesService;
         this.stPostsService = stPostsService;
         this.customUserDetailsService = customUserDetailsService;
@@ -31,38 +32,30 @@ public class STLikesController {
 
 
     @PostMapping("/likes")
-    public ModelAndView likePost(@ModelAttribute STLikesDTO stLikesDTO,ModelAndView mv) {
-
+    public ResponseEntity<Map<String, String>> likePost(@RequestParam("postId") Integer postId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+        stLikesService.likePost(postId, username);
 
-        Integer result = stLikesService.likePost(stLikesDTO, username);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Post liked successfully");
+        response.put("redirectUrl", "/stj/blog/post/" + postId);
 
-        if (result == 1) {
-            mv.addObject("message", "좋아요를 눌렀습니다.");
-        } else {
-            mv.addObject("message", "이미 좋아요를 누르셨습니다.");
-        }
-        mv.setViewName("redirect:/stj/blog/post/" + stLikesDTO.getPostId());
-
-        return mv;
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/unlikes")
-    public ModelAndView unlikePost(@ModelAttribute STLikesDTO stLikesDTO, ModelAndView mv) {
-
+    public ResponseEntity<Map<String, String>> unlikePost(@RequestParam("postId") Integer postId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+        stLikesService.unlikePost(postId, username);
 
-        Integer result = stLikesService.unlikePost(stLikesDTO, username);
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "success");
+        response.put("message", "Post unliked successfully");
+        response.put("redirectUrl", "/stj/blog/post/" + postId);
 
-        if (result == 1) {
-            mv.addObject("message", "좋아요를 눌렀습니다.");
-        } else {
-            mv.addObject("message", "이미 좋아요를 누르셨습니다.");
-        }
-        mv.setViewName("redirect:/stj/blog/post/" + stLikesDTO.getPostId());
-
-        return mv;
+        return ResponseEntity.ok(response);
     }
 }
