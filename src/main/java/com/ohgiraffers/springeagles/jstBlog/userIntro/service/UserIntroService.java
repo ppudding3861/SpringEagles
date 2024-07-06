@@ -21,7 +21,7 @@ public class UserIntroService {
     @Transactional
     public void saveOrUpdateIntroContent(String userIntroContent) {
         try {
-            Optional<UserIntroEntity> existingIntro = userIntroRepository.findById(1); // 예시로 사용자 ID가 1인 경우를 가정합니다.
+            Optional<UserIntroEntity> existingIntro = userIntroRepository.findById(1);
 
             if (existingIntro.isPresent()) {
                 // 기존 소개 내용 업데이트

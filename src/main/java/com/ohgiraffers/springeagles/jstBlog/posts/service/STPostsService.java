@@ -1,16 +1,16 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.service;
 
-//import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
+import com.ohgiraffers.springeagles.global.user.repository.UserRepository;
 import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
+import com.ohgiraffers.springeagles.jstBlog.likes.service.STLikesService;
 import com.ohgiraffers.springeagles.jstBlog.posts.dto.STPostsDTO;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
-//import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,92 +24,88 @@ import java.util.Optional;
 public class STPostsService {
 
     private final STPostsRepository stPostsRepository;
-//    private final UserRepository userRepository;
+    private final UserRepository userRepository;
     private final STCommentService stCommentService;
+    private final STLikesService stlikesService;
 
     @Autowired
-    public STPostsService(STPostsRepository stPostsRepository, STCommentService stCommentService) {
+    public STPostsService(STPostsRepository stPostsRepository, UserRepository userRepository, STCommentService stCommentService, STLikesService stlikesService) {
         this.stPostsRepository = stPostsRepository;
-//        this.userRepository = userRepository;
+        this.userRepository = userRepository;
         this.stCommentService = stCommentService;
+        this.stlikesService = stlikesService;
     }
 
     // Create
-    // 새 게시물을 생성합니다. 현재 인증된 사용자의 사용자 ID를 게시물에 설정합니다.
     public STPostsEntity createPost(STPostsDTO stPostsDTO) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증된 사용자의 정보를 가져옵니다.
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal(); // 사용자의 정보를 가져옵니다.
-//        String username = userDetails.getUsername(); // 사용자의 이름을 가져옵니다.
-//
-//        Integer userId = userRepository.findByUserName(username).orElseThrow(
-//                () -> new IllegalArgumentException("사용자를 찾을 수 없음")).getUserId().intValue(); // 사용자의 ID를 가져옵니다.
-//
-//        stPostsDTO.setUserId(userId); // 게시물의 사용자 ID를 설정합니다.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
 
-        STPostsEntity entity = new STPostsEntity(stPostsDTO); // DTO를 Entity로 변환합니다.
-        return stPostsRepository.save(entity); // 게시물을 저장하고 반환합니다.
+        Integer userId = userRepository.findByUserName(username).orElseThrow(
+                () -> new IllegalArgumentException("사용자를 찾을 수 없음")).getUserId().intValue();
+
+        stPostsDTO.setUserId(userId);
+
+        STPostsEntity entity = new STPostsEntity(stPostsDTO);
+        return stPostsRepository.save(entity);
     }
 
     // Read
-    // 모든 게시물을 조회합니다.
     public List<STPostsEntity> getAllPosts() {
-        return stPostsRepository.findAll(); // 모든 게시물을 반환합니다.
+        return stPostsRepository.findAll();
     }
 
-    // ID로 게시물을 조회합니다.
     public Optional<STPostsEntity> getPostById(Integer id) {
-        return stPostsRepository.findById(id); // ID로 게시물을 조회하고 반환합니다.
+        return stPostsRepository.findById(id);
     }
 
     // Update
-// 게시물을 업데이트합니다. 현재 인증된 사용자가 게시물의 작성자인지 확인합니다.
     public STPostsEntity updatePost(STPostsDTO stPostsDTO) {
-        Integer postId = stPostsDTO.getPostId(); // STPostsDTO에서 postId 가져오기
+        Integer postId = stPostsDTO.getPostId();
 
         STPostsEntity entity = stPostsRepository.findById(postId).orElseThrow(
                 () -> new IllegalArgumentException("잘못된 게시물 ID:" + postId)
-        ); // 특정 ID를 가진 STPostsEntity를 찾고, 만약 찾을 수 없다면 예외를 발생시키는 역할을 합니다.
+        );
 
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증된 사용자의 정보를 가져옵니다.
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal(); // 사용자의 정보를 가져옵니다.
-//        String username = userDetails.getUsername(); // 사용자의 이름을 가져옵니다.
-//
-//        Integer userId = userRepository.findByUserName(username).orElseThrow(
-//                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
-//        ).getUserId().intValue(); // 현재 인증된 사용자의 이름을 이용하여 사용자를 찾고, 해당 사용자를 찾을 수 없다면 사용자를 찾을수 없다는 예외를 발생시킵니다.
-//
-//        if (!entity.getUserId().equals(userId)) {
-//            throw new SecurityException("이 게시물을 업데이트할 권한이 없습니다"); // 게시물의 작성자가 아닌 경우 예외를 발생시킵니다.
-//        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
 
-        entity.setTitle(stPostsDTO.getTitle()); // 게시물의 제목을 설정합니다.
-        entity.setDescription(stPostsDTO.getDescription()); // 게시물의 설명을 설정합니다.
-        entity.setImageUrl(stPostsDTO.getImageUrl()); // 게시물의 이미지 URL을 설정합니다.
-        entity.setContent(stPostsDTO.getContent()); // 게시물의 내용을 설정합니다.
-        return stPostsRepository.save(entity); // 게시물을 저장하고 반환합니다.
+        Integer userId = userRepository.findByUserName(username).orElseThrow(
+                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
+        ).getUserId().intValue();
+
+        if (!entity.getUserId().equals(userId)) {
+            throw new SecurityException("이 게시물을 업데이트할 권한이 없습니다");
+        }
+
+        entity.setTitle(stPostsDTO.getTitle());
+        entity.setDescription(stPostsDTO.getDescription());
+        entity.setImageUrl(stPostsDTO.getImageUrl());
+        entity.setContent(stPostsDTO.getContent());
+        return stPostsRepository.save(entity);
     }
 
-
     // Delete
-    // 게시물을 삭제합니다. 현재 인증된 사용자가 게시물의 작성자인지 확인합니다.
     public void deletePost(Integer postId) {
         STPostsEntity entity = stPostsRepository.findById(postId).orElseThrow(
                 () -> new IllegalArgumentException("잘못된 게시물 ID:" + postId)
-        ); // 특정 ID를 가진 STPostsEntity를 찾고, 만약 찾을 수 없다면 예외를 발생시키는 역할을 합니다.
+        );
 
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); // 현재 인증된 사용자의 정보를 가져옵니다.
-//        UserDetails userDetails = (UserDetails) authentication.getPrincipal(); // 사용자의 정보를 가져옵니다.
-//        String username = userDetails.getUsername(); // 사용자의 이름을 가져옵니다.
-//
-//        Integer userId = userRepository.findByUserName(username).orElseThrow(
-//                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
-//        ).getUserId().intValue(); // 현재 인증된 사용자의 이름을 이용하여 사용자를 찾고, 해당 사용자를 찾을 수 없다면 사용자를 찾을수 없다는 예외를 발생시킵니다.
-//
-//        if (!entity.getUserId().equals(userId)) {
-//            throw new SecurityException("이 게시물을 삭제할 권한이 없습니다"); // 게시물의 작성자가 아닌 경우 예외를 발생시킵니다.
-//        }
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
 
-        stPostsRepository.deleteById(postId); // 게시물을 삭제합니다.
+        Integer userId = userRepository.findByUserName(username).orElseThrow(
+                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
+        ).getUserId().intValue();
+
+        if (!entity.getUserId().equals(userId)) {
+            throw new SecurityException("이 게시물을 삭제할 권한이 없습니다");
+        }
+
+        stPostsRepository.deleteById(postId);
     }
 
     public Map<String, Integer> calculateTagCounts() {
@@ -129,5 +125,14 @@ public class STPostsService {
     public int getCommentCountByPostId(Integer postId) {
         List<STCommentEntity> comments = stCommentService.getCommentsByPost(postId);
         return comments.size();
+    }
+
+    public List<STPostsEntity> getAllLikes() {
+        List<STPostsEntity> posts = stPostsRepository.findAll();
+        for (STPostsEntity post : posts) {
+            int likesCount = stlikesService.getLikesCountByPostId(post.getPostId());
+            post.setLikesCount(likesCount);
+        }
+        return posts;
     }
 }

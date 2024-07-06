@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="reader">
 
-
+<input type="hidden" id="errorMessage" th:value="${errorMessage}" />
 <div class="read-align">
     <div class="read-container">
-        <div th:each="post : ${post}">
-            <div th:if="${post.postId == selectedId}" class="selected-post">
+        <div th:each="post : ${post}" class="selected-post1">
+            <div th:if="${post.postId == selectedId}" class="selected-post2">
                 <div class="read-title" th:text="${post.title}">글의 제목</div>
                 <div class="read-sub" th:text="${post.description}">글의 설명</div>
                 <div class="read-option">
@@ -29,39 +29,49 @@
                     </div>
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
-                <div class="post-comment-con">
-                    <h2>Comments</h2>
-                    <form th:action="@{/stj/blog/savecomment}" method="post" class="comment-form-align">
-<!--                        <input type="hidden" name="userName" th:value="${username}" />-->
-                        <input type="hidden" name="postId" th:value="${post.postId}" />
-                        <label>
-                            <input type="text" class="post-comment-input" name="comment" placeholder="댓글을 입력해주세요" required />
-                        </label>
-                        <button type="submit" class="post-comment-button">작성</button>
-                    </form>
-                    <ul>
-                        <li th:each="comment : ${comments}">
-                            <div class="comment-content-con">
-                                <div class="comment-content" th:text="${comment.commentContent}">Comment Content</div>
-                                <div class="comment-user" th:text="${comment.userName}">작성자</div>
-
+                <div class="comment-upper-align">
+                    <h2 class="comment-title">Comments</h2>
+                    <button type="button" class="comment-img-button" id="like-button" th:if="${!isLiked}" th:data-post-id="${post.postId}">
+                        <img class="comment-img" th:src="@{/images/public_like_img.svg}" alt="좋아요" />
+                    </button>
+                    <button type="button" class="comment-img-button" id="unlike-button" th:if="${isLiked}" th:data-post-id="${post.postId}">
+                        <img class="comment-img" th:src="@{/images/public_unlike_img.svg}" alt="좋아요 취소" />
+                    </button>
+                </div>
+                <form th:action="@{/stj/blog/savecomment}" method="post" class="comment-form-align">
+                    <input type="hidden" name="userName" th:value="${username}" />
+                    <input type="hidden" name="postId" th:value="${post.postId}" />
+                    <label>
+                        <input type="text" class="post-comment-input" name="commentContent" placeholder="댓글을 입력해주세요" required />
+                    </label>
+                    <button type="submit" class="post-comment-button">작성</button>
+                </form>
+                <ul>
+                    <li th:each="comment : ${comments}">
+                        <div class="comment-content-con">
+                            <div class="comment-upper">
+                                <div class="comment-content" th:text="${comment.commentContent}"></div>
+                                <div class="comment-user" th:text="${comment.userName}"></div>
+                                <div class="comment-buttons">
+                                    <button type="button" class="post-comment-button" onclick="showEditForm(this)">수정</button>
+                                    <form th:action="@{/stj/blog/deletecomment}" method="post">
+                                        <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
+                                        <input type="hidden" name="postId" th:value="${postId}"/>
+                                        <button type="submit" class="post-comment-button2" onclick="return confirmDelete()">삭제</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comment-bottom" style="display: none;">
                                 <form th:action="@{/stj/blog/updatecomment}" method="post" class="comment-form-align2">
-                                    <input type="hidden" name="postId" th:value="${postId}"/>
-                                    <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                                    <input type="text" name="comment" th:value="${comment.commentContent}" class="post-comment-input2"
-                                           required style="display: none;"/>
-                                    <button type="button" class="post-comment-button">수정</button>
-                                </form>
-
-                                <form th:action="@{/stj/blog/deletecomment}" method="post">
-                                    <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                                    <input type="hidden" name="postId" th:value="${postId}"/>
-                                    <button type="submit" class="post-comment-button2">삭제</button>
+                                    <input type="hidden" name="postId" th:value="${postId}" />
+                                    <input type="hidden" name="commentId" th:value="${comment.commentId}" />
+                                    <input type="text" name="comment" th:value="${comment.commentContent}" class="post-comment-input2" required />
+                                    <button type="submit" class="post-comment-button" >완료</button>
                                 </form>
                             </div>
-                        </li>
-                    </ul>
-                </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

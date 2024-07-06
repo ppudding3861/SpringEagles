@@ -1,5 +1,6 @@
 package com.ohgiraffers.springeagles.jstBlog.likes.repository;
 
+import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class STLikesEntity {
     @Column(name = "user_id", nullable = false)
     private Integer userId;
 
-    @Column(name = "post_id", nullable = false)
-    private Integer postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id", nullable = false)
+    private STPostsEntity post;
 }

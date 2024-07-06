@@ -24,8 +24,7 @@
             </div>
             <div class="post-comments" th:text="'댓글 ' + ${commentCounts[post.postId]} + '개'">
             </div>
-            <div class="post-likes">
-                <span>하트 <span>0</span>개</span>
+            <div class="post-likes" th:text="'좋아요 ' + ${likeCounts[post.postId]} + '개'">
             </div>
         </div>
     </a>

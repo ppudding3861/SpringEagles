@@ -1,7 +1,11 @@
 package com.ohgiraffers.springeagles.jstBlog.posts.dto;
 
+import com.ohgiraffers.springeagles.jstBlog.likes.repository.STLikesEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsEntity;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -22,8 +26,9 @@ public class STPostsDTO {
     private LocalDate updatedAt;
     private Integer commentId;
     private Integer userId;
-    private Integer likesId;
     private List<String> tagArray;
+    private int likesCount;
+    private List<STLikesEntity> likes;
 
     // Entity -> DTO
     public STPostsDTO(STPostsEntity entity) {
@@ -36,7 +41,8 @@ public class STPostsDTO {
         this.updatedAt = entity.getUpdatedAt();
         this.commentId = entity.getCommentId();
         this.userId = entity.getUserId();
-        this.likesId = entity.getLikesId();
         this.tagArray = entity.getTagArray();
+        this.likesCount = entity.getLikesCount();
+        this.likes = entity.getLikes();
     }
 }

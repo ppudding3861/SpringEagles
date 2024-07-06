@@ -1,49 +1,68 @@
 package com.ohgiraffers.springeagles.jstBlog.comment.controller;
 
+import com.ohgiraffers.springeagles.jstBlog.comment.dto.STCommentRequest;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
 import com.ohgiraffers.springeagles.jstBlog.posts.service.STPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
 @RequestMapping("/stj/blog")
 public class STCommentController {
 
-    private final STPostsService sTPostsService;
-    private final STCommentService sTCommentService;
+    private final STPostsService stPostsService;
+    private final STCommentService stCommentService;
 
     @Autowired
-    public STCommentController(STCommentService sTCommentService, STPostsService sTPostsService) {
-        this.sTCommentService = sTCommentService;
-        this.sTPostsService = sTPostsService;
+    public STCommentController(STCommentService stCommentService, STPostsService stPostsService) {
+        this.stCommentService = stCommentService;
+        this.stPostsService = stPostsService;
     }
 
-    // 저장관련 로직
+    // 댓글 저장 관련 로직
     @PostMapping("/savecomment")
-    public String saveComment(@RequestParam("userName") String userName,
-                              @RequestParam("postId") Integer postId,
-                              @RequestParam("comment") String commentContent) {
-        sTCommentService.saveComment(userName, postId, commentContent);
-        return "redirect:/stj/blog/post/" + postId;
+    public ModelAndView saveComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
+        int result = stCommentService.saveComment(request);
+        if (result <= 0) {
+            mv.addObject("errorMessage", "댓글 저장에 실패했습니다.");
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        } else {
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        }
+        return mv;
     }
 
-    // 삭제관련 로직
+    // 삭제 관련 로직
     @PostMapping("/deletecomment")
-    public String deleteComment(@RequestParam("commentId") Integer commentId,
-                                @RequestParam("postId") Integer postId) {
-        sTCommentService.deleteCommentById(commentId);
-        return "redirect:/stj/blog/post/" + postId;
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ModelAndView deleteComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
+        int result = stCommentService.deleteCommentById(request);
+        if (result <= 0) {
+            mv.addObject("errorMessage", "댓글 삭제에 실패했습니다.");
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        } else {
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        }
+        return mv;
     }
 
-    // 수정관련 로직
+    // 수정 관련 로직
     @PostMapping("/updatecomment")
-    public String updateComment(@RequestParam("commentId") Integer commentId,
-                                @RequestParam("postId") Integer postId,
-                                @RequestParam("comment") String commentContent) {
-        sTCommentService.updateComment(commentId, commentContent);
-        return "redirect:/stj/blog/post/" + postId;
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ModelAndView updateComment(@ModelAttribute STCommentRequest request, ModelAndView mv) {
+        int result = stCommentService.updateComment(request);
+        if (result <= 0) {
+            mv.addObject("errorMessage", "댓글 수정에 실패했습니다.");
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        } else {
+            mv.setViewName("redirect:/stj/blog/post/" + request.getPostId());
+        }
+        return mv;
     }
 }

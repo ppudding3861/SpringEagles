@@ -1,7 +1,7 @@
 package com.ohgiraffers.springeagles.global.index;
 
 
-//import org.springframework.security.core.Authentication;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import java.util.List;
 public class BlogController {
 
     @GetMapping("/")
-    public String index( Model model) {
+    public String index(Authentication authentication, Model model) {
         List<Post> posts = new ArrayList<>();
 
         // Sample data
@@ -26,6 +26,7 @@ public class BlogController {
         // Add more posts as needed
 
         model.addAttribute("posts", posts);
+        model.addAttribute("username", authentication.getName());
         return "index";
     }
 }
