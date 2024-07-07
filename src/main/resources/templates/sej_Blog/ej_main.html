@@ -35,9 +35,9 @@
 </header>
 <main>
     <div class="main-container">
-        <aside th:replace="~{/sej_Blog/fragments/blogPost_sidebar :: sidebar}"></aside>
+        <aside th:replace="~{/sej_Blog/fragments/sej_sidebar :: sidebar}"></aside>
         <div class="content">
-            <div th:replace="~{/sej_Blog/fragments/blogPost_user-profile :: userProfile}"></div>
+            <div th:replace="~{/sej_Blog/fragments/sej_user-profile :: userProfile}"></div>
             <nav class="navigation">
                 <div class="nav-items">
                     <div th:onclick="">글</div>
@@ -45,7 +45,7 @@
                     <div th:onclick="">소개</div>
                 </div>
             </nav>
-            <section th:replace="~{/sej_Blog/fragments/blogPost_posts.html :: posts}"></section>
+            <section th:replace="~{/sej_Blog/fragments/post.html :: posts}"></section>
         </div>
     </div>
 </main>
