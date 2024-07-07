@@ -1,32 +1,45 @@
 package com.ohgiraffers.springeagles.sejBlog.posts.service;
 
+import com.ohgiraffers.springeagles.sejBlog.posts.model.dto.EJPostsDTO;
 import com.ohgiraffers.springeagles.sejBlog.posts.model.entity.EJPostsEntity;
 import com.ohgiraffers.springeagles.sejBlog.posts.repository.EJPostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class EJPostsService {
 
-    private final EJPostsRepository EJPostsRepository;
+    private final EJPostsRepository ejPostsRepository;
 
     @Autowired
-    public EJPostsService(EJPostsRepository EJPostsRepository) {
+    public EJPostsService(EJPostsRepository ejPostsRepository) {
 
-        this.EJPostsRepository = EJPostsRepository;
+        this.ejPostsRepository = ejPostsRepository;
     }
 
-   @Transactional
-   public List<EJPostsEntity> postsEntityList(){
-        List<EJPostsEntity> postlist = EJPostsRepository.findAll();
-        return postlist;
-   }
 
+    public void savepost(EJPostsDTO ejPostsDTO) {
+        EJPostsEntity ejPostsEntity = new EJPostsEntity();
+        ejPostsEntity.setTitle(ejPostsDTO.getTitle());
+        ejPostsEntity.setContents(ejPostsDTO.getContents());
+        ejPostsRepository.save(ejPostsEntity);
+    }
 
-    public List<EJPostsEntity> getAllPosts() {
-        return EJPostsRepository.findAll();
+    @Transactional
+    public List<EJPostsDTO> getallpost() {
+        List<EJPostsEntity> ejPostsEntities = ejPostsRepository.findAll();
+        List<EJPostsDTO> ejPostsDTOList = new ArrayList<>();
+        for (EJPostsEntity ejPostsEntity : ejPostsEntities) {
+            EJPostsDTO ejPostsDTO = new EJPostsDTO();
+            ejPostsDTO.setId(ejPostsEntity.getId());
+            ejPostsDTO.setTitle(ejPostsEntity.getTitle());
+            ejPostsDTO.setContents(ejPostsEntity.getContents());
+            ejPostsDTOList.add(ejPostsDTO);
+        }
+        return ejPostsDTOList;
     }
 }

@@ -1,64 +1,61 @@
 package com.ohgiraffers.springeagles.sejBlog.posts.controller;
 
-import com.ohgiraffers.springeagles.sejBlog.comment.service.EJCommentService;
+import com.ohgiraffers.springeagles.global.index.model.Post;
+import com.ohgiraffers.springeagles.sejBlog.posts.model.dto.EJPostsDTO;
 import com.ohgiraffers.springeagles.sejBlog.posts.service.EJPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/sej/blog")
 public class EJPostsController {
 
-    private final EJPostsService EJPostsService;
-    private final EJCommentService EJCommentService;
+    private EJPostsService ejPostsService;
 
     @Autowired
-    public EJPostsController(EJPostsService EJPostsService, EJCommentService EJCommentService) {
-        this.EJCommentService = EJCommentService;
-        this.EJPostsService = EJPostsService;
+    public EJPostsController(EJPostsService ejPostsService) {
+        this.ejPostsService = ejPostsService;
     }
 
+    // 은진이의 블로그 메인
     @GetMapping("/posts")
-    public String main(Model model) {
-        model.addAttribute("posts", EJPostsService.getAllPosts());
-        return "sej_Blog/blogPost2";
+    public ModelAndView post() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sej_Blog/ej_main");
+        return mv;
     }
 
     @GetMapping("/edit")
-    public String editor() {
-        return "sej_Blog/fragments/blogPost2_editor";
+    public ModelAndView edit() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("sej_Blog/ej_edit");
+        return mv;
+    }
+
+    // 쓴 글을 저장한다.
+    @PostMapping("/edit")
+    public ModelAndView editPost(@ModelAttribute EJPostsDTO ejPostsDTO) {
+        ejPostsService.savepost(ejPostsDTO);
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("redirect:sej/blog/posts");
+        return mv;
     }
 
 
-//    @GetMapping
-//    public ModelAndView showPage(Model model, ModelAndView mv){
-//        List<EJPostsEntity> postList = EJPostsService.postsEntityList();
-//        // 잘하면 수정해야할 수도? "connectPage?"
-//        model.addAttribute("connectPage", "main");
-//
-//        mv.addObject("postList", postList);
-//        mv.setViewName("sej_Blog/blogPost2");
-//
-//        return mv;
-//    }
-//
-//
-//    @GetMapping("/editor")
-//    public String addPost(Model model){
-//        return "sej_Blog/fragments/addPost";
-//    }
-//
-//    @PostMapping("/addpost")
-//    public ModelAndView postAdd(ModelAndView mv, EJPostsDTO EJPostsDTO){
-//
-//        // 등록시킬 데이터
-//
-//        mv.setViewName("이동할 페이지");
-//
-//        return mv;
+//    // 쓴 글을 전체 조회한다
+//    @GetMapping("/posts")
+//    public String postList(Model model) {
+//        List<EJPostsDTO> ejPostsDTOList = ejPostsService.getallpost();
+//        model.addAttribute("postList", ejPostsDTOList);
+//        return "sej_Blog/fragments/post";
 //
 //    }
 
