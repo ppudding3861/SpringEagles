@@ -9,15 +9,13 @@ import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -37,6 +35,7 @@ public class STPostsService {
     }
 
     // Create
+    @Transactional
     public STPostsEntity createPost(STPostsDTO stPostsDTO) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -61,6 +60,7 @@ public class STPostsService {
     }
 
     // Update
+    @Transactional
     public STPostsEntity updatePost(STPostsDTO stPostsDTO) {
         Integer postId = stPostsDTO.getPostId();
 
@@ -69,14 +69,12 @@ public class STPostsService {
         );
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-        Integer userId = userRepository.findByUserName(username).orElseThrow(
-                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
-        ).getUserId().intValue();
+        boolean isAuthorized = authorities.stream()
+                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_JST"));
 
-        if (!entity.getUserId().equals(userId)) {
+        if (!isAuthorized) {
             throw new SecurityException("이 게시물을 업데이트할 권한이 없습니다");
         }
 
@@ -88,20 +86,19 @@ public class STPostsService {
     }
 
     // Delete
+    @Transactional
     public void deletePost(Integer postId) {
         STPostsEntity entity = stPostsRepository.findById(postId).orElseThrow(
                 () -> new IllegalArgumentException("잘못된 게시물 ID:" + postId)
         );
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String username = userDetails.getUsername();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 
-        Integer userId = userRepository.findByUserName(username).orElseThrow(
-                () -> new IllegalArgumentException("사용자를 찾을 수 없음")
-        ).getUserId().intValue();
+        boolean isAuthorized = authorities.stream()
+                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_JST"));
 
-        if (!entity.getUserId().equals(userId)) {
+        if (!isAuthorized) {
             throw new SecurityException("이 게시물을 삭제할 권한이 없습니다");
         }
 
