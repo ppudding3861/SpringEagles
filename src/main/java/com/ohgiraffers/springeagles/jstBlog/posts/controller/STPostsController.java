@@ -14,15 +14,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/stj/blog")
@@ -86,13 +89,21 @@ public class STPostsController {
     @GetMapping("/post/{postId}")
     public String getPostById(@PathVariable("postId") Integer postId, Model model) {
         STPostsEntity post = stPostsService.getPostById(postId).orElse(null);
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
+
+        // 현재 인증된 사용자의 권한을 가져오는 코드
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+        // 권한 정보를 문자열 리스트로 변환
+        List<String> roles = authorities.stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
         if (post == null) {
             return "redirect:/stj/blog/posts";
         }
 
-        List<STCommentEntity> comments = stCommentService.getCommentsByPost(postId);
 
         UserEntity user = userService.findByUserName(username).orElseThrow(
                 () -> new IllegalArgumentException("사용자를 찾을 수 없음"));
@@ -102,8 +113,9 @@ public class STPostsController {
 
         model.addAttribute("post", post);
         model.addAttribute("selectedId", postId);
-        model.addAttribute("comments", comments);
+        model.addAttribute("comments", stCommentService.getCommentsByPost(postId));
         model.addAttribute("username", username);
+        model.addAttribute("roles", roles); // 권한 정보를 뷰로 전달
         model.addAttribute("currentPage", "readPage");
         model.addAttribute("isLiked", isLiked);
         return "jst_blog/blogPost";
