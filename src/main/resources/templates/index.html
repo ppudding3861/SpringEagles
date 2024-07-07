@@ -197,7 +197,7 @@
         centeredSlides: true,
         slidesPerView: "auto",
         autoplay: {
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
         },
         navigation: {
@@ -231,14 +231,10 @@
                 icon: 'success',
                 title: '로그인에 성공하였습니다!',
                 showConfirmButton: false,
-                timer: 3000,
+                timer: 1500,
                 timerProgressBar: true,
                 customClass: {
                     popup: 'custom-font'
-                },
-                didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
                 }
             }).then(() => {
                 fetch('/clear-login-success', {

@@ -622,6 +622,8 @@ a:hover, a:focus {
   margin-bottom: 20px;
 }
 
+
+
 .editor-input > input {
   font-size: 15px;
   color: #222222;
@@ -635,7 +637,8 @@ a:hover, a:focus {
   outline: none; /* 포커스시 외곽선 제거 */
 }
 .editor-input > input::placeholder {
-  color:#00010D;
+  text-align: center;
+  color:#999;
 }
 .editor-input > span {
   position: absolute;
@@ -780,11 +783,11 @@ a:hover, a:focus {
     color: #00010D;
   }
 
-  .option-con {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
+.option-con {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 
 
 .read-modify-button {
@@ -873,11 +876,11 @@ a:hover, a:focus {
 }
 
 .comment-upper-align{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .comment-img-button {
@@ -892,11 +895,11 @@ a:hover, a:focus {
 }
 
 .comment-title {
-    font-family: 'GmarketSansMedium';
-    font-size: 1.5em;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    color: #00010D;
+  font-family: 'GmarketSansMedium';
+  font-size: 1.5em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: #00010D;
 }
 
 .comment-form-align {
@@ -1036,6 +1039,27 @@ a:hover, a:focus {
 
 .post-comment-button:active,
 .post-comment-button2:active {
+  transform: translate(1px, 1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.post-list-button {
+  width: auto;
+  height: 30px;
+  background-color: #40362E;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  text-align: center;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  line-height: 30px;
+  color: #D9CBBA;
+  border: none;
+  margin-left: 5px;
+}
+.post-list-button:active {
   transform: translate(1px, 1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }

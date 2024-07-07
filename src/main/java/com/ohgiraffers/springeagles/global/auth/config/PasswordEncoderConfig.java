@@ -1,4 +1,4 @@
-package com.ohgiraffers.springeagles.global.auth.util;
+package com.ohgiraffers.springeagles.global.auth.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

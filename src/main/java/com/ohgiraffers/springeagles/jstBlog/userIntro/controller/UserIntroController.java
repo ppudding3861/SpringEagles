@@ -22,21 +22,21 @@ public class UserIntroController {
     }
 
     @PostMapping("/updateIntro")
-    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_JST')")
     @ResponseBody
     public Map<String, String> updateIntro(@RequestBody UserIntroDTO userIntroDTO) {
         Map<String, String> response = new HashMap<>();
         try {
             int result = userIntroService.saveOrUpdateIntroContent(userIntroDTO);
             if (result == 1) {
-                response.put("message", "소개글 저장이 완료 되었습니다");
+                response.put("errorMessage", "소개글 저장이 완료 되었습니다");
             } else if (result == 2) {
-                response.put("message", "소개글 수정이 완료 되었습니다");
+                response.put("errorMessage", "소개글 수정이 완료 되었습니다");
             }
         } catch (IllegalArgumentException e) {
-            response.put("message", "소개글 저장 혹은 수정에 실패하였습니다: " + e.getMessage());
+            response.put("errorMessage", "소개글 저장 혹은 수정에 실패하였습니다: " + e.getMessage());
         } catch (Exception e) {
-            response.put("message", "알 수 없는 오류가 발생하였습니다: " + e.getMessage());
+            response.put("errorMessage", "알 수 없는 오류가 발생하였습니다: " + e.getMessage());
         }
         return response;
     }

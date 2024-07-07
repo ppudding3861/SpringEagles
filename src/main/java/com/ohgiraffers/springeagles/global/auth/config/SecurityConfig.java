@@ -1,8 +1,8 @@
 package com.ohgiraffers.springeagles.global.auth.config;
 
-import com.ohgiraffers.springeagles.global.error.CustomAccessDeniedHandler;
+import com.ohgiraffers.springeagles.global.auth.util.handler.CustomAccessDeniedHandler;
 import com.ohgiraffers.springeagles.global.auth.service.CustomUserDetailsService;
-import com.ohgiraffers.springeagles.global.auth.util.CustomLoginSuccessHandler;
+import com.ohgiraffers.springeagles.global.auth.util.handler.CustomLoginSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -68,7 +68,6 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
                 .exceptionHandling(exceptionHandling ->
                         exceptionHandling
                                 .accessDeniedHandler(accessDeniedHandler));
-
         return http.build();
     }
 

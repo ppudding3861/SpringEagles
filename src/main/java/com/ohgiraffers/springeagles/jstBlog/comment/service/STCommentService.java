@@ -8,9 +8,13 @@ import com.ohgiraffers.springeagles.jstBlog.comment.repository.STCommentReposito
 import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
 import com.ohgiraffers.springeagles.jstBlog.posts.repository.STPostsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collection;
 import java.util.List;
 
 
@@ -60,6 +64,18 @@ public class STCommentService {
         if (comment == null) {
             return 0; // 댓글이 존재하지 않음
         }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        boolean isAuthorized = authorities.stream()
+                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_JST"));
+
+        if (!comment.getUserName().equals(currentUserName) && !isAuthorized) {
+            throw new SecurityException("삭제 권한이 없습니다.");
+        }
+
         try {
             stCommentRepository.delete(comment);
             return 1;
@@ -76,13 +92,29 @@ public class STCommentService {
         if (stCommentDTO.getCommentId() == null || stCommentDTO.getPostId() == null || stCommentDTO.getCommentContent() == null) {
             return 0; // 유효하지 않은 요청
         }
+
         STCommentEntity comment = stCommentRepository.findById(stCommentDTO.getCommentId())
                 .orElseThrow(() -> new IllegalArgumentException("댓글을 찾을 수 없습니다."));
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+
+        boolean isAuthorized = authorities.stream()
+                .anyMatch(authority -> authority.getAuthority().equals("ROLE_ADMIN") || authority.getAuthority().equals("ROLE_JST"));
+
+        if (!comment.getUserName().equals(currentUserName) && !isAuthorized) {
+            throw new SecurityException("수정 권한이 없습니다.");
+        }
+
         comment.setCommentContent(stCommentDTO.getCommentContent());
+
         try {
             stCommentRepository.save(comment);
+            System.out.println("댓글 수정 성공");
             return 1;
         } catch (Exception e) {
+            System.out.println("댓글 수정 실패");
             return 0;
         }
     }

@@ -1,4 +1,4 @@
-package com.ohgiraffers.springeagles.global.auth.util;
+package com.ohgiraffers.springeagles.global.auth.util.handler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
