@@ -21,7 +21,7 @@
                 <ul class="SMN_effect-6">
                     <li class="header-authentication" th:text="${username} + ' 님 환영합니다'"></li>
                     <li><a th:href="@{/}" data-hover="홈화면">홈화면</a></li>
-                    <li sec:authorize="hasRole('ADMIN')">
+                    <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_JST')">
                         <a th:href="@{/stj/blog/edit}" th:if="${currentPage != 'editPage'}">글쓰기</a>
                         <a th:href="@{/stj/blog/posts}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
                     </li>

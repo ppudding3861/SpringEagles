@@ -15,10 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -56,7 +52,6 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/signup", "/css/**", "/javascript/**", "/images/**").permitAll()
-                                .requestMatchers("/user/**").hasAuthority("ROLE_USER")
                                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
                                 .anyRequest().authenticated())
                 .formLogin(formLogin ->

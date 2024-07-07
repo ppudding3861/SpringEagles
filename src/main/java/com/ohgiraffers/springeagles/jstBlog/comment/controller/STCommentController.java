@@ -40,7 +40,7 @@ public class STCommentController {
 
     // 삭제 관련 로직
     @PostMapping("/deletecomment")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public ModelAndView deleteComment(@ModelAttribute STCommentDTO stCommentDTO, ModelAndView mv) {
         int result = stCommentService.deleteCommentById(stCommentDTO);
         if (result <= 0) {
@@ -53,7 +53,7 @@ public class STCommentController {
 
     // 수정 관련 로직
     @PostMapping("/updatecomment")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public ModelAndView updateComment(@ModelAttribute STCommentDTO stCommentDTO, ModelAndView mv) {
         int result = stCommentService.updateComment(stCommentDTO);
         if (result <= 0) {

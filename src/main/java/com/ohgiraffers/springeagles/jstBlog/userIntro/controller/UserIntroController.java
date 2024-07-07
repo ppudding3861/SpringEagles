@@ -22,7 +22,7 @@ public class UserIntroController {
     }
 
     @PostMapping("/updateIntro")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     @ResponseBody
     public Map<String, String> updateIntro(@RequestBody UserIntroDTO userIntroDTO) {
         Map<String, String> response = new HashMap<>();

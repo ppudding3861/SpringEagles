@@ -4,7 +4,12 @@ public enum UserRole {
 
     USER("ROLE_USER"),
     ADMIN("ROLE_ADMIN"),
-    OWNER("ROLE_OWNER");
+    JST("ROLE_JST"),
+    SEJ("ROLE_SEJ"),
+    KHS("ROLE_KHS"),
+    KKH("ROLE_KKH"),
+    LSH("ROLE_LSH"),
+    HJH("ROLE_HJH");
 
     private final String role;
 
