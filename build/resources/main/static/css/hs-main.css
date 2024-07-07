@@ -1,0 +1,132 @@
+
+.main-navbar {
+    background-color: #FF7F50;
+    overflow: hidden;
+    width: 800px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.main-navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.main-navbar a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.main-posts {
+    display: flex;
+    justify-content: center;
+    /*padding: 20px;*/
+}
+
+.main-container {
+    width: 755px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-item {
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.post-item:hover {
+    transform: translateY(-10px);
+}
+
+figure {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    width: 100%; /* 상위 컨테이너의 너비에 맞춤 */
+    display: flex;
+    justify-content: center; /* 이미지 가운데 정렬 */
+}
+
+figure img {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-image:hover img {
+    transform: scale(1.1);
+}
+
+.post-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+.title-container{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.post-description {
+    font-size: 1em;
+    color: #666;
+}
+
+.post-tags {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .post-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .post-image img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .main-navbar {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .main-navbar a {
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
+

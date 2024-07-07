@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+.totalcontainer {
+    width: 100%;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.index {
+    display: flex;
+    max-width: 1200px;
+    /*margin: 20px auto;*/
+}
+index2{
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 400px;
+    height: 100%;
+    background-color: #FFB6C1;
+    /*margin-left: 40%;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.side-logo h1 {
+    margin: 20px 0;
+    color: #fff;
+    font-size: 2.4em;
+    font-weight: 700;
+    background-color: #ff6f91;
+}
+
+.sidebar-nav {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.sidebar-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-nav li {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.sidebar-nav a {
+    display: block;
+    width: 100%;
+    padding: 15px 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.8em;
+    transition: background-color 0.3s, font-size 0.3s;
+}
+
+.sidebar-nav a:hover {
+    background-color: #ff6f91;
+    font-size: 2.2em;
+}
+
+.sidebar-listbar {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    color: #fff;
+}
+
+.sidebar-listbar h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.sidebar-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #ff6f91;
+}
+
+#postList {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+}

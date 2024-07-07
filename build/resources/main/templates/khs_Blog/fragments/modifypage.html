@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+</head>
+<body>
+<editpage th:fragment="modifypage" class="modifypage">
+    <div class="edit-container">
+        <h1>글쓰기</h1>
+        <form th:action="@{/khs/blog/postreader/modify/{id}(id=${post.post_id})}" method="post" enctype="multipart/form-data">
+            <div class="edit-form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" th:value="${post.title}" required/>
+            </div>
+            <div class="edit-form-group">
+                <label for="description">설명</label>
+                <input type="text" id="description" name="description" th:value="${post.description}" required/>
+            </div>
+            <div class="edit-form-group">
+                <label for="content">내용</label>
+                <textarea id="content" name="content" rows="10" th:text="${post.content}" required></textarea>
+            </div>
+            <div class="edit-form-group">
+                <label for="imageUrl">이미지 업로드</label>
+                <input type="text" id="imageUrl" name="imageUrl" th:value="${post.imageUrl}"/>
+            </div>
+            <div class="edit-form-group">
+                <label for="category">카테고리</label>
+                <select id="category" name="category" required>
+                    <option value="" disabled selected>카테고리를 선택하세요</option>
+                    <option value="study" th:selected="${post.category == 'study'}">스터디</option>
+                    <option value="travel" th:selected="${post.category == 'travel'}">여행</option>
+                    <option value="Hobby" th:selected="${post.category == 'Hobby'}">취미</option>
+                    <option value="health" th:selected="${post.category == 'health'}">건강</option>
+                </select>
+            </div>
+            <button type="submit">수정하기</button>
+        </form>
+    </div>
+</editpage>
+</body>
+</html>

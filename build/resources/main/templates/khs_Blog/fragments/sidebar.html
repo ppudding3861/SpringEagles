@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- 웹 페이지의 제목을 설정합니다. 브라우저의 탭이나 북마크에서 표시됩니다. -->
+    <title>Title</title>
+</head>
+<body>
+<!-- 타임리프 fragment로 사용될 sidebar 정의, CSS 클래스로 sidebar 설정 -->
+<sidebar th:fragment="sidebar" class="sidebar">
+    <!-- 사이드바의 로고 섹션 -->
+    <div class="side-logo">
+        <!-- 블로그 이름을 표시하는 제목 -->
+        <h1>ppuding's</h1>
+    </div>
+    <!-- 사이드바의 리스트바 섹션 -->
+    <listbar class="sidebar-listbar">
+        <!-- 사이드바 컨텐츠를 담는 컨테이너 -->
+        <div class="sidebar-container">
+            <!-- 최신 글 목록 섹션 제목 -->
+            <h2>최신 글 목록</h2>
+            <!-- 게시글 목록을 담는 div -->
+            <div id="postList">
+                <!-- postList의 각 게시글에 대해 반복 처리 -->
+                <div th:each ="post : ${postList}">
+                    <!-- 게시글 상세 페이지로 링크, 타임리프를 사용하여 경로 설정 -->
+                    <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
+                        <!-- 게시글의 제목을 표시 -->
+                        <div th:text="${post.title}"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </listbar>
+</sidebar>
+</body>
+</html>
