@@ -13,10 +13,10 @@
                 <div class="read-option">
                     <div class="read-date"><div th:text="'작성일자 : ' + ${post.createdAt}">작성 날짜</div></div>
                     <div class="option-con">
-                        <a th:href="@{/stj/blog/update/{postId}(postId=${post.postId})}" sec:authorize="hasRole('ADMIN')" class="read-modify-button">
+                        <a th:href="@{/stj/blog/update/{postId}(postId=${post.postId})}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_JST')" class="read-modify-button">
                             <div>수정</div>
                         </a>
-                        <form th:action="@{/stj/blog/delete/{postId}(postId=${post.postId})}" sec:authorize="hasRole('ADMIN')" method="post" onsubmit="return confirmDelete()">
+                        <form th:action="@{/stj/blog/delete/{postId}(postId=${post.postId})}" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_JST')" method="post" onsubmit="return confirmDelete()">
                             <button type="submit" class="read-modify-button">
                                 삭제
                             </button>

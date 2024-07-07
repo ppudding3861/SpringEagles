@@ -52,14 +52,7 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
                 .authorizeRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/signup", "/css/**", "/javascript/**", "/images/**").permitAll()
-                                .requestMatchers("/user/**").hasAuthority("ROLE_USER")
                                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-                                .requestMatchers("/stj/blog/**").hasAuthority("ROLE_STJ")
-                                .requestMatchers("/sej/blog/**").hasAuthority("ROLE_SEJ")
-                                .requestMatchers("/khs/blog/**").hasAuthority("ROLE_KHS")
-                                .requestMatchers("/kkh/blog/**").hasAuthority("ROLE_KKH")
-                                .requestMatchers("/lsh/blog/**").hasAuthority("ROLE_LSH")
-                                .requestMatchers("/hjh/blog/**").hasAuthority("ROLE_HJH")
                                 .anyRequest().authenticated())
                 .formLogin(formLogin ->
                         formLogin

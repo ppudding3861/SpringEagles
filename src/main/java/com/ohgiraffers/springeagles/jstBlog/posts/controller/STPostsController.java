@@ -110,7 +110,7 @@ public class STPostsController {
     }
 
     @GetMapping("/edit")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public String showCreateForm(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("postDTO", new STPostsDTO());
@@ -120,7 +120,7 @@ public class STPostsController {
     }
 
     @PostMapping("/edit")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public ResponseEntity<String> responseEdit(@RequestBody STPostsDTO stPostsDTO) {
         try {
             stPostsService.createPost(stPostsDTO);
@@ -131,7 +131,7 @@ public class STPostsController {
     }
 
     @GetMapping("/update/{postId}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public String showUpdateForm(@PathVariable("postId") Integer postId, Model model) {
         STPostsEntity postEntity = stPostsService.getPostById(postId)
                 .orElseThrow(() -> new IllegalArgumentException("게시물을 찾을 수 없습니다. ID: " + postId));
@@ -145,7 +145,7 @@ public class STPostsController {
     }
 
     @PostMapping("/update/{postId}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public RedirectView updatePost(@PathVariable("postId") Integer postId, @RequestBody STPostsDTO stPostsDTO) {
         try {
             stPostsDTO.setPostId(postId);
@@ -157,7 +157,7 @@ public class STPostsController {
     }
 
     @PostMapping("/delete/{postId}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_STJ')")
     public RedirectView deletePost(@PathVariable("postId") Integer postId) {
         try {
             stPostsService.deletePost(postId);

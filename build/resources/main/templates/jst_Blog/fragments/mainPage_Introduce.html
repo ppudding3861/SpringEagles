@@ -8,7 +8,7 @@
         자기소개
     </div>
     <textarea class="introduce-textarea" id="introduceTextarea"></textarea>
-    <div sec:authorize="hasRole('ADMIN')" class="intro-modify-btn" id="modifyButton">수정</div>
+    <div sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_JST')" class="intro-modify-btn" id="modifyButton">수정</div>
 </div>
 
 </html>
