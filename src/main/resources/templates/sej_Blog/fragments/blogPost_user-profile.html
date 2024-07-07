@@ -1,29 +1,25 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="userProfile">
-  <head>
-    <link rel="stylesheet" th:href="@{/css/index2.css}"/>
-    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
-  </head>
+
   <body>
     <div class="user-profile">
       <div class="profile-upper">
         <div class="profile-image">
-          <img th:src="@{/images/sample_user_img2.png}" alt="X" />
+          <img th:src="@{/images/sej_profile_img.png}" alt="X" />
         </div>
         <div class="profile-info">
-          <div class="user-name" >유저이름</div>
+          <div class="user-name" >서은진</div>
           <div class="user-description" >
-            유저소개
+            ㄷㅏ시 태어난 블로그
           </div>
         </div>
       </div>
       <div class="profile-lower">
         <div class="sns-icons">
           <div class="icon" th:onclick="">
-            <img th:src="@{/images/github.svg}" alt="X" />
+            <img th:src="@{/images/public_github_logo.svg}" alt="X" />
           </div>
           <div class="icon" th:onclick="">
-            <img th:src="@{/images/logo-discord.svg}" alt="X" />
+            <img th:src="@{/images/public_discord_logo.svg}" alt="X" />
           </div>
         </div>
         <div class="follow-info">
@@ -43,4 +39,5 @@
       </div>
     </div>
   </body>
+
 </html>
