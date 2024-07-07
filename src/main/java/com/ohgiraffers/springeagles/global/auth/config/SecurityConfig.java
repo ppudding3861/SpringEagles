@@ -15,10 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
-import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -58,6 +54,12 @@ public class SecurityConfig extends GlobalMethodSecurityConfiguration {
                                 .requestMatchers("/signup", "/css/**", "/javascript/**", "/images/**").permitAll()
                                 .requestMatchers("/user/**").hasAuthority("ROLE_USER")
                                 .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                                .requestMatchers("/stj/blog/**").hasAuthority("ROLE_STJ")
+                                .requestMatchers("/sej/blog/**").hasAuthority("ROLE_SEJ")
+                                .requestMatchers("/khs/blog/**").hasAuthority("ROLE_KHS")
+                                .requestMatchers("/kkh/blog/**").hasAuthority("ROLE_KKH")
+                                .requestMatchers("/lsh/blog/**").hasAuthority("ROLE_LSH")
+                                .requestMatchers("/hjh/blog/**").hasAuthority("ROLE_HJH")
                                 .anyRequest().authenticated())
                 .formLogin(formLogin ->
                         formLogin

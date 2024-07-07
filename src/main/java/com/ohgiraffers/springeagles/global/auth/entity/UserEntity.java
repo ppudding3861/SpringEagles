@@ -4,6 +4,7 @@ import com.ohgiraffers.springeagles.global.auth.model.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -33,5 +34,6 @@ public class UserEntity {
     @CollectionTable(name = "global_user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "user_roles", nullable = false)
     @Enumerated(EnumType.STRING)
-    private Set<UserRole> roles;
+    private Set<UserRole> roles = new HashSet<>();
+
 }
