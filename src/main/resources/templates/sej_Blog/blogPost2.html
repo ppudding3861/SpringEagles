@@ -7,64 +7,48 @@
     <link rel="stylesheet" th:href="@{/css/sej_Blog.css}"/>
     <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
 </head>
-
 <body>
 <header>
-    <div class="header-container1">
-
+    <div class="header-container">
         <div class="header">
-            <div class = "header_layout">
-                <div class="header-logo" th:onclick="">
-                    <div class="logo-image">
-                        <img th:src="@{/images/sej_5doong2_profile1.png}" />
-                    </div>
-                    <div class="logo-text" >이건 나의 블로그</div>
+            <div class="header-logo" th:onclick="">
+                <div class="logo-image">
+                    <img th:src="@{/images/sej_header_img.png}" alt="X"/>
                 </div>
-                <div class="header-user">
-                    <li><a th:href="@{/}" data-hover="홈화면">홈화면</a></li>
-                    <li>
-                        <!--                이 페이지를 만들어야함-->
-                        <a th:href="@{/sej/blog/edit}" th:if="${currentPage != 'editPage'}">글쓰기</a>
+                <div class="logo-text" >Jinny's Blog</div>
+            </div>
+            <div class="header-user">
+<!--                태그수정-->
+                <div
+                        class="user-notification"
+                        th:onclick=""
+                >
+                    홈화면
+                </div>
 
-                        <a th:href="@{/sej/blog/posts}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
-                    </li>
-
+                <div class="user-login" th:onclick="">
+                    글쓰기
                 </div>
             </div>
-
         </div>
     </div>
-
-
 </header>
 <main>
-    <div class="header-container2">
-
-        <div th:replace="~{/sej_Blog/fragments/blogPost_header2 :: header2}"></div>
-
-    </div>
-
     <div class="main-container">
         <aside th:replace="~{/sej_Blog/fragments/blogPost_sidebar :: sidebar}"></aside>
-
         <div class="content">
-<!--            <div th:replace="~{/sej_Blog/fragments/blogPost_user-profile :: userProfile}"></div>-->
+            <div th:replace="~{/sej_Blog/fragments/blogPost_user-profile :: userProfile}"></div>
             <nav class="navigation">
                 <div class="nav-items">
                     <div th:onclick="">글</div>
+                    <div th:onclick="">시리즈</div>
                     <div th:onclick="">소개</div>
                 </div>
             </nav>
-            <section th:replace="~{/sej_Blog/fragments/blogPost2_postList.html :: posts}"></section>
+            <section th:replace="~{/sej_Blog/fragments/blogPost_posts.html :: posts}"></section>
         </div>
     </div>
 </main>
-
-<script th:src="@{/javascript/calender.js}"></script>
-<script src="index.js"></script>
-<script src="todo.js"></script>
-<script src="select.js"></script>
-
 <footer>
     <!-- Footer content here -->
 </footer>

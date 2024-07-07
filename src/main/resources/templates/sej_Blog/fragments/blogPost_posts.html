@@ -1,27 +1,22 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="posts">
-  <head>
-    <link rel="stylesheet" th:href="@{/css/index2.css}"/>
-    <link rel="stylesheet" th:href="@{/css/reset.css}"/>
-  </head>
-  <body>
+
     <section class="posts">
       <div class="post-list">
         <div class="post-item" th:each="box : ${boxes}">
           <div class="post-image" th:onclick="">
             <img th:src="@{images/sample_post_img.png}" alt="x" />
           </div>
-          <div class="post-title" th:text="${box.title}" th:onclick="">
+          <div class="post-title" th:onclick="">
             제목
           </div>
-          <div class="post-description" th:text="${box.description}" >설명</div>
+          <div class="post-description" >설명</div>
           <div class="post-tags">
-            <div th:each="tag : ${box.tags}" th:text="${tag}" th:onclick="">
-              태그
+            <div th:each="tag : ${box.tags}" th:onclick="">
+              태그 잘 나오니?
             </div>
           </div>
           <div class="post-meta">
-            <div class="post-date" th:text="${box.date}" >작성날짜</div>
+            <div class="post-date" >작성날짜</div>
             <div
               class="post-comments"
               th:text="${box.commentsCount} + '개의 댓글'"
@@ -38,5 +33,5 @@
         </div>
       </div>
     </section>
-  </body>
+
 </html>
