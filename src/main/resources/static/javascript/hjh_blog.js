@@ -20,3 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
         postListButton.classList.remove('active');
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    // 에러 메시지가 있으면 경고창을 띄웁니다.
+    const errorMessage = document.getElementById("errorMessage").value;
+    if (errorMessage) {
+        alert(errorMessage);
+    }
+});
