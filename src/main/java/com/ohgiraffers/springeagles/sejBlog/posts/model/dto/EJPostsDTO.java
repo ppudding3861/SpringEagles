@@ -1,16 +1,5 @@
 package com.ohgiraffers.springeagles.sejBlog.posts.model.dto;
 
-import lombok.*;
-
-import java.time.LocalDateTime;
-import java.util.List;
-
-
-@Getter
-@Setter
-@ToString
-@AllArgsConstructor
-@NoArgsConstructor
 public class EJPostsDTO {
 
     private Integer id;
@@ -19,4 +8,45 @@ public class EJPostsDTO {
 //    private String imageUrl;
 
 
- }
+    public EJPostsDTO() {
+    }
+
+    public EJPostsDTO(Integer id, String title, String contents) {
+        this.id = id;
+        this.title = title;
+        this.contents = contents;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContents() {
+        return contents;
+    }
+
+    public void setContents(String contents) {
+        this.contents = contents;
+    }
+
+    @Override
+    public String toString() {
+        return "EJPostsDTO{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contents='" + contents + '\'' +
+                '}';
+    }
+}

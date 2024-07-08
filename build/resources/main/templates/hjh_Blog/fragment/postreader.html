@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="postreader" >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <read-container class="read-container">
-    <postreader th:fragment="postreader" class="postreader">
+    <postreader class="postreader">
         <div th:if="${post.postId == selectedId}" class="read-align">
-            <div class="read-container" th:each="post : ${posts}">
+            <div class="read-container" th:each="post : ${post}">
                 <div class="read-title" th:text="${post.title}">글의 제목</div>
                 <div class="read-sub" th:text="${post.description}">글의 설명</div>
-                <div class="read-category" th:text="${post.category}"><div>카테고리</div></div>
                 <div class="read-section">
                     <div class="read-imgs">
                         <img th:src="@{${post.imageUrl}}"/>
@@ -19,11 +18,12 @@
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
                 <div class="read-option">
-                    <a th:href="@{/hjh/Blog/postreader/modify{id}(id=${post.postId})}" class="read-modify-button"><div>수정</div></a>
-                    <a th:href="@{/hjh/Blog/postreader/delete?(id=${post.postId})}" class="read-delete-button"><div>삭제</div></a>
+                    <a th:href="@{/hjh/Blog/postreader/modify/{id}(id=${post.postId})}" class="read-modify-button"><div>수정</div></a>
+                    <a th:href="@{/hjh/Blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button"><div>삭제</div></a>
                 </div>
             </div>
         </div>
+    </postreader>
 </read-container>
 </body>
 </html>

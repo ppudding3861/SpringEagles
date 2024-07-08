@@ -8,25 +8,24 @@
 <h1>글쓰기</h1>
 
 
-<form th:action=" @{/edit}" method="post">
+<!--이거 post mapping 과 관련있는 거 아님?-->
+<form th:action=" @{/sej/blog/edit}" method="post">
 
     <div>
         <label for="title"> <strong>제목:</strong>  </label>
         <input type ="text" id="title" name="title" required>
     </div>
     <div>
-        <label for="content"><strong>내용: </strong> </label>
-        <textarea type="text" id="content" name="content" rows="10" cols="50" required></textarea>
+        <label for="contents"><strong>내용: </strong> </label>
+        <textarea type="text" id="contents" name="contents" rows="10" cols="50" required></textarea>
         <!-- row 는 텍스트 영역의 세로 크기를 줄단위로 지정-->
         <!-- cols 는 텍스트 영역의 가로 크기를 문자단위로 지정 -->
         <!-- required 가 있으면 사용자가 텍스트 영역을 비워둘 수 없음-->
         <div>
             <!--                아니 너 왜 글쓰기 누르면 메인으로 안가니?-->
-            <input type="submit" role="button" value="글쓰기" />
-
+            <input type="submit" role="button"  value="글쓰기" />
 
         </div>
-
 
     </div>
 
