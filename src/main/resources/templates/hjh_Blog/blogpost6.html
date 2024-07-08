@@ -65,13 +65,13 @@
     </div>
 
     <div th:if="${currentPage == 'Add'}">
-        <div th:replace="~{hjh_Blog/fragment/Add :: Add}"></div>
+        <div th:replace="~{/hjh_Blog/fragment/Add :: Add}"></div>
     </div>
 
-    <div th:replace="~{hjh_Blog/fragment/list :: list}"></div>
+    <div th:replace="~{/hjh_Blog/fragment/list :: list}"></div>
 
     <div th:if="${currentPage == 'postreader'}">
-        <div th:replace="~{hjh_Blog/fragment/postreader :: postreader}"></div>
+        <div th:replace="~{/hjh_Blog/fragment/postreader :: postreader}"></div>
     </div>
 
 </main>
