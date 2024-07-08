@@ -17,11 +17,10 @@ public class EJPostsService {
 
     @Autowired
     public EJPostsService(EJPostsRepository ejPostsRepository) {
-
         this.ejPostsRepository = ejPostsRepository;
     }
 
-
+    @Transactional
     public void savepost(EJPostsDTO ejPostsDTO) {
         EJPostsEntity ejPostsEntity = new EJPostsEntity();
         ejPostsEntity.setTitle(ejPostsDTO.getTitle());
@@ -41,5 +40,29 @@ public class EJPostsService {
             ejPostsDTOList.add(ejPostsDTO);
         }
         return ejPostsDTOList;
+    }
+    // DTO id를 가져와서 Entity id 에 넣어준다
+    @Transactional
+    public EJPostsDTO getpost(Integer id) {
+        EJPostsEntity ejPostsEntity = ejPostsRepository.findById(id).get();
+        EJPostsDTO ejPostsDTO = new EJPostsDTO();
+        ejPostsDTO.setId(ejPostsEntity.getId());
+        ejPostsDTO.setTitle(ejPostsEntity.getTitle());
+        ejPostsDTO.setContents(ejPostsEntity.getContents());
+        return ejPostsDTO;
+    }
+
+    @Transactional
+    public void updatePost(EJPostsDTO existingPost) {
+        EJPostsEntity ejPostsEntity = ejPostsRepository.findById(existingPost.getId()).get();
+        ejPostsEntity.setTitle(existingPost.getTitle());
+        ejPostsEntity.setContents(existingPost.getContents());
+
+        ejPostsRepository.save(ejPostsEntity);
+    }
+
+    @Transactional
+    public void deletPost(Integer id) {
+        ejPostsRepository.deleteById(id);
     }
 }
