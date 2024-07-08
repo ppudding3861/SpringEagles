@@ -10,13 +10,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collections;
 import java.util.List;
 
 
 @Controller
 @RequestMapping("/hjh/blog")
 public class JHPostsController {
+
 
     private final JHPostsService jhPostsService;
     private  Object jhPostsEntity;
@@ -56,44 +56,16 @@ public class JHPostsController {
         return mv;
 
     }
-    @GetMapping
-    public ModelAndView showlistpage(Model model, ModelAndView mv ) {
 
-        List<JHPostsEntity> postList = jhPostsService.postsEntityList();
-
-        Collections.reverse(postList);
-        model.addAttribute("currentPage", "list");
-
-        mv.addObject("postList", postList);
-        mv.setViewName("hjh/Blog/blogPost6");
-
-        return mv;
-    }
     @GetMapping("/postreader/{postId}")
     public ModelAndView showReadPage(@PathVariable("postId") Integer postId, ModelAndView mv) {
-        JHPostsEntity post = jhPostsService.getPostById(postId).orElse(null);
-
-        mv.addObject("post", post);
-        mv.addObject("selectedId",postId);
-        mv.addObject("currentPage", "postreader");
-        mv.setViewName("hjh/Blog/blogPost6");
-        return mv;
+        JHPostsEntity post = jhPostsService.getPostById(postId).orElse(null); // ID로 게시글을 찾음
+        mv.addObject("post", post); // 선택된 게시글을 모델앤뷰에 추가
+        mv.addObject("selectedId", postId); // 선택된 게시글 ID를 모델앤뷰에 추가
+        mv.addObject("currentPage", "postreader"); // 현재 페이지 정보를 모델앤뷰에 추가
+        mv.setViewName("hjh_Blog/blogpost6"); // 뷰 이름 설정
+        return mv; // 모델앤뷰 객체 반환
     }
-    @GetMapping("/postreader/delete")
-    public String deletePost(@RequestParam("id") Integer id) {
-        jhPostsService.deletePost(id);
-        return "redirect:/hjh/Blog/blogPost6";
-    }
-
-    @GetMapping("/postreader/modify{id}")
-    public ModelAndView modifyPage(@PathVariable("id") Integer id, ModelAndView mv) {
-        JHPostsEntity post = jhPostsService.getPostById(id).orElse(null);
-        mv.addObject("post", post);
-        mv.addObject("currentPage", "modifypage");
-        mv.setViewName("hjh/Blog/blogPost6");
-        return mv;
-    }
-
 
 
 

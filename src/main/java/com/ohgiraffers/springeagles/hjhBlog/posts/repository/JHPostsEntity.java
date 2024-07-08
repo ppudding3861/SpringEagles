@@ -4,8 +4,6 @@ import com.ohgiraffers.springeagles.hjhBlog.posts.dto.JHPostsDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "jh_posts")
