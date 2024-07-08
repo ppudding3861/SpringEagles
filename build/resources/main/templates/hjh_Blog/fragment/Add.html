@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  th:fragment="Add">
+
+
+<div class="introduce-con">
+    <div class="edit-container">
+    <form th:action="@{/hjh/blog/add}" method="post">
+        <div class="edit-form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" required/>
+        </div>
+        <div class="edit-form-group">
+            <label for="description">설명</label>
+            <input type="text" id="description" name="description" required/>
+        </div>
+        <div class="edit-form-group">
+            <label for="content">내용</label>
+            <textarea id="content" name="content" rows="10" required></textarea>
+        </div>
+        <div class="edit-form-group">
+            <label for="imageUrl">이미지 업로드</label>
+            <input type="text" id="imageUrl" name="imageUrl"/>
+        </div>
+        <button type="submit">등록하시겠습니까?</button>
+    </form>
+    </div>
+</div>
+</html>

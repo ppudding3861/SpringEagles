@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>stjoo.log</title>
+    <title>joenghan.blog</title>
     <link rel="stylesheet" th:href="@{/css/hjh_Blog.css}"/>
     <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
-<body>
+<body style="background: linear-gradient(-180deg, #BCC5CE 0%, #929EAD 98%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+ background-blend-mode: screen;">
+<input type="hidden" id="errorMessage" th:value="${errorMessage}" />
 <header>
     <div class="header-container">
         <div class="header">
@@ -19,9 +21,6 @@
                 <ul class="SMN_effect-6">
                     <li class="header-authentication" ></li>
                     <li><a th:href="@{/}" data-hover="홈화면">홈화면</a></li>
-                    <li>
-                        <a th:href="@{/hjh/blog/posts}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -32,7 +31,7 @@
     <div class="user-profile">
         <div class="profile-upper">
             <div class="profile-image">
-                <img th:src="@{/images/hjh_user_img.png}" alt="X" />
+                <img th:src="@{/images/hjh_user_img.gif}" alt="X" />
             </div>
             <div class="profile-info">
                 <div class="user-name" >황정한</div>
@@ -58,12 +57,26 @@
     </nav>
 
 <main id="mainContent">
-        <div th:replace="~{/hjh_Blog/fragment/mainPage_Introduce :: introduce}"></div>
+    <div th:unless="${currentPage == 'Add'}">
+        <a th:href="@{/hjh/blog/post}">
+            <button>게시글 등록하기</button>
+
+        </a>
+    </div>
+
+    <div th:if="${currentPage == 'Add'}">
+        <div th:replace="~{/hjh_Blog/fragment/Add :: Add}"></div>
+    </div>
+
+    <div th:replace="~{/hjh_Blog/fragment/list :: list}"></div>
+
+    <div th:if="${currentPage == 'postreader'}">
+        <div th:replace="~{/hjh_Blog/fragment/postreader :: postreader}"></div>
+    </div>
+
 </main>
 
-<footer>
-    <!-- Footer content here -->
-</footer>
 <script th:src="@{/javascript/hjh_blog.js}"></script>
+</div>
 </body>
 </html>

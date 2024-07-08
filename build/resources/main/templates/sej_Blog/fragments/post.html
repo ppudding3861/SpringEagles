@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="posts">
+
+<h1>전체조회_list</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">제목</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    <tr class = "text-center" th:each="post : ${postList}">
+        <th scope="row">
+            <span th:text="${post.id}"></span>
+        </th>
+        <td>
+            <a th:href="@{'/eidit/' + ${post.id}}">
+                <span th:text="${post.title}"></span>
+            </a>
+            <!--제목을 클릭하면 상세조회 페이지로 넘어간다-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/sej/blog/edit}" role="button"> 글쓰기 </a>
+</div>
+
+</body>
+
+</html>
