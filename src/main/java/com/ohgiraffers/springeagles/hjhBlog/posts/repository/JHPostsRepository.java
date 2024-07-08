@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface JHPostsRepository extends JpaRepository<JHPostsEntity, Integer> {
+
 }

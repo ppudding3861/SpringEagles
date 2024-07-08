@@ -1,937 +1,460 @@
-@font-face {
-  font-family: "yg-jalnan";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
-  format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "NPSfontBold";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
-  format("woff2");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Dovemayo_gothic";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
-  format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'KCC-Ahnchangho';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/KCC-Ahnchangho.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-
-body {
-  font-family: "Noto Sans KR", sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #343a40;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);;
-}
 
 .header-container {
-  width: 100%;
-  background-image: linear-gradient(to right, #434343 0%, black 100%);;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  color: #ffffff;
+    width: 100%;
+    background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    color: #00010D;
 }
 
 .header {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .header-logo {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
 }
 
 .logo-text {
-  font-family: 'KCC-Ahnchangho';
-  font-size: 1.5em;
+    font-family: 'KCC-Ahnchangho';
+    letter-spacing: 5px;
+    font-size: 1.5em;
+}
+.logo-text:hover {
+    animation: jello 1s;
 }
 
 .logo-image {
-  margin-right: 10px;
+    margin-right: 10px;
 }
 
 .logo-image > img {
-  width: 30px;
-  height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 .header-user {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-.main-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 20px auto;
+.SMN_effect-6 a:hover:before,
+.SMN_effect-6 a:focus:before {
+    width: 100%;
 }
 
-.sidebar {
-  width: 250px;
-  margin-right: 20px;
+.SMN_effect-6 a:hover {
+    color: #8C8072;
+}
+.SMN_effect-6 a {
+    position: relative;
+    color: #00010D;
+    text-decoration: none;
+    font-family: "NPSfontBold";
+    font-size: 1em;
+    letter-spacing:2px;
+    cursor: pointer;
 }
 
-.sidebar-content {
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-  padding: 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
+.SMN_effect-6 a:before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #8C8072;
+    transition: width 0.3s ease-out;
 }
-
-.sidebar-title {
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-family: "Dovemayo_gothic";
-  padding-bottom: 15px;
-  border-bottom: 1px solid #999;
-}
-
-.tag-list {
-  list-style: none;
-  padding: 0;
-}
-
-.tag-list li {
-  margin-bottom: 10px;
-  font-family: "Dovemayo_gothic";
-  cursor: pointer;
+.SMN_effect-6 li {
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .content {
-  flex: 1;
+    flex: 1;
+    height: 100vh;
+}
+
+
+.header-authentication{
+    position: relative;
+    color: #6d14b8;
+    text-decoration: none;
+    font-family: "NPSfontBold";
+    font-size: 1em;
 }
 
 .user-profile {
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-  padding: 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-bottom: 20px;
+    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 50px 10%;
+    box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+
 }
 
 .profile-upper {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 30px;
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #D9CBBA;
 }
 
 .profile-image {
-  margin-right: 20px;
-  margin-left: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .profile-image > img {
-  width: 150px;
-  height: 150px;
-  border: 3px solid #8294C4;
-  border-radius: 50%;
-  background-color: #fff;
+    width: 150px;
+    height: 150px;
+    border: 3px solid #D9CBBA;
+    background-color: #fff;
+    border-radius: 50%;
 }
 
 .profile-info .user-name {
-  font-weight: bold;
-  font-size: 2em;
-  margin-bottom: 5px;
-  font-family: "Dovemayo_gothic";
+    font-weight: bold;
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-family: "NPSfontBold";
 }
 
 .profile-info .user-description {
-  font-size: 1.5em;
-  font-family: "Dovemayo_gothic";
+    font-size: 1.2em;
+    font-family: "NPSfontBold";
 }
 
 .profile-lower {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .sns-icons {
-  display: flex;
+    display: flex;
 }
 
 .sns-icons .icon {
-  margin-right: 10px;
-  margin-left: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .sns-icons .icon > a > img {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}.navigation {
+     background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+     background-blend-mode: normal,color-burn;
+     padding: 10px 20px;
+     box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+     border-radius: 20px;
+     margin: 50px 10%;
 
-.follow-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.follow-stats {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.follow-stats .follow-count,
-.follow-stats .follower-count {
-  margin-right: 10px;
-  font-family: "Dovemayo_gothic";
-  cursor: pointer;
-}
-
-.follow-button {
-  padding: 5px 10px;
-  background-color: #8294C4;
-  color: #ffffff;
-  cursor: pointer;
-  border-radius: 5px;
-  font-family: "Dovemayo_gothic";
-}
-
-.navigation {
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-  padding: 10px 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
+ }
 
 .nav-items {
-  display: flex;
-  justify-content: space-around;
+    display: flex;
+    justify-content: space-around;
 }
 
 .nav-items > div {
-  font-size: 1.2em;
-  font-family: "Dovemayo_gothic";
-  cursor: pointer;
+    font-size: 1.2em;
+    font-family: "NPSfontBold";
+    cursor: pointer;
+    color: #00010D;
 }
 .nav-items div.active {
-  color: #00a05b;
+    color: #D9CBBA;
 }
 
 .nav-items div:hover {
-  color: #00a05b;
+    color: #D9CBBA;
+}
+.nav-items div.active {
+    color: #D9CBBA; /* 예시: 활성화된 버튼의 색상 변경 */
 }
 
 .posts {
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-  padding: 20px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
 }
 
 .post-list {
-  display: flex;
-  flex-direction: column;
+    display: none;
+}
+.post-list.active {
+    display: flex;
+    flex-direction: column;
+    color: #D9CBBA;
+}
+
+.post-introduce{
+    display: none;
+}
+.post-introduce.active {
+    display: flex;
+    flex-direction: column;
+    color: #D9CBBA;
+}
+
+.introduce-con {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    margin : 50px 10%;
+    border-radius: 10px;
+    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+    box-shadow: 0 7px 20px rgba(0,0,0,0.30), 0 7px 6px rgba(0,0,0,0.22);
+}
+
+.introduce-content {
+    display: flex;
+    height: 100%;
+    font-size: 1em;
+    color: #00010D;
+    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+    border-radius: 10px;
+}
+
+.edit-container {
+    width: 100%;
+    height: auto;
+    /* margin: 50px auto; */
+    padding: 20px;
+    background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0,0,0,0.02) 50%, rgba(255,255,255,0.02) 61%, rgba(0,0,0,0.02) 73%), linear-gradient(33deg, rgba(255,255,255,0.20) 0%, rgba(0,0,0,0.20) 100%);
+    background-blend-mode: normal,color-burn;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.edit-form-group {
+    margin-bottom: 20px;
+}
+
+
+.edit-container {
+    max-width: 1600px;
+    height: 1000px;
+    /* margin: 50px auto; */
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+.edit-form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #555;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #007bff;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="file"] {
+    display: block;
+    margin-top: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    button {
+        padding: 12px;
+    }
+}
+
+.main-navbar {
+    background-color: #FF7F50;
+    overflow: hidden;
+    width: 800px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.main-navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.main-navbar a:hover {
+    background-color: #555;
+    color: white;
+}
+
+.main-posts {
+    display: flex;
+    justify-content: center;
+    /*padding: 20px;*/
+}
+
+.main-container {
+    width: 755px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .post-item {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid #dee2e6;
-  padding: 20px 0;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
 
-.post-item {
-  border-bottom: none;
+.post-item:hover {
+    transform: translateY(-10px);
 }
 
-.post-image {
-  display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
-  height: 400px; /* 이미지의 높이를 고정 */
-  cursor: pointer;
-  margin-bottom: 10px;
+figure {
+    display: block;
+    height: 200px;
+    overflow: hidden;
+    width: 100%; /* 상위 컨테이너의 너비에 맞춤 */
+    display: flex;
+    justify-content: center; /* 이미지 가운데 정렬 */
 }
 
-.post-image img {
-  width: 800px; /* 이미지의 너비를 300px로 고정 */
-  height: 400px; /* 이미지의 높이를 300px로 고정 */
-  object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
+figure img {
+    width: 400px;
+    height: auto;
+    max-width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.post-image:hover img {
+    transform: scale(1.1);
+}
+
+.post-content {
+    padding: 20px;
+    flex-grow: 1;
+}
+.title-container{
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .post-title {
-  font-weight: bold;
-  font-size: 1.5em;
-  margin: 10px 0;
-  font-family: "Dovemayo_gothic";
-  cursor: pointer;
-  margin-bottom: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 .post-description {
-  margin-bottom: 10px;
-  font-size: 1.2em;
-  font-family: "Dovemayo_gothic";
-  margin-bottom: 20px;
+    font-size: 1em;
+    color: #666;
 }
 
 .post-tags {
-  color: #868e96;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: row;
+    margin-top: 10px;
 }
 
-.post-tags > div {
-  width: auto;
-  padding: 5px 10px;
-  background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-  color: #ffffff;
-  cursor: pointer;
-  margin-left: 10px;
-  border-radius: 5px;
-  font-family: "Dovemayo_gothic";
-  text-align: center;
-}
-
-.post-meta {
-  display: flex;
-  justify-content: left;
-  color: #868e96;
-}
-
-.post-meta .post-date,
-.post-meta .post-comments,
-.post-meta .post-likes {
-  margin-right: 10px;
-  font-size: 0.8em;
-  color: #999;
-  font-family: "Dovemayo_gothic";
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f1f3f5;
-  color: #868e96;
-}
-
-/* 미디어 쿼리 추가 */
-@media screen and (max-width: 980px) {
-  .header {
-    padding: 15px;
-  }
-  .header-user {
-    flex-direction: row;@font-face {
-    font-family: "yg-jalnan";
-    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff")
-    format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
-
-    @font-face {
-      font-family: "NPSfontBold";
-      src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
-      format("woff2");
-      font-weight: 700;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: "Dovemayo_gothic";
-      src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2")
-      format("woff2");
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'KCC-Ahnchangho';
-      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/KCC-Ahnchangho.woff2') format('woff2');
-      font-weight: normal;
-      font-style: normal;
-    }
-
-    body {
-      font-family: "Noto Sans KR", sans-serif;
-      margin: 0;
-      padding: 0;
-      color: #343a40;
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    }
-
-    .header-container {
-      width: 100%;
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-      color: #ffffff;
-    }
-
-    .header {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .header-logo {
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-    }
-
-    .logo-text {
-      font-family: 'KCC-Ahnchangho';
-      font-size: 1.5em;
-    }
-
-    .logo-image {
-      margin-right: 10px;
-    }
-
-    .logo-image > img {
-      width: 30px;
-      height: 30px;
-    }
-
-    .header-user {
-      display: flex;
-      justify-content: center;
-    }
-
-    .main-container {
-      display: flex;
-      max-width: 1200px;
-      margin: 20px auto;
-    }
-
-    .sidebar {
-      width: 250px;
-      margin-right: 20px;
-    }
-
-    .sidebar-content {
-      background-color: #DBDFEA;
-      padding: 20px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
-
-    .sidebar-title {
-      font-weight: bold;
-      margin-bottom: 10px;
-      font-family: "Dovemayo_gothic";
-      padding-bottom: 15px;
-      border-bottom: 1px solid #999;
-    }
-
-    .tag-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .tag-list li {
-      margin-bottom: 10px;
-      font-family: "Dovemayo_gothic";
-      cursor: pointer;
-    }
-
-    .content {
-      flex: 1;
-    }
-
-    .user-profile {
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-      padding: 20px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .profile-upper {
-      display: flex;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 30px;
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-    }
-
-    .profile-image {
-      margin-right: 20px;
-      margin-left: 20px;
-    }
-
-    .profile-image > img {
-      width: 150px;
-      height: 150px;
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-      border-radius: 50%;
-      background-color: #fff;
-    }
-
-    .profile-info .user-name {
-      font-weight: bold;
-      font-size: 2em;
-      margin-bottom: 5px;
-      font-family: "Dovemayo_gothic";
-    }
-
-    .profile-info .user-description {
-      font-size: 1.5em;
-      font-family: "Dovemayo_gothic";
-    }
-
-    .profile-lower {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .sns-icons {
-      display: flex;
-    }
-
-    .sns-icons .icon {
-      margin-right: 10px;
-      margin-left: 10px;
-    }
-
-    .sns-icons .icon > a > img {
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
-
-    .follow-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .follow-stats {
-      display: flex;
-      margin-bottom: 10px;
-    }
-
-    .follow-stats .follow-count,
-    .follow-stats .follower-count {
-      margin-right: 10px;
-      font-family: "Dovemayo_gothic";
-      cursor: pointer;
-    }
-
-    .follow-button {
-      padding: 5px 10px;
-      background-color: #8294C4;
-      color: #ffffff;
-      cursor: pointer;
-      border-radius: 5px;
-      font-family: "Dovemayo_gothic";
-    }
-
-    .navigation {
-      background-color: #DBDFEA;
-      padding: 10px 20px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .nav-items {
-      display: flex;
-      justify-content: space-around;
-    }
-
-    .nav-items > div {
-      font-size: 1.2em;
-      font-family: "Dovemayo_gothic";
-      cursor: pointer;
-    }
-    .nav-items div.active {
-      color: #00a05b;
-    }
-
-    .nav-items div:hover {
-      color: #00a05b;
-    }
-
-    .posts {
-      background-color: #DBDFEA;
-      padding: 20px;
-      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
-    }
-
-    .post-list {
-      display: flex;
-      flex-direction: column;
-    }
-
+@media (max-width: 768px) {
     .post-item {
-      display: flex;
-      flex-direction: column;
-      border-bottom: 1px solid #dee2e6;
-      padding: 20px 0;
-    }
-
-    .post-item {
-      border-bottom: none;
-    }
-
-    .post-image {
-      display: flex;
-      justify-content: center; /* 가로 중앙 정렬 */
-      align-items: center; /* 세로 중앙 정렬 */
-      height: 400px; /* 이미지의 높이를 고정 */
-      cursor: pointer;
-      margin-bottom: 10px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .post-image img {
-      width: 800px; /* 이미지의 너비를 300px로 고정 */
-      height: 400px; /* 이미지의 높이를 300px로 고정 */
-      object-fit: cover; /* 이미지가 컨테이너 크기에 맞게 자르도록 설정 */
-    }
-
-    .post-title {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin: 10px 0;
-      font-family: "Dovemayo_gothic";
-      cursor: pointer;
-      margin-bottom: 20px;
-    }
-
-    .post-description {
-      margin-bottom: 10px;
-      font-size: 1.2em;
-      font-family: "Dovemayo_gothic";
-      margin-bottom: 20px;
-    }
-
-    .post-tags {
-      color: #868e96;
-      margin-bottom: 20px;
-      display: flex;
-      flex-direction: row;
-    }
-
-    .post-tags > div {
-      width: auto;
-      padding: 5px 10px;
-      background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
-      color: #ffffff;
-      cursor: pointer;
-      margin-left: 10px;
-      border-radius: 5px;
-      font-family: "Dovemayo_gothic";
-      text-align: center;
-    }
-
-    .post-meta {
-      display: flex;
-      justify-content: left;
-      color: #868e96;
-    }
-
-    .post-meta .post-date,
-    .post-meta .post-comments,
-    .post-meta .post-likes {
-      margin-right: 10px;
-      font-size: 0.8em;
-      color: #999;
-      font-family: "Dovemayo_gothic";
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #f1f3f5;
-      color: #868e96;
-    }
-
-    /* 미디어 쿼리 추가 */
-    @media screen and (max-width: 980px) {
-      .header {
-        padding: 15px;
-      }
-      .header-user {
-        flex-direction: row;
-        align-items: flex-end;
-      }
-      .user-notification,
-      .user-search,
-      .user-login {
-        margin-left: 10px;
-      }
-      .header-logo {
-        flex-direction: row;
-        align-items: flex-start;
-      }
-      .logo-text {
-        font-size: 1.5em;
-      }
-      .logo-image > img {
-        width: 25px;
-        height: 25px;
-      }
-      .main-container {
-        flex-direction: column;
-        margin: 10px;
-      }
-      .sidebar {
-        width: 100%; /* 전체 너비로 변경 */
-        margin-right: 0;
-        margin-bottom: 20px;
-      }
-      .content {
-        margin-right: 0;
-      }
-      .profile-upper {
-        flex-direction: column;
-        align-items: center;
-      }
-      .profile-image > img {
-        width: 120px;
-        height: 120px;
-      }
-      .profile-info .user-name {
-        font-size: 1.5em;
-      }
-      .profile-info .user-description {
-        font-size: 1em;
-      }
-      .sns-icons .icon > img {
-        width: 25px;
-        height: 25px;
-      }
-      .follow-info {
-        align-items: center;
-      }
-      .nav-items {
-        flex-direction: row;
-        align-items: center;
-      }
-      .nav-items > div {
+        width: 100%;
+        height: auto;
         margin-bottom: 10px;
-      }
-      .post-image img {
-        max-width: 100%;
-        height: 100%;
-      }
-      .post-title {
-        font-size: 1.2em;
-      }
-      .post-description {
-        font-size: 1em;
-      }
-      .post-meta .post-date,
-      .post-meta .post-comments,
-      .post-meta .post-likes {
-        font-size: 0.7em;
-      }
     }
 
-    .custom-btn {
-      width: 80px;
-      height: 30px;
-      background: transparent;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      border: none;
-      color: #fff;
-      margin-left: 10px;
+    .main-navbar {
+        flex-direction: column;
+        height: auto;
     }
 
-    .btn-3 {
-      padding: 0;
+    .main-navbar a {
+        padding: 10px;
+        font-size: 20px;
     }
-
-    .btn-3:hover {
-      background: rgba(255, 255, 255, 0.1); /* hover 시 투명한 흰색 배경 추가 */
-    }
-
-    .btn-3 div {
-      font-family: "Dovemayo_gothic";
-      font-size: 1.2em; /* 텍스트 크기 조정 */
-      position: relative;
-      display: block; /* block 요소로 설정하여 text-align 적용 */
-      width: 100%;
-      height: 100%;
-      text-align: center; /* 텍스트 가로 중앙 정렬 */
-    }
-
-    .btn-3:before,
-    .btn-3:after {
-      position: absolute;
-      content: "";
-      left: 0;
-      top: 0;
-      background: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .btn-3:before {
-      height: 0%;
-      width: 2px;
-    }
-
-    .btn-3:after {
-      width: 0%;
-      height: 2px;
-    }
-
-    .btn-3:hover:before {
-      height: 100%;
-    }
-
-    .btn-3:hover:after {
-      width: 100%;
-    }
-
-    .btn-3 div:before,
-    .btn-3 div:after {
-      position: absolute;
-      content: "";
-      right: 0;
-      bottom: 0;
-      background: #fff;
-      transition: all 0.3s ease;
-    }
-
-    .btn-3 div:before {
-      width: 2px;
-      height: 0%;
-    }
-
-    .btn-3 div:after {
-      width: 0%;
-      height: 2px;
-    }
-
-    .btn-3 div:hover:before {
-      height: 100%;
-    }
-
-    .btn-3 div:hover:after {
-      width: 100%;
-    }
-
-
-    align-items: flex-end;
-  }
-  .user-notification,
-  .user-search,
-  .user-login {
-    margin-left: 10px;
-  }
-  .header-logo {
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .logo-text {
-    font-size: 1.5em;
-  }
-  .logo-image > img {
-    width: 25px;
-    height: 25px;
-  }
-  .main-container {
-    flex-direction: column;
-    margin: 10px;
-  }
-  .sidebar {
-    width: 100%; /* 전체 너비로 변경 */
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-  .content {
-    margin-right: 0;
-  }
-  .profile-upper {
-    flex-direction: column;
-    align-items: center;
-  }
-  .profile-image > img {
-    width: 120px;
-    height: 120px;
-  }
-  .profile-info .user-name {
-    font-size: 1.5em;
-  }
-  .profile-info .user-description {
-    font-size: 1em;
-  }
-  .sns-icons .icon > img {
-    width: 25px;
-    height: 25px;
-  }
-  .follow-info {
-    align-items: center;
-  }
-  .nav-items {
-    flex-direction: row;
-    align-items: center;
-  }
-  .nav-items > div {
-    margin-bottom: 10px;
-  }
-  .post-image img {
-    max-width: 100%;
-    height: 100%;
-  }
-  .post-title {
-    font-size: 1.2em;
-  }
-  .post-description {
-    font-size: 1em;
-  }
-  .post-meta .post-date,
-  .post-meta .post-comments,
-  .post-meta .post-likes {
-    font-size: 0.7em;
-  }
 }
 
-.custom-btn {
-  width: 80px;
-  height: 30px;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  border: none;
-  color: #fff;
-  margin-left: 10px;
-}
-
-.custom-btn div {
-  font-family: "Dovemayo_gothic";
-  font-size: 1.2em; /* 텍스트 크기 조정 */
-  position: relative;
-  display: block; /* block 요소로 설정하여 text-align 적용 */
-  width: 100%;
-  height: 100%;
-  text-align: center; /* 텍스트 가로 중앙 정렬 */
-}
 
 

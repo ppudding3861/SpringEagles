@@ -33,34 +33,6 @@ public class JHPostsEntity {
     @Column(name = "post_content", nullable = false, columnDefinition = "TEXT")
     private String content;
 
-    @Column(name = "post_createdAt", nullable = false, updatable = false)
-    private LocalDate createdAt;
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDate.now();
-    }
-
-    @Column(name = "post_updatedAt")
-    private LocalDate updatedAt;
-
-    @PreUpdate
-    private void onUpdate() {
-        updatedAt = LocalDate.now();
-    }
-
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
-
-    @Column(name = "comment_id")
-    private Integer commentId;
-
-    @Column(name = "likes_id")
-    private Integer likesId;
-
-    @Column(name = "post_tags")
-    @ElementCollection
-    private List<String> tagArray;
 
     // DTO -> Entity
     public JHPostsEntity(JHPostsDTO dto) {
@@ -69,11 +41,6 @@ public class JHPostsEntity {
         this.description = dto.getDescription();
         this.imageUrl = dto.getImageUrl();
         this.content = dto.getContent();
-        this.createdAt = dto.getCreatedAt();
-        this.updatedAt = dto.getUpdatedAt();
-        this.userId = dto.getUserId();
-        this.commentId = dto.getCommentId();
-        this.likesId = dto.getLikesId();
-        this.tagArray = dto.getTagArray();
+
     }
 }
