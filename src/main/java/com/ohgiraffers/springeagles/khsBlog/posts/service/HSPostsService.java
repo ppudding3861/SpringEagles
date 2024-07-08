@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 // HSPostsService 클래스는 비즈니스 로직을 담당하는 서비스 클래스입니다.
 @Service
@@ -75,5 +77,18 @@ public class HSPostsService {
         hsPostsEntity.setImageUrl(hsPostsDTO.getImageUrl()); // 이미지 URL 수정
         hsPostsEntity.setCategory(hsPostsDTO.getCategory()); // 카테고리 수정
         hsPostsRepository.save(hsPostsEntity);
+    }
+    @Transactional
+    public List<HSPostsEntity> searchPosts(String keyword){
+        List<HSPostsEntity> postList = postsEntityList();
+        if (keyword != null && !keyword.isEmpty()){
+            return postList.stream()
+                    .filter(post -> post.getTitle().contains(keyword)
+                            || post.getDescription().contains(keyword)
+                            || post.getContent().contains(keyword))
+                    .collect(Collectors.toList());
+        }else {
+            return Collections.emptyList();
+        }
     }
 }

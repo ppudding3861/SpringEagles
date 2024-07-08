@@ -2,7 +2,6 @@ package com.ohgiraffers.springeagles.khsBlog.posts.controller;
 
 import com.ohgiraffers.springeagles.khsBlog.posts.dto.HSPostsDTO;
 import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
-import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsRepository;
 import com.ohgiraffers.springeagles.khsBlog.posts.service.HSPostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/khs/blog")
@@ -39,7 +37,7 @@ public class HSPostController {
         Collections.reverse(postList); // 게시글 목록을 역순으로 정렬
         model.addAttribute("currentPage", "editpagehs"); // 현재 페이지 정보를 모델에 추가
         model.addAttribute("postList", postList); // 게시글 목록을 모델에 추가
-        return "khs_Blog/blogPost4"; // 뷰 이름 반환
+        return "khs_Blog/hsblogPost"; // 뷰 이름 반환
     }
 
     /**
@@ -52,25 +50,13 @@ public class HSPostController {
     @GetMapping
     public ModelAndView showlistpage(@RequestParam(value = "keyword", required = false) String keyword, Model model, ModelAndView mv) {
         List<HSPostsEntity> postList = hsPostsService.postsEntityList(); // 모든 게시글 목록을 가져옴
-        List<HSPostsEntity> searchResults;
-
-
-        // 검색어가 있는 경우 게시글 목록에서 검색어를 포함하는 게시글을 필터링
-        if (keyword != null && !keyword.isEmpty()) { // 검색어가 null이 아니고 빈 문자열이 아닌 경우에만 실행
-            searchResults = postList.stream() // 게시글 목록(postList)을 스트림으로 변환
-                    .filter(post -> post.getTitle().contains(keyword) // 게시글 제목에 검색어가 포함되어 있는지 검사
-                            || post.getDescription().contains(keyword) // 또는 게시글 설명에 검색어가 포함되어 있는지 검사
-                            || post.getContent().contains(keyword)) // 또는 게시글 내용에 검색어가 포함되어 있는지 검사
-                    .collect(Collectors.toList()); // 필터링된 게시글들을 리스트로 수집
-            model.addAttribute("searchResults", searchResults); // 검색 결과를 모델에 추가
-        } else {
-            searchResults = Collections.emptyList(); // 빈 리스트로 설정
-        }
+        List<HSPostsEntity> searchResults = hsPostsService.searchPosts(keyword);
 
         Collections.reverse(postList); // 게시글 목록을 역순으로 정렬
+        mv.addObject("searchResults", searchResults);
         model.addAttribute("currentPage", "main"); // 현재 페이지 정보를 모델에 추가
         mv.addObject("postList", postList); // 게시글 목록을 모델앤뷰에 추가
-        mv.setViewName("khs_Blog/blogPost4"); // 뷰 이름 설정
+        mv.setViewName("khs_Blog/hsblogPost"); // 뷰 이름 설정
         return mv; // 모델앤뷰 객체 반환
     }
 
@@ -114,7 +100,7 @@ public class HSPostController {
         mv.addObject("post", post); // 선택된 게시글을 모델앤뷰에 추가
         mv.addObject("selectedId", post_id); // 선택된 게시글 ID를 모델앤뷰에 추가
         mv.addObject("currentPage", "postreader"); // 현재 페이지 정보를 모델앤뷰에 추가
-        mv.setViewName("khs_Blog/blogPost4"); // 뷰 이름 설정
+        mv.setViewName("khs_Blog/hsblogPost"); // 뷰 이름 설정
         return mv; // 모델앤뷰 객체 반환
     }
 
@@ -140,7 +126,7 @@ public class HSPostController {
         HSPostsEntity post = hsPostsService.getPostById(id).orElse(null); // ID로 게시글을 찾음
         mv.addObject("post", post); // 선택된 게시글을 모델앤뷰에 추가
         mv.addObject("currentPage", "modifypage"); // 현재 페이지 정보를 모델앤뷰에 추가
-        mv.setViewName("khs_Blog/blogPost4"); // 뷰 이름 설정
+        mv.setViewName("khs_Blog/hsblogPost"); // 뷰 이름 설정
         return mv; // 모델앤뷰 객체 반환
     }
 
