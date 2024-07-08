@@ -4,12 +4,8 @@ package com.ohgiraffers.springeagles.hjhBlog.posts.service;
 import com.ohgiraffers.springeagles.hjhBlog.posts.dto.JHPostsDTO;
 import com.ohgiraffers.springeagles.hjhBlog.posts.repository.JHPostsEntity;
 import com.ohgiraffers.springeagles.hjhBlog.posts.repository.JHPostsRepository;
-import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -59,22 +55,10 @@ public class JHPostsService {
         return postlist;
     }
 
+
+    // ID를 통해 특정 게시글을 가져오는 메서드
     public Optional<JHPostsEntity> getPostById(Integer id) {
-        return jhPostsRepository.findById(id);
-    }
 
-    public void deletePost(Integer id) {
-        jhPostsRepository.deleteById(id);
-    }
-
-    @Transactional
-    public void modifypost(Integer id, JHPostsEntity requestpost){
-        JHPostsEntity jhPostsEntity1 = jhPostsRepository.findById(id).orElseThrow(() -> {
-            return new IllegalArgumentException("글 수정 실패: 아이디를 찾을 수 없습니다.");
-        });
-        jhPostsEntity1.setTitle(requestpost.getTitle());
-        jhPostsEntity1.setDescription(requestpost.getDescription());
-        jhPostsEntity1.setContent(requestpost.getContent());
-        jhPostsEntity1.setImageUrl(requestpost.getImageUrl());
+        return jhPostsRepository.findById(id); // ID로 게시글을 데이터베이스에서 조회하여 반환
     }
 }
