@@ -8,18 +8,21 @@
 <details>
 <summary>SpringEaglesSuperAdminQuery</summary>
 
+
 -- 형석님
 -- 트랜잭션 시작
 START TRANSACTION;
 
 -- 유저를 global_users 테이블에 등록
-INSERT INTO global_users (user_name, user_password, user_email) VALUES ('ppuding', 'ppuding', 'acdongedb@naver.com');
+INSERT INTO global_users (user_name, user_password, user_email)
+VALUES ('ppuding', 'ppuding', 'acdongedb@naver.com');
 
 -- 마지막 삽입된 유저의 ID를 가져옴
 SET @userId = LAST_INSERT_ID();
 
 -- 유저에게 권한을 부여
-INSERT INTO global_user_roles (user_id, user_roles) VALUES (@userId, 'KHS');
+INSERT INTO global_user_roles (user_id, user_roles)
+VALUES (@userId, 'KHS');
 
 -- 트랜잭션 커밋
 COMMIT;
@@ -29,13 +32,15 @@ COMMIT;
 START TRANSACTION;
 
 -- 유저를 global_users 테이블에 등록
-INSERT INTO global_users (user_name, user_password, user_email) VALUES ('stjoo0925', 'stjoo0925', 'stjoo0925@gmail.com');
+INSERT INTO global_users (user_name, user_password, user_email)
+VALUES ('stjoo0925', 'stjoo0925', 'stjoo0925@gmail.com');
 
 -- 마지막 삽입된 유저의 ID를 가져옴
 SET @userId = LAST_INSERT_ID();
 
 -- 유저에게 권한을 부여
-INSERT INTO global_user_roles (user_id, user_roles) VALUES (@userId, 'JST');
+INSERT INTO global_user_roles (user_id, user_roles)
+VALUES (@userId, 'JST');
 
 -- 트랜잭션 커밋
 COMMIT;
@@ -45,13 +50,15 @@ COMMIT;
 START TRANSACTION;
 
 -- 유저를 global_users 테이블에 등록
-INSERT INTO global_users (user_name, user_password, user_email) VALUES ('seohyun', 'seohyun', 'seohyun@naver.com');
+INSERT INTO global_users (user_name, user_password, user_email)
+VALUES ('seohyun', 'seohyun', 'seohyun@naver.com');
 
 -- 마지막 삽입된 유저의 ID를 가져옴
 SET @userId = LAST_INSERT_ID();
 
 -- 유저에게 권한을 부여
-INSERT INTO global_user_roles (user_id, user_roles) VALUES (@userId, 'LSH');
+INSERT INTO global_user_roles (user_id, user_roles)
+VALUES (@userId, 'LSH');
 
 -- 트랜잭션 커밋
 COMMIT;
@@ -61,13 +68,15 @@ COMMIT;
 START TRANSACTION;
 
 -- 유저를 global_users 테이블에 등록
-INSERT INTO global_users (user_name, user_password, user_email) VALUES ('seo', 'seo', 'seo@naver.com');
+INSERT INTO global_users (user_name, user_password, user_email)
+VALUES ('seo', 'seo', 'seo@naver.com');
 
 -- 마지막 삽입된 유저의 ID를 가져옴
 SET @userId = LAST_INSERT_ID();
 
 -- 유저에게 권한을 부여
-INSERT INTO global_user_roles (user_id, user_roles) VALUES (@userId, 'SEJ');
+INSERT INTO global_user_roles (user_id, user_roles)
+VALUES (@userId, 'SEJ');
 
 -- 트랜잭션 커밋
 COMMIT;
@@ -77,14 +86,17 @@ COMMIT;
 START TRANSACTION;
 
 -- 유저를 global_users 테이블에 등록
-INSERT INTO global_users (user_name, user_password, user_email) VALUES ('hwang', 'hwang', 'hwnag@naver.com');
+INSERT INTO global_users (user_name, user_password, user_email)
+VALUES ('hwang', 'hwang', 'hwnag@naver.com');
 
 -- 마지막 삽입된 유저의 ID를 가져옴
 SET @userId = LAST_INSERT_ID();
 
 -- 유저에게 권한을 부여
-INSERT INTO global_user_roles (user_id, user_roles) VALUES (@userId, 'HJH');
+INSERT INTO global_user_roles (user_id, user_roles)
+VALUES (@userId, 'HJH');
 
 -- 트랜잭션 커밋
 COMMIT;
+
 </details>
