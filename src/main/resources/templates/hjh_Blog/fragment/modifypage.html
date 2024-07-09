@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="modifypage">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post</title>
+</head>
+<body>
+<editpage  class="modifypage">
+    <div class="edit-container">
+        <h1>글쓰기</h1>
+        <form th:action="@{/hjh/blog/postreader/modify/{id}(id=${post.postId})}" method="post" enctype="multipart/form-data">
+            <div class="edit-form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" th:value="${post.title}" required/>
+            </div>
+            <div class="edit-form-group">
+                <label for="description">설명</label>
+                <input type="text" id="description" name="description" th:value="${post.description}" required/>
+            </div>
+            <div class="edit-form-group">
+                <label for="content">내용</label>
+                <textarea id="content" name="content" rows="10" th:text="${post.content}" required></textarea>
+            </div>
+            <div class="edit-form-group">
+                <label for="imageUrl">이미지 업로드</label>
+                <input type="text" id="imageUrl" name="imageUrl" th:value="${post.imageUrl}"/>
+            </div>
+
+            <button type="submit">수정하기</button>
+        </form>
+    </div>
+</editpage>
+</body>
+</html>
