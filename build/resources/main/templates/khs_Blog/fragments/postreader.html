@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
-                <div class="read-option">
+                <div class="read-option" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_KHS')">
                     <a th:href="@{/khs/blog/postreader/modify/{id}(id=${post.post_id})}" class="read-modify-button"><div>수정</div></a>
                     <a th:href="@{/khs/blog/postreader/delete/{id}(id=${post.post_id})}" class="read-delete-button"><div>삭제</div></a>
                 </div>

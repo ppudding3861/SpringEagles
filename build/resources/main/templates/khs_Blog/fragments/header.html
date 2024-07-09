@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,7 +21,7 @@
                 <!-- 홈 링크 -->
                 <li><a th:href="@{/}" >홈</a></li>
                 <!-- 글쓰기 페이지 링크 -->
-                <li><a th:href="@{/khs/blog/editpagehs}">글쓰기</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_KHS')"><a th:href="@{/khs/blog/editpagehs}">글쓰기</a></li>
                 <!-- 검색 바 폼 -->
                 <li>
                     <form class="search-bar" th:action="@{/khs/blog}" method="get">
