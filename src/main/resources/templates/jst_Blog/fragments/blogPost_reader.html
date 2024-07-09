@@ -54,12 +54,15 @@
                             <div class="comment-upper">
                                 <div class="comment-content" th:text="${comment.commentContent}"></div>
                                 <div class="comment-user" th:text="${comment.userName}"></div>
-                                <div class="comment-buttons"  th:if="${comment.userName == username || roles.contains('ROLE_ADMIN') || roles.contains('ROLE_JST')}">
-                                <button type="button" class="post-comment-button" onclick="showEditForm(this)">수정</button>
+                                <div class="comment-buttons">
+                                    <button type="button" class="post-comment-button2" id="reply-button">답글</button>
+                                    <button type="button" class="post-comment-button2" onclick="showEditForm(this)"
+                                            th:if="${comment.userName == username || roles.contains('ROLE_ADMIN') || roles.contains('ROLE_JST')}">수정</button>
                                     <form th:action="@{/stj/blog/deletecomment}" method="post">
-                                        <input type="hidden" name="commentId" th:value="${comment.commentId}"/>
-                                        <input type="hidden" name="postId" th:value="${postId}"/>
-                                        <button type="submit" class="post-comment-button2" onclick="return confirmDelete()">삭제</button>
+                                        <input type="hidden" name="commentId" th:value="${comment.commentId}" />
+                                        <input type="hidden" name="postId" th:value="${postId}" />
+                                        <button type="submit"  th:if="${comment.userName == username || roles.contains('ROLE_ADMIN') || roles.contains('ROLE_JST')}"
+                                                class="post-comment-button2" onclick="return confirmDelete()">삭제</button>
                                     </form>
                                 </div>
                             </div>
@@ -68,10 +71,24 @@
                                     <input type="hidden" name="postId" th:value="${postId}" />
                                     <input type="hidden" name="commentId" th:value="${comment.commentId}" />
                                     <input type="text" name="commentContent" th:value="${comment.commentContent}" class="post-comment-input2" required />
-                                    <button type="submit" class="post-comment-button" >완료</button>
+                                    <button type="submit" id="reply-submit" class="post-comment-button">완료</button>
                                 </form>
                             </div>
                         </div>
+                        <!-- 대댓글 폼 -->
+                        <div class="comment-bottom">
+                            <form th:action="@{/stj/blog/reply/create}" method="post" class="comment-form-align2">
+                                <input type="hidden" name="commentId" th:value="${comment.commentId}" />
+                                <input type="hidden" name="postId" th:value="${comment.postId}" />
+                                <input type="hidden" name="parentReplyId" value="" /> <!-- 대댓글의 부모 댓글 ID -->
+                                <input type="text" class="post-comment-input2" name="content" placeholder="대댓글을 입력해주세요" required />
+                                <button type="submit" class="post-comment-button">완료</button>
+                            </form>
+                        </div>
+                        <!-- 대댓글 리스트 -->
+                        <ul>
+                            <li th:each="reply : ${comment.replies}" th:object="${reply}" th:include="~{jst_Blog/fragments/reader_reply :: reply}"></li>
+                        </ul>
                     </li>
                 </ul>
                 <button class="post-list-button" th:onclick="|location.href='@{/stj/blog/posts}'|">목록으로</button>
@@ -79,5 +96,30 @@
         </div>
     </div>
 </div>
+
+<script>
+    function toggleReplyForm(button) {
+        const createButton = document.getElementById("reply-button");
+        const inputForm = document.getElementById("reply-form");
+        const submitButton = document.getElementById("reply-submit");
+
+        createButton.addEventListener("click", function() {
+            inputForm.style.display = "block";
+        });
+
+        submitButton.addEventListener("click", function() {
+            inputForm.style.display = "none";
+        });
+    }
+
+    // 페이지 로드 시 이벤트 리스너를 설정합니다.
+    window.onload = function() {
+        toggleReplyForm();
+    }
+
+    function confirmDelete() {
+        return confirm('정말로 삭제하시겠습니까?');
+    }
+</script>
 
 </html>

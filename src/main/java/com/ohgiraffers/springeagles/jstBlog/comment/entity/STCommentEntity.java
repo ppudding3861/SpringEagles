@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "st_comments")
@@ -43,5 +44,8 @@ public class STCommentEntity {
 
     @Column(name = "user_Name", nullable = false)
     private String userName;
+
+    @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL)
+    private List<STReplyEntity> replies;
 
 }
