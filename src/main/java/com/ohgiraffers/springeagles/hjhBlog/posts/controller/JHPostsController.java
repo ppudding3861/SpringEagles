@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 
 @Controller
@@ -66,7 +65,36 @@ public class JHPostsController {
         mv.setViewName("hjh_Blog/blogpost6"); // 뷰 이름 설정
         return mv; // 모델앤뷰 객체 반환
     }
+    @GetMapping("/postreader/delete/{postId}")
+    public String deletePost(@PathVariable("postId") Integer postId) {
+        jhPostsService.deletePost(postId); // ID로 게시글을 삭제
+        return "redirect:/hjh/blog/posts"; // 블로그 메인 페이지로 리다이렉트
+    }
+    /**
+     * 게시글 수정 페이지를 보여주는 메서드
+     * @param postId 게시글 ID
+     * @param mv 모델앤뷰 객체
+     * @return 모델앤뷰 객체 반환
+     */
+    @GetMapping("/postreader/modify/{postId}")
+    public ModelAndView modifyPage(@PathVariable("postId") Integer postId, ModelAndView mv) {
+        JHPostsEntity post = jhPostsService.getPostById(postId).orElse(null); // ID로 게시글을 찾음
+        mv.addObject("post", post); // 선택된 게시글을 모델앤뷰에 추가
+        mv.addObject("currentPage", "modifypage"); // 현재 페이지 정보를 모델앤뷰에 추가
+        mv.setViewName("hjh_Blog/blogpost6"); // 뷰 이름 설정
+        return mv; // 모델앤뷰 객체 반환
+    }
 
-
+    /**
+     * 게시글을 수정하는 메서드
+     * @param postId 게시글 ID
+     * @param jhPostsDTO 게시글 DTO
+     * @return 리다이렉트 경로
+     */
+    @PostMapping("/postreader/modify/{postId}")
+    public String modifyPost(@PathVariable("postId") Integer postId, JHPostsDTO jhPostsDTO) {
+        jhPostsService.modifypost(postId, jhPostsDTO);
+        return "redirect:/hjh/blog/postreader/" + postId; // 수정된 게시글 페이지로 리다이렉트
+    }
 
 }

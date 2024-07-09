@@ -3,7 +3,6 @@
 
 
 <div class="introduce-con">
-    <div class="edit-container">
     <form th:action="@{/hjh/blog/add}" method="post">
         <div class="edit-form-group">
             <label for="title">제목</label>
@@ -21,8 +20,7 @@
             <label for="imageUrl">이미지 업로드</label>
             <input type="text" id="imageUrl" name="imageUrl"/>
         </div>
-        <button type="submit">등록하시겠습니까?</button>
+        <button type="submit" style="margin-bottom: 20px">등록하시겠습니까?</button>
     </form>
-    </div>
 </div>
 </html>

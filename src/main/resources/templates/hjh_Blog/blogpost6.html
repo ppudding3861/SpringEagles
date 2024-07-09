@@ -19,8 +19,9 @@
             </div>
             <div class="header-user">
                 <ul class="SMN_effect-6">
-                    <li class="header-authentication" ></li>
                     <li><a th:href="@{/}" data-hover="홈화면">홈화면</a></li>
+                    <li><a th:href="@{/hjh/blog/post}">게시글 등록</a></li>
+
                 </ul>
             </div>
         </div>
@@ -58,10 +59,6 @@
 
 <main id="mainContent">
     <div th:unless="${currentPage == 'Add'}">
-        <a th:href="@{/hjh/blog/post}">
-            <button>게시글 등록하기</button>
-
-        </a>
     </div>
 
     <div th:if="${currentPage == 'Add'}">
@@ -72,6 +69,10 @@
 
     <div th:if="${currentPage == 'postreader'}">
         <div th:replace="~{/hjh_Blog/fragment/postreader :: postreader}"></div>
+    </div>
+
+    <div th:if="${currentPage == 'modifypage'}">
+        <div th:replace="~{hjh_Blog/fragment/modifypage :: modifypage}"></div>
     </div>
 
 </main>

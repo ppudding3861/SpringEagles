@@ -8,15 +8,14 @@
 <body>
         <div class="post-item" th:each="post : ${posts}">
             <a th:href="@{/hjh/blog/postreader/{id}(id=${post.postId})}">
-                <figure>
-                    <img th:src="@{${post.imageUrl}}"/>
                     <div class="title-container">
                         <div class="post-title" th:text="${post.title}" th:onclick="">
                             제목
                         </div>
+
                         <div class="post-description" th:text="${post.description}">설명</div>
                     </div>
-                </figure>
+                <img th:src="@{${post.imageUrl}}"/>
             </a>
         </div>
 
