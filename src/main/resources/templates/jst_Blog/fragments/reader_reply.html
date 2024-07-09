@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="reply">
+<body>
+<div th:object="${reply}" th:style="'margin-left:' + (20 * *{depth}) + 'px'">
+    <div class="comment-content-con">
+        <div class="comment-upper">
+            <div class="comment-content" th:text="*{content}"></div>
+            <div class="comment-user" th:text="*{username}"></div>
+            <div class="comment-buttons">
+                <button type="button" class="post-comment-button2" id="reply-button" th:data-form-id="'reply-form-reply-button-' + *{replyId}">답글</button>
+                <button type="button" class="post-comment-button2" id="edit-button" th:data-reply-id="*{replyId}" onclick="showEditForm(this)">수정</button>
+                <button type="submit" class="post-comment-button2" onclick="return confirmDelete()">삭제</button>
+
+                <form th:action="@{/stj/blog/reply/delete/{replyId}(replyId=*{replyId})}" method="post">
+                    <input type="hidden" name="replyId" th:value="*{replyId}" />
+                    <input type="hidden" name="postId" th:value="*{comment.postId}" />
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="comment-bottom" id="edit-form">
+        <form th:action="@{/stj/blog/reply/update/{replyId}(replyId=*{replyId})}" method="post" class="comment-form-align2">
+            <input type="hidden" name="replyId" th:value="*{replyId}" />
+            <input type="hidden" name="postId" th:value="*{comment.postId}" />
+            <input type="text" class="post-comment-input2" name="replyContent" th:value="*{content}" required />
+            <button type="submit" th:data-reply-id="*{replyId}" class="post-comment-button" id="edit-submit">완료</button>
+        </form>
+    </div>
+
+    <!-- 대댓글 폼 -->
+    <div class="reply-form" id="reply-form" style="display: none;">
+        <form th:action="@{/stj/blog/reply/create}" method="post" class="reply-form-align">
+            <input type="hidden" name="commentId" th:value="*{comment.commentId}" />
+            <input type="hidden" name="parentReplyId" th:value="*{replyId}" />
+            <input type="hidden" name="postId" th:value="*{comment.postId}" />
+            <label>
+                <input type="text" class="post-reply-input" name="content" placeholder="대댓글을 입력해주세요" required />
+            </label>
+            <button type="submit" class="post-reply-button" id="reply-submit">작성</button>
+        </form>
+    </div>
+
+    <!-- 자식 대댓글 리스트 -->
+    <ul>
+        <li th:each="childReply : *{childReplies}" th:object="${childReply}" th:include="~{jst_Blog/fragments/reader_reply :: reply}"></li>
+    </ul>
+</div>
+</body>
+</html>

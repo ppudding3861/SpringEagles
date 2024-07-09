@@ -4,6 +4,7 @@ import com.ohgiraffers.springeagles.global.auth.entity.UserEntity;
 import com.ohgiraffers.springeagles.global.auth.service.CustomUserDetailsService;
 import com.ohgiraffers.springeagles.jstBlog.comment.entity.STCommentEntity;
 import com.ohgiraffers.springeagles.jstBlog.comment.service.STCommentService;
+import com.ohgiraffers.springeagles.jstBlog.comment.service.STReplyService;
 import com.ohgiraffers.springeagles.jstBlog.likes.service.STLikesService;
 import com.ohgiraffers.springeagles.jstBlog.posts.model.STPostsDTO;
 import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
@@ -36,14 +37,21 @@ public class STPostsController {
     private final STCommentService stCommentService;
     private final STLikesService stLikesService;
     private final CustomUserDetailsService userService;
+    private final STReplyService stReplyService;
 
     @Autowired
-    public STPostsController(STPostsService stPostsService, UserIntroService userIntroService, STCommentService stCommentService, STLikesService stLikesService, CustomUserDetailsService userService) {
+    public STPostsController(STPostsService stPostsService,
+                             UserIntroService userIntroService,
+                             STCommentService stCommentService,
+                             STLikesService stLikesService,
+                             CustomUserDetailsService userService,
+                             STReplyService stReplyService) {
         this.stPostsService = stPostsService;
         this.userIntroService = userIntroService;
         this.stCommentService = stCommentService;
         this.stLikesService = stLikesService;
         this.userService = userService;
+        this.stReplyService = stReplyService;
     }
 
     @GetMapping("/posts")
