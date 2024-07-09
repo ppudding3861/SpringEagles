@@ -221,6 +221,7 @@
     background-blend-mode: normal,color-burn;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    margin-left: 10%;
 }
 
 h1 {
