@@ -1,5 +1,10 @@
 package com.ohgiraffers.springeagles.khsBlog.posts.repository;
+
+import com.ohgiraffers.springeagles.khsBlog.likes.entity.HSLikesEntity;
 import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "hs_posts")
@@ -24,6 +29,11 @@ public class HSPostsEntity {
     @Column(name = "category")
     private String category;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<HSLikesEntity> likes = new HashSet<>();
+
+    public HSPostsEntity() {}
+
     public HSPostsEntity(Integer post_id, String title, String description, String content, String imageUrl, String category) {
         this.post_id = post_id;
         this.title = title;
@@ -31,9 +41,6 @@ public class HSPostsEntity {
         this.content = content;
         this.imageUrl = imageUrl;
         this.category = category;
-    }
-
-    public HSPostsEntity() {
     }
 
     public Integer getPost_id() {
