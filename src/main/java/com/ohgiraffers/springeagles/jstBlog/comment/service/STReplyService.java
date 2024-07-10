@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -49,6 +50,7 @@ public class STReplyService {
     }
 
     // 대댓글 생성
+    @Transactional
     public Integer createReply(STReplyDTO replyDTO) {
         if (replyDTO.getCommentId() == null || replyDTO.getContent() == null) {
             return 0;
@@ -85,6 +87,7 @@ public class STReplyService {
     }
 
     // 대댓글 수정
+    @Transactional
     public Integer updateReply(STReplyDTO replyDTO) {
         if (replyDTO.getReplyId() == null || replyDTO.getContent() == null) {
             return 0;
@@ -101,6 +104,7 @@ public class STReplyService {
     }
 
     // 대댓글 삭제
+    @Transactional
     public Integer deleteReply(STReplyDTO replyDTO) {
         if (replyDTO.getReplyId() == null) {
             return 0;
