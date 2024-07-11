@@ -1,30 +1,87 @@
-// 로고 이미지 클릭시 새로고침하는 스크립트
-function navigateToBlogPost() {
-    window.location.href = '/hjh/blog/posts';
+
+
+// 스크롤 위치 저장 함수
+function saveScrollPosition() {
+    localStorage.setItem('scrollPosition', window.scrollY);
 }
 
-// 나가기 버튼 관련 스크립트
-function confirmExit() {
-    return confirm('변경 사항이 저장되지 않을 수 있습니다. 그래도 나가시겠습니까?');
+// 스크롤 위치 복원 함수
+function restoreScrollPosition() {
+    const savedScrollPosition = localStorage.getItem('scrollPosition');
+    if (savedScrollPosition !== null) {
+        window.scrollTo(0, parseInt(savedScrollPosition));
+        localStorage.removeItem('scrollPosition');
+    }
 }
 
-// 네비버튼을 누르면 보이는 페이지를 조정하는 스크립트
+// 좋아요 관련 로직
+
 document.addEventListener('DOMContentLoaded', function() {
-    const introduceButton = document.getElementById('introduceButton');
-    const introduce = document.getElementById('introduce');
+    const likeButton = document.getElementById('like-button');
+    const unlikeButton = document.getElementById('unlike-button');
 
-    introduceButton.addEventListener('click', function() {
-        introduce.classList.add('active');
-        postList.classList.remove('active');
-        introduceButton.classList.add('active');
-        postListButton.classList.remove('active');
-    });
+    function handleResponse(response) {
+        if (response.ok) {
+            return response.json(); // JSON 형식으로 변환
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    }
+
+    function handleData(data) {
+        if (data.status === 'success') {
+            window.location.href = data.redirectUrl; // 리다이렉트 수행
+        } else {
+            throw new Error(data.message);
+        }
+    }
+
+    function handleError(error) {
+        console.error('Error:', error);
+    }
+
+    if (likeButton) {
+        likeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            saveScrollPosition();
+            const postId = this.getAttribute('data-post-id');
+            fetch('/hjh/blog/likes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ postId: postId })
+            })
+                .then(handleResponse)
+                .then(handleData)
+                .catch(handleError);
+        });
+    }
+
+    if (unlikeButton) {
+        unlikeButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            saveScrollPosition();
+            const postId = this.getAttribute('data-post-id');
+            fetch('/hjh/blog/unlikes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ postId: postId })
+            })
+                .then(handleResponse)
+                .then(handleData)
+                .catch(handleError);
+        });
+    }
 });
 
 document.addEventListener("DOMContentLoaded", function() {
     // 에러 메시지가 있으면 경고창을 띄웁니다.
     const errorMessage = document.getElementById("errorMessage").value;
     if (errorMessage) {
+        console.log(errorMessage);
         alert(errorMessage);
     }
 });
