@@ -9,24 +9,8 @@ function confirmExit() {
     return confirm('변경 사항이 저장되지 않을 수 있습니다. 그래도 나가시겠습니까?');
 }
 
-// 스크롤 위치 저장 함수
-function saveScrollPosition() {
-    localStorage.setItem('scrollPosition', window.scrollY);
-}
-
-// 스크롤 위치 복원 함수
-function restoreScrollPosition() {
-    const savedScrollPosition = localStorage.getItem('scrollPosition');
-    if (savedScrollPosition !== null) {
-        window.scrollTo(0, parseInt(savedScrollPosition));
-        localStorage.removeItem('scrollPosition');
-    }
-}
-
 // 페이지 로드 시 실행할 함수들
-document.addEventListener('DOMContentLoaded', function() {
-    // 스크롤 위치 복원
-    restoreScrollPosition();
+document.addEventListener('DOMContentLoaded', function () {
 
     // 네비게이션 버튼 클릭 이벤트 설정
     const postListButton = document.getElementById('postListButton');
@@ -109,7 +93,7 @@ function showEditForm(button) {
 
     // 기존의 수정 폼들 숨기기
     const allCommentBottoms = document.querySelectorAll('.comment-bottom');
-    allCommentBottoms.forEach(function(elem) {
+    allCommentBottoms.forEach(function (elem) {
         if (elem !== commentBottom) {
             elem.style.display = 'none';
         }
@@ -117,10 +101,10 @@ function showEditForm(button) {
 }
 
 // 좋아요 관련 로직
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const likeButton = document.querySelector("#like-button");
 
-    likeButton.addEventListener("click", function() {
+    likeButton.addEventListener("click", function () {
         const postId = likeButton.getAttribute("data-post-id");
 
         fetch("/stj/blog/toggleLike", {
@@ -128,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: new URLSearchParams({ postId: postId })
+            body: new URLSearchParams({postId: postId})
         })
             .then(response => {
                 if (!response.ok) {
@@ -158,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // 에러 메시지가 있으면 경고창을 띄웁니다.
     const errorMessage = document.getElementById("errorMessage").value;
     if (errorMessage) {
