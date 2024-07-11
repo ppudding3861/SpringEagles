@@ -16,6 +16,15 @@
                     </div>
                     <div class="read-content" th:text="${post.content}">작성글</div>
                 </div>
+                <div class="comment-upper-align">
+                    <h2 class="comment-title">Comments</h2>
+                    <button type="button" class="comment-img-button" id="like-button" th:if="${!isLiked}" th:data-post-id="${post.postId}">
+                        <img class="comment-img" th:src="@{/images/public_like_img.svg}" alt="좋아요" />
+                    </button>
+                    <button type="button" class="comment-img-button" id="unlike-button" th:if="${isLiked}" th:data-post-id="${post.postId}">
+                        <img class="comment-img" th:src="@{/images/public_unlike_img.svg}" alt="좋아요 취소" />
+                    </button>
+                </div>
                 <div class="read-option">
                     <a th:href="@{/hjh/blog/postreader/modify/{id}(id=${post.postId})}" class="read-modify-button"><div>수정</div></a>
                     <a th:href="@{/hjh/blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button"><div>삭제</div></a>
