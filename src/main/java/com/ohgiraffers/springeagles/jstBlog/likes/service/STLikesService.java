@@ -3,6 +3,7 @@ package com.ohgiraffers.springeagles.jstBlog.likes.service;
 
 import com.ohgiraffers.springeagles.global.auth.entity.UserEntity;
 import com.ohgiraffers.springeagles.global.auth.repository.UserRepository;
+import com.ohgiraffers.springeagles.global.auth.service.CustomUserDetailsService;
 import com.ohgiraffers.springeagles.jstBlog.likes.entity.STLikesEntity;
 import com.ohgiraffers.springeagles.jstBlog.likes.repository.STLikesRepository;
 import com.ohgiraffers.springeagles.jstBlog.posts.entity.STPostsEntity;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class STLikesService {
@@ -24,7 +26,9 @@ public class STLikesService {
     private final UserRepository userRepository;
 
     @Autowired
-    public STLikesService(STLikesRepository stLikesRepository, STPostsRepository stPostsRepository, UserRepository userRepository) {
+    public STLikesService(STLikesRepository stLikesRepository,
+                          STPostsRepository stPostsRepository,
+                          UserRepository userRepository) {
         this.stLikesRepository = stLikesRepository;
         this.stPostsRepository = stPostsRepository;
         this.userRepository = userRepository;
@@ -51,6 +55,12 @@ public class STLikesService {
         stLikesRepository.deleteByPost_PostIdAndUserId(postId, user.getUserId());
     }
 
+    public int getLikesCountByPostId(Integer postId) {
+        STPostsEntity post = stPostsRepository.findById(postId)
+                .orElseThrow(() -> new EntityNotFoundException("Post not found"));
+        return stLikesRepository.countByPost_PostId(post.getPostId());
+    }
+
     public Map<Integer, Boolean> getLikeStatuses(Integer userId) {
         List<STLikesEntity> likes = stLikesRepository.findByUserId(userId);
         Map<Integer, Boolean> likeStatuses = new HashMap<>();
@@ -60,9 +70,13 @@ public class STLikesService {
         return likeStatuses;
     }
 
-    public int getLikesCountByPostId(Integer postId) {
-        STPostsEntity post = stPostsRepository.findById(postId)
-                .orElseThrow(() -> new EntityNotFoundException("Post not found"));
-        return stLikesRepository.countByPost_PostId(post.getPostId());
+    public boolean isPostLikedByUser(Integer postId, String username) {
+        Optional<UserEntity> optionalUser = userRepository.findByUserName(username);
+        if (optionalUser.isPresent()) {
+            Integer userId = optionalUser.get().getUserId();
+            Map<Integer, Boolean> likeStatuses = getLikeStatuses(userId);
+            return likeStatuses.getOrDefault(postId, false);
+        }
+        return false;
     }
 }
