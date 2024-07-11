@@ -1,80 +1,51 @@
 
-
-// 스크롤 위치 저장 함수
-function saveScrollPosition() {
-    localStorage.setItem('scrollPosition', window.scrollY);
+// 로고 이미지 클릭시 새로고침하는 함수
+function navigateToBlogPost() {
+    saveScrollPosition();
+    window.location.href = '/stj/blog/posts';
 }
 
-// 스크롤 위치 복원 함수
-function restoreScrollPosition() {
-    const savedScrollPosition = localStorage.getItem('scrollPosition');
-    if (savedScrollPosition !== null) {
-        window.scrollTo(0, parseInt(savedScrollPosition));
-        localStorage.removeItem('scrollPosition');
-    }
-}
 
 // 좋아요 관련 로직
+document.addEventListener("DOMContentLoaded", function() {
+    const likeButton = document.querySelector("#like-button");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const likeButton = document.getElementById('like-button');
-    const unlikeButton = document.getElementById('unlike-button');
+    likeButton.addEventListener("click", function() {
+        const postId = likeButton.getAttribute("data-post-id");
 
-    function handleResponse(response) {
-        if (response.ok) {
-            return response.json(); // JSON 형식으로 변환
-        } else {
-            throw new Error('Network response was not ok.');
-        }
-    }
-
-    function handleData(data) {
-        if (data.status === 'success') {
-            window.location.href = data.redirectUrl; // 리다이렉트 수행
-        } else {
-            throw new Error(data.message);
-        }
-    }
-
-    function handleError(error) {
-        console.error('Error:', error);
-    }
-
-    if (likeButton) {
-        likeButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            saveScrollPosition();
-            const postId = this.getAttribute('data-post-id');
-            fetch('/hjh/blog/likes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({ postId: postId })
+        fetch("/hjh/blog/toggleLike", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({ postId: postId })
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
             })
-                .then(handleResponse)
-                .then(handleData)
-                .catch(handleError);
-        });
-    }
-
-    if (unlikeButton) {
-        unlikeButton.addEventListener('click', function(event) {
-            event.preventDefault();
-            saveScrollPosition();
-            const postId = this.getAttribute('data-post-id');
-            fetch('/hjh/blog/unlikes', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({ postId: postId })
+            .then(data => {
+                console.log(data); // 응답 객체를 콘솔에 출력하여 디버깅
+                if (data.status === "success") {
+                    // 서버 응답에 따라 버튼의 상태와 UI를 업데이트
+                    if (data.newState === "liked") {
+                        likeButton.textContent = "좋아요 취소";
+                        likeButton.classList.add("liked");
+                    } else {
+                        likeButton.textContent = "좋아요";
+                        likeButton.classList.remove("liked");
+                    }
+                } else {
+                    alert("An error occurred: " + data.message);
+                }
             })
-                .then(handleResponse)
-                .then(handleData)
-                .catch(handleError);
-        });
-    }
+            .catch(error => {
+                console.error("Error:", error);
+                alert("An error occurred: " + error.message);
+            });
+    });
 });
 
 document.addEventListener("DOMContentLoaded", function() {

@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class JHLikesService {
@@ -60,9 +61,13 @@ public class JHLikesService {
         return likeStatuses;
     }
 
-    public int getLikesCountByPostId(Integer postId) {
-        JHPostsEntity post = jhPostsRepository.findById(postId)
-                .orElseThrow(() -> new EntityNotFoundException("Post not found"));
-        return jhLikesRepository.countByPost_PostId(post.getPostId());
+    public boolean isPostLikedByUser(Integer postId, String username) {
+        Optional<UserEntity> optionalUser = userRepository.findByUserName(username);
+        if (optionalUser.isPresent()) {
+            Integer userId = optionalUser.get().getUserId();
+            Map<Integer, Boolean> likeStatuses = getLikeStatuses(userId);
+            return likeStatuses.getOrDefault(postId, false);
+        }
+        return false;
     }
 }
