@@ -1,10 +1,13 @@
 
 // 로고 이미지 클릭시 새로고침하는 함수
 function navigateToBlogPost() {
-    saveScrollPosition();
-    window.location.href = '/stj/blog/posts';
+    window.location.href = '/hjh/blog/posts';
 }
+function deletebotton(){
 
+    alert("정말로 삭제 하시겠습니까?");
+
+}
 
 // 좋아요 관련 로직
 document.addEventListener("DOMContentLoaded", function() {

@@ -939,6 +939,7 @@ a:hover, a:focus {
   justify-content: flex-end;
   align-items: center;
   width: 100%;
+  padding: 5px;
 }
 
 .post-comment-input2 {
@@ -980,8 +981,8 @@ a:hover, a:focus {
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #8C8072;
-  border: 3px solid #000;
+  background-color: #D9CBBA;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -1040,8 +1041,24 @@ a:hover, a:focus {
   border: none;
 }
 
+.post-comment-button3 {
+  width: auto;
+  height: 30px;
+  background-color: #40362E;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
+  padding: 0 10px;
+  text-align: center;
+  font-family: 'GmarketSansMedium';
+  font-size: 0.75em;
+  color: #D9CBBA;
+  border: none;
+}
+
 .post-comment-button:active,
-.post-comment-button2:active {
+.post-comment-button2:active
+.post-comment-button3:active {
   transform: translate(1px, 1px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
