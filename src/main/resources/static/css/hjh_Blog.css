@@ -539,6 +539,7 @@ a {
 .comment-img-button {
     background-color: #37C3C3;
     border: none;
+    border-radius: 50px;
 }
 
 
