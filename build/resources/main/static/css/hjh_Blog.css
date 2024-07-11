@@ -522,4 +522,24 @@ a {
     }
 }
 
+.comment-upper-align{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.comment-title {
+    font-family: 'GmarketSansMedium';
+    font-size: 1.5em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #00010D;
+}
+.comment-img-button {
+    background-color: #37C3C3;
+    border: none;
+}
+
+
 

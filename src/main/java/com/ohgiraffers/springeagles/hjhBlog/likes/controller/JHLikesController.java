@@ -30,31 +30,23 @@ public class JHLikesController {
         this.customUserDetailsService = customUserDetailsService;
     }
 
-
-    @PostMapping("/likes")
-    public ResponseEntity<Map<String, String>> likePost(@RequestParam("postId") Integer postId) {
+    @PostMapping("/toggleLike")
+    public ResponseEntity<Map<String, String>> toggleLike(@RequestParam("postId") Integer postId) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        jhLikesService.likePost(postId, username);
+
+        boolean isLiked = jhLikesService.isPostLikedByUser(postId, username);
+        if (isLiked) {
+            jhLikesService.unlikePost(postId, username);
+        } else {
+            jhLikesService.likePost(postId, username);
+        }
 
         Map<String, String> response = new HashMap<>();
         response.put("status", "success");
-        response.put("message", "Post liked successfully");
-        response.put("redirectUrl", "/hjh/blog/postreader/" + postId);
+        response.put("message", isLiked ? "Post unliked successfully" : "Post liked successfully");
+        response.put("newState", isLiked ? "unliked" : "liked");
 
-        return ResponseEntity.ok(response);
-    }
-
-    @PostMapping("/unlikes")
-    public ResponseEntity<Map<String, String>> unlikePost(@RequestParam("postId") Integer postId) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        jhLikesService.unlikePost(postId, username);
-
-        Map<String, String> response = new HashMap<>();
-        response.put("status", "success");
-        response.put("message", "Post unliked successfully");
-        response.put("redirectUrl", "/hjh/blog/postreader/" + postId);
 
         return ResponseEntity.ok(response);
     }
