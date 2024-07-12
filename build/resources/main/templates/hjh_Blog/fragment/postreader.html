@@ -28,10 +28,9 @@
                 </div>
                 <div class="read-option">
                     <a th:href="@{/hjh/blog/postreader/modify/{id}(id=${post.postId})}" class="read-modify-button"><div>수정</div></a>
-                    <a th:href="@{/hjh/blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button" onclick="deletebotton()"><div>삭제</div></a>
+                    <a th:href="@{/hjh/blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button"><div>삭제</div></a>
                 </div>
             </div>
         </div>
-        <script th:src="@{/javascript/hjh_blog.js}"></script>
 </body>
 </html>

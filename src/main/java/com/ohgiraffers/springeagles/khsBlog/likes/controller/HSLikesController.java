@@ -22,9 +22,9 @@ public class HSLikesController {
         this.likeService = likeService;
     }
 
-    @PostMapping("/{post_id}/like")
-    public ResponseEntity<String> likePost(@PathVariable("post_id") Integer post_id) {
-        likeService.likePost(post_id);
+    @PostMapping("/{postId}/like")
+    public ResponseEntity<String> likePost(@PathVariable("postId") Integer postId) {
+        likeService.likePost(postId);
         return ResponseEntity.ok().body("Successfully liked post");
     }
 

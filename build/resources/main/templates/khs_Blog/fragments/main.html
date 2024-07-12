@@ -11,7 +11,7 @@
         <div th:if="${searchResults != null && !searchResults.isEmpty()}">
             <h2>검색 결과</h2>
             <div class="post-item" th:each="post : ${searchResults}">
-                <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
+                <a th:href="@{/khs/blog/postreader/{id}(id=${post.postId})}">
                     <figure>
                         <img th:src="@{${post.imageUrl}}"/>
                         <div class="title-container">
@@ -27,7 +27,7 @@
         <div th:if="${searchResults == null || searchResults.isEmpty()}">
             <h2>게시글 목록</h2>
             <div class="post-item" th:each="post : ${postList}">
-                <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
+                <a th:href="@{/khs/blog/postreader/{id}(id=${post.postId})}">
                     <figure>
                         <img th:src="@{${post.imageUrl}}"/>
                         <div class="title-container">

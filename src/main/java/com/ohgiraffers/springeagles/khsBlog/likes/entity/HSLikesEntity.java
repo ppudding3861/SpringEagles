@@ -12,7 +12,7 @@ public class HSLikesEntity {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "post_id")
+    @JoinColumn(name = "postId")
     private HSPostsEntity post;
 
     @Column(name = "likes")

@@ -24,7 +24,7 @@
                 <!-- postList의 각 게시글에 대해 반복 처리 -->
                 <div th:each ="post : ${postList}">
                     <!-- 게시글 상세 페이지로 링크, 타임리프를 사용하여 경로 설정 -->
-                    <a th:href="@{/khs/blog/postreader/{id}(id=${post.post_id})}">
+                    <a th:href="@{/khs/blog/postreader/{id}(id=${post.postId})}">
                         <!-- 게시글의 제목을 표시 -->
                         <div th:text="${post.title}"></div>
                     </a>

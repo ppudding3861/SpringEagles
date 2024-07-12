@@ -66,15 +66,15 @@ public class HSPostController {
         return mv;
     }
 
-    @GetMapping("/postreader/{post_id}")
-    public ModelAndView showReadPage(@PathVariable("post_id") Integer post_id, ModelAndView mv) {
-        HSPostsEntity post = hsPostsService.getPostById(post_id).orElse(null);
+    @GetMapping("/postreader/{postId}")
+    public ModelAndView showReadPage(@PathVariable("postId") Integer postId, ModelAndView mv) {
+        HSPostsEntity post = hsPostsService.getPostById(postId).orElse(null);
         List<HSPostsEntity> postList = hsPostsService.postsEntityList();
         Collections.reverse(postList);
         mv.addObject("postList", postList);
         mv.addObject("post", post);
-        mv.addObject("selectedId", post_id);
-        mv.addObject("likeCount", hsLikeService.getLikes(post_id));
+        mv.addObject("selectedId", postId);
+        mv.addObject("likeCount", hsLikeService.getLikes(postId));
         mv.addObject("currentPage", "postreader");
         mv.setViewName("khs_Blog/hsblogPost");
         return mv;

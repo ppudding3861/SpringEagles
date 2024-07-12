@@ -4,7 +4,7 @@ import com.ohgiraffers.springeagles.khsBlog.posts.repository.HSPostsEntity;
 
 public class HSPostsDTO {
 
-    private Integer post_id;
+    private Integer postId;
     private String title;
     private String description;
     private String content;
@@ -15,8 +15,8 @@ public class HSPostsDTO {
     public HSPostsDTO() {
     }
 
-    public HSPostsDTO(Integer post_id, String title, String description, String content, String imageUrl, String category) {
-        this.post_id = post_id;
+    public HSPostsDTO(Integer postId, String title, String description, String content, String imageUrl, String category) {
+        this.postId = postId;
         this.title = title;
         this.description = description;
         this.content = content;
@@ -27,13 +27,13 @@ public class HSPostsDTO {
 
     public HSPostsEntity toEntity() {
 
-        return new HSPostsEntity(post_id, title, description, content, imageUrl, category);
+        return new HSPostsEntity(postId, title, description, content, imageUrl, category);
 
     }
 
     public HSPostsEntity toModify() {
         HSPostsEntity entity = new HSPostsEntity();
-        entity.setPost_id(this.post_id);
+        entity.setPostId(this.postId);
         entity.setTitle(this.title);
         entity.setDescription(this.description);
         entity.setContent(this.content);
@@ -43,11 +43,11 @@ public class HSPostsDTO {
     }
 
     public Integer getPost_id() {
-        return post_id;
+        return postId;
     }
 
     public void setPost_id(Integer post_id) {
-        this.post_id = post_id;
+        this.postId = post_id;
     }
 
     public String getTitle() {
@@ -94,7 +94,7 @@ public class HSPostsDTO {
     @Override
     public String toString() {
         return "HSPostsDTO{" +
-                "post_id=" + post_id +
+                "post_id=" + postId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", content='" + content + '\'' +

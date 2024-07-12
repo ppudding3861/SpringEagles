@@ -12,7 +12,8 @@ public class HSPostsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer post_id;
+    @Column(name = "post_id", nullable = false)
+    private Integer postId;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -34,8 +35,8 @@ public class HSPostsEntity {
 
     public HSPostsEntity() {}
 
-    public HSPostsEntity(Integer post_id, String title, String description, String content, String imageUrl, String category) {
-        this.post_id = post_id;
+    public HSPostsEntity(Integer postId, String title, String description, String content, String imageUrl, String category) {
+        this.postId = postId;
         this.title = title;
         this.description = description;
         this.content = content;
@@ -43,12 +44,12 @@ public class HSPostsEntity {
         this.category = category;
     }
 
-    public Integer getPost_id() {
-        return post_id;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setPost_id(Integer post_id) {
-        this.post_id = post_id;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
     public String getTitle() {
@@ -94,7 +95,7 @@ public class HSPostsEntity {
     @Override
     public String toString() {
         return "HSPostsEntity{" +
-                "post_id=" + post_id +
+                "post_id=" + postId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", content='" + content + '\'' +

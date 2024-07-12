@@ -8,7 +8,7 @@
 <body>
 <read-container class="read-container">
     <postreader th:fragment="postreader" class="postreader">
-        <div th:if="${post.post_id == selectedId}" class="read-align">
+        <div th:if="${post.postId == selectedId}" class="read-align">
             <div class="read-container" th:each="post : ${post}">
                 <div class="read-title" th:text="${post.title}">글의 제목</div>
                 <div class="read-sub" th:text="${post.description}">글의 설명</div>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="like-container">
                     <!-- 좋아요 버튼 -->
-                    <button id="likeButton" type="button" th:attr="data-id=${post.post_id}" class="like-button">
+                    <button id="likeButton" type="button" th:attr="data-id=${post.postId}" class="like-button">
                         <img src="/images/hs-like.png" alt="Like Button">
                     </button>
                     <!-- 좋아요 수 표시 -->
@@ -29,8 +29,8 @@
                 </div>
                 <!-- sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_KHS')" -->
                 <div class="read-option">
-                    <a th:href="@{/khs/blog/postreader/modify/{id}(id=${post.post_id})}" class="read-modify-button">수정</a>
-                    <a th:href="@{/khs/blog/postreader/delete/{id}(id=${post.post_id})}" class="read-delete-button">삭제</a>
+                    <a th:href="@{/khs/blog/postreader/modify/{id}(id=${post.postId})}" class="read-modify-button">수정</a>
+                    <a th:href="@{/khs/blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button">삭제</a>
                 </div>
             </div>
         </div>
