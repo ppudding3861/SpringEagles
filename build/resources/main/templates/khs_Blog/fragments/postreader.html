@@ -32,6 +32,25 @@
                     <a th:href="@{/khs/blog/postreader/modify/{id}(id=${post.postId})}" class="read-modify-button">수정</a>
                     <a th:href="@{/khs/blog/postreader/delete/{id}(id=${post.postId})}" class="read-delete-button">삭제</a>
                 </div>
+                <!-- 댓글 목록 -->
+                <div class="comment-section">
+                    <h3>댓글</h3>
+                    <div class="comment-list" th:each="comment : ${post.commentList}">
+                        <div class="comment">
+                            <p th:text="${comment.contents}">댓글 내용</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 댓글 작성 폼 -->
+                <div class="comment-form">
+                    <h4>댓글 작성</h4>
+                    <form th:attr="data-post-id=${post.postId}">
+                        <textarea name="contents" placeholder="댓글을 작성하세요" required></textarea>
+                        <button type="submit">댓글 작성</button>
+                    </form>
+                </div>
+
             </div>
         </div>
     </postreader>

@@ -1,10 +1,15 @@
 package com.ohgiraffers.springeagles.khsBlog.posts.repository;
 
+import com.ohgiraffers.springeagles.khsBlog.comment.entity.HSCommentEntity;
 import com.ohgiraffers.springeagles.khsBlog.likes.entity.HSLikesEntity;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
 @Table(name = "hs_posts")
@@ -32,6 +37,13 @@ public class HSPostsEntity {
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<HSLikesEntity> likes = new HashSet<>();
+
+    @OneToMany(fetch = LAZY, mappedBy = "post", cascade = CascadeType.REMOVE)
+    private List<HSCommentEntity> commentList = new ArrayList<>();
+
+    public void mappingComment(HSCommentEntity comment) {
+        this.commentList.add(comment);
+    }
 
     public HSPostsEntity() {}
 
@@ -90,6 +102,10 @@ public class HSPostsEntity {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<HSCommentEntity> getCommentList() {
+        return commentList;
     }
 
     @Override

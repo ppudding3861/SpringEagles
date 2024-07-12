@@ -25,6 +25,8 @@ public class HSLikesEntity {
         this.likes = likes;
     }
 
+
+
     public Integer getId() {
         return id;
     }

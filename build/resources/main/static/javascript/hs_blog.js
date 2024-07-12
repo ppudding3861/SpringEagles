@@ -33,3 +33,32 @@ document.addEventListener("DOMContentLoaded", function() {
         console.error("Like button or like count element not found.");
     }
 });
+
+
+// 코멘트 작성
+
+document.addEventListener("DOMContentLoaded", function () {
+    const commentForms = document.querySelectorAll(".comment-form form");
+
+    commentForms.forEach(form => {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const postId = this.getAttribute("data-post-id");
+            const contents = this.querySelector('textarea[name="contents"]').value;
+
+            axios.post(`/khs/blog/postreader/${postId}/comment`, { contents })
+                .then(response => {
+                    const commentSection = this.closest('.read-container').querySelector('.comment-list');
+                    const newComment = document.createElement('div');
+                    newComment.classList.add('comment');
+                    newComment.innerHTML = `<p>${response.data.contents}</p>`;
+                    commentSection.appendChild(newComment);
+                    this.querySelector('textarea[name="contents"]').value = '';
+                })
+                .catch(error => {
+                    console.error('There was an error!', error);
+                });
+        });
+    });
+});
