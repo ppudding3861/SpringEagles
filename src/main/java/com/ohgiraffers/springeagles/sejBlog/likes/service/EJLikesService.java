@@ -28,27 +28,27 @@ public class EJLikesService {
         EJPostsEntity ejPostsEntity = ejPostsRepository.findById(postId).orElse(null);
         List<EJLikesEntity> ejLikesEntities =likesRepository.findByPosts(ejPostsEntity);
 
-        EJLikesEntity likesEntity;
+        EJLikesEntity ejLikesEntity;
         if(ejLikesEntities.isEmpty()) {
-            likesEntity = new EJLikesEntity(ejPostsEntity, 1);
+            ejLikesEntity = new EJLikesEntity(ejPostsEntity, 1);
 
         } else {
-            likesEntity = ejLikesEntities.get(0);
-            likesEntity.setLikes(likesEntity.getLikes() + 1);
+            ejLikesEntity = ejLikesEntities.get(0);
+            ejLikesEntity.setLikes(ejLikesEntity.getLikes() + 1);
         }
-        likesRepository.save(likesEntity);
+        likesRepository.save(ejLikesEntity);
 
     }
 
     public int getLikeCountByPostId(Integer postId) {
 
         EJPostsEntity ejPostsEntity = ejPostsRepository.findById(postId).orElse(null);
-        List<EJLikesEntity> likesEntities =likesRepository.findByPosts(ejPostsEntity);
-        if(likesEntities.isEmpty()) {
+        List<EJLikesEntity> ejLikesEntities =likesRepository.findByPosts(ejPostsEntity);
+        if(ejLikesEntities.isEmpty()) {
             return 0;
         }
 
-        int result = likesEntities.get(0).getLikes();
+        int result = ejLikesEntities.get(0).getLikes();
         System.out.println(result);
         return result;
 

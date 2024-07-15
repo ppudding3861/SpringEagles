@@ -70,8 +70,8 @@ public class EJPostsController {
 //
 //
         Map<Integer, Integer> likeCounts = new HashMap<>();
-        likeCounts.put(postId, ejLikesService.getLikeCountByPostId(postId));
         int likeCount = ejLikesService.getLikeCountByPostId(postId);
+        likeCounts.put(ejPostsDTO.getPostId(),likeCount);
 
         mv.addObject("currentPage","detailPage");
         mv.addObject("post", ejPostsDTO);

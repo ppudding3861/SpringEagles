@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(response => {
                     const likeCount = response.data.likes;
                     console.log(likeCount);
-                    console.log(data.likes);
+                    console.log(response.data.likes);
                     if (likeCount !== undefined) {
 
                         likeCountElement.textContent = likeCount;

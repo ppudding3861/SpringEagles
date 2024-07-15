@@ -35,7 +35,7 @@ public class EJLikeController {
             ejLikesService.likePost(postId);
             int likeCount = ejLikesService.getLikeCountByPostId(postId);
             Map<String, Integer> response = new HashMap<>();
-            response.put("likeCount", likeCount);
+            response.put("likes", likeCount);
 
             return ResponseEntity.ok(response);
 
