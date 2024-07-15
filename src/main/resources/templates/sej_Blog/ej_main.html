@@ -4,11 +4,6 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Jinny's Blog</title>
-    <script th:src="@{/javascript/sej_blog.js}"></script>
-    <!-- Axios CDN 링크 추가 -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
     <link rel="stylesheet" th:href="@{/css/sej_Blog.css}"/>
     <link rel="stylesheet" th:href="@{/css/public_reset.css}"/>
 </head>
@@ -24,55 +19,38 @@
             </div>
             <div class="header-user">
 <!--                태그수정-->
-
-
-
-                <div class="user-login" th:onclick="">
-
-                    <a th:href="@{/}" data-hover="홈화면">홈화면</a>
-
-                    <a th:href="@{/sej/blog/edit}" th:if="${currentPage != 'editPage'}">글쓰기</a>
-                    <a th:href="@{/sej/blog/posts}" th:unless="${currentPage != 'editPage'}" onclick="return confirmExit()">나가기</a>
-
+                <div
+                        class="user-notification"
+                        th:onclick=""
+                >
+                    홈화면
                 </div>
 
+                <div class="user-login" th:onclick="">
+                    글쓰기
+                </div>
             </div>
         </div>
     </div>
 </header>
 <main>
     <div class="main-container">
-        <div th:if="${currentPage == 'mainPage'}">
-            <aside th:replace="~{/sej_Blog/fragments/sej_sidebar :: sidebar}"></aside>
-        </div>
-
+        <aside th:replace="~{/sej_Blog/fragments/sej_sidebar :: sidebar}"></aside>
         <div class="content">
-            <div th:if="${currentPage == 'mainPage'}">
-                <div th:replace="~{/sej_Blog/fragments/sej_user-profile :: userProfile}"></div>
-            </div>
-
-            <div th:if="${currentPage == 'mainPage'}">
-                <section th:replace="~{/sej_Blog/fragments/post.html :: posts}"></section>
-            </div>
-
-            <div th:if ="${currentPage == 'editPage'}">
-                <section th:replace="~{/sej_Blog/fragments/ej_edit :: edit}"></section>
-            </div>
-
-            <div th:if="${currentPage == 'detailPage'}">
-                <section th:replace="~{/sej_Blog/fragments/ej_detail :: detail}"></section>
-            </div>
-            <div th:if="${currentPage == 'modifyPage'}">
-                <section th:replace="~{/sej_Blog/fragments/ej_modify :: modify}"></section>
-            </div>
-
-
+            <div th:replace="~{/sej_Blog/fragments/sej_user-profile :: userProfile}"></div>
+            <nav class="navigation">
+                <div class="nav-items">
+                    <div th:onclick="">글</div>
+                    <div th:onclick="">시리즈</div>
+                    <div th:onclick="">소개</div>
+                </div>
+            </nav>
+            <section th:replace="~{/sej_Blog/fragments/post.html :: posts}"></section>
         </div>
     </div>
 </main>
 <footer>
     <!-- Footer content here -->
 </footer>
-
 </body>
 </html>

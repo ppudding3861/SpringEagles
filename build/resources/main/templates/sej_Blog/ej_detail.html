@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="@{'게시판 - ' + ${post.title}}"></title>
+</head>
+<body>
+<h1>상세조회_detail</h1>
+<h5 th:text="@{${post.title}}"></h5>
+<p th:text="${post.contents}"></p>
+
+<a th:href="@{'/sej/blog/posts/modify/' + ${post.id}}" role="button">수정</a>
+
+<div>
+
+    <form id="delete-form" th:action="@{'/sej/blog/posts/delete/' + ${post.id}}" method="post">
+        <input type="hidden" name="method" value="delete" />
+        <button type="submit">삭제</button>
+    </form>
+</div>
+
+</body>
+</html>

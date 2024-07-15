@@ -1,76 +1,32 @@
 <html xmlns:th="http://www.thymeleaf.org" th:fragment="posts">
 
-<style>
-    .header-row {
-        display: flex;
-        justify-content: space-between; /* 균등하게 간격을 나눕니다 */
-        align-items: center; /* 수직 가운데 정렬합니다 */
-        border-bottom: 1px solid #ccc; /* 선택사항: 하단에 구분선을 추가합니다 */
-        padding: 10px; /* 선택사항: 내부 여백을 추가합니다 */
-    }
+<h1>전체조회_list</h1>
 
-    .post-row {
+<table>
+    <thead>
+    <tr>
+        <th scope="col">NO</th>
+        <th scope="col">제목</th>
+    </tr>
 
-        display: flex;
-        justify-content: space-between; /* 균등하게 간격을 나눕니다 */
-        align-items: center; /* 수직 가운데 정렬합니다 */
-        padding: 10px; /* 선택사항: 내부 여백을 추가합니다 */
-
-    }
-
-    .header-row div, .post-row div {
-        flex: 1; /* 각 div가 같은 너비를 가지도록 설정합니다 */
-        text-align: center; /* 텍스트를 가운데 정렬합니다 */
-        padding: 10px; /* 선택사항: 내부 여백을 추가합니다 */
-        box-sizing: border-box; /* 패딩과 테두리를 포함하도록 설정합니다 */
-    }
-
-    .post-list {
-        margin-top: 20px; /* 선택사항: 목록과 헤더 사이의 간격을 추가합니다 */
-    }
-
-    .post-row > div {
-        min-width: 100px; /* 각 열의 최소 너비를 설정합니다 */
-    }
-
-</style>
-
-<body>
-
-<div class="post_area">
-
-    <h1>전체조회_list</h1>
-
-    <div class="post-list">
-
-       <div class="header-row">
-           <div scope="col">NO</div>
-           <div scope="col">제목</div>
-       </div>
-
-        <div class = "post-row" th:each="post : ${postList}">
-            <div scope="row">
-                <span th:text="${post.postId}" id="post_Id"></span>
-            </div>
-
-
-
-            <div>
-                <a th:href="@{'/sej/blog/posts/detail/' + ${post.postId}}">
-                    <span th:text="${post.title}"></span>
-                </a>
-                <!--제목을 클릭하면 상세조회 페이지로 넘어간다-->
-            </div>
-        </div>
-
-        <div>
-            <a th:href="@{/sej/blog/edit}" role="button"> 글쓰기 </a>
-        </div>
-
-    </div>
-
+    </thead>
+    <tbody>
+    <tr class = "text-center" th:each="post : ${postList}">
+        <th scope="row">
+            <span th:text="${post.id}"></span>
+        </th>
+        <td>
+            <a th:href="@{'/sej/blog/posts/detail/' + ${post.id}}">
+                <span th:text="${post.title}"></span>
+            </a>
+            <!--제목을 클릭하면 상세조회 페이지로 넘어간다-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{/sej/blog/edit}" role="button"> 글쓰기 </a>
 </div>
-
 
 </body>
 

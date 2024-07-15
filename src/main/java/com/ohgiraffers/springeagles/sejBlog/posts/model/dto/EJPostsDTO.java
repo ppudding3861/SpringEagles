@@ -2,7 +2,7 @@ package com.ohgiraffers.springeagles.sejBlog.posts.model.dto;
 
 public class EJPostsDTO {
 
-    private Integer postId;
+    private Integer id;
     private String title;
     private String contents;
 //    private String imageUrl;
@@ -11,18 +11,18 @@ public class EJPostsDTO {
     public EJPostsDTO() {
     }
 
-    public EJPostsDTO(Integer postId, String title, String contents) {
-        this.postId = postId;
+    public EJPostsDTO(Integer id, String title, String contents) {
+        this.id = id;
         this.title = title;
         this.contents = contents;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -44,7 +44,7 @@ public class EJPostsDTO {
     @Override
     public String toString() {
         return "EJPostsDTO{" +
-                "postId=" + postId +
+                "id=" + id +
                 ", title='" + title + '\'' +
                 ", contents='" + contents + '\'' +
                 '}';
